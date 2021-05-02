@@ -340,7 +340,7 @@ rooms:
 
       this.dialogueBox.depth = 1000;//depth is like the layer for example 1000
       would be a high up layer while -5 would be a low layer
-    onstep: >+
+    onstep: >
       if(ct.actions.interact.pressed && ct.mouse.x > 64 && ct.mouse.y > 0 &&
       ct.mouse.x < 192 && ct.mouse.y < 192 && this.count < 5)//if a certain area
       of the screen is being pressed
@@ -375,6 +375,10 @@ rooms:
           this.boxT.kill = true;
       }
 
+      //This stuff should be in type not the room I think Though that may not
+      work try using a next button on the type
+
+      //aternativly use a UI room instead of using one big room
     ondraw: ''
     onleave: ''
     width: 832
