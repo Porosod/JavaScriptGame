@@ -495,10 +495,6 @@ scripts:
       room.dialogue = fuck[dialogueID]
 
       }
-  - name: New Script
-    code: |-
-      /* Use scripts to define frequent functions and import small libraries */
-      //Boo!
 starting: 0
 settings:
   authoring:
