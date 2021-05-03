@@ -13,6 +13,9 @@ libs:
   touch:
     mousetouch: true
     preventdefault: false
+  PIXI.MultiStyleText: {}
+  random: {}
+  tag: {}
 textures:
   - name: PlaceChar
     untill: 0
@@ -316,8 +319,8 @@ rooms:
           isUi: true
       });
 
-      var boxT = ct.types.copy('UIBox',64,448);//adds then UI box here this one
-      is just to define it and it gets killed almost instantly
+      //this.boxT = ct.types.copy('UIBox',64,448);//adds then UI box here this
+      one is just to define it and it gets killed almost instantly
 
       this.boxX = 64
 
@@ -346,7 +349,7 @@ rooms:
       of the screen is being pressed
 
       {
-          this.boxT = ct.types.copy('UIBox',64,448);//adds then UI box here
+          this.boxT = ct.types.copy('UIBox',64,448);//adds a UI box copy here
           this.inDialogue = true;
           this.dialogueBox.clear
           this.count=this.count + 1;
@@ -354,11 +357,14 @@ rooms:
           this.dialogueBox.text = this.dialogue;
       }
 
-      else
+      else if (ct.actions.interact.pressed && !(ct.mouse.x > 64) == true &&
+      !(ct.mouse.y > 0) == true && !(ct.mouse.x < 192) == true && !(ct.mouse.y <
+      192) == true)
 
       {
           this.inDialogue = false;
-          this.boxT.kill = true;
+          this.boxT.kill = true;//destroys the copy
+          this.boxT = void 0; // Forget the copy to avoid memory leaks
       }
 
       if(this.inDialogue == true )
@@ -372,7 +378,8 @@ rooms:
       else if (this.inDialogue == false && this.count > 5)
 
       {
-          this.boxT.kill = true;
+          this.boxT.kill = true;//destroys the copy
+          this.boxT = void 0; // Forget the copy to avoid memory leaks
       }
 
       //This stuff should be in type not the room I think Though that may not
@@ -496,7 +503,7 @@ scripts:
           
       } */
 
-      room.dialogue = fuck[dialogueID]
+      room.dialogue = dialogueOptions[dialogueID]
 
       }
 starting: 0
