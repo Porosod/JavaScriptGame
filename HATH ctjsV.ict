@@ -16,6 +16,9 @@ libs:
   PIXI.MultiStyleText: {}
   random: {}
   tag: {}
+  yarn:
+    skipEmpty: true
+    magic: true
 textures:
   - name: PlaceChar
     untill: 0
