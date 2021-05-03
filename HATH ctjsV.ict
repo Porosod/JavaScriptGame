@@ -481,7 +481,7 @@ scripts:
       for dialogue popups the big int is an ID associated with the selected
       dialogue
 
-      let fuck =
+      let dialogueOptions =
       ['test1aaaaaaaaa','test2bbbbbbbbbbbb','test3ccccccccccc','test4ddddddddd','test5eeeeeee']
 
       /*switch(dialogueID) {
