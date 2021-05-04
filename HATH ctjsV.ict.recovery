@@ -1,0 +1,558 @@
+ctjsVersion: 1.7.0
+notes: /* empty */
+libs:
+  place:
+    gridX: 1024
+    gridY: 1024
+  fittoscreen:
+    mode: scaleFit
+  keyboard: {}
+  keyboard.polyfill: {}
+  sound.howler: {}
+  mouse: {}
+  touch:
+    mousetouch: true
+    preventdefault: false
+  PIXI.MultiStyleText: {}
+  random: {}
+  tag: {}
+  yarn:
+    skipEmpty: true
+    magic: true
+textures:
+  - name: PlaceChar
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 2
+      - 9
+    marginx: 0
+    marginy: 0
+    imgWidth: 160
+    imgHeight: 160
+    width: 160
+    height: 160
+    offx: 0
+    offy: 0
+    origname: icb6db1e7-af62-4eb6-a12f-43c4f4cf4588.png
+    shape: rect
+    left: -28
+    right: 128
+    top: -10
+    bottom: 151
+    uid: cb6db1e7-af62-4eb6-a12f-43c4f4cf4588
+    padding: 1
+    source: 'C:\Users\Alexd\OneDrive\Pictures\GameAssets\Place.png'
+    r: 80
+    stripPoints:
+      - x: 0
+        'y': -80
+      - x: 76
+        'y': -25
+      - x: 47
+        'y': 65
+      - x: -47
+        'y': 65
+      - x: -76
+        'y': -25
+    closedStrip: true
+    lastmod: 1619396613197
+  - name: Brick
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 160
+    imgHeight: 160
+    width: 160
+    height: 160
+    offx: 0
+    offy: 0
+    origname: ia1e3bb1f-92c3-4cb5-9b78-5e436dcb7e83.png
+    shape: rect
+    left: 0
+    right: 160
+    top: 0
+    bottom: 160
+    uid: a1e3bb1f-92c3-4cb5-9b78-5e436dcb7e83
+    padding: 1
+    source: 'C:\Users\Alexd\OneDrive\Pictures\GameAssets\Brick.png'
+    lastmod: 1619261213685
+  - name: Grey
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 832
+    imgHeight: 640
+    width: 832
+    height: 640
+    offx: 0
+    offy: 0
+    origname: i72b4227a-a07a-4049-bf29-ad5ad7ce8e78.png
+    shape: rect
+    left: 0
+    right: 832
+    top: 0
+    bottom: 640
+    uid: 72b4227a-a07a-4049-bf29-ad5ad7ce8e78
+    padding: 1
+    source: >-
+      C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\sceneAssets\Backgrounds\FarBacks\Grey.png
+    tiled: true
+    lastmod: 1619315820509
+  - name: UI01
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 704
+    imgHeight: 160
+    width: 704
+    height: 160
+    offx: 0
+    offy: 0
+    origname: ie1f01365-dfaf-4ef8-b7c5-039e48c1ad5c.png
+    shape: rect
+    left: 0
+    right: 704
+    top: 0
+    bottom: 160
+    uid: e1f01365-dfaf-4ef8-b7c5-039e48c1ad5c
+    padding: 1
+    source: 'C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\UI\UI01.png'
+  - name: Cursor
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 24
+    imgHeight: 24
+    width: 24
+    height: 24
+    offx: 0
+    offy: 0
+    origname: ie3b7166f-c686-4a11-a990-41f8752515e2.png
+    shape: rect
+    left: 0
+    right: 24
+    top: 0
+    bottom: 24
+    uid: e3b7166f-c686-4a11-a990-41f8752515e2
+    padding: 1
+    source: 'C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\UI\Cursor.png'
+  - name: Button3
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 24
+    imgHeight: 24
+    width: 24
+    height: 24
+    offx: 0
+    offy: 0
+    origname: i4011ba97-4a0d-43f4-99f9-aa7689c924e6.png
+    shape: rect
+    left: 0
+    right: 24
+    top: 0
+    bottom: 24
+    uid: 4011ba97-4a0d-43f4-99f9-aa7689c924e6
+    padding: 1
+    source: 'C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\UI\Button3.png'
+  - name: Button1
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 24
+    imgHeight: 24
+    width: 24
+    height: 24
+    offx: 0
+    offy: 0
+    origname: i258349ea-e8f5-4398-9071-a64738f2ea99.png
+    shape: rect
+    left: 0
+    right: 24
+    top: 0
+    bottom: 24
+    uid: 258349ea-e8f5-4398-9071-a64738f2ea99
+    padding: 1
+    source: 'C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\UI\Button1.png'
+    lastmod: 1619396631294
+  - name: Button2
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 24
+    imgHeight: 24
+    width: 24
+    height: 24
+    offx: 0
+    offy: 0
+    origname: if10463b7-2f27-4515-93b6-ca3abe91a243.png
+    shape: rect
+    left: 0
+    right: 24
+    top: 0
+    bottom: 24
+    uid: f10463b7-2f27-4515-93b6-ca3abe91a243
+    padding: 1
+    source: 'C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\UI\Button2.png'
+    lastmod: 1619396633222
+skeletons: []
+types:
+  - name: CharPlaceHold
+    depth: 0
+    oncreate: ''
+    onstep: this.move();
+    ondraw: ''
+    ondestroy: ''
+    texture: cb6db1e7-af62-4eb6-a12f-43c4f4cf4588
+    extends: {}
+    uid: 7bdd0707-657b-4256-a995-c526fadcb05e
+    lastmod: 1619389827963
+  - name: Brick
+    depth: 0
+    oncreate: ''
+    onstep: this.move();
+    ondraw: ''
+    ondestroy: ''
+    texture: a1e3bb1f-92c3-4cb5-9b78-5e436dcb7e83
+    extends: {}
+    uid: 8a66b824-7245-4e60-b09f-4581e1fc9938
+    lastmod: 1619389809466
+  - name: Grey
+    depth: 0
+    oncreate: ''
+    onstep: this.move();
+    ondraw: ''
+    ondestroy: ''
+    texture: 72b4227a-a07a-4049-bf29-ad5ad7ce8e78
+    extends: {}
+    uid: 391efc90-ffeb-49bd-9f22-a88dc43bf17a
+    lastmod: 1619315685213
+  - name: UIBox
+    depth: 100
+    oncreate: ''
+    onstep: |
+      this.move();
+    ondraw: ''
+    ondestroy: ''
+    texture: e1f01365-dfaf-4ef8-b7c5-039e48c1ad5c
+    extends: {}
+    uid: fb8d1b19-8e2a-48ee-ba64-56230149fe5f
+    lastmod: 1619396971760
+  - name: Cursor
+    depth: 0
+    oncreate: ''
+    onstep: this.move();
+    ondraw: |-
+      this.x = ct.mouse.xui;
+      this.y = ct.mouse.yui;
+    ondestroy: ''
+    texture: e3b7166f-c686-4a11-a990-41f8752515e2
+    extends: {}
+    uid: bda90d00-a00c-45f7-a174-789a81cc40ea
+    lastmod: 1619389818090
+sounds: []
+styles:
+  - name: Dialogue
+    uid: 9d748e31-53b2-4437-a45e-88296a8ccdc2
+    origname: s88296a8ccdc2
+    font:
+      family: Arial
+      size: 15
+      weight: '500'
+      italic: false
+      halign: left
+      wrap: false
+    shadow:
+      color: '#FFFFFF'
+      x: 0
+      'y': 0
+      blur: 0
+    lastmod: 1619258078320
+    fill:
+      type: '0'
+      color: '#65CFA7'
+rooms:
+  - name: Test1
+    oncreate: >-
+      ct.rooms.append('UI', {
+          isUi: true
+      });
+
+      //this.boxT = ct.types.copy('UIBox',64,448);//adds then UI box here this
+      one is just to define it and it gets killed almost instantly
+
+      this.boxX = 64
+
+      this.boxY = 704
+
+      //this.inDialogue = false;
+
+      this.dialogue = ''
+
+      this.count = 0;
+
+      this.dialogueBox = new PIXI.Text(' ' + this.dialogue,
+      ct.styles.get('Dialogue'));
+
+      this.addChild(this.dialogueBox);
+
+      this.dialogueBox.x = 96;//coordinates
+
+      this.dialogueBox.y = 480;
+
+      this.dialogueBox.depth = 1000;//depth is like the layer for example 1000
+      would be a high up layer while -5 would be a low layer
+
+      this.dialogueBool = false;
+    onstep: >-
+      if(ct.actions.interact.pressed && ct.mouse.x > 64 && ct.mouse.y > 0 &&
+      ct.mouse.x < 192 && ct.mouse.y < 192 && this.count < 5)//if a certain area
+      of the screen is being pressed
+
+      {
+          this.boxT = ct.types.copy('UIBox',64,448);//adds a UI box copy here
+          this.inDialogue = true;
+          this.dialogueBox.clear;
+          this.count = this.count + 1;
+          dialogueScript(this.count,this);
+          this.dialogueBox.text = this.dialogue;
+      }
+
+      if(ct.actions.test.pressed){
+          for (var boxes of ct.types.list.UIBox){
+              boxes.kill = true;
+          }
+      }
+
+      if (ct.actions.interact.pressed && this.count>5)
+
+      {
+          for (var boxes of ct.types.list.UIBox)
+          {
+          boxes.kill = true;
+          }
+      }
+
+      //This stuff should be in type not the room I think Though that may not
+      work try using a next button on the type
+
+      //aternativly use a UI room instead of using one big roo
+    ondraw: ''
+    onleave: ''
+    width: 832
+    height: 640
+    backgrounds:
+      - depth: -1
+        texture: 72b4227a-a07a-4049-bf29-ad5ad7ce8e78
+        extends: {}
+    copies:
+      - x: 30
+        'y': 30
+        uid: 7bdd0707-657b-4256-a995-c526fadcb05e
+        exts: {}
+    tiles:
+      - depth: -10
+        tiles: []
+        extends: {}
+    uid: 67a93a85-33c0-4039-ac57-441d88924f91
+    thumbnail: 441d88924f91
+    extends: {}
+    gridX: 64
+    gridY: 64
+    restrictCamera: false
+    backgroundColor: '#FFFFFF'
+    lastmod: 1620090494208
+  - name: UI
+    oncreate: ''
+    onstep: ''
+    ondraw: ''
+    onleave: ''
+    width: 832
+    height: 640
+    backgrounds: []
+    copies:
+      - x: 64
+        'y': 740
+        uid: 7bdd0707-657b-4256-a995-c526fadcb05e
+        exts: {}
+      - x: 352
+        'y': 320
+        uid: bda90d00-a00c-45f7-a174-789a81cc40ea
+        exts: {}
+    tiles:
+      - depth: -10
+        tiles: []
+        extends: {}
+    uid: c8911d20-a84a-469f-a96f-454a5c6b7081
+    thumbnail: 454a5c6b7081
+    extends:
+      isUi: true
+    gridX: 32
+    gridY: 32
+    lastmod: 1619390076010
+    backgroundColor: 'rgba(0,0,0,0)'
+  - name: Dialogue
+    oncreate: ''
+    onstep: ''
+    ondraw: ''
+    onleave: ''
+    width: 832
+    height: 640
+    backgrounds: []
+    copies:
+      - x: 128
+        'y': 448
+        uid: fb8d1b19-8e2a-48ee-ba64-56230149fe5f
+        exts: {}
+    tiles:
+      - depth: -10
+        tiles: []
+        extends: {}
+    uid: a9ed93d1-1df3-45e4-a37a-216635579fe2
+    thumbnail: 216635579fe2
+    extends:
+      isUi: false
+    gridX: 64
+    gridY: 64
+    backgroundColor: 'rgba(0,0,0,0.32)'
+    restrictCamera: false
+    lastmod: 1619399988277
+  - name: 1runRoom
+    oncreate: ''
+    onstep: ''
+    ondraw: ''
+    onleave: ''
+    width: 832
+    height: 640
+    backgrounds: []
+    copies: []
+    tiles:
+      - depth: -10
+        tiles: []
+        extends: {}
+    uid: 9dbeb806-9c05-4508-adc4-5af628adf0e3
+    thumbnail: 5af628adf0e3
+    extends: {}
+    gridX: 64
+    gridY: 64
+    lastmod: 1620096373357
+    backgroundColor: '#000000'
+actions:
+  - name: interact
+    methods:
+      - code: mouse.Left
+        multiplier: 1
+  - name: inventory
+    methods:
+      - code: mouse.Middle
+  - name: interactType
+    methods:
+      - code: mouse.Right
+  - name: TouchInteract
+    methods:
+      - code: touch.Any
+  - name: test
+    methods:
+      - code: keyboard.Space
+emitterTandems: []
+scripts:
+  - name: dialogueScript
+    code: >-
+      var dialogueScript = function (dialogueID, room){//this function is used
+      for dialogue popups the big int is an ID associated with the selected
+      dialogue
+
+      let dialogueOptions =
+      ['test1aaaaaaaaa','test2bbbbbbbbbbbb','test3ccccccccccc','test4ddddddddd','test5eeeeeee']
+
+      /*switch(dialogueID) {
+        case 1:
+          room.dialogue = 'test';
+          break;
+        case 2:
+          room.dialogue = 'test2'
+          break;
+        default:
+        room.dialogue = 'end'
+          
+      } */
+
+      room.dialogue = dialogueOptions[dialogueID]
+
+      }
+starting: 0
+settings:
+  authoring:
+    author: Oatiztudios
+    site: ''
+    title: HATH
+    version:
+      - 0
+      - 0
+      - 1
+    versionPostfix: ''
+  rendering:
+    usePixiLegacy: true
+    maxFPS: 60
+    pixelatedrender: false
+    highDensity: true
+    desktopMode: maximized
+  export:
+    windows: true
+    linux: true
+    mac: true
+    functionWrap: false
+    codeModifier: none
+  branding:
+    icon: -1
+    accent: '#446adb'
+    invertPreloaderScheme: true
+  fps: 30
+fonts: []
+styletick: .nan
+palette: []
