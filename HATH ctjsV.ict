@@ -275,7 +275,8 @@ types:
   - name: UIBox
     depth: 100
     oncreate: ''
-    onstep: this.move();
+    onstep: |
+      this.move();
     ondraw: ''
     ondestroy: ''
     texture: e1f01365-dfaf-4ef8-b7c5-039e48c1ad5c
@@ -346,7 +347,9 @@ rooms:
 
       this.dialogueBox.depth = 1000;//depth is like the layer for example 1000
       would be a high up layer while -5 would be a low layer
-    onstep: >
+
+      this.dialogueBool = false;
+    onstep: >-
       if(ct.actions.interact.pressed && ct.mouse.x > 64 && ct.mouse.y > 0 &&
       ct.mouse.x < 192 && ct.mouse.y < 192 && this.count < 5)//if a certain area
       of the screen is being pressed
@@ -354,41 +357,31 @@ rooms:
       {
           this.boxT = ct.types.copy('UIBox',64,448);//adds a UI box copy here
           this.inDialogue = true;
-          this.dialogueBox.clear
-          this.count=this.count + 1;
+          this.dialogueBox.clear;
+          this.count = this.count + 1;
           dialogueScript(this.count,this);
           this.dialogueBox.text = this.dialogue;
       }
 
-      else if (ct.actions.interact.pressed && !(ct.mouse.x > 64) == true &&
-      !(ct.mouse.y > 0) == true && !(ct.mouse.x < 192) == true && !(ct.mouse.y <
-      192) == true)
-
-      {
-          this.inDialogue = false;
-          this.boxT.kill = true;//destroys the copy
-          this.boxT = void 0; // Forget the copy to avoid memory leaks
+      if(ct.actions.test.pressed){
+          for (var boxes of ct.types.list.UIBox){
+              boxes.kill = true;
+          }
       }
 
-      if(this.inDialogue == true )
+      if (ct.actions.interact.pressed && this.count>5)
 
       {
-          this.boxX = 64
-          this.boxY = 448
-          this.boxT = ct.types.copy('UIBox',this.boxX,this.boxY)
-      }
-
-      else if (this.inDialogue == false && this.count > 5)
-
-      {
-          this.boxT.kill = true;//destroys the copy
-          this.boxT = void 0; // Forget the copy to avoid memory leaks
+          for (var boxes of ct.types.list.UIBox)
+          {
+          boxes.kill = true;
+          }
       }
 
       //This stuff should be in type not the room I think Though that may not
       work try using a next button on the type
 
-      //aternativly use a UI room instead of using one big room
+      //aternativly use a UI room instead of using one big roo
     ondraw: ''
     onleave: ''
     width: 832
@@ -413,7 +406,7 @@ rooms:
     gridY: 64
     restrictCamera: false
     backgroundColor: '#FFFFFF'
-    lastmod: 1619433928541
+    lastmod: 1620090494208
   - name: UI
     oncreate: ''
     onstep: ''
@@ -469,6 +462,26 @@ rooms:
     backgroundColor: 'rgba(0,0,0,0.32)'
     restrictCamera: false
     lastmod: 1619399988277
+  - name: runRoom
+    oncreate: ''
+    onstep: ''
+    ondraw: ''
+    onleave: ''
+    width: 832
+    height: 640
+    backgrounds: []
+    copies: []
+    tiles:
+      - depth: -10
+        tiles: []
+        extends: {}
+    uid: 9dbeb806-9c05-4508-adc4-5af628adf0e3
+    thumbnail: 5af628adf0e3
+    extends: {}
+    gridX: 64
+    gridY: 64
+    lastmod: 1620090776542
+    backgroundColor: '#000000'
 actions:
   - name: interact
     methods:
@@ -483,6 +496,9 @@ actions:
   - name: TouchInteract
     methods:
       - code: touch.Any
+  - name: test
+    methods:
+      - code: keyboard.Space
 emitterTandems: []
 scripts:
   - name: dialogueScript
