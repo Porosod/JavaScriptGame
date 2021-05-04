@@ -410,7 +410,7 @@ rooms:
     gridY: 64
     restrictCamera: false
     backgroundColor: '#FFFFFF'
-    lastmod: 1620090494208
+    lastmod: 1620096716421
   - name: UI
     oncreate: ''
     onstep: ''
@@ -467,7 +467,7 @@ rooms:
     restrictCamera: false
     lastmod: 1619399988277
   - name: 1runRoom
-    oncreate: ''
+    oncreate: ct.rooms.append('Test1');
     onstep: ''
     ondraw: ''
     onleave: ''
@@ -484,7 +484,7 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1620096373357
+    lastmod: 1620096702490
     backgroundColor: '#000000'
 actions:
   - name: interact
