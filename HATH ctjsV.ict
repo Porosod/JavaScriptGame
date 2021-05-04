@@ -19,6 +19,10 @@ libs:
   yarn:
     skipEmpty: true
     magic: true
+  sprite:
+    spritedef: ''
+  storage: {}
+  vkeys: {}
 textures:
   - name: PlaceChar
     untill: 0
@@ -251,7 +255,7 @@ types:
     texture: cb6db1e7-af62-4eb6-a12f-43c4f4cf4588
     extends: {}
     uid: 7bdd0707-657b-4256-a995-c526fadcb05e
-    lastmod: 1619389827963
+    lastmod: 1620096536769
   - name: Brick
     depth: 0
     oncreate: ''
@@ -462,7 +466,7 @@ rooms:
     backgroundColor: 'rgba(0,0,0,0.32)'
     restrictCamera: false
     lastmod: 1619399988277
-  - name: runRoom
+  - name: 1runRoom
     oncreate: ''
     onstep: ''
     ondraw: ''
@@ -480,7 +484,7 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1620090776542
+    lastmod: 1620096373357
     backgroundColor: '#000000'
 actions:
   - name: interact
