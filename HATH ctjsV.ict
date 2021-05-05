@@ -323,6 +323,8 @@ styles:
 rooms:
   - name: Test1
     oncreate: >-
+      /*
+
       ct.rooms.append('UI', {
           isUi: true
       });
@@ -353,7 +355,11 @@ rooms:
       would be a high up layer while -5 would be a low layer
 
       this.dialogueBool = false;
+
+      */
     onstep: >-
+      /*
+
       if(ct.actions.interact.pressed && ct.mouse.x > 64 && ct.mouse.y > 0 &&
       ct.mouse.x < 192 && ct.mouse.y < 192 && this.count < 5)//if a certain area
       of the screen is being pressed
@@ -385,7 +391,9 @@ rooms:
       //This stuff should be in type not the room I think Though that may not
       work try using a next button on the type
 
-      //aternativly use a UI room instead of using one big roo
+      //aternativly use a UI room instead of using one big room
+
+      */
     ondraw: ''
     onleave: ''
     width: 832
@@ -410,7 +418,7 @@ rooms:
     gridY: 64
     restrictCamera: false
     backgroundColor: '#FFFFFF'
-    lastmod: 1620096716421
+    lastmod: 1620252378241
   - name: UI
     oncreate: ''
     onstep: ''
@@ -467,8 +475,15 @@ rooms:
     restrictCamera: false
     lastmod: 1619399988277
   - name: 1runRoom
-    oncreate: ct.rooms.append('Test1');
-    onstep: ''
+    oncreate: |+
+
+    onstep: |-
+      if(ct.actions.interact.pressed){
+      test = 1;
+      }
+      if(test == 1 ){
+          ct.rooms.append('Test1');
+      }
     ondraw: ''
     onleave: ''
     width: 832
@@ -484,7 +499,7 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1620096702490
+    lastmod: 1620252532497
     backgroundColor: '#000000'
 actions:
   - name: interact
@@ -529,6 +544,10 @@ scripts:
       room.dialogue = dialogueOptions[dialogueID]
 
       }
+  - name: testScript
+    code: |-
+      /* Use scripts to define frequent functions and import small libraries */
+      var test = 0;
 starting: 0
 settings:
   authoring:
@@ -546,6 +565,7 @@ settings:
     pixelatedrender: false
     highDensity: true
     desktopMode: maximized
+    hideCursor: true
   export:
     windows: true
     linux: true
