@@ -323,11 +323,12 @@ styles:
 rooms:
   - name: Test1
     oncreate: >-
-      /*
 
       ct.rooms.append('UI', {
           isUi: true
       });
+
+      /*
 
       //this.boxT = ct.types.copy('UIBox',64,448);//adds then UI box here this
       one is just to define it and it gets killed almost instantly
@@ -423,7 +424,7 @@ rooms:
     gridY: 64
     restrictCamera: false
     backgroundColor: '#FFFFFF'
-    lastmod: 1620253341444
+    lastmod: 1620253738802
   - name: UI
     oncreate: ''
     onstep: ''
@@ -480,14 +481,23 @@ rooms:
     restrictCamera: false
     lastmod: 1619399988277
   - name: 1runRoom
-    oncreate: ''
+    oncreate: this.checkOnce = true;
     onstep: |
       if(ct.actions.interact.pressed){
       test = test + 1;
       console.log(test);
       }
-      if(test == 1 ){
-          this.roomToBe = ct.rooms.append('Test1');
+      if(ct.actions.interactType.pressed){
+          test = test - 1;
+          console.log(test);
+      }
+      if(test ===1 && this.checkOnce ===true){
+          this.checkOnce = false;
+          this.testy = ct.rooms.append('Test1');
+      }
+      else if (test ===2){
+          this.checkOnce = true;
+          ct.rooms.remove(this.testy);
       }
     ondraw: ''
     onleave: ''
@@ -504,7 +514,7 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1620253294850
+    lastmod: 1620253708804
     backgroundColor: '#000000'
 actions:
   - name: interact
