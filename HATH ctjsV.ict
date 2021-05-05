@@ -358,6 +358,11 @@ rooms:
 
       */
     onstep: >-
+      if(test == 2){
+          this.kill = true;
+      }
+
+
       /*
 
       if(ct.actions.interact.pressed && ct.mouse.x > 64 && ct.mouse.y > 0 &&
@@ -418,7 +423,7 @@ rooms:
     gridY: 64
     restrictCamera: false
     backgroundColor: '#FFFFFF'
-    lastmod: 1620252378241
+    lastmod: 1620253341444
   - name: UI
     oncreate: ''
     onstep: ''
@@ -475,14 +480,14 @@ rooms:
     restrictCamera: false
     lastmod: 1619399988277
   - name: 1runRoom
-    oncreate: |+
-
-    onstep: |-
+    oncreate: ''
+    onstep: |
       if(ct.actions.interact.pressed){
-      test = 1;
+      test = test + 1;
+      console.log(test);
       }
       if(test == 1 ){
-          ct.rooms.append('Test1');
+          this.roomToBe = ct.rooms.append('Test1');
       }
     ondraw: ''
     onleave: ''
@@ -499,7 +504,7 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1620252532497
+    lastmod: 1620253294850
     backgroundColor: '#000000'
 actions:
   - name: interact
@@ -580,3 +585,4 @@ settings:
 fonts: []
 styletick: .nan
 palette: []
+startroom: 9dbeb806-9c05-4508-adc4-5af628adf0e3
