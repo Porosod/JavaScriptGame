@@ -514,7 +514,7 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1620253708804
+    lastmod: 1620253966101
     backgroundColor: '#000000'
 actions:
   - name: interact
