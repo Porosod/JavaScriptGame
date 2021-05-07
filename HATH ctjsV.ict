@@ -563,6 +563,14 @@ scripts:
     code: |-
       /* Use scripts to define frequent functions and import small libraries */
       var test = 0;
+  - name: charScript1
+    code: >
+      /* Use scripts to define frequent functions and import small libraries */
+
+      var char1Emote = 0; //0=neutral 1=happy 2=sad 3=Angry 
+
+      var char1DialogueStage = 0;//to track what dialogue the character should
+      say
 starting: 0
 settings:
   authoring:
