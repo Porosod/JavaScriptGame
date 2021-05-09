@@ -244,18 +244,96 @@ textures:
     padding: 1
     source: 'C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\UI\Button2.png'
     lastmod: 1619396633222
+  - name: PinkPlace
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 160
+    imgHeight: 160
+    width: 160
+    height: 160
+    offx: 0
+    offy: 0
+    origname: ic1c16902-4766-48f8-95ce-eef602ec67f3.png
+    shape: rect
+    left: 0
+    right: 160
+    top: 0
+    bottom: 160
+    uid: c1c16902-4766-48f8-95ce-eef602ec67f3
+    padding: 1
+    source: 'C:\Users\Alexd\OneDrive\Pictures\GameAssets\PinkPlace.png'
+  - name: PinkPlace-export
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 800
+    imgHeight: 800
+    width: 800
+    height: 800
+    offx: 0
+    offy: 0
+    origname: idb48df6b-b5a7-4ac5-974f-b3a7da4cbd7b.png
+    shape: rect
+    left: 0
+    right: 800
+    top: 0
+    bottom: 800
+    uid: db48df6b-b5a7-4ac5-974f-b3a7da4cbd7b
+    padding: 1
+    source: 'C:\Users\Alexd\OneDrive\Pictures\GameAssets\PinkPlace-export.png'
+    lastmod: 1620603628289
+  - name: OriginPoint
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 32
+      - 32
+    marginx: 0
+    marginy: 0
+    imgWidth: 64
+    imgHeight: 64
+    width: 64
+    height: 64
+    offx: 0
+    offy: 0
+    origname: i7a79c7d7-5802-43eb-b262-abd8cd2b60cb.png
+    shape: rect
+    left: 32
+    right: 32
+    top: 32
+    bottom: 32
+    uid: 7a79c7d7-5802-43eb-b262-abd8cd2b60cb
+    padding: 1
+    source: 'C:\Users\Alexd\OneDrive\Pictures\GameAssets\OriginPoint.png'
 skeletons: []
 types:
   - name: CharPlaceHold
     depth: 0
     oncreate: ''
-    onstep: this.move();
+    onstep: |-
+      this.move();
+      if()
     ondraw: ''
     ondestroy: ''
-    texture: cb6db1e7-af62-4eb6-a12f-43c4f4cf4588
+    texture: c1c16902-4766-48f8-95ce-eef602ec67f3
     extends: {}
     uid: 7bdd0707-657b-4256-a995-c526fadcb05e
-    lastmod: 1620096536769
+    lastmod: 1620603569538
   - name: Brick
     depth: 0
     oncreate: ''
@@ -299,6 +377,26 @@ types:
     extends: {}
     uid: bda90d00-a00c-45f7-a174-789a81cc40ea
     lastmod: 1619389818090
+  - name: PinkPlace-export
+    depth: 0
+    oncreate: ''
+    onstep: this.move();
+    ondraw: ''
+    ondestroy: ''
+    texture: db48df6b-b5a7-4ac5-974f-b3a7da4cbd7b
+    extends: {}
+    uid: dedef1f1-3f39-4dfe-8d17-6dbfee9756e2
+    lastmod: 1620603641901
+  - name: OriginPoint
+    depth: -5
+    oncreate: ''
+    onstep: this.move();
+    ondraw: ''
+    ondestroy: ''
+    texture: 7a79c7d7-5802-43eb-b262-abd8cd2b60cb
+    extends: {}
+    uid: e11df848-0712-4e8c-a6e9-dc1d085e4a44
+    lastmod: 1620603746768
 sounds: []
 styles:
   - name: Dialogue
@@ -514,7 +612,7 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1620253966101
+    lastmod: 1620603737924
     backgroundColor: '#000000'
 actions:
   - name: interact
@@ -565,8 +663,8 @@ scripts:
       var test = 0;
   - name: charScript1
     code: >
-      /* Use scripts to define frequent functions and import small libraries */
-
+      /*This script controls dialogue of a specified character
+       when I have characters I will change the names of the scripts to the character names*/
       var char1Emote = 0; //0=neutral 1=happy 2=sad 3=Angry 
 
       var char1DialogueStage = 0;//to track what dialogue the character should
