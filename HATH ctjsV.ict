@@ -173,8 +173,8 @@ textures:
       - 1
       - 1
     axis:
-      - 0
-      - 0
+      - 12
+      - 12
     marginx: 0
     marginy: 0
     imgWidth: 24
@@ -185,21 +185,22 @@ textures:
     offy: 0
     origname: i4011ba97-4a0d-43f4-99f9-aa7689c924e6.png
     shape: rect
-    left: 0
-    right: 24
-    top: 0
-    bottom: 24
+    left: 12
+    right: 12
+    top: 12
+    bottom: 12
     uid: 4011ba97-4a0d-43f4-99f9-aa7689c924e6
     padding: 1
     source: 'C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\UI\Button3.png'
+    lastmod: 1620606407422
   - name: Button1
     untill: 0
     grid:
       - 1
       - 1
     axis:
-      - 0
-      - 0
+      - 12
+      - 12
     marginx: 0
     marginy: 0
     imgWidth: 24
@@ -210,22 +211,22 @@ textures:
     offy: 0
     origname: i258349ea-e8f5-4398-9071-a64738f2ea99.png
     shape: rect
-    left: 0
-    right: 24
-    top: 0
-    bottom: 24
+    left: 12
+    right: 12
+    top: 12
+    bottom: 12
     uid: 258349ea-e8f5-4398-9071-a64738f2ea99
     padding: 1
     source: 'C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\UI\Button1.png'
-    lastmod: 1619396631294
+    lastmod: 1620606401881
   - name: Button2
     untill: 0
     grid:
       - 1
       - 1
     axis:
-      - 0
-      - 0
+      - 12
+      - 12
     marginx: 0
     marginy: 0
     imgWidth: 24
@@ -236,14 +237,14 @@ textures:
     offy: 0
     origname: if10463b7-2f27-4515-93b6-ca3abe91a243.png
     shape: rect
-    left: 0
-    right: 24
-    top: 0
-    bottom: 24
+    left: 12
+    right: 12
+    top: 12
+    bottom: 12
     uid: f10463b7-2f27-4515-93b6-ca3abe91a243
     padding: 1
     source: 'C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\UI\Button2.png'
-    lastmod: 1619396633222
+    lastmod: 1620606405077
   - name: PinkPlace
     untill: 0
     grid:
@@ -320,6 +321,32 @@ textures:
     uid: 7a79c7d7-5802-43eb-b262-abd8cd2b60cb
     padding: 1
     source: 'C:\Users\Alexd\OneDrive\Pictures\GameAssets\OriginPoint.png'
+  - name: Exit
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 96
+      - 96
+    marginx: 0
+    marginy: 0
+    imgWidth: 192
+    imgHeight: 192
+    width: 192
+    height: 192
+    offx: 0
+    offy: 0
+    origname: icce25aee-fdfd-42bc-bf33-113247467611.png
+    shape: rect
+    left: 96
+    right: 96
+    top: 96
+    bottom: 96
+    uid: cce25aee-fdfd-42bc-bf33-113247467611
+    padding: 1
+    source: 'C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\UI\Exit.png'
+    lastmod: 1620606393949
 skeletons: []
 types:
   - name: CharPlaceHold
@@ -327,13 +354,18 @@ types:
     oncreate: ''
     onstep: |-
       this.move();
-      if()
+      if(ct.actions.Interact.pressed && ct.mouse.hovers){
+          dialogueMode = true;
+          this.dialogueScreen = ct.rooms.append('Dialogue', {
+          isUi: true
+      });
+      }
     ondraw: ''
     ondestroy: ''
     texture: c1c16902-4766-48f8-95ce-eef602ec67f3
     extends: {}
     uid: 7bdd0707-657b-4256-a995-c526fadcb05e
-    lastmod: 1620603569538
+    lastmod: 1620604936490
   - name: Brick
     depth: 0
     oncreate: ''
@@ -364,9 +396,9 @@ types:
     texture: e1f01365-dfaf-4ef8-b7c5-039e48c1ad5c
     extends: {}
     uid: fb8d1b19-8e2a-48ee-ba64-56230149fe5f
-    lastmod: 1619396971760
+    lastmod: 1620605334589
   - name: Cursor
-    depth: 0
+    depth: 110
     oncreate: ''
     onstep: this.move();
     ondraw: |-
@@ -376,7 +408,7 @@ types:
     texture: e3b7166f-c686-4a11-a990-41f8752515e2
     extends: {}
     uid: bda90d00-a00c-45f7-a174-789a81cc40ea
-    lastmod: 1619389818090
+    lastmod: 1620606532995
   - name: PinkPlace-export
     depth: 0
     oncreate: ''
@@ -397,6 +429,30 @@ types:
     extends: {}
     uid: e11df848-0712-4e8c-a6e9-dc1d085e4a44
     lastmod: 1620603746768
+  - name: OriginPlayer
+    depth: 0
+    oncreate: ''
+    onstep: this.move();
+    ondraw: ''
+    ondestroy: ''
+    texture: 7a79c7d7-5802-43eb-b262-abd8cd2b60cb
+    extends: {}
+    uid: 778ce8e9-d45a-43e5-839a-eb9f34fe0607
+    lastmod: 1620604948411
+  - name: ExitButton
+    depth: 105
+    oncreate: ''
+    onstep: |-
+      this.move();
+      if(ct.actions.Interact.pressed && ct.mouse.hovers){
+          
+      }
+    ondraw: ''
+    ondestroy: ''
+    texture: cce25aee-fdfd-42bc-bf33-113247467611
+    extends: {}
+    uid: 56de7695-90ed-4b79-a522-4812cfaa1445
+    lastmod: 1620607067900
 sounds: []
 styles:
   - name: Dialogue
@@ -421,12 +477,12 @@ styles:
 rooms:
   - name: Test1
     oncreate: >-
+      /*
 
       ct.rooms.append('UI', {
           isUi: true
       });
 
-      /*
 
       //this.boxT = ct.types.copy('UIBox',64,448);//adds then UI box here this
       one is just to define it and it gets killed almost instantly
@@ -511,6 +567,10 @@ rooms:
         'y': 30
         uid: 7bdd0707-657b-4256-a995-c526fadcb05e
         exts: {}
+      - x: 256
+        'y': 320
+        uid: bda90d00-a00c-45f7-a174-789a81cc40ea
+        exts: {}
     tiles:
       - depth: -10
         tiles: []
@@ -522,7 +582,7 @@ rooms:
     gridY: 64
     restrictCamera: false
     backgroundColor: '#FFFFFF'
-    lastmod: 1620253738802
+    lastmod: 1620606676239
   - name: UI
     oncreate: ''
     onstep: ''
@@ -561,9 +621,21 @@ rooms:
     height: 640
     backgrounds: []
     copies:
-      - x: 128
+      - x: 64
         'y': 448
         uid: fb8d1b19-8e2a-48ee-ba64-56230149fe5f
+        exts: {}
+      - x: 192
+        'y': 320
+        uid: 778ce8e9-d45a-43e5-839a-eb9f34fe0607
+        exts: {}
+      - x: 768
+        'y': 448
+        uid: 56de7695-90ed-4b79-a522-4812cfaa1445
+        exts: {}
+      - x: 256
+        'y': 256
+        uid: bda90d00-a00c-45f7-a174-789a81cc40ea
         exts: {}
     tiles:
       - depth: -10
@@ -575,17 +647,17 @@ rooms:
       isUi: false
     gridX: 64
     gridY: 64
-    backgroundColor: 'rgba(0,0,0,0.32)'
+    backgroundColor: 'rgba(0,0,0,0.44)'
     restrictCamera: false
-    lastmod: 1619399988277
+    lastmod: 1620606671537
   - name: 1runRoom
     oncreate: this.checkOnce = true;
     onstep: |
-      if(ct.actions.interact.pressed){
+      if(ct.actions.Interact.pressed){
       test = test + 1;
       console.log(test);
       }
-      if(ct.actions.interactType.pressed){
+      if(ct.actions.InteractType.pressed){
           test = test - 1;
           console.log(test);
       }
@@ -593,10 +665,10 @@ rooms:
           this.checkOnce = false;
           this.testy = ct.rooms.append('Test1');
       }
-      else if (test ===2){
+      /*else if (test ===2){
           this.checkOnce = true;
           ct.rooms.remove(this.testy);
-      }
+      }*/
     ondraw: ''
     onleave: ''
     width: 832
@@ -612,17 +684,17 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1620603737924
+    lastmod: 1620605233920
     backgroundColor: '#000000'
 actions:
-  - name: interact
+  - name: Interact
     methods:
       - code: mouse.Left
         multiplier: 1
-  - name: inventory
+  - name: Inventory
     methods:
       - code: mouse.Middle
-  - name: interactType
+  - name: InteractType
     methods:
       - code: mouse.Right
   - name: TouchInteract
@@ -633,8 +705,10 @@ actions:
       - code: keyboard.Space
 emitterTandems: []
 scripts:
-  - name: dialogueScript
+  - name: MasterDialogueScript
     code: >-
+      var dialogueMode = false;
+
       var dialogueScript = function (dialogueID, room){//this function is used
       for dialogue popups the big int is an ID associated with the selected
       dialogue
@@ -669,6 +743,11 @@ scripts:
 
       var char1DialogueStage = 0;//to track what dialogue the character should
       say
+  - name: MasterScript
+    code: |-
+      /*This script houses varibles that I need for room controls */
+      var exitDialogue = true;//should the game exit dialogue
+      var currentRoom = 1;//what room the game is currently in
 starting: 0
 settings:
   authoring:
