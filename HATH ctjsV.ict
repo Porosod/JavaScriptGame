@@ -339,10 +339,10 @@ textures:
     offy: 0
     origname: icce25aee-fdfd-42bc-bf33-113247467611.png
     shape: rect
-    left: 96
-    right: 96
-    top: 96
-    bottom: 96
+    left: 16
+    right: 16
+    top: 16
+    bottom: 16
     uid: cce25aee-fdfd-42bc-bf33-113247467611
     padding: 1
     source: 'C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\UI\Exit.png'
@@ -380,12 +380,12 @@ types:
     oncreate: ''
     onstep: |-
       this.move();
-      if(ct.actions.Interact.pressed && ct.mouse.hovers){
+      if(ct.actions.Interact.pressed && ct.mouse.hovers(this)){
           dialogueMode = true;
           this.dialogueScreen = ct.rooms.append('Dialogue', {isUi: true});
       exitDialogue = false;
       }
-      if(exitDialogue == true){
+      if(exitDialogue == true && dialogueMode ==true){
           ct.rooms.remove(this.dialogueScreen);
       }
     ondraw: ''
@@ -393,7 +393,7 @@ types:
     texture: c1c16902-4766-48f8-95ce-eef602ec67f3
     extends: {}
     uid: 7bdd0707-657b-4256-a995-c526fadcb05e
-    lastmod: 1620607986000
+    lastmod: 1620609076319
   - name: Brick
     depth: 0
     oncreate: ''
@@ -472,7 +472,7 @@ types:
     oncreate: ''
     onstep: |-
       this.move();
-      if(ct.actions.Interact.pressed && ct.mouse.hovers){
+      if(ct.actions.Interact.pressed && ct.mouse.hovers(this)){
           exitDialogue = true;
           console.log(exitDialogue);
       }
@@ -481,7 +481,7 @@ types:
     texture: cce25aee-fdfd-42bc-bf33-113247467611
     extends: {}
     uid: 56de7695-90ed-4b79-a522-4812cfaa1445
-    lastmod: 1620608059127
+    lastmod: 1620609020703
 sounds: []
 styles:
   - name: Dialogue
@@ -611,7 +611,7 @@ rooms:
     gridY: 64
     restrictCamera: false
     backgroundColor: '#FFFFFF'
-    lastmod: 1620608109099
+    lastmod: 1620608974676
   - name: UI
     oncreate: ''
     onstep: ''
