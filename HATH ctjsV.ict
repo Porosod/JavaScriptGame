@@ -346,7 +346,7 @@ textures:
     uid: cce25aee-fdfd-42bc-bf33-113247467611
     padding: 1
     source: 'C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\UI\Exit.png'
-    lastmod: 1620606393949
+    lastmod: 1620609135528
   - name: Heart
     untill: 0
     grid:
@@ -481,7 +481,7 @@ types:
     texture: cce25aee-fdfd-42bc-bf33-113247467611
     extends: {}
     uid: 56de7695-90ed-4b79-a522-4812cfaa1445
-    lastmod: 1620609020703
+    lastmod: 1620609254870
 sounds: []
 styles:
   - name: Dialogue
@@ -681,7 +681,7 @@ rooms:
     gridY: 64
     backgroundColor: '#000000'
     restrictCamera: false
-    lastmod: 1620608049394
+    lastmod: 1620609250846
   - name: 1runRoom
     oncreate: this.checkOnce = true;
     onstep: |
