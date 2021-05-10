@@ -347,6 +347,32 @@ textures:
     padding: 1
     source: 'C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\UI\Exit.png'
     lastmod: 1620606393949
+  - name: Heart
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 32
+    imgHeight: 32
+    width: 32
+    height: 32
+    offx: 0
+    offy: 0
+    origname: ic2a80328-845f-43dc-85b6-3dcdd9c08fd3.png
+    shape: rect
+    left: 0
+    right: 32
+    top: 0
+    bottom: 32
+    uid: c2a80328-845f-43dc-85b6-3dcdd9c08fd3
+    padding: 1
+    source: >-
+      C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\EmmiterTextures\Heart.png
 skeletons: []
 types:
   - name: CharPlaceHold
@@ -356,16 +382,18 @@ types:
       this.move();
       if(ct.actions.Interact.pressed && ct.mouse.hovers){
           dialogueMode = true;
-          this.dialogueScreen = ct.rooms.append('Dialogue', {
-          isUi: true
-      });
+          this.dialogueScreen = ct.rooms.append('Dialogue', {isUi: true});
+      exitDialogue = false;
+      }
+      if(exitDialogue == true){
+          ct.rooms.remove(this.dialogueScreen);
       }
     ondraw: ''
     ondestroy: ''
     texture: c1c16902-4766-48f8-95ce-eef602ec67f3
     extends: {}
     uid: 7bdd0707-657b-4256-a995-c526fadcb05e
-    lastmod: 1620604936490
+    lastmod: 1620607986000
   - name: Brick
     depth: 0
     oncreate: ''
@@ -445,14 +473,15 @@ types:
     onstep: |-
       this.move();
       if(ct.actions.Interact.pressed && ct.mouse.hovers){
-          
+          exitDialogue = true;
+          console.log(exitDialogue);
       }
     ondraw: ''
     ondestroy: ''
     texture: cce25aee-fdfd-42bc-bf33-113247467611
     extends: {}
     uid: 56de7695-90ed-4b79-a522-4812cfaa1445
-    lastmod: 1620607067900
+    lastmod: 1620608059127
 sounds: []
 styles:
   - name: Dialogue
@@ -582,7 +611,7 @@ rooms:
     gridY: 64
     restrictCamera: false
     backgroundColor: '#FFFFFF'
-    lastmod: 1620606676239
+    lastmod: 1620608109099
   - name: UI
     oncreate: ''
     onstep: ''
@@ -614,7 +643,10 @@ rooms:
     backgroundColor: 'rgba(0,0,0,0)'
   - name: Dialogue
     oncreate: ''
-    onstep: ''
+    onstep: |-
+      /*if(exitDialogue == true){
+          this.kill = true;
+      }*/
     ondraw: ''
     onleave: ''
     width: 832
@@ -647,9 +679,9 @@ rooms:
       isUi: false
     gridX: 64
     gridY: 64
-    backgroundColor: 'rgba(0,0,0,0.44)'
+    backgroundColor: '#000000'
     restrictCamera: false
-    lastmod: 1620606671537
+    lastmod: 1620608049394
   - name: 1runRoom
     oncreate: this.checkOnce = true;
     onstep: |
@@ -703,8 +735,95 @@ actions:
   - name: test
     methods:
       - code: keyboard.Space
-emitterTandems: []
+emitterTandems:
+  - name: Heart
+    origname: pta1893bebf2d2
+    emitters:
+      - texture: c2a80328-845f-43dc-85b6-3dcdd9c08fd3
+        openedTabs:
+          - texture
+          - colors
+          - scaling
+          - shape
+          - spawning
+        settings:
+          alpha:
+            list:
+              - value: 0.13
+                time: 0
+              - value: 1
+                time: 0.503968253968254
+              - value: 0
+                time: 1
+            isStepped: false
+          scale:
+            list:
+              - value: 2
+                time: 0
+              - value: 0.99
+                time: 1
+            isStepped: false
+          color:
+            list:
+              - value: FFFFFF
+                time: 0
+              - value: ffffff
+                time: 0.503968253968254
+              - value: ffffff
+                time: 1
+            isStepped: false
+          blendMode: normal
+          speed:
+            list:
+              - value: 137.5
+                time: 0
+              - value: 100
+                time: 1
+            isStepped: false
+          startRotation:
+            min: 0
+            max: 347
+          rotationSpeed:
+            min: 0
+            max: 0
+          rotationAcceleration: 0
+          lifetime:
+            min: 0.5
+            max: 0.5
+          frequency: 0.007
+          spawnChance: 1
+          particlesPerWave: 1
+          angleStart: 270
+          emitterLifetime: 0
+          maxParticles: 1
+          maxSpeed: 0
+          pos:
+            x: 0
+            'y': 0
+          acceleration:
+            x: 0
+            'y': 0
+          addAtBack: false
+          spawnType: point
+          spawnCircle:
+            x: 0
+            'y': 0
+            r: 200
+            minR: 100
+          delay: 0
+          particleSpacing: 360
+          spawnRect:
+            x: -100
+            'y': -100
+            w: 200
+            h: 200
+        uid: c524e0e7-b68b-4d18-9fa0-c3e2dde8aaea
 scripts:
+  - name: MasterScript
+    code: |-
+      /*This script houses varibles that I need for room controls */
+      var exitDialogue = true;//should the game exit dialogue
+      var currentRoom = 1;//what room the game is currently in
   - name: MasterDialogueScript
     code: >-
       var dialogueMode = false;
@@ -743,11 +862,6 @@ scripts:
 
       var char1DialogueStage = 0;//to track what dialogue the character should
       say
-  - name: MasterScript
-    code: |-
-      /*This script houses varibles that I need for room controls */
-      var exitDialogue = true;//should the game exit dialogue
-      var currentRoom = 1;//what room the game is currently in
 starting: 0
 settings:
   authoring:
