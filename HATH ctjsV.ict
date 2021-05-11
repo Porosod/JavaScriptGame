@@ -399,6 +399,44 @@ textures:
     padding: 1
     source: >-
       C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\UI\StartButtonDemoGame.png
+  - name: PinkPlace-sheet
+    untill: 5
+    grid:
+      - 5
+      - 1
+    axis:
+      - 80
+      - 80
+    marginx: 0
+    marginy: 0
+    imgWidth: 800
+    imgHeight: 160
+    width: 160
+    height: 160
+    offx: 0
+    offy: 0
+    origname: id916d02e-a9ea-4fec-ac70-ccf2f4f749da.png
+    shape: rect
+    left: 80
+    right: 80
+    top: 80
+    bottom: 80
+    uid: d916d02e-a9ea-4fec-ac70-ccf2f4f749da
+    padding: 1
+    source: 'C:\Users\Alexd\OneDrive\Pictures\GameAssets\PinkPlace-sheet.png'
+    r: 80
+    stripPoints:
+      - x: 0
+        'y': -80
+      - x: 76
+        'y': -25
+      - x: 47
+        'y': 65
+      - x: -47
+        'y': 65
+      - x: -76
+        'y': -25
+    closedStrip: true
 skeletons: []
 types:
   - name: CharPlaceHold
@@ -758,8 +796,26 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1620605233920
+    lastmod: 1620693603844
     backgroundColor: '#000000'
+  - name: CUte
+    oncreate: ''
+    onstep: ''
+    ondraw: ''
+    onleave: ''
+    width: 800
+    height: 600
+    backgrounds: []
+    copies: []
+    tiles:
+      - depth: -10
+        tiles: []
+        extends: {}
+    uid: 3f5587d0-3b0f-4e18-b75b-bbc2972a2996
+    thumbnail: bbc2972a2996
+    extends: {}
+    gridX: 64
+    gridY: 64
 actions:
   - name: Interact
     methods:
