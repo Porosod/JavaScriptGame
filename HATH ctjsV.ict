@@ -438,6 +438,58 @@ textures:
         'y': -25
     closedStrip: true
     lastmod: 1620694179155
+  - name: Sweat
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 16
+    imgHeight: 16
+    width: 16
+    height: 16
+    offx: 0
+    offy: 0
+    origname: ia01d13f1-4f5f-43f2-b0ce-ee76f1821430.png
+    shape: rect
+    left: 0
+    right: 16
+    top: 0
+    bottom: 16
+    uid: a01d13f1-4f5f-43f2-b0ce-ee76f1821430
+    padding: 1
+    source: >-
+      C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\EmmiterTextures\Sweat.png
+  - name: Down
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 16
+    imgHeight: 16
+    width: 16
+    height: 16
+    offx: 0
+    offy: 0
+    origname: ic43cc58b-d444-4ab1-86ce-b9165b2ae38f.png
+    shape: rect
+    left: 0
+    right: 16
+    top: 0
+    bottom: 16
+    uid: c43cc58b-d444-4ab1-86ce-b9165b2ae38f
+    padding: 1
+    source: >-
+      C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\EmmiterTextures\Down.png
 skeletons: []
 types:
   - name: CharPlaceHold
@@ -562,10 +614,27 @@ types:
     texture: 9409e282-1319-446a-a04d-5ecae1fda396
     extends: {}
     uid: bc7079cd-36cd-4435-824c-24073cd4e358
-    lastmod: 1620694507892
+    lastmod: 1620694965584
   - name: PinkPlace-sheet
     depth: 0
-    oncreate: ''
+    oncreate: >-
+      this.dialogue = ''
+
+      this.count = 0;
+
+      this.dialogueText = new PIXI.Text(' ' + this.dialogue,
+      ct.styles.get('Dialogue'));
+
+      this.addChild(this.dialogueText);
+
+      this.dialogueText.x = 96;//coordinates
+
+      this.dialogueText.y = 480;
+
+      this.dialogueText.depth = 1000;//depth is like the layer for example 1000
+      would be a high up layer while -5 would be a low layer
+
+      this.dialogueBool = false;
     onstep: this.move();
     ondraw: ''
     ondestroy: ''
@@ -590,7 +659,7 @@ styles:
       x: 0
       'y': 0
       blur: 0
-    lastmod: 1619258078320
+    lastmod: 1620695140325
     fill:
       type: '0'
       color: '#65CFA7'
@@ -702,7 +771,7 @@ rooms:
     gridY: 64
     restrictCamera: false
     backgroundColor: '#FFFFFF'
-    lastmod: 1620608974676
+    lastmod: 1620694962453
   - name: UI
     oncreate: ''
     onstep: ''
@@ -852,7 +921,7 @@ rooms:
     gridX: 32
     gridY: 32
     backgroundColor: '#9C9C9C'
-    lastmod: 1620694284726
+    lastmod: 1620694750923
 actions:
   - name: Interact
     methods:
@@ -877,10 +946,6 @@ emitterTandems:
       - texture: c2a80328-845f-43dc-85b6-3dcdd9c08fd3
         openedTabs:
           - texture
-          - colors
-          - scaling
-          - shape
-          - spawning
         settings:
           alpha:
             list:
@@ -888,7 +953,9 @@ emitterTandems:
                 time: 0
               - value: 1
                 time: 0.503968253968254
-              - value: 0
+              - time: 0.861111111111111
+                value: 0.9500000000000001
+              - value: 0.020000000000000018
                 time: 1
             isStepped: false
           scale:
@@ -904,6 +971,8 @@ emitterTandems:
                 time: 0
               - value: ffffff
                 time: 0.503968253968254
+              - time: 0.861111111111111
+                value: FFFFFF
               - value: ffffff
                 time: 1
             isStepped: false
@@ -923,8 +992,8 @@ emitterTandems:
             max: 0
           rotationAcceleration: 0
           lifetime:
-            min: 0.5
-            max: 0.5
+            min: 0.7
+            max: 0.9
           frequency: 0.007
           spawnChance: 1
           particlesPerWave: 1
@@ -937,7 +1006,7 @@ emitterTandems:
             'y': 0
           acceleration:
             x: 0
-            'y': 0
+            'y': -1216
           addAtBack: false
           spawnType: point
           spawnCircle:
@@ -952,7 +1021,154 @@ emitterTandems:
             'y': -100
             w: 200
             h: 200
+          noRotation: true
         uid: c524e0e7-b68b-4d18-9fa0-c3e2dde8aaea
+  - name: Sweat
+    origname: pt1d7fb6e2c8cf
+    emitters:
+      - texture: a01d13f1-4f5f-43f2-b0ce-ee76f1821430
+        openedTabs:
+          - spawning
+          - gravity
+        settings:
+          alpha:
+            list:
+              - value: 1
+                time: 0
+              - value: 0.99
+                time: 0.48412698412698413
+              - value: 1
+                time: 1
+            isStepped: false
+          scale:
+            list:
+              - value: 2
+                time: 0
+              - value: 0
+                time: 1
+            isStepped: false
+          color:
+            list:
+              - value: ffffff
+                time: 0
+              - value: ffffff
+                time: 0.48412698412698413
+              - value: ffffff
+                time: 1
+            isStepped: false
+          blendMode: normal
+          speed:
+            list:
+              - value: 500
+                time: 0
+              - value: 100
+                time: 1
+            isStepped: false
+          startRotation:
+            min: 0
+            max: 360
+          rotationSpeed:
+            min: 0
+            max: 0
+          rotationAcceleration: 0
+          lifetime:
+            min: 0.7
+            max: 0.95
+          frequency: 0.005
+          spawnChance: 1
+          particlesPerWave: 1
+          angleStart: 270
+          emitterLifetime: 0
+          maxParticles: 5
+          maxSpeed: 0
+          pos:
+            x: 0
+            'y': 0
+          acceleration:
+            x: 0
+            'y': 2944
+          addAtBack: false
+          spawnType: circle
+          spawnCircle:
+            x: 0
+            'y': 0
+            r: 32
+          delay: 0
+        uid: 62402498-af49-4495-8d6c-c0dbdba98cee
+  - name: Down
+    origname: pt6470ce11af14
+    emitters:
+      - texture: c43cc58b-d444-4ab1-86ce-b9165b2ae38f
+        openedTabs:
+          - texture
+          - spawning
+          - direction
+        settings:
+          alpha:
+            list:
+              - value: 0
+                time: 0
+              - value: 1
+                time: 0.5
+              - value: 0
+                time: 1
+            isStepped: false
+          scale:
+            list:
+              - value: 2
+                time: 0
+              - value: 2
+                time: 1
+            isStepped: false
+          color:
+            list:
+              - value: ffffff
+                time: 0
+              - value: ffffff
+                time: 0.5
+              - value: ffffff
+                time: 1
+            isStepped: false
+          blendMode: normal
+          speed:
+            list:
+              - value: 37.5
+                time: 0
+              - value: 387.5
+                time: 1
+            isStepped: false
+          startRotation:
+            min: 0
+            max: 334
+          rotationSpeed:
+            min: 0
+            max: 0
+          rotationAcceleration: 0
+          lifetime:
+            min: 0.5
+            max: 0.5
+          frequency: 0.008
+          spawnChance: 0.62
+          particlesPerWave: 1
+          angleStart: 270
+          emitterLifetime: 0
+          maxParticles: 2
+          maxSpeed: 0
+          pos:
+            x: 0
+            'y': 0
+          acceleration:
+            x: 0
+            'y': 1600
+          addAtBack: false
+          spawnType: circle
+          spawnCircle:
+            x: 0
+            'y': 0
+            r: 32
+          delay: 0
+          noRotation: true
+        uid: e3535bc3-ab28-4840-9cc4-d45cf124a989
 scripts:
   - name: MasterScript
     code: |-
@@ -997,6 +1213,10 @@ scripts:
 
       var char1DialogueStage = 0;//to track what dialogue the character should
       say
+  - name: AQTeaCharScript
+    code: |-
+      /* Character script for A.Q Tea */
+      let aqtDialogue = ['Hi','beep', 'boop', 'blarboblarp'];
 starting: 0
 settings:
   authoring:
