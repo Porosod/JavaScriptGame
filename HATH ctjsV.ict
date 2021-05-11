@@ -437,6 +437,7 @@ textures:
       - x: -76
         'y': -25
     closedStrip: true
+    lastmod: 1620694179155
 skeletons: []
 types:
   - name: CharPlaceHold
@@ -553,7 +554,7 @@ types:
       this.move();
       if(ct.actions.Interact.pressed && ct.mouse.hovers(this)){
           dialogueMode = true;
-          
+          ct.rooms.switch(ct.room.nextRoom);
       exitDialogue = false;
       }
     ondraw: ''
@@ -561,7 +562,17 @@ types:
     texture: 9409e282-1319-446a-a04d-5ecae1fda396
     extends: {}
     uid: bc7079cd-36cd-4435-824c-24073cd4e358
-    lastmod: 1620693302446
+    lastmod: 1620694507892
+  - name: PinkPlace-sheet
+    depth: 0
+    oncreate: ''
+    onstep: this.move();
+    ondraw: ''
+    ondestroy: ''
+    texture: d916d02e-a9ea-4fec-ac70-ccf2f4f749da
+    extends: {}
+    uid: 3c13a2f8-916d-4745-9afd-c87e94ab6ec5
+    lastmod: 1620694434662
 sounds: []
 styles:
   - name: Dialogue
@@ -763,9 +774,11 @@ rooms:
     restrictCamera: false
     lastmod: 1620609250846
   - name: 1runRoom
-    oncreate: this.checkOnce = true;
+    oncreate: |
+      this.checkOnce = true;
+      ct.room.nextRoom = ('Cute');
     onstep: |
-      if(ct.actions.Interact.pressed){
+      /*if(ct.actions.Interact.pressed){
       test = test + 1;
       console.log(test);
       }
@@ -786,7 +799,17 @@ rooms:
     width: 832
     height: 640
     backgrounds: []
-    copies: []
+    copies:
+      - x: 320
+        'y': 192
+        uid: bc7079cd-36cd-4435-824c-24073cd4e358
+        exts: {}
+        tx: 3
+        ty: 3
+      - x: 64
+        'y': 128
+        uid: bda90d00-a00c-45f7-a174-789a81cc40ea
+        exts: {}
     tiles:
       - depth: -10
         tiles: []
@@ -796,17 +819,29 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1620693603844
+    lastmod: 1620694628736
     backgroundColor: '#000000'
-  - name: CUte
+  - name: Cute
     oncreate: ''
     onstep: ''
     ondraw: ''
     onleave: ''
-    width: 800
-    height: 600
+    width: 832
+    height: 640
     backgrounds: []
-    copies: []
+    copies:
+      - x: 64
+        'y': 384
+        uid: fb8d1b19-8e2a-48ee-ba64-56230149fe5f
+        exts: {}
+      - x: 384
+        'y': 320
+        uid: 3c13a2f8-916d-4745-9afd-c87e94ab6ec5
+        exts: {}
+      - x: 256
+        'y': 192
+        uid: bda90d00-a00c-45f7-a174-789a81cc40ea
+        exts: {}
     tiles:
       - depth: -10
         tiles: []
@@ -814,8 +849,10 @@ rooms:
     uid: 3f5587d0-3b0f-4e18-b75b-bbc2972a2996
     thumbnail: bbc2972a2996
     extends: {}
-    gridX: 64
-    gridY: 64
+    gridX: 32
+    gridY: 32
+    backgroundColor: '#9C9C9C'
+    lastmod: 1620694284726
 actions:
   - name: Interact
     methods:
