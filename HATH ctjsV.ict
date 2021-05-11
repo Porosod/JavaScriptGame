@@ -373,6 +373,32 @@ textures:
     padding: 1
     source: >-
       C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\EmmiterTextures\Heart.png
+  - name: StartButtonDemoGame
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 64
+    imgHeight: 64
+    width: 64
+    height: 64
+    offx: 0
+    offy: 0
+    origname: i9409e282-1319-446a-a04d-5ecae1fda396.png
+    shape: rect
+    left: 0
+    right: 64
+    top: 0
+    bottom: 64
+    uid: 9409e282-1319-446a-a04d-5ecae1fda396
+    padding: 1
+    source: >-
+      C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\UI\StartButtonDemoGame.png
 skeletons: []
 types:
   - name: CharPlaceHold
@@ -393,7 +419,7 @@ types:
     texture: c1c16902-4766-48f8-95ce-eef602ec67f3
     extends: {}
     uid: 7bdd0707-657b-4256-a995-c526fadcb05e
-    lastmod: 1620609076319
+    lastmod: 1620693311096
   - name: Brick
     depth: 0
     oncreate: ''
@@ -482,6 +508,22 @@ types:
     extends: {}
     uid: 56de7695-90ed-4b79-a522-4812cfaa1445
     lastmod: 1620609254870
+  - name: StartButtonDemoGame
+    depth: 0
+    oncreate: ''
+    onstep: |-
+      this.move();
+      if(ct.actions.Interact.pressed && ct.mouse.hovers(this)){
+          dialogueMode = true;
+          
+      exitDialogue = false;
+      }
+    ondraw: ''
+    ondestroy: ''
+    texture: 9409e282-1319-446a-a04d-5ecae1fda396
+    extends: {}
+    uid: bc7079cd-36cd-4435-824c-24073cd4e358
+    lastmod: 1620693302446
 sounds: []
 styles:
   - name: Dialogue
