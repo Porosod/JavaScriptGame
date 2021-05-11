@@ -510,7 +510,7 @@ types:
     texture: c1c16902-4766-48f8-95ce-eef602ec67f3
     extends: {}
     uid: 7bdd0707-657b-4256-a995-c526fadcb05e
-    lastmod: 1620693311096
+    lastmod: 1620698956416
   - name: Brick
     depth: 0
     oncreate: ''
@@ -641,7 +641,7 @@ types:
     texture: d916d02e-a9ea-4fec-ac70-ccf2f4f749da
     extends: {}
     uid: 3c13a2f8-916d-4745-9afd-c87e94ab6ec5
-    lastmod: 1620694434662
+    lastmod: 1620699258409
 sounds: []
 styles:
   - name: Dialogue
@@ -841,7 +841,7 @@ rooms:
     gridY: 64
     backgroundColor: '#000000'
     restrictCamera: false
-    lastmod: 1620609250846
+    lastmod: 1620698409363
   - name: 1runRoom
     oncreate: |
       this.checkOnce = true;
@@ -888,10 +888,10 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1620694628736
+    lastmod: 1620698156828
     backgroundColor: '#000000'
   - name: Cute
-    oncreate: ''
+    oncreate: 'this.dialogueScreen = ct.rooms.append(''Dialogue'', {isUi: true});'
     onstep: ''
     ondraw: ''
     onleave: ''
@@ -899,17 +899,9 @@ rooms:
     height: 640
     backgrounds: []
     copies:
-      - x: 64
-        'y': 384
-        uid: fb8d1b19-8e2a-48ee-ba64-56230149fe5f
-        exts: {}
       - x: 384
         'y': 320
         uid: 3c13a2f8-916d-4745-9afd-c87e94ab6ec5
-        exts: {}
-      - x: 256
-        'y': 192
-        uid: bda90d00-a00c-45f7-a174-789a81cc40ea
         exts: {}
     tiles:
       - depth: -10
@@ -921,7 +913,7 @@ rooms:
     gridX: 32
     gridY: 32
     backgroundColor: '#9C9C9C'
-    lastmod: 1620694750923
+    lastmod: 1620698638833
 actions:
   - name: Interact
     methods:
