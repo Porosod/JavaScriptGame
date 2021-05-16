@@ -1345,16 +1345,18 @@ scripts:
     code: >
       /* Character script for Pink */
 
-      let pinkDialogue = ['Hi','beep', 'boop', 'blarboblarp'];
+      let pinkDialogue = ['Hi','beep', 'boop', 'blarboblarp'];//dialogue tree
+      stuff
 
       let pinkEmotes = ['Pink_Happy',
-      'Pink_Blush1','Pink_Blush2','Pink_Sad','Pink_Confused'];
+      'Pink_Blush1','Pink_Blush2','Pink_Sad','Pink_Confused'];//for textures to
+      convey emotions and stuff
 
       var pinkEmotePhase;
 
-      var pinkHappy = 1;
+      var pinkHappy = 1;//happy emotion value
 
-      var pinkSad = 0;
+      var pinkSad = 0;//etc
 
       var pinkFluster = 0;
 
@@ -1364,20 +1366,21 @@ scripts:
 
       var pinkStrongPhase;
 
-      var pinkEmotePicker = function(){
-          if(pinkHappy > pinkStrongVal){
-              pinkStrongVal = pinkHappy;
-              pinkStrongPhase = 0;
+      var pinkEmotePicker = function(){//this decides which emotion the on
+      screen character should be displaying
+          if(pinkHappy > pinkStrongVal){//if happy is strongest
+              pinkStrongVal = pinkHappy;//sets the strong val to
+              pinkStrongPhase = 0;//for the array
           }
-          else if (pinkSad > pinkStrongVal){
+          if (pinkSad > pinkStrongVal){//etc
               pinkStrongVal = pinkSad;
               pinkStrongPhase = 3
           }
-          else if (pinkConfused > pinkStrongVal){
+          if (pinkConfused > pinkStrongVal){
               pinkStrongVal = pinkConfused;
               pinkStrongPhase = 4;
           }
-          else if (pinkFluster > pinkStrongVal){
+          if (pinkFluster > pinkStrongVal){//this one is longer because there are two blush phases for it
               if(pinkFluster>=pinkStrongVal*2){
                   pinkStrongPhase = 2;
                   pinkStrongVal = pinkFluster/2;
@@ -1387,6 +1390,12 @@ scripts:
                   pinkStrongVal = pinkFluster;
               }
           }
+      }
+
+      var pinkDialogueTree = function(){//function to decide 
+
+      //do the thing here moron
+
       }
 starting: 0
 settings:
