@@ -693,7 +693,7 @@ types:
     texture: e1f01365-dfaf-4ef8-b7c5-039e48c1ad5c
     extends: {}
     uid: fb8d1b19-8e2a-48ee-ba64-56230149fe5f
-    lastmod: 1620699857097
+    lastmod: 1621209025557
   - name: Cursor
     depth: 110
     oncreate: ''
@@ -1027,7 +1027,11 @@ rooms:
     lastmod: 1620698156828
     backgroundColor: '#000000'
   - name: Cute
-    oncreate: 'this.dialogueScreen = ct.rooms.append(''Dialogue'', {isUi: true});'
+    oncreate: >-
+      this.dialogueScreen = ct.rooms.append('Dialogue', {isUi: true});
+
+      currentCharacter = 'pink';//this tells the game what character is being
+      used
     onstep: ''
     ondraw: ''
     onleave: ''
@@ -1049,7 +1053,7 @@ rooms:
     gridX: 32
     gridY: 32
     backgroundColor: '#9C9C9C'
-    lastmod: 1620698638833
+    lastmod: 1621209142681
 actions:
   - name: Interact
     methods:
@@ -1299,10 +1303,11 @@ emitterTandems:
         uid: e3535bc3-ab28-4840-9cc4-d45cf124a989
 scripts:
   - name: MasterScript
-    code: |-
+    code: |
       /*This script houses varibles that I need for room controls */
       var exitDialogue = true;//should the game exit dialogue
       var currentRoom = 1;//what room the game is currently in
+      var currentCharacter;
   - name: MasterDialogueScript
     code: >-
       var dialogueMode = false;
@@ -1329,6 +1334,23 @@ scripts:
       room.dialogue = dialogueOptions[dialogueID]
 
       }
+  - name: ComposScript
+    code: >-
+      /*This script creates new code for the Rooms to run based on character
+      presnce 
+
+      This should allow me to create new scripts for unique characters without
+      needing to do 
+
+      tons of programming in the room events scripts*/
+
+      var characterDialogue = currentCharacter + 'Dialogue';
+
+      var characterEmotes = currentCharacter + 'Emotes'
+
+      var characterEmotePhase = currentCharacter + 'EmotePhase'
+
+      var characterEmotePicker = currentCharacter + 'EmotePicker'
   - name: testScript
     code: |-
       /* Use scripts to define frequent functions and import small libraries */
