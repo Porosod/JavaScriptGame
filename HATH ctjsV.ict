@@ -686,6 +686,8 @@ types:
       would be a high up layer while -5 would be a low layer
 
       this.dialogueBool = false;
+
+      characterEmotes();
     onstep: |
       this.move();
     ondraw: ''
@@ -766,12 +768,13 @@ types:
     texture: 9409e282-1319-446a-a04d-5ecae1fda396
     extends: {}
     uid: bc7079cd-36cd-4435-824c-24073cd4e358
-    lastmod: 1620694965584
+    lastmod: 1621212016282
   - name: PinkDialogue
     depth: 0
     oncreate: ''
-    onstep: |
+    onstep: |-
       this.move();
+      this.tex = pinkEmotes[pinkEmotePhase];
     ondraw: ''
     ondestroy: ''
     texture: 547551c5-4479-4f3b-90a9-dea1bfb3ca5e
@@ -1024,7 +1027,7 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1621210146438
+    lastmod: 1621548523523
     backgroundColor: '#000000'
   - name: Cute
     oncreate: >-
@@ -1032,7 +1035,19 @@ rooms:
 
       currentCharacter = 'pink';//this tells the game what character is being
       used
-    onstep: ''
+
+      characterEmotePhase(0);
+    onstep: |
+      if(ct.actions.Interact.pressed && test<4){
+          test++;
+          characterEmotePhase(test);
+          console.log(test);
+      }
+      else if(ct.actions.Interact.pressed && test==4){
+          test = 0;
+          characterEmotePhase(test);
+          console.log(test);
+      }
     ondraw: ''
     onleave: ''
     width: 832
@@ -1053,7 +1068,7 @@ rooms:
     gridX: 32
     gridY: 32
     backgroundColor: '#9C9C9C'
-    lastmod: 1621209142681
+    lastmod: 1621548558417
 actions:
   - name: Interact
     methods:
@@ -1307,7 +1322,7 @@ scripts:
       /*This script houses varibles that I need for room controls */
       var exitDialogue = true;//should the game exit dialogue
       var currentRoom = 1;//what room the game is currently in
-      var currentCharacter;
+      var currentCharacter='pink';
   - name: MasterDialogueScript
     code: >-
       var dialogueMode = false;
@@ -1334,23 +1349,6 @@ scripts:
       room.dialogue = dialogueOptions[dialogueID]
 
       }
-  - name: ComposScript
-    code: >-
-      /*This script creates new code for the Rooms to run based on character
-      presnce 
-
-      This should allow me to create new scripts for unique characters without
-      needing to do 
-
-      tons of programming in the room events scripts*/
-
-      var characterDialogue = currentCharacter + 'Dialogue';
-
-      var characterEmotes = currentCharacter + 'Emotes'
-
-      var characterEmotePhase = currentCharacter + 'EmotePhase'
-
-      var characterEmotePicker = currentCharacter + 'EmotePicker'
   - name: testScript
     code: |-
       /* Use scripts to define frequent functions and import small libraries */
@@ -1419,6 +1417,42 @@ scripts:
       //do the thing here moron
 
       }
+  - name: ComposScript
+    code: >-
+      /*This script creates new code for the Rooms to run based on character
+      presnce 
+
+      This should allow me to create new scripts for unique characters without
+      needing to do 
+
+      tons of programming in the room events scripts*/
+
+      var characterDialogue = currentCharacter + 'Dialogue';
+
+      var characterEmotes = function(input){
+
+      var tempVar = currentCharacter + 'Emotes';
+
+      var tempVar = tempVar + '['+ input +']'
+
+      eval(tempVar);
+
+      console.log(tempVar);
+
+      console.log(pinkEmotes);
+
+      }
+
+      // currentCharacter + 'Emotes'
+
+      var characterEmotePhase = function(input){
+          var tempVar = currentCharacter + 'EmotePhase = ' + input;
+          eval(tempVar);
+      }
+
+      // = currentCharacter + 'EmotePhase'
+
+      var characterEmotePicker = currentCharacter + 'EmotePicker'
 starting: 0
 settings:
   authoring:
