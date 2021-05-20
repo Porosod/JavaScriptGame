@@ -1462,7 +1462,7 @@ settings:
     version:
       - 0
       - 0
-      - 1
+      - 2
     versionPostfix: ''
   rendering:
     usePixiLegacy: true
