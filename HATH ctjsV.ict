@@ -681,14 +681,14 @@ textures:
   - name: milesBlinkSheet
     untill: 0
     grid:
-      - 28
+      - 60
       - 1
     axis:
       - 128
       - 128
     marginx: 0
     marginy: 0
-    imgWidth: 7168
+    imgWidth: 15360
     imgHeight: 256
     width: 256
     height: 256
@@ -704,7 +704,7 @@ textures:
     padding: 1
     source: >-
       C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\Chars\UberMench\Miles\Sheets\milesBlinkSheet.png
-    lastmod: 1621936534308
+    lastmod: 1621975959137
 skeletons: []
 types:
   - name: CharPlaceHold
@@ -775,7 +775,7 @@ types:
     texture: e1f01365-dfaf-4ef8-b7c5-039e48c1ad5c
     extends: {}
     uid: fb8d1b19-8e2a-48ee-ba64-56230149fe5f
-    lastmod: 1621936771573
+    lastmod: 1621974155616
   - name: Cursor
     depth: 110
     oncreate: ''
@@ -832,7 +832,7 @@ types:
     texture: cce25aee-fdfd-42bc-bf33-113247467611
     extends: {}
     uid: 56de7695-90ed-4b79-a522-4812cfaa1445
-    lastmod: 1620609254870
+    lastmod: 1621974346907
   - name: StartButtonDemoGame
     depth: 0
     oncreate: ''
@@ -879,30 +879,23 @@ types:
     texture: 9bc49199-e006-4590-85cd-f3c26883cbb9
     extends: {}
     uid: 0f1ac469-0ab7-4113-b96c-50771c99a3e2
-    lastmod: 1621936891699
+    lastmod: 1621974770568
   - name: milesDialogue
     depth: 0
     oncreate: |-
       this.animationSpeed = 0.2;
       characterBlinking = false;
-    onstep: >
+    onstep: >-
       this.move();
-
-      blarp = Math.trunc(ct.random.range(1, 1000));
-
-      console.log(blarp)
 
       if ( blarp== 4 && characterBlinking == false){//this uses a copy pasteable
       script because I am lazy
           this.tex = characterBlink();
+          this.animationSpeed = 0.2;
           this.gotoAndPlay(0);
-          console.log('go');
+          console.log('blink');
           characterBlinking = true;
-      }
-
-      else if( blarp != 4){
-
-
+          blarp = 0;
       }
 
       if(ct.actions.Interact.pressed && ct.mouse.hovers(this) &&
@@ -914,17 +907,30 @@ types:
           this.scale.x = 1;
       }
 
-      if (this.currentFrame == 27){
+      if (this.currentFrame == 59){
           this.stop();
           this.tex = 'milesIdle';
           characterBlinking = false;
+      }
+
+      frameCounter++;
+
+      if(frameCounter == 200){
+          frameCounter = 0;
+          console.log(frameCounter);
+      }
+
+      else if(frameCounter == 1){
+
+      blarp = Math.trunc(ct.random.range(1, 5));
+
       }
     ondraw: ''
     ondestroy: ''
     texture: 9f6718a5-3917-4451-8794-826aaec88a4b
     extends: {}
     uid: aa86abb7-99f9-4120-a521-9b5af76b1a31
-    lastmod: 1621936818956
+    lastmod: 1621974336991
 sounds: []
 styles:
   - name: Dialogue
@@ -1087,13 +1093,15 @@ rooms:
   - name: Dialogue
     oncreate: |
       //384 320
-      ct.types.copy(currentCharacter + 'Dialogue',384,320);
+      this.roomCharacter = ct.types.copy(currentCharacter + 'Dialogue',384,320);
+      exitDialogue = false;
     onstep: |-
-      /*if(exitDialogue == true){
-          this.kill = true;
-      }*/
+      if(exitDialogue == true){
+          ct.rooms.remove(this);
+          this.roomCharacter.kill = true;
+      }
     ondraw: ''
-    onleave: ''
+    onleave: test = 2;
     width: 832
     height: 640
     backgrounds: []
@@ -1126,7 +1134,7 @@ rooms:
     gridY: 64
     backgroundColor: '#000000'
     restrictCamera: false
-    lastmod: 1621936582887
+    lastmod: 1621974673589
   - name: 1runRoom
     oncreate: |
       this.checkOnce = true;
@@ -1205,6 +1213,10 @@ rooms:
         'y': 224
         uid: 0f1ac469-0ab7-4113-b96c-50771c99a3e2
         exts: {}
+      - x: 160
+        'y': 192
+        uid: bda90d00-a00c-45f7-a174-789a81cc40ea
+        exts: {}
     tiles:
       - depth: -10
         tiles: []
@@ -1215,7 +1227,7 @@ rooms:
     gridX: 32
     gridY: 32
     backgroundColor: '#9C9C9C'
-    lastmod: 1621936886734
+    lastmod: 1621974679419
 actions:
   - name: Interact
     methods:
@@ -1465,11 +1477,12 @@ emitterTandems:
         uid: e3535bc3-ab28-4840-9cc4-d45cf124a989
 scripts:
   - name: MasterScript
-    code: |
+    code: |-
       /*This script houses varibles that I need for room controls */
       var exitDialogue = true;//should the game exit dialogue
       var currentRoom = 1;//what room the game is currently in
       var currentCharacter='pink';
+      var frameCounter = 0;
   - name: MasterDialogueScript
     code: >
       var dialogueMode = false;
