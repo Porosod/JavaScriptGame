@@ -14,7 +14,6 @@ libs:
     mousetouch: true
     preventdefault: false
   PIXI.MultiStyleText: {}
-  random: {}
   tag: {}
   yarn:
     skipEmpty: true
@@ -23,6 +22,7 @@ libs:
     spritedef: ''
   storage: {}
   vkeys: {}
+  random: {}
 textures:
   - name: PlaceChar
     untill: 0
@@ -625,6 +625,86 @@ textures:
     source: >-
       C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\Chars\Pink\Pink_Happy.png
     lastmod: 1620699903526
+  - name: MilesFullTemp
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 160
+    imgHeight: 160
+    width: 160
+    height: 160
+    offx: 0
+    offy: 0
+    origname: i9bc49199-e006-4590-85cd-f3c26883cbb9.png
+    shape: rect
+    left: 0
+    right: 160
+    top: 0
+    bottom: 160
+    uid: 9bc49199-e006-4590-85cd-f3c26883cbb9
+    padding: 1
+    source: >-
+      C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\Chars\UberMench\Miles\MilesFullTemp.png
+  - name: milesIdle
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 128
+      - 128
+    marginx: 0
+    marginy: 0
+    imgWidth: 256
+    imgHeight: 256
+    width: 256
+    height: 256
+    offx: 0
+    offy: 0
+    origname: i9f6718a5-3917-4451-8794-826aaec88a4b.png
+    shape: rect
+    left: 128
+    right: 128
+    top: 128
+    bottom: 128
+    uid: 9f6718a5-3917-4451-8794-826aaec88a4b
+    padding: 1
+    source: >-
+      C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\Chars\UberMench\Miles\Sheets\milesIdle.png
+    lastmod: 1621932168681
+  - name: milesBlinkSheet
+    untill: 0
+    grid:
+      - 28
+      - 1
+    axis:
+      - 128
+      - 128
+    marginx: 0
+    marginy: 0
+    imgWidth: 7168
+    imgHeight: 256
+    width: 256
+    height: 256
+    offx: 0
+    offy: 0
+    origname: iea92ed63-9d82-4f4e-a07e-cf0489de3289.png
+    shape: rect
+    left: 128
+    right: 128
+    top: 128
+    bottom: 128
+    uid: ea92ed63-9d82-4f4e-a07e-cf0489de3289
+    padding: 1
+    source: >-
+      C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\Chars\UberMench\Miles\Sheets\milesBlinkSheet.png
+    lastmod: 1621936534308
 skeletons: []
 types:
   - name: CharPlaceHold
@@ -645,7 +725,7 @@ types:
     texture: c1c16902-4766-48f8-95ce-eef602ec67f3
     extends: {}
     uid: 7bdd0707-657b-4256-a995-c526fadcb05e
-    lastmod: 1620698956416
+    lastmod: 1621933526639
   - name: Brick
     depth: 0
     oncreate: ''
@@ -780,7 +860,55 @@ types:
     texture: 547551c5-4479-4f3b-90a9-dea1bfb3ca5e
     extends: {}
     uid: 3c13a2f8-916d-4745-9afd-c87e94ab6ec5
-    lastmod: 1620700131516
+    lastmod: 1621936051060
+  - name: MilesFull
+    depth: 0
+    oncreate: currentCharacter = 'miles';
+    onstep: |-
+      this.move();
+      /*if(ct.actions.Interact.pressed && ct.mouse.hovers(this)){
+          dialogueMode = true;
+          this.dialogueScreen = ct.rooms.append('Dialogue', {isUi: true});
+      exitDialogue = false;
+      }*/
+    ondraw: ''
+    ondestroy: ''
+    texture: 9bc49199-e006-4590-85cd-f3c26883cbb9
+    extends: {}
+    uid: 0f1ac469-0ab7-4113-b96c-50771c99a3e2
+    lastmod: 1621933664129
+  - name: milesDialogue
+    depth: 0
+    oncreate: |-
+      this.animationSpeed = 0.2;
+      characterBlinking = false;
+    onstep: >
+      this.move();
+
+      /*if (ct.random.range(1, 30) == 4 && characterBlinking == false){//this
+      uses a copy pasteable script because I am lazy
+          this.tex = characterBlink();
+          this.play();    
+      }*/
+
+      if(ct.actions.Interact.pressed && ct.mouse.hovers(this) &&
+      characterBlinking == false ){
+          this.tex = characterBlink();
+          this.gotoAndPlay(12);   
+          console.log(this.tex); 
+          characterBlinking = true;
+          this.scale.x = 1;
+      }
+
+      /*else if (characterBlinking == false){
+          this.tex = 'milesIdle';
+      }*/
+    ondraw: ''
+    ondestroy: ''
+    texture: 9f6718a5-3917-4451-8794-826aaec88a4b
+    extends: {}
+    uid: aa86abb7-99f9-4120-a521-9b5af76b1a31
+    lastmod: 1621936595476
 sounds: []
 styles:
   - name: Dialogue
@@ -941,7 +1069,9 @@ rooms:
     lastmod: 1619390076010
     backgroundColor: 'rgba(0,0,0,0)'
   - name: Dialogue
-    oncreate: ''
+    oncreate: |
+      //384 320
+      ct.types.copy(currentCharacter + 'Dialogue',384,320);
     onstep: |-
       /*if(exitDialogue == true){
           this.kill = true;
@@ -980,7 +1110,7 @@ rooms:
     gridY: 64
     backgroundColor: '#000000'
     restrictCamera: false
-    lastmod: 1620698409363
+    lastmod: 1621936582887
   - name: 1runRoom
     oncreate: |
       this.checkOnce = true;
@@ -1033,12 +1163,12 @@ rooms:
     oncreate: >-
       this.dialogueScreen = ct.rooms.append('Dialogue', {isUi: true});
 
-      currentCharacter = 'pink';//this tells the game what character is being
+      //currentCharacter = 'miles';//this tells the game what character is being
       used
 
       characterEmotePhase(0);
     onstep: |
-      if(ct.actions.Interact.pressed && test<4){
+      /*if(ct.actions.Interact.pressed && test<4){
           test++;
           characterEmotePhase(test);
           console.log(test);
@@ -1048,15 +1178,16 @@ rooms:
           characterEmotePhase(test);
           console.log(test);
       }
+      */
     ondraw: ''
     onleave: ''
     width: 832
     height: 640
     backgrounds: []
     copies:
-      - x: 384
-        'y': 320
-        uid: 3c13a2f8-916d-4745-9afd-c87e94ab6ec5
+      - x: 320
+        'y': 224
+        uid: 0f1ac469-0ab7-4113-b96c-50771c99a3e2
         exts: {}
     tiles:
       - depth: -10
@@ -1068,7 +1199,7 @@ rooms:
     gridX: 32
     gridY: 32
     backgroundColor: '#9C9C9C'
-    lastmod: 1621548558417
+    lastmod: 1621936569298
 actions:
   - name: Interact
     methods:
@@ -1324,7 +1455,7 @@ scripts:
       var currentRoom = 1;//what room the game is currently in
       var currentCharacter='pink';
   - name: MasterDialogueScript
-    code: >-
+    code: >
       var dialogueMode = false;
 
       var dialogueScript = function (dialogueID, room){//this function is used
@@ -1417,6 +1548,68 @@ scripts:
       //do the thing here moron
 
       }
+  - name: MilesCharScript
+    code: >
+      /* Character script for miles */
+
+      let milesDialogue = ['Hi','beep', 'boop', 'blarboblarp'];//dialogue tree
+      stuff
+
+      let milesEmotes = ['shh'];//for textures to convey emotions and stuff
+
+      var milesEmotePhase;
+
+      var milesHappy = 1;//happy emotion value
+
+      var milesSad = 0;//etc
+
+      var milesFluster = 0;
+
+      var milesConfused = 0;
+
+      var milesStrongVal = 0;
+
+      var milesStrongPhase;
+
+      var milesBlinking;
+
+      /*var milesEmotePicker = function(){//this decides which emotion the on
+      screen character should be displaying
+          if(milesHappy > milesStrongVal){//if happy is strongest
+              milesStrongVal = milesHappy;//sets the strong val to
+              milesStrongPhase = 0;//for the array
+          }
+          if (milesSad > milesStrongVal){//etc
+              milesStrongVal = milesSad;
+              milesStrongPhase = 3
+          }
+          if (milesConfused > milesStrongVal){
+              milesStrongVal = milesConfused;
+              milesStrongPhase = 4;
+          }
+          if (milesFluster > milesStrongVal){//this one is longer because there are two blush phases for it
+              if(milesFluster>=milesStrongVal*2){
+                  milesStrongPhase = 2;
+                  milesStrongVal = milesFluster/2;
+              }
+              else{
+                  milesStrongPhase = 1;
+                  milesStrongVal = milesFluster;
+              }
+          }
+      }
+
+      var milesDialogueTree = function(){//function to decide 
+
+      //do the thing here moron
+
+      }*/
+
+      var milesBlink = function(){
+          milesBlinking = true;
+          var animation = 'milesBlinkSheet';
+          return animation;
+      }
   - name: ComposScript
     code: >
       /*This script creates new code for the Rooms to run based on character
@@ -1428,6 +1621,8 @@ scripts:
       tons of programming in the room events scripts*/
 
       var characterDialogue = currentCharacter + 'Dialogue';
+
+      var characterBlinking = true;
 
       var characterEmotes = function(input){
 
@@ -1452,6 +1647,12 @@ scripts:
       var characterEmotePicker = function(){
        var tempVar= currentCharacter + 'EmotePicker';
        eval(tempVar);
+      }
+
+      var characterBlink = function(){
+          var tempVar = currentCharacter + 'Blink();';
+          tempVar = eval(tempVar);
+          return tempVar;
       }
 starting: 0
 settings:
