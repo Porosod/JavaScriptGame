@@ -767,7 +767,7 @@ types:
 
       this.dialogueBool = false;
 
-      characterEmotes();
+      //characterEmotes();
     onstep: |
       this.move();
     ondraw: ''
@@ -775,7 +775,7 @@ types:
     texture: e1f01365-dfaf-4ef8-b7c5-039e48c1ad5c
     extends: {}
     uid: fb8d1b19-8e2a-48ee-ba64-56230149fe5f
-    lastmod: 1621209025557
+    lastmod: 1621936771573
   - name: Cursor
     depth: 110
     oncreate: ''
@@ -860,23 +860,26 @@ types:
     texture: 547551c5-4479-4f3b-90a9-dea1bfb3ca5e
     extends: {}
     uid: 3c13a2f8-916d-4745-9afd-c87e94ab6ec5
-    lastmod: 1621936051060
+    lastmod: 1621936630862
   - name: MilesFull
     depth: 0
-    oncreate: currentCharacter = 'miles';
+    oncreate: |-
+      currentCharacter = 'miles';
+      test =2;
     onstep: |-
       this.move();
-      /*if(ct.actions.Interact.pressed && ct.mouse.hovers(this)){
+      if(ct.actions.Interact.pressed && ct.mouse.hovers(this) && test ==2){
           dialogueMode = true;
           this.dialogueScreen = ct.rooms.append('Dialogue', {isUi: true});
       exitDialogue = false;
-      }*/
+      test =1;
+      }
     ondraw: ''
     ondestroy: ''
     texture: 9bc49199-e006-4590-85cd-f3c26883cbb9
     extends: {}
     uid: 0f1ac469-0ab7-4113-b96c-50771c99a3e2
-    lastmod: 1621933664129
+    lastmod: 1621936891699
   - name: milesDialogue
     depth: 0
     oncreate: |-
@@ -885,30 +888,43 @@ types:
     onstep: >
       this.move();
 
-      /*if (ct.random.range(1, 30) == 4 && characterBlinking == false){//this
-      uses a copy pasteable script because I am lazy
+      blarp = Math.trunc(ct.random.range(1, 1000));
+
+      console.log(blarp)
+
+      if ( blarp== 4 && characterBlinking == false){//this uses a copy pasteable
+      script because I am lazy
           this.tex = characterBlink();
-          this.play();    
-      }*/
+          this.gotoAndPlay(0);
+          console.log('go');
+          characterBlinking = true;
+      }
+
+      else if( blarp != 4){
+
+
+      }
 
       if(ct.actions.Interact.pressed && ct.mouse.hovers(this) &&
       characterBlinking == false ){
           this.tex = characterBlink();
-          this.gotoAndPlay(12);   
+          this.gotoAndPlay(1);   
           console.log(this.tex); 
           characterBlinking = true;
           this.scale.x = 1;
       }
 
-      /*else if (characterBlinking == false){
+      if (this.currentFrame == 27){
+          this.stop();
           this.tex = 'milesIdle';
-      }*/
+          characterBlinking = false;
+      }
     ondraw: ''
     ondestroy: ''
     texture: 9f6718a5-3917-4451-8794-826aaec88a4b
     extends: {}
     uid: aa86abb7-99f9-4120-a521-9b5af76b1a31
-    lastmod: 1621936595476
+    lastmod: 1621936818956
 sounds: []
 styles:
   - name: Dialogue
@@ -1161,7 +1177,7 @@ rooms:
     backgroundColor: '#000000'
   - name: Cute
     oncreate: >-
-      this.dialogueScreen = ct.rooms.append('Dialogue', {isUi: true});
+      //this.dialogueScreen = ct.rooms.append('Dialogue', {isUi: true});
 
       //currentCharacter = 'miles';//this tells the game what character is being
       used
@@ -1199,7 +1215,7 @@ rooms:
     gridX: 32
     gridY: 32
     backgroundColor: '#9C9C9C'
-    lastmod: 1621936569298
+    lastmod: 1621936886734
 actions:
   - name: Interact
     methods:
@@ -1484,6 +1500,7 @@ scripts:
     code: |-
       /* Use scripts to define frequent functions and import small libraries */
       var test = 0;
+      var blarp = 0;
   - name: charScript1
     code: >
       /*This script controls dialogue of a specified character
