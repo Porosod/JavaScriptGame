@@ -1271,10 +1271,6 @@ rooms:
         'y': 448
         uid: fb8d1b19-8e2a-48ee-ba64-56230149fe5f
         exts: {}
-      - x: 192
-        'y': 320
-        uid: 778ce8e9-d45a-43e5-839a-eb9f34fe0607
-        exts: {}
       - x: 768
         'y': 448
         uid: 56de7695-90ed-4b79-a522-4812cfaa1445
@@ -1291,8 +1287,8 @@ rooms:
     thumbnail: 216635579fe2
     extends:
       isUi: false
-    gridX: 64
-    gridY: 64
+    gridX: 32
+    gridY: 32
     backgroundColor: 'rgba(0,0,0,0.51)'
     restrictCamera: false
     lastmod: 1622069264222
@@ -1650,11 +1646,12 @@ scripts:
       var frameCounter = 0;
   - name: MasterDialogueScript
     code: >
+      //dev note: spawn dialogue at 96, 480
+
       var dialogueMode = false;
 
       var dialogueScript = function (dialogueID, room){//this function is used
-      for dialogue popups the big int is an ID associated with the selected
-      dialogue
+      for dialogue popups the var is an ID associated with the selected dialogue
 
       let dialogueOptions =
       ['test1aaaaaaaaa','test2bbbbbbbbbbbb','test3ccccccccccc','test4ddddddddd','test5eeeeeee']
@@ -1768,7 +1765,9 @@ scripts:
 
       var milesBlinking;
 
-      /*var milesEmotePicker = function(){//this decides which emotion the on
+      /*OLD:
+
+      var milesEmotePicker = function(){//this decides which emotion the on
       screen character should be displaying
           if(milesHappy > milesStrongVal){//if happy is strongest
               milesStrongVal = milesHappy;//sets the strong val to
