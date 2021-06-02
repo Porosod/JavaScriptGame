@@ -251,8 +251,8 @@ textures:
       - 1
       - 1
     axis:
-      - 0
-      - 0
+      - 80
+      - 80
     marginx: 0
     marginy: 0
     imgWidth: 160
@@ -263,13 +263,14 @@ textures:
     offy: 0
     origname: ic1c16902-4766-48f8-95ce-eef602ec67f3.png
     shape: rect
-    left: 0
-    right: 160
-    top: 0
-    bottom: 160
+    left: 80
+    right: 80
+    top: 80
+    bottom: 80
     uid: c1c16902-4766-48f8-95ce-eef602ec67f3
     padding: 1
     source: 'C:\Users\Alexd\OneDrive\Pictures\GameAssets\PinkPlace.png'
+    lastmod: 1622671120839
   - name: PinkPlace-export
     untill: 0
     grid:
@@ -813,27 +814,80 @@ textures:
     source: >-
       C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\Chars\Regs\Mic\micBlinkSheet.png
     lastmod: 1622161173651
+  - name: Road01
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 1664
+    imgHeight: 256
+    width: 1664
+    height: 256
+    offx: 0
+    offy: 0
+    origname: i17c127c0-08f6-41bf-991f-5d872a36aa34.png
+    shape: rect
+    left: 0
+    right: 1664
+    top: 0
+    bottom: 256
+    uid: 17c127c0-08f6-41bf-991f-5d872a36aa34
+    padding: 1
+    source: 'C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\Env\Road01.png'
 skeletons: []
 types:
   - name: CharPlaceHold
     depth: 0
-    oncreate: ''
-    onstep: |-
+    oncreate: //this.speed = 5;
+    onstep: >-
       this.move();
-      if(ct.actions.Interact.pressed && ct.mouse.hovers(this)){
+
+      /*if(ct.actions.Interact.pressed && ct.mouse.hovers(this)){
           dialogueMode = true;
           this.dialogueScreen = ct.rooms.append('Dialogue', {isUi: true});
       exitDialogue = false;
+
       }
+
       if(exitDialogue == true && dialogueMode ==true){
           ct.rooms.remove(this.dialogueScreen);
       }
+
+      */
+
+      if(ct.actions.Interact.pressed == true)//if mouse1 is being pressed and
+      the go to x coord is not null
+
+      {
+          console.log("thisfar");
+          goToXCo = Math.trunc(ct.mouse.x);
+         this.direction = ct.u.pointDirection(this.x, this.y, goToXCo, this.y);
+      }
+
+      if( goToXCo != null){
+
+      this.speed =4;
+
+      }
+
+      if (Math.trunc(this.x) > goToXCo ){//forgot 2nd = sign idiot your using an
+      ELSE statement brainlet
+          this.speed =0;
+          goToXCo = null;
+      }
+
+      console.log(this.x);
     ondraw: ''
     ondestroy: ''
     texture: c1c16902-4766-48f8-95ce-eef602ec67f3
     extends: {}
     uid: 7bdd0707-657b-4256-a995-c526fadcb05e
-    lastmod: 1621933526639
+    lastmod: 1622672071197
   - name: Brick
     depth: 0
     oncreate: ''
@@ -1039,7 +1093,7 @@ types:
     texture: ea92ed63-9d82-4f4e-a07e-cf0489de3289
     extends: {}
     uid: aa86abb7-99f9-4120-a521-9b5af76b1a31
-    lastmod: 1622414688613
+    lastmod: 1622672084307
   - name: jackDialogue
     depth: 2
     oncreate: |-
@@ -1121,6 +1175,26 @@ types:
     extends: {}
     uid: 8f833c10-651a-49f7-86e5-51df4a70ff52
     lastmod: 1622069270687
+  - name: Road01
+    depth: 0
+    oncreate: ''
+    onstep: this.move();
+    ondraw: ''
+    ondestroy: ''
+    texture: 17c127c0-08f6-41bf-991f-5d872a36aa34
+    extends: {}
+    uid: 3c5d1370-5ab2-49e2-8991-e209b2059b9a
+    lastmod: 1622609171680
+  - name: WorldBack
+    depth: -20
+    oncreate: ''
+    onstep: this.move();
+    ondraw: ''
+    ondestroy: ''
+    texture: fa082efa-4f26-48dd-9273-29d6aa0b859d
+    extends: {}
+    uid: d3760502-6697-41df-9fad-b86d91f9ac21
+    lastmod: 1622670195284
 sounds: []
 styles:
   - name: Dialogue
@@ -1425,16 +1499,35 @@ rooms:
     lastmod: 1622578962351
   - name: Road001
     oncreate: ''
-    onstep: ''
+    onstep: |-
+      if (ct.actions.Interact){
+          
+      }
     ondraw: ''
     onleave: ''
     width: 832
     height: 640
     backgrounds:
-      - depth: 0
+      - depth: -1000
         texture: 72b4227a-a07a-4049-bf29-ad5ad7ce8e78
         extends: {}
-    copies: []
+    copies:
+      - x: 0
+        'y': 384
+        uid: 3c5d1370-5ab2-49e2-8991-e209b2059b9a
+        exts: {}
+      - x: 0
+        'y': 0
+        uid: d3760502-6697-41df-9fad-b86d91f9ac21
+        exts: {}
+      - x: 384
+        'y': 128
+        uid: bda90d00-a00c-45f7-a174-789a81cc40ea
+        exts: {}
+      - x: 64
+        'y': 320
+        uid: 7bdd0707-657b-4256-a995-c526fadcb05e
+        exts: {}
     tiles:
       - depth: -10
         tiles: []
@@ -1444,7 +1537,7 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1622578980402
+    lastmod: 1622670528722
 actions:
   - name: Interact
     methods:
@@ -1701,6 +1794,7 @@ scripts:
       var currentCharacter='pink';
       var frameCounter = 0;
       var sinceLastBlink = 0;
+      var goToXCo = null;
   - name: MasterDialogueScript
     code: >
       //dev note: spawn dialogue at 96, 480
@@ -1999,4 +2093,4 @@ settings:
 fonts: []
 styletick: .nan
 palette: []
-startroom: 9dbeb806-9c05-4508-adc4-5af628adf0e3
+startroom: b0e1ef14-9c28-43ad-a165-b779c9d76a3f
