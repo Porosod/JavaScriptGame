@@ -786,6 +786,33 @@ textures:
     source: >-
       C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\UI\DialogueBack.png
     tiled: false
+  - name: micBlinkSheet
+    untill: 0
+    grid:
+      - 60
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 15360
+    imgHeight: 256
+    width: 256
+    height: 256
+    offx: 0
+    offy: 0
+    origname: i2898755f-c1c7-44e3-8e8e-ab117427fb7e.png
+    shape: rect
+    left: 0
+    right: 15360
+    top: 0
+    bottom: 256
+    uid: 2898755f-c1c7-44e3-8e8e-ab117427fb7e
+    padding: 1
+    source: >-
+      C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\Chars\Regs\Mic\micBlinkSheet.png
+    lastmod: 1622161173651
 skeletons: []
 types:
   - name: CharPlaceHold
@@ -960,7 +987,7 @@ types:
     texture: 9bc49199-e006-4590-85cd-f3c26883cbb9
     extends: {}
     uid: 0f1ac469-0ab7-4113-b96c-50771c99a3e2
-    lastmod: 1622068555598
+    lastmod: 1622514162322
   - name: milesDialogue
     depth: 2
     oncreate: |-
@@ -970,13 +997,14 @@ types:
       this.move();
 
       if ( blarp== 4 && characterBlinking == false){//this uses a copy pasteable
-      script because I am lazy
+      script to make the creation of new characters easier
           this.tex = characterBlink();
           this.animationSpeed = 0.2;
           this.gotoAndPlay(0);
           console.log('blink');
           characterBlinking = true;
           blarp = 0;
+          sinceLastBlink = 0;
       }
 
       if(ct.actions.Interact.pressed && ct.mouse.hovers(this) &&
@@ -998,9 +1026,10 @@ types:
       if(frameCounter == 200){
           frameCounter = 0;
           console.log(frameCounter);
+          sinceLastBlink++;
       }
 
-      else if(frameCounter == 1){
+      else if(frameCounter == 1 && sinceLastBlink > 5){
 
       blarp = Math.trunc(ct.random.range(1, 5));
 
@@ -1010,7 +1039,7 @@ types:
     texture: ea92ed63-9d82-4f4e-a07e-cf0489de3289
     extends: {}
     uid: aa86abb7-99f9-4120-a521-9b5af76b1a31
-    lastmod: 1622069007614
+    lastmod: 1622414688613
   - name: jackDialogue
     depth: 2
     oncreate: |-
@@ -1028,6 +1057,7 @@ types:
           console.log('blink');
           characterBlinking = true;
           blarp = 0;
+          sinceLastBlink = 0;
       }
 
       if(ct.actions.Interact.pressed && ct.mouse.hovers(this) &&
@@ -1049,9 +1079,10 @@ types:
       if(frameCounter == 200){
           frameCounter = 0;
           console.log(frameCounter);
+          sinceLastBlink++;
       }
 
-      else if(frameCounter == 1){
+      else if(frameCounter == 1 && sinceLastBlink > 5){
 
       blarp = Math.trunc(ct.random.range(1, 5));
 
@@ -1061,7 +1092,7 @@ types:
     texture: 6f7afb0d-f4ab-4f68-b773-4dd4e99e319c
     extends: {}
     uid: 936d3820-f7eb-46d4-8d73-a2e5e05e8cd5
-    lastmod: 1622069003900
+    lastmod: 1622414644380
   - name: JackFull
     depth: 0
     oncreate: test =2;
@@ -1364,7 +1395,10 @@ rooms:
     onleave: ''
     width: 832
     height: 640
-    backgrounds: []
+    backgrounds:
+      - depth: -100000
+        texture: 72b4227a-a07a-4049-bf29-ad5ad7ce8e78
+        extends: {}
     copies:
       - x: 320
         'y': 224
@@ -1388,7 +1422,29 @@ rooms:
     gridX: 32
     gridY: 32
     backgroundColor: '#9C9C9C'
-    lastmod: 1622068772356
+    lastmod: 1622578962351
+  - name: Road001
+    oncreate: ''
+    onstep: ''
+    ondraw: ''
+    onleave: ''
+    width: 832
+    height: 640
+    backgrounds:
+      - depth: 0
+        texture: 72b4227a-a07a-4049-bf29-ad5ad7ce8e78
+        extends: {}
+    copies: []
+    tiles:
+      - depth: -10
+        tiles: []
+        extends: {}
+    uid: b0e1ef14-9c28-43ad-a165-b779c9d76a3f
+    thumbnail: b779c9d76a3f
+    extends: {}
+    gridX: 64
+    gridY: 64
+    lastmod: 1622578980402
 actions:
   - name: Interact
     methods:
@@ -1644,6 +1700,7 @@ scripts:
       var currentRoom = 1;//what room the game is currently in
       var currentCharacter='pink';
       var frameCounter = 0;
+      var sinceLastBlink = 0;
   - name: MasterDialogueScript
     code: >
       //dev note: spawn dialogue at 96, 480
