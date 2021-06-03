@@ -1,5 +1,14 @@
 ctjsVersion: 1.7.0
-notes: /* empty */
+notes: >-
+  /* Bug fix list
+
+  while loops that rely on an object moving will crash the game if used because
+  the frame cannot update so it wont
+
+  move the object
+
+
+   */
 libs:
   place:
     gridX: 1024
