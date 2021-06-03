@@ -7,7 +7,11 @@ notes: >-
 
   move the object
 
+  had an else if statement that should have just been an if statement
 
+  Change direction wasn't working because speed wouldnt be set to 4 if moving
+  backwards however if moving forwards then change the direction the character
+  will change direction and start moving backwards
    */
 libs:
   place:
@@ -856,57 +860,53 @@ types:
     onstep: >-
       this.move();
 
-      /*if(ct.actions.Interact.pressed && ct.mouse.hovers(this)){
-          dialogueMode = true;
-          this.dialogueScreen = ct.rooms.append('Dialogue', {isUi: true});
-      exitDialogue = false;
-
-      }
-
-      if(exitDialogue == true && dialogueMode ==true){
-          ct.rooms.remove(this.dialogueScreen);
-      }
-
-      */
-
-      if(ct.actions.Interact.pressed == true)//if mouse1 is being pressed and
-      the go to x coord is not null
+      if(ct.actions.Interact.pressed == true && moveActive == true)//if mouse1
+      is being pressed and the go to x coord is not null
 
       {
-          console.log("thisfar");
           goToXCo = Math.trunc(ct.mouse.x);
          this.direction = ct.u.pointDirection(this.x, this.y, goToXCo, this.y);
       }
 
-      if( goToXCo != null){
-
-      this.speed =4;
-
+      if( goToXCo != null && this.direction == 0){
+          this.speed = 4;
       }
 
-      if (Math.trunc(this.x) > goToXCo ){//forgot 2nd = sign idiot your using an
-      ELSE statement brainlet
+      else if (goToXCo != null && this.direction == 180){//stupid way to get
+      around an engine bug
+          this.direction = 0;
+          this.speed = 4;
+          this.direction = 180;
+      }
+
+      if (Math.trunc(this.x) > goToXCo && this.direction !=180 ){// idiot your
+      using an ELSE statement brainlet stop doing that
           this.speed =0;
           goToXCo = null;
       }
 
-      console.log(this.x);
+      if (Math.trunc(this.x) < goToXCo && this.direction != 0 ){// 
+          this.speed =0;
+          goToXCo = null;
+      }
     ondraw: ''
     ondestroy: ''
     texture: c1c16902-4766-48f8-95ce-eef602ec67f3
     extends: {}
     uid: 7bdd0707-657b-4256-a995-c526fadcb05e
-    lastmod: 1622672071197
+    lastmod: 1622764578059
   - name: Brick
     depth: 0
-    oncreate: ''
-    onstep: this.move();
+    oncreate: this.speed = 4;
+    onstep: |-
+      this.move();
+      this.direction = 180;
     ondraw: ''
     ondestroy: ''
     texture: a1e3bb1f-92c3-4cb5-9b78-5e436dcb7e83
     extends: {}
     uid: 8a66b824-7245-4e60-b09f-4581e1fc9938
-    lastmod: 1619389809466
+    lastmod: 1622763736854
   - name: Grey
     depth: 0
     oncreate: ''
@@ -998,13 +998,14 @@ types:
           exitDialogue = true;
           console.log(exitDialogue);
           currentCharacter = null;
+          moveActive = true;
       }
     ondraw: ''
     ondestroy: ''
     texture: cce25aee-fdfd-42bc-bf33-113247467611
     extends: {}
     uid: 56de7695-90ed-4b79-a522-4812cfaa1445
-    lastmod: 1622068574368
+    lastmod: 1622764631159
   - name: StartButtonDemoGame
     depth: 0
     oncreate: ''
@@ -1050,7 +1051,7 @@ types:
     texture: 9bc49199-e006-4590-85cd-f3c26883cbb9
     extends: {}
     uid: 0f1ac469-0ab7-4113-b96c-50771c99a3e2
-    lastmod: 1622514162322
+    lastmod: 1622764596449
   - name: milesDialogue
     depth: 2
     oncreate: |-
@@ -1364,11 +1365,12 @@ rooms:
     lastmod: 1619390076010
     backgroundColor: 'rgba(0,0,0,0)'
   - name: Dialogue
-    oncreate: |
+    oncreate: |-
       //384 320
       this.roomCharacter = ct.types.copy(currentCharacter + 'Dialogue',384,320);
       this.backgroundType = ct.types.copy('dialogueBack', 0, 0);
       exitDialogue = false;
+      moveActive = false;
     onstep: |-
       if(exitDialogue == true){
           ct.rooms.remove(this);
@@ -1405,7 +1407,7 @@ rooms:
     gridY: 32
     backgroundColor: 'rgba(0,0,0,0.51)'
     restrictCamera: false
-    lastmod: 1622069264222
+    lastmod: 1622764637384
   - name: 1runRoom
     oncreate: |
       this.checkOnce = true;
@@ -1537,6 +1539,10 @@ rooms:
         'y': 320
         uid: 7bdd0707-657b-4256-a995-c526fadcb05e
         exts: {}
+      - x: 320
+        'y': 256
+        uid: 0f1ac469-0ab7-4113-b96c-50771c99a3e2
+        exts: {}
     tiles:
       - depth: -10
         tiles: []
@@ -1546,7 +1552,7 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1622670528722
+    lastmod: 1622764619810
 actions:
   - name: Interact
     methods:
@@ -1804,6 +1810,9 @@ scripts:
       var frameCounter = 0;
       var sinceLastBlink = 0;
       var goToXCo = null;
+      var directionLeftOrRight;
+      var directionValue;
+      var moveActive = true;
   - name: MasterDialogueScript
     code: >
       //dev note: spawn dialogue at 96, 480
@@ -2079,7 +2088,7 @@ settings:
     version:
       - 0
       - 0
-      - 2
+      - 3
     versionPostfix: ''
   rendering:
     usePixiLegacy: true
@@ -2087,7 +2096,7 @@ settings:
     pixelatedrender: false
     highDensity: true
     desktopMode: maximized
-    hideCursor: true
+    hideCursor: false
   export:
     windows: true
     linux: true
