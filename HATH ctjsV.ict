@@ -1065,7 +1065,6 @@ types:
           this.tex = characterBlink();
           this.animationSpeed = 0.2;
           this.gotoAndPlay(0);
-          console.log('blink');
           characterBlinking = true;
           blarp = 0;
           sinceLastBlink = 0;
@@ -1075,7 +1074,6 @@ types:
       characterBlinking == false ){
           this.tex = characterBlink();
           this.gotoAndPlay(0);   
-          console.log(this.tex); 
           characterBlinking = true;
           this.scale.x = 1;
       }
@@ -1089,7 +1087,6 @@ types:
 
       if(frameCounter == 200){
           frameCounter = 0;
-          console.log(frameCounter);
           sinceLastBlink++;
       }
 
@@ -1118,7 +1115,6 @@ types:
           this.tex = characterBlink();
           this.animationSpeed = 0.2;
           this.gotoAndPlay(0);
-          console.log('blink');
           characterBlinking = true;
           blarp = 0;
           sinceLastBlink = 0;
@@ -1128,7 +1124,6 @@ types:
       characterBlinking == false ){
           this.tex = characterBlink();
           this.gotoAndPlay(0);   
-          console.log(this.tex); 
           characterBlinking = true;
           this.scale.x = 1;
       }
@@ -1142,7 +1137,6 @@ types:
 
       if(frameCounter == 200){
           frameCounter = 0;
-          console.log(frameCounter);
           sinceLastBlink++;
       }
 
@@ -1156,7 +1150,7 @@ types:
     texture: 6f7afb0d-f4ab-4f68-b773-4dd4e99e319c
     extends: {}
     uid: 936d3820-f7eb-46d4-8d73-a2e5e05e8cd5
-    lastmod: 1622414644380
+    lastmod: 1622765048825
   - name: JackFull
     depth: 0
     oncreate: test =2;
@@ -1542,6 +1536,10 @@ rooms:
       - x: 320
         'y': 256
         uid: 0f1ac469-0ab7-4113-b96c-50771c99a3e2
+        exts: {}
+      - x: 576
+        'y': 320
+        uid: 492d56e7-5d3e-464e-83bf-411fb9c638c5
         exts: {}
     tiles:
       - depth: -10
