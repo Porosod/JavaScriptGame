@@ -1543,17 +1543,13 @@ rooms:
         'y': 320
         uid: 7bdd0707-657b-4256-a995-c526fadcb05e
         exts: {}
-      - x: 320
-        'y': 256
-        uid: 0f1ac469-0ab7-4113-b96c-50771c99a3e2
-        exts: {}
       - x: 576
         'y': 320
         uid: 492d56e7-5d3e-464e-83bf-411fb9c638c5
         exts: {}
-      - x: 416
-        'y': 320
-        uid: 9d94aacc-e9eb-4d1d-bb00-e59ad00e6c91
+      - x: 256
+        'y': 256
+        uid: 0f1ac469-0ab7-4113-b96c-50771c99a3e2
         exts: {}
     tiles:
       - depth: -10
