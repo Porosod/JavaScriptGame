@@ -18,7 +18,7 @@ libs:
     gridX: 1024
     gridY: 1024
   fittoscreen:
-    mode: scaleFit
+    mode: fastScale
   keyboard: {}
   keyboard.polyfill: {}
   sound.howler: {}
@@ -806,8 +806,8 @@ textures:
       - 60
       - 1
     axis:
-      - 0
-      - 0
+      - 128
+      - 128
     marginx: 0
     marginy: 0
     imgWidth: 15360
@@ -818,15 +818,15 @@ textures:
     offy: 0
     origname: i2898755f-c1c7-44e3-8e8e-ab117427fb7e.png
     shape: rect
-    left: 0
-    right: 15360
-    top: 0
-    bottom: 256
+    left: 128
+    right: 128
+    top: 128
+    bottom: 128
     uid: 2898755f-c1c7-44e3-8e8e-ab117427fb7e
     padding: 1
     source: >-
       C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\Chars\Regs\Mic\micBlinkSheet.png
-    lastmod: 1622161173651
+    lastmod: 1622765160847
   - name: Road01
     untill: 0
     grid:
@@ -1100,7 +1100,7 @@ types:
     texture: ea92ed63-9d82-4f4e-a07e-cf0489de3289
     extends: {}
     uid: aa86abb7-99f9-4120-a521-9b5af76b1a31
-    lastmod: 1622672084307
+    lastmod: 1622765164300
   - name: jackDialogue
     depth: 2
     oncreate: |-
@@ -1199,6 +1199,16 @@ types:
     extends: {}
     uid: d3760502-6697-41df-9fad-b86d91f9ac21
     lastmod: 1622670195284
+  - name: Camera
+    depth: -10000
+    oncreate: ct.camera.follow = this;
+    onstep: this.move();
+    ondraw: ''
+    ondestroy: ''
+    texture: -1
+    extends: {}
+    uid: 9d94aacc-e9eb-4d1d-bb00-e59ad00e6c91
+    lastmod: 1622765483881
 sounds: []
 styles:
   - name: Dialogue
@@ -1529,7 +1539,7 @@ rooms:
         'y': 128
         uid: bda90d00-a00c-45f7-a174-789a81cc40ea
         exts: {}
-      - x: 64
+      - x: 128
         'y': 320
         uid: 7bdd0707-657b-4256-a995-c526fadcb05e
         exts: {}
@@ -1541,6 +1551,10 @@ rooms:
         'y': 320
         uid: 492d56e7-5d3e-464e-83bf-411fb9c638c5
         exts: {}
+      - x: 416
+        'y': 320
+        uid: 9d94aacc-e9eb-4d1d-bb00-e59ad00e6c91
+        exts: {}
     tiles:
       - depth: -10
         tiles: []
@@ -1550,7 +1564,7 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1622764619810
+    lastmod: 1622765400312
 actions:
   - name: Interact
     methods:
@@ -2091,7 +2105,7 @@ settings:
   rendering:
     usePixiLegacy: true
     maxFPS: 60
-    pixelatedrender: false
+    pixelatedrender: true
     highDensity: true
     desktopMode: maximized
     hideCursor: false
