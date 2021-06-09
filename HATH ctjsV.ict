@@ -12,6 +12,17 @@ notes: >-
   Change direction wasn't working because speed wouldnt be set to 4 if moving
   backwards however if moving forwards then change the direction the character
   will change direction and start moving backwards
+
+
+  standardise the emotions for all characters
+
+  1 Nat/Happy
+
+  2 Blush
+
+  3 Angry
+
+  4 Confused
    */
 libs:
   place:
@@ -696,14 +707,14 @@ textures:
     untill: 0
     grid:
       - 60
-      - 1
+      - 2
     axis:
       - 128
       - 128
     marginx: 0
     marginy: 0
     imgWidth: 15360
-    imgHeight: 256
+    imgHeight: 512
     width: 256
     height: 256
     offx: 0
@@ -718,7 +729,7 @@ textures:
     padding: 1
     source: >-
       C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\Chars\UberMench\Miles\Sheets\milesBlinkSheet.png
-    lastmod: 1622068309693
+    lastmod: 1623279359667
   - name: jackBlinkSheet
     untill: 0
     grid:
@@ -1100,7 +1111,7 @@ types:
     texture: ea92ed63-9d82-4f4e-a07e-cf0489de3289
     extends: {}
     uid: aa86abb7-99f9-4120-a521-9b5af76b1a31
-    lastmod: 1622765164300
+    lastmod: 1623112287247
   - name: jackDialogue
     depth: 2
     oncreate: |-
@@ -1201,7 +1212,10 @@ types:
     lastmod: 1622670195284
   - name: Camera
     depth: -10000
-    oncreate: ct.camera.follow = this;
+    oncreate: |-
+      ct.camera.follow = this;
+      this.x = 0
+      this.y = 0
     onstep: this.move();
     ondraw: ''
     ondestroy: ''
@@ -1821,6 +1835,8 @@ scripts:
       var directionLeftOrRight;
       var directionValue;
       var moveActive = true;
+      var cameraPostionX = 0;
+      var cameraPostionY =0;
   - name: MasterDialogueScript
     code: >
       //dev note: spawn dialogue at 96, 480
