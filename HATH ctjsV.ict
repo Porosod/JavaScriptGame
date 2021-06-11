@@ -1940,7 +1940,7 @@ scripts:
       let milesDialogue = ['Hi','beep', 'boop', 'blarboblarp'];//dialogue tree
       stuff
 
-      let milesEmotes = ['shh'];//for textures to convey emotions and stuff
+      //let milesEmotes = ['shh'];//for textures to convey emotions and stuff
 
       var milesEmotePhase;
 
