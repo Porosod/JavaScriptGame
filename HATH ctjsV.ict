@@ -235,14 +235,14 @@ textures:
     offy: 0
     origname: i258349ea-e8f5-4398-9071-a64738f2ea99.png
     shape: rect
-    left: 12
-    right: 12
-    top: 12
-    bottom: 12
+    left: 120
+    right: 120
+    top: 120
+    bottom: 120
     uid: 258349ea-e8f5-4398-9071-a64738f2ea99
     padding: 1
     source: 'C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\UI\Button1.png'
-    lastmod: 1620606401881
+    lastmod: 1623630879229
   - name: Button2
     untill: 0
     grid:
@@ -871,6 +871,8 @@ types:
     onstep: >-
       this.move();
 
+      playerXCo = roomFunction();
+
       if(ct.actions.Interact.pressed == true && moveActive == true)//if mouse1
       is being pressed and the go to x coord is not null
 
@@ -905,7 +907,7 @@ types:
     texture: c1c16902-4766-48f8-95ce-eef602ec67f3
     extends: {}
     uid: 7bdd0707-657b-4256-a995-c526fadcb05e
-    lastmod: 1622764578059
+    lastmod: 1623630567472
   - name: Brick
     depth: 0
     oncreate: this.speed = 4;
@@ -1202,27 +1204,51 @@ types:
     lastmod: 1622609171680
   - name: WorldBack
     depth: -20
-    oncreate: ''
-    onstep: this.move();
+    oncreate: |+
+
+    onstep: |
+      this.move();
     ondraw: ''
     ondestroy: ''
     texture: fa082efa-4f26-48dd-9273-29d6aa0b859d
     extends: {}
     uid: d3760502-6697-41df-9fad-b86d91f9ac21
-    lastmod: 1622670195284
+    lastmod: 1623631410832
   - name: Camera
-    depth: -10000
+    depth: 10000
     oncreate: |-
       ct.camera.follow = this;
-      this.x = 0
-      this.y = 0
-    onstep: this.move();
+      this.x = 416
+      this.y = 320
+    onstep: |-
+      if(playerXCo > 768 && moveActive ==true ){
+          this.direction = 0;
+          this.speed = 5;
+          previousCamX = this.x;
+          moveActive = false;
+          currentArea++;
+      }
+      console.log(this.speed);
+      console.log(this.x); 
+      if(this.x > previousCamX + 832 && moveActive == false){
+          console.log("1");
+          this.direction = 180;
+          console.log("2");
+          this.speed = 0;
+          console.log("3");
+          this.x = previousCamX + 832;
+          moveActive = true;
+          previousCamX = this.x;
+      }
+      else if (moveActive == false){
+          this.move();
+      }
     ondraw: ''
     ondestroy: ''
-    texture: -1
+    texture: 258349ea-e8f5-4398-9071-a64738f2ea99
     extends: {}
     uid: 9d94aacc-e9eb-4d1d-bb00-e59ad00e6c91
-    lastmod: 1622765483881
+    lastmod: 1623632486481
 sounds: []
 styles:
   - name: Dialogue
@@ -1528,10 +1554,7 @@ rooms:
     lastmod: 1622578962351
   - name: Road001
     oncreate: ''
-    onstep: |-
-      if (ct.actions.Interact){
-          
-      }
+    onstep: ''
     ondraw: ''
     onleave: ''
     width: 832
@@ -1544,10 +1567,6 @@ rooms:
       - x: 0
         'y': 384
         uid: 3c5d1370-5ab2-49e2-8991-e209b2059b9a
-        exts: {}
-      - x: 0
-        'y': 0
-        uid: d3760502-6697-41df-9fad-b86d91f9ac21
         exts: {}
       - x: 384
         'y': 128
@@ -1565,6 +1584,14 @@ rooms:
         'y': 256
         uid: 0f1ac469-0ab7-4113-b96c-50771c99a3e2
         exts: {}
+      - x: 0
+        'y': 0
+        uid: d3760502-6697-41df-9fad-b86d91f9ac21
+        exts: {}
+      - x: -128
+        'y': -64
+        uid: 9d94aacc-e9eb-4d1d-bb00-e59ad00e6c91
+        exts: {}
     tiles:
       - depth: -10
         tiles: []
@@ -1574,7 +1601,7 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1622765400312
+    lastmod: 1623630885884
 actions:
   - name: Interact
     methods:
@@ -1747,6 +1774,7 @@ emitterTandems:
             'y': 0
             r: 32
           delay: 0
+          noRotation: true
         uid: 62402498-af49-4495-8d6c-c0dbdba98cee
   - name: Down
     origname: pt6470ce11af14
@@ -1805,7 +1833,7 @@ emitterTandems:
           particlesPerWave: 1
           angleStart: 270
           emitterLifetime: 0
-          maxParticles: 2
+          maxParticles: 1
           maxSpeed: 0
           pos:
             x: 0
@@ -1837,6 +1865,12 @@ scripts:
       var moveActive = true;
       var cameraPostionX = 0;
       var cameraPostionY =0;
+      var playerXCo
+      var previousCamX;
+      var currentArea;
+      var roomFunction = function(){
+          
+      }
   - name: MasterDialogueScript
     code: >
       //dev note: spawn dialogue at 96, 480
@@ -2120,7 +2154,7 @@ settings:
     pixelatedrender: true
     highDensity: true
     desktopMode: maximized
-    hideCursor: false
+    hideCursor: true
   export:
     windows: true
     linux: true
