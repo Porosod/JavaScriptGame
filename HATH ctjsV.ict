@@ -23,6 +23,8 @@ notes: >-
   3 Angry
 
   4 Confused
+
+
    */
 libs:
   place:
@@ -867,11 +869,18 @@ skeletons: []
 types:
   - name: CharPlaceHold
     depth: 0
-    oncreate: //this.speed = 5;
+    oncreate: |-
+      //this.speed = 5;
+      playerXCo = this.x;
+      movingArea = false;
     onstep: >-
       this.move();
 
-      playerXCo = roomFunction();
+      if(movingArea == false){
+
+      playerXCo = this.x
+
+      }
 
       if(ct.actions.Interact.pressed == true && moveActive == true)//if mouse1
       is being pressed and the go to x coord is not null
@@ -902,12 +911,20 @@ types:
           this.speed =0;
           goToXCo = null;
       }
+
+      if(this.x > 768 && moveActive ==true ){
+          previousCamX = this.x;
+          moveActive = false;
+          currentArea++;
+          movingArea = true;
+          movingDirection = true;
+      }
     ondraw: ''
     ondestroy: ''
     texture: c1c16902-4766-48f8-95ce-eef602ec67f3
     extends: {}
     uid: 7bdd0707-657b-4256-a995-c526fadcb05e
-    lastmod: 1623630567472
+    lastmod: 1624236167205
   - name: Brick
     depth: 0
     oncreate: this.speed = 4;
@@ -1064,7 +1081,7 @@ types:
     texture: 9bc49199-e006-4590-85cd-f3c26883cbb9
     extends: {}
     uid: 0f1ac469-0ab7-4113-b96c-50771c99a3e2
-    lastmod: 1622764596449
+    lastmod: 1624482428264
   - name: milesDialogue
     depth: 2
     oncreate: |-
@@ -1204,8 +1221,7 @@ types:
     lastmod: 1622609171680
   - name: WorldBack
     depth: -20
-    oncreate: |+
-
+    oncreate: //ct.camera.follow = this;
     onstep: |
       this.move();
     ondraw: ''
@@ -1213,10 +1229,10 @@ types:
     texture: fa082efa-4f26-48dd-9273-29d6aa0b859d
     extends: {}
     uid: d3760502-6697-41df-9fad-b86d91f9ac21
-    lastmod: 1623631410832
+    lastmod: 1624482374804
   - name: Camera
     depth: 10000
-    oncreate: |-
+    oncreate: |
       ct.camera.follow = this;
       this.x = 416
       this.y = 320
@@ -1248,7 +1264,7 @@ types:
     texture: 258349ea-e8f5-4398-9071-a64738f2ea99
     extends: {}
     uid: 9d94aacc-e9eb-4d1d-bb00-e59ad00e6c91
-    lastmod: 1623632486481
+    lastmod: 1624329697240
 sounds: []
 styles:
   - name: Dialogue
@@ -1588,10 +1604,6 @@ rooms:
         'y': 0
         uid: d3760502-6697-41df-9fad-b86d91f9ac21
         exts: {}
-      - x: -128
-        'y': -64
-        uid: 9d94aacc-e9eb-4d1d-bb00-e59ad00e6c91
-        exts: {}
     tiles:
       - depth: -10
         tiles: []
@@ -1601,7 +1613,7 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1623630885884
+    lastmod: 1624329706357
 actions:
   - name: Interact
     methods:
@@ -1868,7 +1880,9 @@ scripts:
       var playerXCo
       var previousCamX;
       var currentArea;
-      var roomFunction = function(){
+      var movingArea = false;
+      var movingDirection; // true is right false is left
+      var cameraTrackingFunction = function(){
           
       }
   - name: MasterDialogueScript
