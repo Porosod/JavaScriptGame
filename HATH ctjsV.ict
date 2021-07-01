@@ -912,19 +912,19 @@ types:
           goToXCo = null;
       }
 
-      if(this.x > 768 && moveActive ==true ){
+      /*if(this.x > 768 && moveActive ==true ){
           previousCamX = this.x;
           moveActive = false;
           currentArea++;
           movingArea = true;
           movingDirection = true;
-      }
+      }*/
     ondraw: ''
     ondestroy: ''
     texture: c1c16902-4766-48f8-95ce-eef602ec67f3
     extends: {}
     uid: 7bdd0707-657b-4256-a995-c526fadcb05e
-    lastmod: 1624236167205
+    lastmod: 1625091802523
   - name: Brick
     depth: 0
     oncreate: this.speed = 4;
@@ -1026,7 +1026,6 @@ types:
       this.move();
       if(ct.actions.Interact.pressed && ct.mouse.hovers(this)){
           exitDialogue = true;
-          console.log(exitDialogue);
           currentCharacter = null;
           moveActive = true;
       }
@@ -1081,7 +1080,7 @@ types:
     texture: 9bc49199-e006-4590-85cd-f3c26883cbb9
     extends: {}
     uid: 0f1ac469-0ab7-4113-b96c-50771c99a3e2
-    lastmod: 1624482428264
+    lastmod: 1625091882627
   - name: milesDialogue
     depth: 2
     oncreate: |-
@@ -1130,7 +1129,7 @@ types:
     texture: ea92ed63-9d82-4f4e-a07e-cf0489de3289
     extends: {}
     uid: aa86abb7-99f9-4120-a521-9b5af76b1a31
-    lastmod: 1623112287247
+    lastmod: 1625091811921
   - name: jackDialogue
     depth: 2
     oncreate: |-
@@ -1287,114 +1286,6 @@ styles:
       type: '0'
       color: '#65CFA7'
 rooms:
-  - name: Test1
-    oncreate: >-
-      /*
-
-      ct.rooms.append('UI', {
-          isUi: true
-      });
-
-
-      //this.boxT = ct.types.copy('UIBox',64,448);//adds then UI box here this
-      one is just to define it and it gets killed almost instantly
-
-      this.boxX = 64
-
-      this.boxY = 704
-
-      //this.inDialogue = false;
-
-      this.dialogue = ''
-
-      this.count = 0;
-
-      this.dialogueBox = new PIXI.Text(' ' + this.dialogue,
-      ct.styles.get('Dialogue'));
-
-      this.addChild(this.dialogueBox);
-
-      this.dialogueBox.x = 96;//coordinates
-
-      this.dialogueBox.y = 480;
-
-      this.dialogueBox.depth = 1000;//depth is like the layer for example 1000
-      would be a high up layer while -5 would be a low layer
-
-      this.dialogueBool = false;
-
-      */
-    onstep: >-
-      if(test == 2){
-          this.kill = true;
-      }
-
-
-      /*
-
-      if(ct.actions.interact.pressed && ct.mouse.x > 64 && ct.mouse.y > 0 &&
-      ct.mouse.x < 192 && ct.mouse.y < 192 && this.count < 5)//if a certain area
-      of the screen is being pressed
-
-      {
-          this.boxT = ct.types.copy('UIBox',64,448);//adds a UI box copy here
-          this.inDialogue = true;
-          this.dialogueBox.clear;
-          this.count = this.count + 1;
-          dialogueScript(this.count,this);
-          this.dialogueBox.text = this.dialogue;
-      }
-
-      if(ct.actions.test.pressed){
-          for (var boxes of ct.types.list.UIBox){
-              boxes.kill = true;
-          }
-      }
-
-      if (ct.actions.interact.pressed && this.count>5)
-
-      {
-          for (var boxes of ct.types.list.UIBox)
-          {
-          boxes.kill = true;
-          }
-      }
-
-      //This stuff should be in type not the room I think Though that may not
-      work try using a next button on the type
-
-      //aternativly use a UI room instead of using one big room
-
-      */
-    ondraw: ''
-    onleave: ''
-    width: 832
-    height: 640
-    backgrounds:
-      - depth: -1
-        texture: 72b4227a-a07a-4049-bf29-ad5ad7ce8e78
-        extends: {}
-    copies:
-      - x: 30
-        'y': 30
-        uid: 7bdd0707-657b-4256-a995-c526fadcb05e
-        exts: {}
-      - x: 256
-        'y': 320
-        uid: bda90d00-a00c-45f7-a174-789a81cc40ea
-        exts: {}
-    tiles:
-      - depth: -10
-        tiles: []
-        extends: {}
-    uid: 67a93a85-33c0-4039-ac57-441d88924f91
-    thumbnail: 441d88924f91
-    extends: {}
-    gridX: 64
-    gridY: 64
-    restrictCamera: false
-    backgroundColor: '#FFFFFF'
-    lastmod: 1620694962453
   - name: UI
     oncreate: ''
     onstep: ''
@@ -1467,7 +1358,7 @@ rooms:
     gridY: 32
     backgroundColor: 'rgba(0,0,0,0.51)'
     restrictCamera: false
-    lastmod: 1622764637384
+    lastmod: 1625092406470
   - name: 1runRoom
     oncreate: |
       this.checkOnce = true;
@@ -1516,58 +1407,6 @@ rooms:
     gridY: 64
     lastmod: 1621548523523
     backgroundColor: '#000000'
-  - name: Cute
-    oncreate: >-
-      //this.dialogueScreen = ct.rooms.append('Dialogue', {isUi: true});
-
-      //currentCharacter = 'miles';//this tells the game what character is being
-      used
-
-      characterEmotePhase(0);
-    onstep: |
-      /*if(ct.actions.Interact.pressed && test<4){
-          test++;
-          characterEmotePhase(test);
-          console.log(test);
-      }
-      else if(ct.actions.Interact.pressed && test==4){
-          test = 0;
-          characterEmotePhase(test);
-          console.log(test);
-      }
-      */
-    ondraw: ''
-    onleave: ''
-    width: 832
-    height: 640
-    backgrounds:
-      - depth: -100000
-        texture: 72b4227a-a07a-4049-bf29-ad5ad7ce8e78
-        extends: {}
-    copies:
-      - x: 320
-        'y': 224
-        uid: 0f1ac469-0ab7-4113-b96c-50771c99a3e2
-        exts: {}
-      - x: 160
-        'y': 192
-        uid: bda90d00-a00c-45f7-a174-789a81cc40ea
-        exts: {}
-      - x: 224
-        'y': 288
-        uid: 492d56e7-5d3e-464e-83bf-411fb9c638c5
-        exts: {}
-    tiles:
-      - depth: -10
-        tiles: []
-        extends: {}
-    uid: 3f5587d0-3b0f-4e18-b75b-bbc2972a2996
-    thumbnail: bbc2972a2996
-    extends: {}
-    gridX: 32
-    gridY: 32
-    backgroundColor: '#9C9C9C'
-    lastmod: 1622578962351
   - name: Road001
     oncreate: ''
     onstep: ''
@@ -1720,7 +1559,6 @@ emitterTandems:
     emitters:
       - texture: a01d13f1-4f5f-43f2-b0ce-ee76f1821430
         openedTabs:
-          - spawning
           - gravity
         settings:
           alpha:
@@ -1736,7 +1574,7 @@ emitterTandems:
             list:
               - value: 2
                 time: 0
-              - value: 0
+              - value: 1.78
                 time: 1
             isStepped: false
           color:
@@ -1758,7 +1596,7 @@ emitterTandems:
             isStepped: false
           startRotation:
             min: 0
-            max: 360
+            max: 334
           rotationSpeed:
             min: 0
             max: 0
@@ -1771,14 +1609,14 @@ emitterTandems:
           particlesPerWave: 1
           angleStart: 270
           emitterLifetime: 0
-          maxParticles: 5
+          maxParticles: 1
           maxSpeed: 0
           pos:
             x: 0
             'y': 0
           acceleration:
             x: 0
-            'y': 2944
+            'y': 1600
           addAtBack: false
           spawnType: circle
           spawnCircle:
@@ -2051,8 +1889,6 @@ scripts:
 
       let jackDialogue = ['Hi','beep', 'boop', 'blarboblarp'];//dialogue tree
       stuff
-
-      let jackEmotes = ['shh'];//for textures to convey emotions and stuff
 
       var jackEmotePhase;
 
