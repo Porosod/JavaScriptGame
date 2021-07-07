@@ -25,6 +25,10 @@ notes: >-
   4 Confused
 
 
+  Looking at fonts I think i want to use a wingdings style font to convey a line
+  that is 
+
+  less of coherent dialogue and more just used to convey anger
    */
 libs:
   place:
@@ -46,9 +50,10 @@ libs:
     magic: true
   sprite:
     spritedef: ''
-  storage: {}
   vkeys: {}
   random: {}
+  capture: {}
+  storage: {}
 textures:
   - name: PlaceChar
     untill: 0
@@ -400,32 +405,6 @@ textures:
     padding: 1
     source: >-
       C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\EmmiterTextures\Heart.png
-  - name: StartButtonDemoGame
-    untill: 0
-    grid:
-      - 1
-      - 1
-    axis:
-      - 0
-      - 0
-    marginx: 0
-    marginy: 0
-    imgWidth: 64
-    imgHeight: 64
-    width: 64
-    height: 64
-    offx: 0
-    offy: 0
-    origname: i9409e282-1319-446a-a04d-5ecae1fda396.png
-    shape: rect
-    left: 0
-    right: 64
-    top: 0
-    bottom: 64
-    uid: 9409e282-1319-446a-a04d-5ecae1fda396
-    padding: 1
-    source: >-
-      C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\UI\StartButtonDemoGame.png
   - name: PinkPlace-sheet
     untill: 5
     grid:
@@ -865,6 +844,33 @@ textures:
     uid: 17c127c0-08f6-41bf-991f-5d872a36aa34
     padding: 1
     source: 'C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\Env\Road01.png'
+  - name: Spring
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 16
+      - 16
+    marginx: 0
+    marginy: 0
+    imgWidth: 32
+    imgHeight: 32
+    width: 32
+    height: 32
+    offx: 0
+    offy: 0
+    origname: i7f835cff-b8e5-463d-8482-1287f4a729bb.png
+    shape: rect
+    left: 16
+    right: 16
+    top: 16
+    bottom: 16
+    uid: 7f835cff-b8e5-463d-8482-1287f4a729bb
+    padding: 1
+    source: >-
+      C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\EmmiterTextures\Spring-export.png
+    lastmod: 1625696339096
 skeletons: []
 types:
   - name: CharPlaceHold
@@ -924,7 +930,7 @@ types:
     texture: c1c16902-4766-48f8-95ce-eef602ec67f3
     extends: {}
     uid: 7bdd0707-657b-4256-a995-c526fadcb05e
-    lastmod: 1625091802523
+    lastmod: 1625184961973
   - name: Brick
     depth: 0
     oncreate: this.speed = 4;
@@ -1035,22 +1041,6 @@ types:
     extends: {}
     uid: 56de7695-90ed-4b79-a522-4812cfaa1445
     lastmod: 1622764631159
-  - name: StartButtonDemoGame
-    depth: 0
-    oncreate: ''
-    onstep: |-
-      this.move();
-      if(ct.actions.Interact.pressed && ct.mouse.hovers(this)){
-          dialogueMode = true;
-          ct.rooms.switch(ct.room.nextRoom);
-      exitDialogue = false;
-      }
-    ondraw: ''
-    ondestroy: ''
-    texture: 9409e282-1319-446a-a04d-5ecae1fda396
-    extends: {}
-    uid: bc7079cd-36cd-4435-824c-24073cd4e358
-    lastmod: 1621212016282
   - name: PinkDialogue
     depth: 0
     oncreate: ''
@@ -1267,24 +1257,37 @@ types:
 sounds: []
 styles:
   - name: Dialogue
-    uid: 9d748e31-53b2-4437-a45e-88296a8ccdc2
-    origname: s88296a8ccdc2
+    uid: ec21c9fc-83c6-441f-97e0-f5fae5166244
+    origname: sf5fae5166244
     font:
-      family: Arial
-      size: 15
-      weight: '500'
+      family: '"CTPROJFONTkongtext", "kongtext", sans-serif'
+      size: 28
+      weight: '100'
       italic: false
       halign: left
+      lineHeight: 24
       wrap: false
-    shadow:
-      color: '#FFFFFF'
-      x: 0
-      'y': 0
-      blur: 0
-    lastmod: 1620695140325
+      wrapPosition: 145
+    lastmod: 1625531375036
     fill:
       type: '0'
-      color: '#65CFA7'
+      color: '#FFFFFF'
+  - name: DingBats
+    uid: 6072c264-b504-484e-88c5-ec4c293365e8
+    origname: sec4c293365e8
+    font:
+      family: '"CTPROJFONTpixel_dingbats-7", "pixel_dingbats-7", sans-serif'
+      size: 28
+      weight: '100'
+      italic: false
+    fill:
+      type: '1'
+      color1: '#312440'
+      color2: '#FF0000'
+    lastmod: 1625531384431
+    stroke:
+      color: '#B50000'
+      weight: 7
 rooms:
   - name: UI
     oncreate: ''
@@ -1359,54 +1362,6 @@ rooms:
     backgroundColor: 'rgba(0,0,0,0.51)'
     restrictCamera: false
     lastmod: 1625092406470
-  - name: 1runRoom
-    oncreate: |
-      this.checkOnce = true;
-      ct.room.nextRoom = ('Cute');
-    onstep: |
-      /*if(ct.actions.Interact.pressed){
-      test = test + 1;
-      console.log(test);
-      }
-      if(ct.actions.InteractType.pressed){
-          test = test - 1;
-          console.log(test);
-      }
-      if(test ===1 && this.checkOnce ===true){
-          this.checkOnce = false;
-          this.testy = ct.rooms.append('Test1');
-      }
-      /*else if (test ===2){
-          this.checkOnce = true;
-          ct.rooms.remove(this.testy);
-      }*/
-    ondraw: ''
-    onleave: ''
-    width: 832
-    height: 640
-    backgrounds: []
-    copies:
-      - x: 320
-        'y': 192
-        uid: bc7079cd-36cd-4435-824c-24073cd4e358
-        exts: {}
-        tx: 3
-        ty: 3
-      - x: 64
-        'y': 128
-        uid: bda90d00-a00c-45f7-a174-789a81cc40ea
-        exts: {}
-    tiles:
-      - depth: -10
-        tiles: []
-        extends: {}
-    uid: 9dbeb806-9c05-4508-adc4-5af628adf0e3
-    thumbnail: 5af628adf0e3
-    extends: {}
-    gridX: 64
-    gridY: 64
-    lastmod: 1621548523523
-    backgroundColor: '#000000'
   - name: Road001
     oncreate: ''
     onstep: ''
@@ -1452,7 +1407,7 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1624329706357
+    lastmod: 1625185000828
 actions:
   - name: Interact
     methods:
@@ -1700,6 +1655,77 @@ emitterTandems:
           delay: 0
           noRotation: true
         uid: e3535bc3-ab28-4840-9cc4-d45cf124a989
+  - name: Tandem_7460336ee58f
+    origname: pt7460336ee58f
+    emitters:
+      - texture: -1
+        openedTabs:
+          - texture
+        settings:
+          alpha:
+            list:
+              - value: 0
+                time: 0
+              - value: 1
+                time: 0.5
+              - value: 0
+                time: 1
+            isStepped: false
+          scale:
+            list:
+              - value: 1
+                time: 0
+              - value: 0.3
+                time: 1
+            isStepped: false
+          color:
+            list:
+              - value: ffffff
+                time: 0
+              - value: ffffff
+                time: 0.5
+              - value: ffffff
+                time: 1
+            isStepped: false
+          blendMode: normal
+          speed:
+            list:
+              - value: 500
+                time: 0
+              - value: 100
+                time: 1
+            isStepped: false
+          startRotation:
+            min: 0
+            max: 360
+          rotationSpeed:
+            min: 0
+            max: 0
+          rotationAcceleration: 0
+          lifetime:
+            min: 0.5
+            max: 0.5
+          frequency: 0.008
+          spawnChance: 1
+          particlesPerWave: 1
+          angleStart: 270
+          emitterLifetime: 0
+          maxParticles: 1000
+          maxSpeed: 0
+          pos:
+            x: 0
+            'y': 0
+          acceleration:
+            x: 0
+            'y': 0
+          addAtBack: false
+          spawnType: circle
+          spawnCircle:
+            x: 0
+            'y': 0
+            r: 32
+          delay: 0
+        uid: 1d6a7b60-b589-40ff-a79a-a74c2cabeff2
 scripts:
   - name: MasterScript
     code: |-
@@ -2016,7 +2042,31 @@ settings:
     accent: '#446adb'
     invertPreloaderScheme: true
   fps: 30
-fonts: []
+fonts:
+  - typefaceName: pixel_dingbats-7
+    weight: 400
+    italic: false
+    origname: fc5eea231-42ef-4a0b-aace-da646e6b1810.ttf
+    lastmod: 1625184345432
+    bitmapFont: false
+    bitmapFontSize: 16
+    bitmapFontLineHeight: 18
+    charsets:
+      - allInFont
+    customCharset: ''
+    uid: c5eea231-42ef-4a0b-aace-da646e6b1810
+  - typefaceName: kongtext
+    weight: 400
+    italic: false
+    origname: f166a3961-0f97-4be3-9300-243c5de474f1.ttf
+    lastmod: 1625184381866
+    bitmapFont: false
+    bitmapFontSize: 16
+    bitmapFontLineHeight: 18
+    charsets:
+      - allInFont
+    customCharset: ''
+    uid: 166a3961-0f97-4be3-9300-243c5de474f1
 styletick: .nan
 palette: []
 startroom: b0e1ef14-9c28-43ad-a165-b779c9d76a3f
