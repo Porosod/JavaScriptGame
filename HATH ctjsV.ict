@@ -898,6 +898,60 @@ textures:
     source: >-
       C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\Env\FreezeMachine.png
     lastmod: 1625698246300
+  - name: FreezeMasterFull
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 128
+      - 128
+    marginx: 0
+    marginy: 0
+    imgWidth: 256
+    imgHeight: 256
+    width: 256
+    height: 256
+    offx: 0
+    offy: 0
+    origname: id4342cc5-1e0c-4fd9-839c-6ef2e0e9f406.png
+    shape: rect
+    left: 128
+    right: 128
+    top: 128
+    bottom: 128
+    uid: d4342cc5-1e0c-4fd9-839c-6ef2e0e9f406
+    padding: 1
+    source: >-
+      C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\Chars\Regs\FreezeMaster\FreezeMasterFull.png
+    lastmod: 1625789363597
+  - name: freezeMasterBlinkSheet
+    untill: 0
+    grid:
+      - 60
+      - 1
+    axis:
+      - 128
+      - 128
+    marginx: 0
+    marginy: 0
+    imgWidth: 15360
+    imgHeight: 256
+    width: 256
+    height: 256
+    offx: 0
+    offy: 0
+    origname: i3b730152-e00d-4f31-b3b5-d83009244c85.png
+    shape: rect
+    left: 128
+    right: 128
+    top: 128
+    bottom: 128
+    uid: 3b730152-e00d-4f31-b3b5-d83009244c85
+    padding: 1
+    source: >-
+      C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\Chars\Regs\FreezeMaster\FreezeMasterBlink.png
+    lastmod: 1625789875574
 skeletons: []
 types:
   - name: CharPlaceHold
@@ -1146,7 +1200,7 @@ types:
     texture: ea92ed63-9d82-4f4e-a07e-cf0489de3289
     extends: {}
     uid: aa86abb7-99f9-4120-a521-9b5af76b1a31
-    lastmod: 1625091811921
+    lastmod: 1625789754851
   - name: jackDialogue
     depth: 2
     oncreate: |-
@@ -1214,7 +1268,7 @@ types:
     texture: 021e216d-d500-4f93-b26e-2b2acecd28b4
     extends: {}
     uid: 492d56e7-5d3e-464e-83bf-411fb9c638c5
-    lastmod: 1622068929228
+    lastmod: 1625789671714
   - name: dialogueBack
     depth: 0
     oncreate: ''
@@ -1293,6 +1347,73 @@ types:
     extends: {}
     uid: 24d390cc-341a-4d99-a62f-dcbd964043c0
     lastmod: 1625698727605
+  - name: freezeMasterDialogue
+    depth: 2
+    oncreate: |-
+      this.animationSpeed = 0.2;
+      characterBlinking = false;
+    onstep: >-
+      this.move();
+
+      if ( blarp== 4 && characterBlinking == false){//this uses a copy pasteable
+      script to make the creation of new characters easier
+          this.tex = characterBlink();
+          this.animationSpeed = 0.2;
+          this.gotoAndPlay(0);
+          characterBlinking = true;
+          blarp = 0;
+          sinceLastBlink = 0;
+      }
+
+      if(ct.actions.Interact.pressed && ct.mouse.hovers(this) &&
+      characterBlinking == false ){
+          this.tex = characterBlink();
+          this.gotoAndPlay(0);   
+          characterBlinking = true;
+          this.scale.x = 1;
+      }
+
+      if (this.currentFrame == 59){
+          this.gotoAndStop(0);
+          characterBlinking = false;
+      }
+
+      frameCounter++;
+
+      if(frameCounter == 200){
+          frameCounter = 0;
+          sinceLastBlink++;
+      }
+
+      else if(frameCounter == 1 && sinceLastBlink > 5){
+
+      blarp = Math.trunc(ct.random.range(1, 5));
+
+      }
+    ondraw: ''
+    ondestroy: ''
+    texture: 3b730152-e00d-4f31-b3b5-d83009244c85
+    extends: {}
+    uid: f634f2ee-5330-48a6-986c-25d6cfd75305
+    lastmod: 1625789852584
+  - name: freezeMasterFull
+    depth: 0
+    oncreate: test =2;
+    onstep: |-
+      this.move();
+      if(ct.actions.Interact.pressed && ct.mouse.hovers(this) && test ==2){
+          dialogueMode = true;
+          currentCharacter = 'freezeMaster';
+          this.dialogueScreen = ct.rooms.append('Dialogue', {isUi: true});
+      exitDialogue = false;
+      test =1;
+      }
+    ondraw: ''
+    ondestroy: ''
+    texture: d4342cc5-1e0c-4fd9-839c-6ef2e0e9f406
+    extends: {}
+    uid: 27d7d87e-c61c-4144-86d9-85cdadb466a7
+    lastmod: 1625789752428
 sounds: []
 styles:
   - name: Dialogue
@@ -1400,7 +1521,7 @@ rooms:
     gridY: 32
     backgroundColor: 'rgba(0,0,0,0.51)'
     restrictCamera: false
-    lastmod: 1625092406470
+    lastmod: 1625789788232
   - name: Road001
     oncreate: ''
     onstep: ''
@@ -1446,25 +1567,36 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1625185000828
-  - name: R1_deFrostRoom
+    lastmod: 1625789503399
+  - name: R1_defrostRoom
     oncreate: ''
     onstep: ''
     ondraw: ''
     onleave: ''
     width: 832
     height: 640
-    backgrounds: []
+    backgrounds:
+      - depth: -10000
+        texture: 72b4227a-a07a-4049-bf29-ad5ad7ce8e78
+        extends: {}
     copies:
       - x: 128
-        'y': 128
+        'y': 64
         uid: 24d390cc-341a-4d99-a62f-dcbd964043c0
         exts: {}
-        tx: 1
-        ty: 1
+        tx: 2
+        ty: 2
       - x: 128
-        'y': 384
+        'y': 448
         uid: 7bdd0707-657b-4256-a995-c526fadcb05e
+        exts: {}
+      - x: 320
+        'y': 384
+        uid: bda90d00-a00c-45f7-a174-789a81cc40ea
+        exts: {}
+      - x: 576
+        'y': 448
+        uid: 27d7d87e-c61c-4144-86d9-85cdadb466a7
         exts: {}
     tiles:
       - depth: -10
@@ -1475,7 +1607,7 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1625698680786
+    lastmod: 1625789781529
 actions:
   - name: Interact
     methods:
@@ -2009,6 +2141,66 @@ scripts:
           var tempVar = currentCharacter + 'Blink();';
           tempVar = eval(tempVar);
           return tempVar;
+      }
+  - name: FreezeMasterScript
+    code: >
+      /* Character script for freezeMaster */
+
+      let freezeMasterDialogue = ['Hi','beep', 'boop', 'blarboblarp'];//dialogue
+      tree stuff
+
+      var freezeMasterEmotePhase;
+
+      var freezeMasterHappy = 1;//happy emotion value
+
+      var freezeMasterSad = 0;//etc
+
+      var freezeMasterFluster = 0;
+
+      var freezeMasterConfused = 0;
+
+      var freezeMasterStrongVal = 0;
+
+      var freezeMasterStrongPhase;
+
+      var freezeMasterBlinking;
+
+      /*var freezeMasterEmotePicker = function(){//this decides which emotion
+      the on screen character should be displaying
+          if(freezeMasterHappy > freezeMasterStrongVal){//if happy is strongest
+              freezeMasterStrongVal = freezeMasterHappy;//sets the strong val to
+              freezeMasterStrongPhase = 0;//for the array
+          }
+          if (freezeMasterSad > freezeMasterStrongVal){//etc
+              freezeMasterStrongVal = freezeMasterSad;
+              freezeMasterStrongPhase = 3
+          }
+          if (freezeMasterConfused > freezeMasterStrongVal){
+              freezeMasterStrongVal = freezeMasterConfused;
+              freezeMasterStrongPhase = 4;
+          }
+          if (freezeMasterFluster > freezeMasterStrongVal){//this one is longer because there are two blush phases for it
+              if(freezeMasterFluster>=freezeMasterStrongVal*2){
+                  freezeMasterStrongPhase = 2;
+                  freezeMasterStrongVal = freezeMasterFluster/2;
+              }
+              else{
+                  freezeMasterStrongPhase = 1;
+                  freezeMasterStrongVal = freezeMasterFluster;
+              }
+          }
+      }
+
+      var freezeMasterDialogueTree = function(){//function to decide 
+
+      //do the thing here moron
+
+      }*/
+
+      var freezeMasterBlink = function(){
+          freezeMasterBlinking = true;
+          var animation = 'freezeMasterBlinkSheet';
+          return animation;
       }
 starting: 0
 settings:
