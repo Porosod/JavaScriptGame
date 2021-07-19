@@ -29,6 +29,10 @@ notes: >-
   that is 
 
   less of coherent dialogue and more just used to convey anger
+
+
+  I have discovered that the game will run the on create of a type before the on
+  create of a room
    */
 libs:
   place:
@@ -952,14 +956,83 @@ textures:
     source: >-
       C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\Chars\Regs\FreezeMaster\FreezeMasterBlink.png
     lastmod: 1625789875574
+  - name: churchRecruiter
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 128
+    imgHeight: 128
+    width: 128
+    height: 128
+    offx: 0
+    offy: 0
+    origname: i4398da89-b242-41c4-9a70-a555523da1f5.png
+    shape: rect
+    left: 0
+    right: 128
+    top: 0
+    bottom: 128
+    uid: 4398da89-b242-41c4-9a70-a555523da1f5
+    padding: 1
+    source: 'C:\Users\moosh\Pictures\Game assets\Hath\ChurchRecruiter.png'
+    lastmod: 1626668336311
+  - name: churchRecruiterDialogue
+    untill: 0
+    grid:
+      - 60
+      - 1
+    axis:
+      - 128
+      - 128
+    marginx: 0
+    marginy: 0
+    imgWidth: 15360
+    imgHeight: 256
+    width: 256
+    height: 256
+    offx: 0
+    offy: 0
+    origname: ie5e34148-4bda-43b1-a07c-087153953e19.png
+    shape: rect
+    left: 128
+    right: 128
+    top: 128
+    bottom: 128
+    uid: e5e34148-4bda-43b1-a07c-087153953e19
+    padding: 1
+    source: 'C:\Users\moosh\Pictures\Game assets\Hath\ChurchRecruiterDialogue.png'
+    lastmod: 1626669442476
 skeletons: []
 types:
   - name: CharPlaceHold
     depth: 0
-    oncreate: |-
+    oncreate: >-
       //this.speed = 5;
+
+      goToXCo = this.x;//stops player from continuing forward after a room
+      change
+
       playerXCo = this.x;
+
       movingArea = false;
+
+      this.y= ct.room.playerStartY;
+
+      if(entryDirection == 'left'){
+          this.x = 64;
+      }else if(entryDirection == 'right'){
+          this.x = 768;
+      }else{
+          this.x = 128;
+      }
+
+      console.log('characterSetup');
     onstep: >-
       this.move();
 
@@ -999,19 +1072,25 @@ types:
           goToXCo = null;
       }
 
-      /*if(this.x > 768 && moveActive ==true ){
-          previousCamX = this.x;
-          moveActive = false;
-          currentArea++;
-          movingArea = true;
-          movingDirection = true;
-      }*/
+      if(this.x > 769 && moveActive ==true ){
+          if(ct.room.nextRoomRight != 'none'){
+          ct.rooms.switch(ct.room.nextRoomRight);
+          entryDirection = 'left';
+          }
+      }
+
+      if(this.x < 63 && moveActive ==true ){
+          if(ct.room.nextRoomLeft != 'none'){
+          ct.rooms.switch(ct.room.nextRoomLeft);
+          entryDirection = 'right';
+          }
+      }
     ondraw: ''
     ondestroy: ''
     texture: c1c16902-4766-48f8-95ce-eef602ec67f3
     extends: {}
     uid: 7bdd0707-657b-4256-a995-c526fadcb05e
-    lastmod: 1625184961973
+    lastmod: 1626669964578
   - name: Brick
     depth: 0
     oncreate: this.speed = 4;
@@ -1200,7 +1279,7 @@ types:
     texture: ea92ed63-9d82-4f4e-a07e-cf0489de3289
     extends: {}
     uid: aa86abb7-99f9-4120-a521-9b5af76b1a31
-    lastmod: 1625789754851
+    lastmod: 1626603093389
   - name: jackDialogue
     depth: 2
     oncreate: |-
@@ -1395,9 +1474,9 @@ types:
     texture: 3b730152-e00d-4f31-b3b5-d83009244c85
     extends: {}
     uid: f634f2ee-5330-48a6-986c-25d6cfd75305
-    lastmod: 1625789852584
+    lastmod: 1626670621376
   - name: freezeMasterFull
-    depth: 0
+    depth: 2
     oncreate: test =2;
     onstep: |-
       this.move();
@@ -1411,9 +1490,77 @@ types:
     ondraw: ''
     ondestroy: ''
     texture: d4342cc5-1e0c-4fd9-839c-6ef2e0e9f406
-    extends: {}
+    extends:
+      visible: true
     uid: 27d7d87e-c61c-4144-86d9-85cdadb466a7
-    lastmod: 1625789752428
+    lastmod: 1626670319615
+  - name: ChurchRecruiter
+    depth: 0
+    oncreate: test =2;
+    onstep: |-
+      this.move();
+      if(ct.actions.Interact.pressed && ct.mouse.hovers(this) && test ==2){
+          dialogueMode = true;
+          currentCharacter = 'churchRecruiter';
+          this.dialogueScreen = ct.rooms.append('Dialogue', {isUi: true});
+      exitDialogue = false;
+      test =1;
+      }
+    ondraw: ''
+    ondestroy: ''
+    texture: 4398da89-b242-41c4-9a70-a555523da1f5
+    extends: {}
+    uid: dfb8bf33-c4a0-4c07-83a4-a9ba95a8724d
+    lastmod: 1626669999074
+  - name: churchRecruiterDialogue
+    depth: 2
+    oncreate: |-
+      this.animationSpeed = 0.2;
+      characterBlinking = false;
+    onstep: >-
+      this.move();
+
+      if ( blarp== 4 && characterBlinking == false){//this uses a copy pasteable
+      script to make the creation of new characters easier
+          this.tex = characterBlink();
+          this.animationSpeed = 0.2;
+          this.gotoAndPlay(0);
+          characterBlinking = true;
+          blarp = 0;
+          sinceLastBlink = 0;
+      }
+
+      if(ct.actions.Interact.pressed && ct.mouse.hovers(this) &&
+      characterBlinking == false ){
+          this.tex = characterBlink();
+          this.gotoAndPlay(0);   
+          characterBlinking = true;
+          this.scale.x = 1;
+      }
+
+      if (this.currentFrame == 59){
+          this.gotoAndStop(0);
+          characterBlinking = false;
+      }
+
+      frameCounter++;
+
+      if(frameCounter == 200){
+          frameCounter = 0;
+          sinceLastBlink++;
+      }
+
+      else if(frameCounter == 1 && sinceLastBlink > 5){
+
+      blarp = Math.trunc(ct.random.range(1, 5));
+
+      }
+    ondraw: ''
+    ondestroy: ''
+    texture: e5e34148-4bda-43b1-a07c-087153953e19
+    extends: {}
+    uid: ab4d33f5-396b-4aeb-bce0-e17c35574b1e
+    lastmod: 1626670608024
 sounds: []
 styles:
   - name: Dialogue
@@ -1521,7 +1668,7 @@ rooms:
     gridY: 32
     backgroundColor: 'rgba(0,0,0,0.51)'
     restrictCamera: false
-    lastmod: 1625789788232
+    lastmod: 1626660683253
   - name: Road001
     oncreate: ''
     onstep: ''
@@ -1567,9 +1714,14 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1625789503399
+    lastmod: 1626659348166
   - name: R1_defrostRoom
-    oncreate: ''
+    oncreate: |-
+      this.nextRoomRight = 'R2_Road1'
+      this.nextRoomLeft = 'none';
+      this.playerStartY = 448;
+      console.log('Room Set Up complete');
+      this.playerAdd = ct.types.copy('CharPlaceHold');
     onstep: ''
     ondraw: ''
     onleave: ''
@@ -1586,10 +1738,6 @@ rooms:
         exts: {}
         tx: 2
         ty: 2
-      - x: 128
-        'y': 448
-        uid: 7bdd0707-657b-4256-a995-c526fadcb05e
-        exts: {}
       - x: 320
         'y': 384
         uid: bda90d00-a00c-45f7-a174-789a81cc40ea
@@ -1607,7 +1755,47 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1625789781529
+    lastmod: 1626670307129
+  - name: R2_Road1
+    oncreate: |-
+      this.playerStartY = 384;
+      this.nextRoomRight = 'none';
+      this.nextRoomLeft = 'R1_defrostRoom';
+      this.playerAdd = ct.types.copy('CharPlaceHold');
+    onstep: ''
+    ondraw: ''
+    onleave: ''
+    width: 832
+    height: 640
+    backgrounds:
+      - depth: -1000
+        texture: 72b4227a-a07a-4049-bf29-ad5ad7ce8e78
+        extends: {}
+    copies:
+      - x: 128
+        'y': 64
+        uid: bda90d00-a00c-45f7-a174-789a81cc40ea
+        exts: {}
+      - x: -0.0
+        'y': 448
+        uid: 3c5d1370-5ab2-49e2-8991-e209b2059b9a
+        exts: {}
+      - x: 384
+        'y': 256
+        uid: dfb8bf33-c4a0-4c07-83a4-a9ba95a8724d
+        exts: {}
+        tx: 2
+        ty: 2
+    tiles:
+      - depth: -10
+        tiles: []
+        extends: {}
+    uid: 097f2b57-59cd-4c3d-9282-3aaeabac012c
+    thumbnail: 3aaeabac012c
+    extends: {}
+    gridX: 64
+    gridY: 64
+    lastmod: 1626669844067
 actions:
   - name: Interact
     methods:
@@ -1875,9 +2063,7 @@ scripts:
       var currentArea;
       var movingArea = false;
       var movingDirection; // true is right false is left
-      var cameraTrackingFunction = function(){
-          
-      }
+      var entryDirection;
   - name: MasterDialogueScript
     code: >
       //dev note: spawn dialogue at 96, 480
@@ -2098,50 +2284,6 @@ scripts:
           var animation = 'jackBlinkSheet';
           return animation;
       }
-  - name: ComposScript
-    code: >
-      /*This script creates new code for the Rooms to run based on character
-      presnce 
-
-      This should allow me to create new scripts for unique characters without
-      needing to do 
-
-      tons of programming in the room events scripts*/
-
-      var characterDialogue = currentCharacter + 'Dialogue';
-
-      var characterBlinking = true;
-
-      var characterEmotes = function(input){
-
-      var tempVar = currentCharacter + 'Emotes';
-
-      var tempVar = tempVar + '['+ input +']';
-
-      eval(tempVar);
-
-      console.log(tempVar);
-
-      console.log(pinkEmotes);
-
-      }
-
-
-      var characterEmotePhase = function(input){
-          var tempVar = currentCharacter + 'EmotePhase = ' + input;
-          eval(tempVar);
-      }
-
-      var characterEmotePicker = function(){
-       var tempVar= currentCharacter + 'EmotePicker';
-       eval(tempVar);
-      }
-
-      var characterBlink = function(){
-          var tempVar = currentCharacter + 'Blink();';
-          tempVar = eval(tempVar);
-          return tempVar;
-      }
   - name: FreezeMasterScript
     code: >
       /* Character script for freezeMaster */
@@ -2201,6 +2343,110 @@ scripts:
           freezeMasterBlinking = true;
           var animation = 'freezeMasterBlinkSheet';
           return animation;
+      }
+  - name: ChurchRecruiterScript
+    code: >
+      /* Character script for churchRecruiter */
+
+      let churchRecruiterDialogue = ['Test Dialogue','Yes I am testing
+      dialogue','join the church m8'];//dialogue tree stuff
+
+      var churchRecruiterEmotePhase;
+
+      var churchRecruiterHappy = 1;//happy emotion value
+
+      var churchRecruiterSad = 0;//etc
+
+      var churchRecruiterFluster = 0;
+
+      var churchRecruiterConfused = 0;
+
+      var churchRecruiterStrongVal = 0;
+
+      var churchRecruiterStrongPhase;
+
+      var churchRecruiterBlinking;
+
+      /*var churchRecruiterEmotePicker = function(){//this decides which emotion
+      the on screen character should be displaying
+          if(churchRecruiterHappy > churchRecruiterStrongVal){//if happy is strongest
+              churchRecruiterStrongVal = churchRecruiterHappy;//sets the strong val to
+              churchRecruiterStrongPhase = 0;//for the array
+          }
+          if (churchRecruiterSad > churchRecruiterStrongVal){//etc
+              churchRecruiterStrongVal = churchRecruiterSad;
+              churchRecruiterStrongPhase = 3
+          }
+          if (churchRecruiterConfused > churchRecruiterStrongVal){
+              churchRecruiterStrongVal = churchRecruiterConfused;
+              churchRecruiterStrongPhase = 4;
+          }
+          if (churchRecruiterFluster > churchRecruiterStrongVal){//this one is longer because there are two blush phases for it
+              if(churchRecruiterFluster>=churchRecruiterStrongVal*2){
+                  churchRecruiterStrongPhase = 2;
+                  churchRecruiterStrongVal = churchRecruiterFluster/2;
+              }
+              else{
+                  churchRecruiterStrongPhase = 1;
+                  churchRecruiterStrongVal = churchRecruiterFluster;
+              }
+          }
+      }
+
+      var churchRecruiterDialogueTree = function(){//function to decide 
+
+      //do the thing here moron
+
+      }*/
+
+      var churchRecruiterBlink = function(){
+          churchRecruiterBlinking = true;
+          var animation = 'churchRecruiterBlinkSheet';
+          return animation;
+      }
+  - name: ComposScript
+    code: >
+      /*This script creates new code for the Rooms to run based on character
+      presnce 
+
+      This should allow me to create new scripts for unique characters without
+      needing to do 
+
+      tons of programming in the room events scripts*/
+
+      var characterDialogue = currentCharacter + 'Dialogue';
+
+      var characterBlinking = true;
+
+      var characterEmotes = function(input){
+
+      var tempVar = currentCharacter + 'Emotes';
+
+      var tempVar = tempVar + '['+ input +']';
+
+      eval(tempVar);
+
+      console.log(tempVar);
+
+      console.log(pinkEmotes);
+
+      }
+
+
+      var characterEmotePhase = function(input){
+          var tempVar = currentCharacter + 'EmotePhase = ' + input;
+          eval(tempVar);
+      }
+
+      var characterEmotePicker = function(){
+       var tempVar= currentCharacter + 'EmotePicker';
+       eval(tempVar);
+      }
+
+      var characterBlink = function(){
+          var tempVar = currentCharacter + 'Blink();';
+          tempVar = eval(tempVar);
+          return tempVar;
       }
 starting: 0
 settings:
