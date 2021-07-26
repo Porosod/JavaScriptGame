@@ -1027,27 +1027,27 @@ textures:
       - 1
       - 1
     axis:
-      - 56
-      - 56
+      - 0
+      - 8
     marginx: 0
     marginy: 0
-    imgWidth: 128
-    imgHeight: 128
-    width: 128
-    height: 128
+    imgWidth: 48
+    imgHeight: 16
+    width: 48
+    height: 16
     offx: 0
     offy: 0
     origname: i12559a76-89b4-49d2-9926-642054e0ad8e.png
     shape: rect
-    left: 8
-    right: 8
+    left: 0
+    right: 48
     top: 8
     bottom: 8
     uid: 12559a76-89b4-49d2-9926-642054e0ad8e
     padding: 1
     source: >-
       C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\UI\ButtonHidden.png
-    lastmod: 1627260032689
+    lastmod: 1627261141970
 skeletons: []
 types:
   - name: CharPlaceHold
@@ -1128,7 +1128,7 @@ types:
     texture: c1c16902-4766-48f8-95ce-eef602ec67f3
     extends: {}
     uid: 7bdd0707-657b-4256-a995-c526fadcb05e
-    lastmod: 1627260221231
+    lastmod: 1627261099367
   - name: Brick
     depth: 0
     oncreate: this.speed = 4;
@@ -1164,7 +1164,7 @@ types:
     uid: fb8d1b19-8e2a-48ee-ba64-56230149fe5f
     lastmod: 1627259077834
   - name: Cursor
-    depth: 110
+    depth: 10000
     oncreate: ''
     onstep: this.move();
     ondraw: |-
@@ -1174,7 +1174,7 @@ types:
     texture: e3b7166f-c686-4a11-a990-41f8752515e2
     extends: {}
     uid: bda90d00-a00c-45f7-a174-789a81cc40ea
-    lastmod: 1620606532995
+    lastmod: 1627261293475
   - name: PinkPlace-export
     depth: 0
     oncreate: ''
@@ -1583,7 +1583,7 @@ types:
     uid: ab4d33f5-396b-4aeb-bce0-e17c35574b1e
     lastmod: 1627257749808
   - name: response1
-    depth: 0
+    depth: 1000
     oncreate: |+
 
     onstep: |-
@@ -1597,7 +1597,17 @@ types:
     texture: 12559a76-89b4-49d2-9926-642054e0ad8e
     extends: {}
     uid: 81941614-2447-4846-92a2-6d8747d11e8c
-    lastmod: 1627260624420
+    lastmod: 1627261353841
+  - name: response2
+    depth: 1000
+    oncreate: ''
+    onstep: this.move();
+    ondraw: ''
+    ondestroy: ''
+    texture: 12559a76-89b4-49d2-9926-642054e0ad8e
+    extends: {}
+    uid: 31483b51-8c3b-43ab-9155-0d4ca4bfacd9
+    lastmod: 1627261358255
 sounds: []
 styles:
   - name: Dialogue
@@ -1612,7 +1622,7 @@ styles:
       lineHeight: 24
       wrap: false
       wrapPosition: 145
-    lastmod: 1627260318594
+    lastmod: 1627261509302
     fill:
       type: '0'
       color: '#FFFFFF'
@@ -1621,14 +1631,15 @@ styles:
     origname: sec4c293365e8
     font:
       family: '"CTPROJFONTpixel_dingbats-7", "pixel_dingbats-7", sans-serif'
-      size: 28
+      size: 16
       weight: '100'
       italic: false
     fill:
       type: '1'
-      color1: '#312440'
+      color1: '#420001'
       color2: '#FF0000'
-    lastmod: 1625531384431
+      gradtype: '1'
+    lastmod: 1627261561107
     stroke:
       color: '#B50000'
       weight: 7
@@ -1709,7 +1720,7 @@ rooms:
 
       this.response1Text.x = 96;//coordinates
 
-      this.response1Text.y = 544;
+      this.response1Text.y = 528;
 
       this.response1Text.depth = 1000;//depth is like the layer for example 1000
       would be a high up layer while -5 would be a low layer
@@ -1751,11 +1762,17 @@ rooms:
         'y': 256
         uid: bda90d00-a00c-45f7-a174-789a81cc40ea
         exts: {}
-      - x: 146
-        'y': 544
+      - x: 96
+        'y': 528
         uid: 81941614-2447-4846-92a2-6d8747d11e8c
         exts: {}
-        tx: 9
+        tx: 8
+        ty: 1
+      - x: 96
+        'y': 560
+        uid: 31483b51-8c3b-43ab-9155-0d4ca4bfacd9
+        exts: {}
+        tx: 8
         ty: 1
     tiles:
       - depth: -10
@@ -1765,11 +1782,11 @@ rooms:
     thumbnail: 216635579fe2
     extends:
       isUi: false
-    gridX: 32
-    gridY: 32
+    gridX: 16
+    gridY: 16
     backgroundColor: 'rgba(0,0,0,0.51)'
     restrictCamera: false
-    lastmod: 1627260733741
+    lastmod: 1627261205018
   - name: Road001
     oncreate: ''
     onstep: ''
