@@ -33,6 +33,17 @@ notes: >-
 
   I have discovered that the game will run the on create of a type before the on
   create of a room
+
+
+  Charater is no longer moving to interacted object
+
+  charters move code is being run after the create code this is a problem
+  becuase when the dialogue is opened the characters movement is turned off
+
+  solution just remove the requirement of movement being active and the resume
+  movement in the exit loop of the dialogue UI room
+
+  missing capital on currentCharacterDialogue
    */
 libs:
   place:
@@ -981,8 +992,8 @@ textures:
     uid: 4398da89-b242-41c4-9a70-a555523da1f5
     padding: 1
     source: 'C:\Users\moosh\Pictures\Game assets\Hath\ChurchRecruiter.png'
-    lastmod: 1626668336311
-  - name: churchRecruiterDialogue
+    lastmod: 1627255472080
+  - name: churchRecruiterBlinkSheet
     untill: 0
     grid:
       - 60
@@ -1007,7 +1018,7 @@ textures:
     uid: e5e34148-4bda-43b1-a07c-087153953e19
     padding: 1
     source: 'C:\Users\moosh\Pictures\Game assets\Hath\ChurchRecruiterDialogue.png'
-    lastmod: 1626669442476
+    lastmod: 1627255514943
 skeletons: []
 types:
   - name: CharPlaceHold
@@ -1031,8 +1042,6 @@ types:
       }else{
           this.x = 128;
       }
-
-      console.log('characterSetup');
     onstep: >-
       this.move();
 
@@ -1042,8 +1051,8 @@ types:
 
       }
 
-      if(ct.actions.Interact.pressed == true && moveActive == true)//if mouse1
-      is being pressed and the go to x coord is not null
+      if(ct.actions.Interact.pressed == true)//if mouse1 is being pressed and
+      the go to x coord is not null
 
       {
           goToXCo = Math.trunc(ct.mouse.x);
@@ -1054,8 +1063,8 @@ types:
           this.speed = 4;
       }
 
-      else if (goToXCo != null && this.direction == 180){//stupid way to get
-      around an engine bug
+      else if (goToXCo != null && this.direction == 180){//!!!MIGHT CAUSE
+      PROBLEMS LATER stupid way to get around an engine bug 
           this.direction = 0;
           this.speed = 4;
           this.direction = 180;
@@ -1090,7 +1099,7 @@ types:
     texture: c1c16902-4766-48f8-95ce-eef602ec67f3
     extends: {}
     uid: 7bdd0707-657b-4256-a995-c526fadcb05e
-    lastmod: 1626669964578
+    lastmod: 1627256929601
   - name: Brick
     depth: 0
     oncreate: this.speed = 4;
@@ -1116,14 +1125,10 @@ types:
   - name: UIBox
     depth: 100
     oncreate: >-
-      this.dialogue = ''
-
-      this.count = 0;
+      this.dialogue = 'A'
 
       this.dialogueText = new PIXI.Text(' ' + this.dialogue,
       ct.styles.get('Dialogue'));
-
-      this.addChild(this.dialogueText);
 
       this.dialogueText.x = 96;//coordinates
 
@@ -1132,17 +1137,21 @@ types:
       this.dialogueText.depth = 1000;//depth is like the layer for example 1000
       would be a high up layer while -5 would be a low layer
 
-      this.dialogueBool = false;
-
-      //characterEmotes();
+      this.addChild(this.dialogueText);
     onstep: |
       this.move();
-    ondraw: ''
+      if(nextDialogue == true){
+          nextDialogue = false;
+          this.dialogue = characterDialogue();
+          console.log(this.dialogue);
+      }
+    ondraw: |
+      this.dialogue.text =  this.dialogue;
     ondestroy: ''
     texture: e1f01365-dfaf-4ef8-b7c5-039e48c1ad5c
     extends: {}
     uid: fb8d1b19-8e2a-48ee-ba64-56230149fe5f
-    lastmod: 1621974155616
+    lastmod: 1627258241737
   - name: Cursor
     depth: 110
     oncreate: ''
@@ -1193,14 +1202,13 @@ types:
       if(ct.actions.Interact.pressed && ct.mouse.hovers(this)){
           exitDialogue = true;
           currentCharacter = null;
-          moveActive = true;
       }
     ondraw: ''
     ondestroy: ''
     texture: cce25aee-fdfd-42bc-bf33-113247467611
     extends: {}
     uid: 56de7695-90ed-4b79-a522-4812cfaa1445
-    lastmod: 1622764631159
+    lastmod: 1627256875698
   - name: PinkDialogue
     depth: 0
     oncreate: ''
@@ -1329,7 +1337,7 @@ types:
     texture: 6f7afb0d-f4ab-4f68-b773-4dd4e99e319c
     extends: {}
     uid: 936d3820-f7eb-46d4-8d73-a2e5e05e8cd5
-    lastmod: 1625698665329
+    lastmod: 1627257451598
   - name: JackFull
     depth: 0
     oncreate: test =2;
@@ -1493,7 +1501,7 @@ types:
     extends:
       visible: true
     uid: 27d7d87e-c61c-4144-86d9-85cdadb466a7
-    lastmod: 1626670319615
+    lastmod: 1627256960152
   - name: ChurchRecruiter
     depth: 0
     oncreate: test =2;
@@ -1511,13 +1519,15 @@ types:
     texture: 4398da89-b242-41c4-9a70-a555523da1f5
     extends: {}
     uid: dfb8bf33-c4a0-4c07-83a4-a9ba95a8724d
-    lastmod: 1626669999074
+    lastmod: 1627257467982
   - name: churchRecruiterDialogue
     depth: 2
     oncreate: |-
       this.animationSpeed = 0.2;
       characterBlinking = false;
-    onstep: >-
+      currentCharacter = 'churchRecruiter';
+      nextDialogue = true;
+    onstep: >
       this.move();
 
       if ( blarp== 4 && characterBlinking == false){//this uses a copy pasteable
@@ -1560,7 +1570,7 @@ types:
     texture: e5e34148-4bda-43b1-a07c-087153953e19
     extends: {}
     uid: ab4d33f5-396b-4aeb-bce0-e17c35574b1e
-    lastmod: 1626670608024
+    lastmod: 1627257749808
 sounds: []
 styles:
   - name: Dialogue
@@ -1575,10 +1585,13 @@ styles:
       lineHeight: 24
       wrap: false
       wrapPosition: 145
-    lastmod: 1625531375036
+    lastmod: 1627258410808
     fill:
       type: '0'
       color: '#FFFFFF'
+    stroke:
+      color: '#000000'
+      weight: 6
   - name: DingBats
     uid: 6072c264-b504-484e-88c5-ec4c293365e8
     origname: sec4c293365e8
@@ -1639,7 +1652,9 @@ rooms:
           this.backgroundType.kill = true;
       }
     ondraw: ''
-    onleave: test = 2;
+    onleave: |-
+      test = 2;
+      moveActive = true;
     width: 832
     height: 640
     backgrounds: []
@@ -1668,7 +1683,7 @@ rooms:
     gridY: 32
     backgroundColor: 'rgba(0,0,0,0.51)'
     restrictCamera: false
-    lastmod: 1626660683253
+    lastmod: 1627256841066
   - name: Road001
     oncreate: ''
     onstep: ''
@@ -1714,7 +1729,7 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1626659348166
+    lastmod: 1627256148795
   - name: R1_defrostRoom
     oncreate: |-
       this.nextRoomRight = 'R2_Road1'
@@ -1755,7 +1770,7 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1626670307129
+    lastmod: 1627258300712
   - name: R2_Road1
     oncreate: |-
       this.playerStartY = 384;
@@ -1795,7 +1810,7 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1626669844067
+    lastmod: 1627255974481
 actions:
   - name: Interact
     methods:
@@ -2070,11 +2085,15 @@ scripts:
 
       var dialogueMode = false;
 
+      var nextDialogue = false;
+
+      var dialogueNumber =0;
+
       var dialogueScript = function (dialogueID, room){//this function is used
       for dialogue popups the var is an ID associated with the selected dialogue
 
       let dialogueOptions =
-      ['test1aaaaaaaaa','test2bbbbbbbbbbbb','test3ccccccccccc','test4ddddddddd','test5eeeeeee']
+      ['test1aaaaaaaaa','test2bbbbbbbbbbbb','test3ccccccccccc','test4ddddddddd','test5eeeeeee'];
 
       /*switch(dialogueID) {
         case 1:
@@ -2414,7 +2433,11 @@ scripts:
 
       tons of programming in the room events scripts*/
 
-      var characterDialogue = currentCharacter + 'Dialogue';
+      var characterDialogue = function(){
+          return eval(currentCharacter + 'Dialogue' +'['+ dialogueNumber + '];')
+      }
+
+      // = currentCharacter + 'Dialogue';
 
       var characterBlinking = true;
 
