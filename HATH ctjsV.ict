@@ -44,6 +44,8 @@ notes: >-
   movement in the exit loop of the dialogue UI room
 
   missing capital on currentCharacterDialogue
+
+  dialogue stuff has to be coded in the room
    */
 libs:
   place:
@@ -1019,6 +1021,33 @@ textures:
     padding: 1
     source: 'C:\Users\moosh\Pictures\Game assets\Hath\ChurchRecruiterDialogue.png'
     lastmod: 1627255514943
+  - name: ButtonHidden
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 56
+      - 56
+    marginx: 0
+    marginy: 0
+    imgWidth: 128
+    imgHeight: 128
+    width: 128
+    height: 128
+    offx: 0
+    offy: 0
+    origname: i12559a76-89b4-49d2-9926-642054e0ad8e.png
+    shape: rect
+    left: 8
+    right: 8
+    top: 8
+    bottom: 8
+    uid: 12559a76-89b4-49d2-9926-642054e0ad8e
+    padding: 1
+    source: >-
+      C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\UI\ButtonHidden.png
+    lastmod: 1627260032689
 skeletons: []
 types:
   - name: CharPlaceHold
@@ -1051,12 +1080,12 @@ types:
 
       }
 
-      if(ct.actions.Interact.pressed == true)//if mouse1 is being pressed and
-      the go to x coord is not null
-
-      {
-          goToXCo = Math.trunc(ct.mouse.x);
-         this.direction = ct.u.pointDirection(this.x, this.y, goToXCo, this.y);
+      if(moveActive == true){
+          if(ct.actions.Interact.pressed == true)//if mouse1 is being pressed and the go to x coord is not null
+          {
+              goToXCo = Math.trunc(ct.mouse.x);
+              this.direction = ct.u.pointDirection(this.x, this.y, goToXCo, this.y);
+          }
       }
 
       if( goToXCo != null && this.direction == 0){
@@ -1099,7 +1128,7 @@ types:
     texture: c1c16902-4766-48f8-95ce-eef602ec67f3
     extends: {}
     uid: 7bdd0707-657b-4256-a995-c526fadcb05e
-    lastmod: 1627256929601
+    lastmod: 1627260221231
   - name: Brick
     depth: 0
     oncreate: this.speed = 4;
@@ -1124,34 +1153,16 @@ types:
     lastmod: 1619315685213
   - name: UIBox
     depth: 100
-    oncreate: >-
-      this.dialogue = 'A'
-
-      this.dialogueText = new PIXI.Text(' ' + this.dialogue,
-      ct.styles.get('Dialogue'));
-
-      this.dialogueText.x = 96;//coordinates
-
-      this.dialogueText.y = 480;
-
-      this.dialogueText.depth = 1000;//depth is like the layer for example 1000
-      would be a high up layer while -5 would be a low layer
-
-      this.addChild(this.dialogueText);
+    oncreate: ''
     onstep: |
       this.move();
-      if(nextDialogue == true){
-          nextDialogue = false;
-          this.dialogue = characterDialogue();
-          console.log(this.dialogue);
-      }
-    ondraw: |
-      this.dialogue.text =  this.dialogue;
+    ondraw: |+
+
     ondestroy: ''
     texture: e1f01365-dfaf-4ef8-b7c5-039e48c1ad5c
     extends: {}
     uid: fb8d1b19-8e2a-48ee-ba64-56230149fe5f
-    lastmod: 1627258241737
+    lastmod: 1627259077834
   - name: Cursor
     depth: 110
     oncreate: ''
@@ -1173,7 +1184,7 @@ types:
     texture: db48df6b-b5a7-4ac5-974f-b3a7da4cbd7b
     extends: {}
     uid: dedef1f1-3f39-4dfe-8d17-6dbfee9756e2
-    lastmod: 1620603641901
+    lastmod: 1627260848300
   - name: OriginPoint
     depth: -5
     oncreate: ''
@@ -1208,7 +1219,7 @@ types:
     texture: cce25aee-fdfd-42bc-bf33-113247467611
     extends: {}
     uid: 56de7695-90ed-4b79-a522-4812cfaa1445
-    lastmod: 1627256875698
+    lastmod: 1627260844718
   - name: PinkDialogue
     depth: 0
     oncreate: ''
@@ -1421,7 +1432,7 @@ types:
     texture: 258349ea-e8f5-4398-9071-a64738f2ea99
     extends: {}
     uid: 9d94aacc-e9eb-4d1d-bb00-e59ad00e6c91
-    lastmod: 1624329697240
+    lastmod: 1627259843587
   - name: FreezeMachine
     depth: 0
     oncreate: |-
@@ -1519,7 +1530,7 @@ types:
     texture: 4398da89-b242-41c4-9a70-a555523da1f5
     extends: {}
     uid: dfb8bf33-c4a0-4c07-83a4-a9ba95a8724d
-    lastmod: 1627257467982
+    lastmod: 1627260226359
   - name: churchRecruiterDialogue
     depth: 2
     oncreate: |-
@@ -1571,6 +1582,22 @@ types:
     extends: {}
     uid: ab4d33f5-396b-4aeb-bce0-e17c35574b1e
     lastmod: 1627257749808
+  - name: response1
+    depth: 0
+    oncreate: |+
+
+    onstep: |-
+      this.move();
+      if(ct.mouse.hovers(this) && ct.actions.Interact.pressed){
+          nextDialogue = true;
+          dialogueNumber++;
+      }
+    ondraw: ''
+    ondestroy: ''
+    texture: 12559a76-89b4-49d2-9926-642054e0ad8e
+    extends: {}
+    uid: 81941614-2447-4846-92a2-6d8747d11e8c
+    lastmod: 1627260624420
 sounds: []
 styles:
   - name: Dialogue
@@ -1578,20 +1605,17 @@ styles:
     origname: sf5fae5166244
     font:
       family: '"CTPROJFONTkongtext", "kongtext", sans-serif'
-      size: 28
+      size: 16
       weight: '100'
       italic: false
       halign: left
       lineHeight: 24
       wrap: false
       wrapPosition: 145
-    lastmod: 1627258410808
+    lastmod: 1627260318594
     fill:
       type: '0'
       color: '#FFFFFF'
-    stroke:
-      color: '#000000'
-      weight: 6
   - name: DingBats
     uid: 6072c264-b504-484e-88c5-ec4c293365e8
     origname: sec4c293365e8
@@ -1608,6 +1632,18 @@ styles:
     stroke:
       color: '#B50000'
       weight: 7
+  - name: Response
+    uid: b5644500-09a2-4666-b244-12940954c674
+    origname: s12940954c674
+    font:
+      family: '"CTPROJFONTkongtext", "kongtext", sans-serif'
+      size: 12
+      weight: '100'
+      italic: false
+    fill:
+      type: '0'
+      color: '#C9F4FF'
+    lastmod: 1627259649704
 rooms:
   - name: UI
     oncreate: ''
@@ -1636,22 +1672,66 @@ rooms:
       isUi: true
     gridX: 32
     gridY: 32
-    lastmod: 1619390076010
+    lastmod: 1627259743380
     backgroundColor: 'rgba(0,0,0,0)'
   - name: Dialogue
-    oncreate: |-
+    oncreate: >-
       //384 320
+
       this.roomCharacter = ct.types.copy(currentCharacter + 'Dialogue',384,320);
+
       this.backgroundType = ct.types.copy('dialogueBack', 0, 0);
+
       exitDialogue = false;
+
       moveActive = false;
+
+      this.dialogue = 'A'
+
+      this.dialogueText = new PIXI.Text(' ' + this.dialogue,
+      ct.styles.get('Dialogue'));
+
+      this.dialogueText.x = 96;//coordinates
+
+      this.dialogueText.y = 480;
+
+      this.dialogueText.depth = 1000;//depth is like the layer for example 1000
+      would be a high up layer while -5 would be a low layer
+
+      this.addChild(this.dialogueText);
+
+      //response1 texts
+
+      this.response1 = 'What?'
+
+      this.response1Text = new PIXI.Text(this.response1,
+      ct.styles.get('Response'));
+
+      this.response1Text.x = 96;//coordinates
+
+      this.response1Text.y = 544;
+
+      this.response1Text.depth = 1000;//depth is like the layer for example 1000
+      would be a high up layer while -5 would be a low layer
+
+      this.addChild(this.response1Text);
     onstep: |-
       if(exitDialogue == true){
           ct.rooms.remove(this);
           this.roomCharacter.kill = true;
           this.backgroundType.kill = true;
       }
-    ondraw: ''
+      if(nextDialogue == true){
+          nextDialogue = false;
+          this.dialogue = characterDialogue();
+          console.log(this.dialogue);
+      }
+      if(ct.actions.Interact.pressed){
+          moveActive = false;
+      }
+    ondraw: |-
+      this.dialogueText.text =  this.dialogue;
+      this.response1Text.text = this.response1;
     onleave: |-
       test = 2;
       moveActive = true;
@@ -1671,6 +1751,12 @@ rooms:
         'y': 256
         uid: bda90d00-a00c-45f7-a174-789a81cc40ea
         exts: {}
+      - x: 146
+        'y': 544
+        uid: 81941614-2447-4846-92a2-6d8747d11e8c
+        exts: {}
+        tx: 9
+        ty: 1
     tiles:
       - depth: -10
         tiles: []
@@ -1683,7 +1769,7 @@ rooms:
     gridY: 32
     backgroundColor: 'rgba(0,0,0,0.51)'
     restrictCamera: false
-    lastmod: 1627256841066
+    lastmod: 1627260733741
   - name: Road001
     oncreate: ''
     onstep: ''
@@ -2085,7 +2171,9 @@ scripts:
 
       var dialogueMode = false;
 
-      var nextDialogue = false;
+      var nextDialogue = true;
+
+      var response1;
 
       var dialogueNumber =0;
 
