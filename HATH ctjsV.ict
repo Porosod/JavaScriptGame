@@ -46,6 +46,19 @@ notes: >-
   missing capital on currentCharacterDialogue
 
   dialogue stuff has to be coded in the room
+
+
+  FIRST TEST OF DIALOGUE RESAULT:
+
+  VM161:1 Uncaught SyntaxError: Unexpected end of input
+      at runDialogue (ct.js:3775)
+      at Copy.onStep (ct.js:6538)
+      at t.loop [as fn] (ct.js:492)
+      at t.emit (TickerListener.ts:109)
+      at e.update (Ticker.ts:505)
+      at _tick (Ticker.ts:189)
+
+      didnt work: crd[ 
    */
 libs:
   place:
@@ -1515,12 +1528,14 @@ types:
     lastmod: 1627256960152
   - name: ChurchRecruiter
     depth: 0
-    oncreate: test =2;
+    oncreate: |
+      test =2;
     onstep: |-
       this.move();
       if(ct.actions.Interact.pressed && ct.mouse.hovers(this) && test ==2){
           dialogueMode = true;
           currentCharacter = 'churchRecruiter';
+          characterID = 'crd';
           this.dialogueScreen = ct.rooms.append('Dialogue', {isUi: true});
       exitDialogue = false;
       test =1;
@@ -1589,15 +1604,14 @@ types:
       this.move();
       if(ct.mouse.hovers(this) && ct.actions.Interact.pressed){
           responseNumber = 1;
-          nextDialogue = true;
-          dialogueNumber++;
+          runDialogue(1, characterID, dialogueNumber );
       }
     ondraw: ''
     ondestroy: ''
     texture: 12559a76-89b4-49d2-9926-642054e0ad8e
     extends: {}
     uid: 81941614-2447-4846-92a2-6d8747d11e8c
-    lastmod: 1627261698424
+    lastmod: 1627512481718
   - name: response2
     depth: 1000
     oncreate: ''
@@ -1605,15 +1619,14 @@ types:
       this.move();
       if(ct.mouse.hovers(this) && ct.actions.Interact.pressed){
           responseNumber = 2;
-          nextDialogue = true;
-          dialogueNumber++;
+          runDialogue(2,characterID, dialogueNumber);
       }
     ondraw: ''
     ondestroy: ''
     texture: 12559a76-89b4-49d2-9926-642054e0ad8e
     extends: {}
     uid: 31483b51-8c3b-43ab-9155-0d4ca4bfacd9
-    lastmod: 1627261764661
+    lastmod: 1627512801136
 sounds: []
 styles:
   - name: Dialogue
@@ -1748,6 +1761,8 @@ rooms:
       would be a high up layer while -5 would be a low layer
 
       this.addChild(this.response1Text);
+
+      this.responseNumberCheck
     onstep: |-
       if(exitDialogue == true){
           ct.rooms.remove(this);
@@ -1756,8 +1771,10 @@ rooms:
       }
       if(nextDialogue == true){
           nextDialogue = false;
-          this.dialogue = characterDialogue();
+          this.dialogue = newDialogue
+          this.response1 = 
           console.log(this.dialogue);
+          
       }
       if(ct.actions.Interact.pressed){
           moveActive = false;
@@ -1809,7 +1826,7 @@ rooms:
     gridY: 16
     backgroundColor: 'rgba(0,0,0,0.51)'
     restrictCamera: false
-    lastmod: 1627261686244
+    lastmod: 1627512501821
   - name: Road001
     oncreate: ''
     onstep: ''
@@ -2206,7 +2223,10 @@ scripts:
       var movingDirection; // true is right false is left
       var entryDirection;
   - name: MasterDialogueScript
-    code: >
+    code: >-
+      //Script for all dialogue variables and functions that are not character
+      specific
+
       //dev note: spawn dialogue at 96, 480
 
       var dialogueMode = false;
@@ -2215,28 +2235,50 @@ scripts:
 
       var responseNumber;
 
+      var responseID1;
+
+      var responseID2;
+
+      var characterID;
+
+      var newDialogue = 'oh';
+
       var dialogueNumber =0;
 
       var dialogueScript = function (dialogueID, room){//this function is used
       for dialogue popups the var is an ID associated with the selected dialogue
 
       let dialogueOptions =
-      ['test1aaaaaaaaa','test2bbbbbbbbbbbb','test3ccccccccccc','test4ddddddddd','test5eeeeeee'];
-
-      /*switch(dialogueID) {
-        case 1:
-          room.dialogue = 'test';
-          break;
-        case 2:
-          room.dialogue = 'test2'
-          break;
-        default:
-        room.dialogue = 'end'
-          
-      } */
+      ['test1aaaaaaaaa','test2bbbbbbbbbbbb','test3ccccccccccc','test4ddddddddd','test5eeeeeee'];//OLD
 
       room.dialogue = dialogueOptions[dialogueID]
 
+      }
+
+      //!!!this dialogue system will force the dialogue to be very linear with
+      little room for versatility also wasting storage dialogue options that
+      lead to the same thing will need seperate things needs more work
+
+      var runDialogue = function(response, character, numID){
+          characterID = character;//make sure that nothing is lost
+          if(response ==1){//dialogue for option one the next dialogue will always be three items ahead in the array
+              newDialogue = eval(character + '[', numID + 3, '];'); 
+              responseID1 = eval(character + '[', numID + 3+1, '];'); 
+              responseID2 = eval(character + '[', numID + 3+2, '];'); 
+              dialogueNumber = dialogueNumber+3;
+          }else if(response == 2){//dialogue for option two the next dialogue will always be six items ahead in the array
+              newDialogue = eval(character + '[', numID + 6, '];');
+              responseID1 = eval(character + '[', numID + 6+1, '];'); 
+              responseID2 = eval(character + '[', numID + 6+2, '];'); 
+              dialogueNumber = dialogueNumber+6;
+          }else{
+              console.log('SOME THING HAS GONE TERRIBLY WRONG');
+          }
+          if(newDialogue!='NO DIALOGUE'){
+              nextDialogue = true;
+          }else{
+              exitDialogue=true;
+          }
       }
   - name: testScript
     code: |-
@@ -2435,9 +2477,6 @@ scripts:
     code: >
       /* Character script for freezeMaster */
 
-      let freezeMasterDialogue = ['Hi','beep', 'boop', 'blarboblarp'];//dialogue
-      tree stuff
-
       var freezeMasterEmotePhase;
 
       var freezeMasterHappy = 1;//happy emotion value
@@ -2495,9 +2534,6 @@ scripts:
     code: >
       /* Character script for churchRecruiter */
 
-      let churchRecruiterDialogue = ['Test Dialogue','Yes I am testing
-      dialogue','join the church m8'];//dialogue tree stuff
-
       var churchRecruiterEmotePhase;
 
       var churchRecruiterHappy = 1;//happy emotion value
@@ -2551,6 +2587,14 @@ scripts:
           var animation = 'churchRecruiterBlinkSheet';
           return animation;
       }
+  - name: PlayerScript
+    code: >
+      /* Character script for player */
+
+      let playerResponses1 = ['What?','beep', 'boop', 'blarboblarp'];//dialogue
+      for the player to use to respond
+
+      let playerResponses2 = ['Who are you?','beep', 'boop', 'blarboblarp'];
   - name: ComposScript
     code: >
       /*This script creates new code for the Rooms to run based on character
@@ -2560,10 +2604,6 @@ scripts:
       needing to do 
 
       tons of programming in the room events scripts*/
-
-      var characterDialogue = function(){
-          return eval(currentCharacter + 'Dialogue' +'['+ dialogueNumber + '];')
-      }
 
       // = currentCharacter + 'Dialogue';
 
@@ -2599,6 +2639,20 @@ scripts:
           tempVar = eval(tempVar);
           return tempVar;
       }
+  - name: CharacterDialogueList
+    code: >-
+      /*using this for short hand IDs for dialogue*/
+
+      let crd = ['Test Dialogue', 'Test Dialogue?','huh','Yes I am testing
+      dialogue','weird!','what for','I am testing dialogue','weird!','what
+      for?','NO DIALOGUE','NO DIALOGUE','NO DIALOGUE','NO DIALOGUE'];//dialogue
+      for church recruiter
+
+      let freezeMasterDialogue = ['Hi','beep', 'boop', 'blarboblarp'];//dialogue
+      tree stuff
+
+
+      //---------------------------------//
 starting: 0
 settings:
   authoring:
