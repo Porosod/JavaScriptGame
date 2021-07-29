@@ -57,7 +57,7 @@ notes: >-
       at t.emit (TickerListener.ts:109)
       at e.update (Ticker.ts:505)
       at _tick (Ticker.ts:189)
-
+     I HAD A , INSTEAD OF A +
       didnt work: crd[ 
    */
 libs:
@@ -687,33 +687,6 @@ textures:
     padding: 1
     source: >-
       C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\Chars\UberMench\Miles\MilesFullTemp.png
-  - name: milesIdle
-    untill: 0
-    grid:
-      - 1
-      - 1
-    axis:
-      - 128
-      - 128
-    marginx: 0
-    marginy: 0
-    imgWidth: 256
-    imgHeight: 256
-    width: 256
-    height: 256
-    offx: 0
-    offy: 0
-    origname: i9f6718a5-3917-4451-8794-826aaec88a4b.png
-    shape: rect
-    left: 128
-    right: 128
-    top: 128
-    bottom: 128
-    uid: 9f6718a5-3917-4451-8794-826aaec88a4b
-    padding: 1
-    source: >-
-      C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\Chars\UberMench\Miles\Sheets\milesIdle.png
-    lastmod: 1621932168681
   - name: milesBlinkSheet
     untill: 0
     grid:
@@ -1598,7 +1571,7 @@ types:
     uid: ab4d33f5-396b-4aeb-bce0-e17c35574b1e
     lastmod: 1627257749808
   - name: response1
-    depth: 1000
+    depth: -10000
     oncreate: ''
     onstep: |-
       this.move();
@@ -1611,9 +1584,9 @@ types:
     texture: 12559a76-89b4-49d2-9926-642054e0ad8e
     extends: {}
     uid: 81941614-2447-4846-92a2-6d8747d11e8c
-    lastmod: 1627512481718
+    lastmod: 1627601302060
   - name: response2
-    depth: 1000
+    depth: -1000
     oncreate: ''
     onstep: |-
       this.move();
@@ -1626,7 +1599,7 @@ types:
     texture: 12559a76-89b4-49d2-9926-642054e0ad8e
     extends: {}
     uid: 31483b51-8c3b-43ab-9155-0d4ca4bfacd9
-    lastmod: 1627512801136
+    lastmod: 1627602153046
 sounds: []
 styles:
   - name: Dialogue
@@ -1673,7 +1646,7 @@ styles:
     fill:
       type: '0'
       color: '#C9F4FF'
-    lastmod: 1627259649704
+    lastmod: 1627601403660
 rooms:
   - name: UI
     oncreate: ''
@@ -1755,12 +1728,12 @@ rooms:
 
       this.response2Text.x = 96;//coordinates
 
-      this.response2Text.y = 528;
+      this.response2Text.y = 560;
 
       this.response2Text.depth = 1000;//depth is like the layer for example 1000
       would be a high up layer while -5 would be a low layer
 
-      this.addChild(this.response1Text);
+      this.addChild(this.response2Text);
 
       this.responseNumberCheck
     onstep: |-
@@ -1772,9 +1745,11 @@ rooms:
       if(nextDialogue == true){
           nextDialogue = false;
           this.dialogue = newDialogue
-          this.response1 = 
+          this.response1 = responseID1;
+          this.response2 = responseID2;
+          console.log(this.response2);
+          console.log(this.response1);
           console.log(this.dialogue);
-          
       }
       if(ct.actions.Interact.pressed){
           moveActive = false;
@@ -1826,7 +1801,7 @@ rooms:
     gridY: 16
     backgroundColor: 'rgba(0,0,0,0.51)'
     restrictCamera: false
-    lastmod: 1627512501821
+    lastmod: 1627601359972
   - name: Road001
     oncreate: ''
     onstep: ''
@@ -1913,7 +1888,7 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1627258300712
+    lastmod: 1627601363011
   - name: R2_Road1
     oncreate: |-
       this.playerStartY = 384;
@@ -1953,7 +1928,7 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1627255974481
+    lastmod: 1627600998173
 actions:
   - name: Interact
     methods:
@@ -2262,19 +2237,19 @@ scripts:
       var runDialogue = function(response, character, numID){
           characterID = character;//make sure that nothing is lost
           if(response ==1){//dialogue for option one the next dialogue will always be three items ahead in the array
-              newDialogue = eval(character + '[', numID + 3, '];'); 
-              responseID1 = eval(character + '[', numID + 3+1, '];'); 
-              responseID2 = eval(character + '[', numID + 3+2, '];'); 
+              newDialogue = eval(character + '['+ numID + 3 + '];'); 
+              responseID1 = eval(character + '['+ numID + 3+1 + '];'); 
+              responseID2 = eval(character + '['+ numID + 3+2 + '];'); 
               dialogueNumber = dialogueNumber+3;
           }else if(response == 2){//dialogue for option two the next dialogue will always be six items ahead in the array
-              newDialogue = eval(character + '[', numID + 6, '];');
-              responseID1 = eval(character + '[', numID + 6+1, '];'); 
-              responseID2 = eval(character + '[', numID + 6+2, '];'); 
+              newDialogue = eval(character + '['+ numID + 6 + '];');
+              responseID1 = eval(character + '['+ numID + 6+1 + '];'); 
+              responseID2 = eval(character + '['+ numID + 6+2 + '];'); 
               dialogueNumber = dialogueNumber+6;
           }else{
               console.log('SOME THING HAS GONE TERRIBLY WRONG');
           }
-          if(newDialogue!='NO DIALOGUE'){
+          if(newDialogue!='NO DIALOGUE' || newDialogue !=null){
               nextDialogue = true;
           }else{
               exitDialogue=true;
