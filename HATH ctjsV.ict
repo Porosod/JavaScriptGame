@@ -59,6 +59,15 @@ notes: >-
       at _tick (Ticker.ts:189)
      I HAD A , INSTEAD OF A +
       didnt work: crd[ 
+          still had , and not + in some places
+  ]
+
+  value wont be defined when using the eval but the other one will
+
+  Need to braket maths otherwise it will write 3+1 as 31 not 4
+
+
+  dialogueNumber MUST NEVER EQUAL ZERO OR THE WHOLE THING BREAKS
    */
 libs:
   place:
@@ -1741,10 +1750,13 @@ rooms:
           ct.rooms.remove(this);
           this.roomCharacter.kill = true;
           this.backgroundType.kill = true;
+          exitDialogue =false;
       }
       if(nextDialogue == true){
           nextDialogue = false;
           this.dialogue = newDialogue
+          console.log(responseID2);
+          console.log(responseID1);
           this.response1 = responseID1;
           this.response2 = responseID2;
           console.log(this.response2);
@@ -2218,7 +2230,9 @@ scripts:
 
       var newDialogue = 'oh';
 
-      var dialogueNumber =0;
+      var dialogueMultiplier;
+
+      var dialogueNumber = 1;
 
       var dialogueScript = function (dialogueID, room){//this function is used
       for dialogue popups the var is an ID associated with the selected dialogue
@@ -2235,17 +2249,33 @@ scripts:
       lead to the same thing will need seperate things needs more work
 
       var runDialogue = function(response, character, numID){
-          characterID = character;//make sure that nothing is lost
+          characterID = character;// UNNESSASARY make sure that nothing is lost
           if(response ==1){//dialogue for option one the next dialogue will always be three items ahead in the array
-              newDialogue = eval(character + '['+ numID + 3 + '];'); 
-              responseID1 = eval(character + '['+ numID + 3+1 + '];'); 
-              responseID2 = eval(character + '['+ numID + 3+2 + '];'); 
+              if(numID = 1){
+                  newDialogue = eval(character + '['+ numID + (dialogueNumber+3) + '];'); 
+                  responseID1 = eval(character + '['+ numID + (dialogueNumber+4) + '];'); 
+                  responseID2 = eval(character + '['+ numID + (dialogueNumber+5) + '];'); 
+              }
+              else{
+                  newDialogue = eval(character + '['+ numID + (dialogueNumber+5) + '];'); 
+                  responseID1 = eval(character + '['+ numID + (dialogueNumber+6) + '];'); 
+                  responseID2 = eval(character + '['+ numID + (dialogueNumber+7) + '];'); 
+              }
+              newDialogue = eval(character + '['+ numID + (dialogueNumber* 3) + '];'); 
+              responseID1 = eval(character + '['+ numID + (dialogueNumber*3+1) + '];'); 
+              responseID2 = eval(character + '['+ numID + (dialogueNumber*3+2) + '];'); 
               dialogueNumber = dialogueNumber+3;
           }else if(response == 2){//dialogue for option two the next dialogue will always be six items ahead in the array
-              newDialogue = eval(character + '['+ numID + 6 + '];');
-              responseID1 = eval(character + '['+ numID + 6+1 + '];'); 
-              responseID2 = eval(character + '['+ numID + 6+2 + '];'); 
-              dialogueNumber = dialogueNumber+6;
+              if(numID = 1){
+                  newDialogue = eval(character + '['+ numID + (dialogueNumber+6) + '];'); 
+                  responseID1 = eval(character + '['+ numID + (dialogueNumber+7) + '];'); 
+                  responseID2 = eval(character + '['+ numID + (dialogueNumber+8) + '];'); 
+              }
+              else{
+                  newDialogue = eval(character + '['+ numID + (dialogueNumber+8) + '];'); 
+                  responseID1 = eval(character + '['+ numID + (dialogueNumber+9) + '];'); 
+                  responseID2 = eval(character + '['+ numID + (dialogueNumber+10) + '];'); 
+              }
           }else{
               console.log('SOME THING HAS GONE TERRIBLY WRONG');
           }
@@ -2625,7 +2655,6 @@ scripts:
 
       let freezeMasterDialogue = ['Hi','beep', 'boop', 'blarboblarp'];//dialogue
       tree stuff
-
 
       //---------------------------------//
 starting: 0
