@@ -78,6 +78,17 @@ notes: >-
 
   Side Lining movement to work on scenes and dialogue movement will be mostly
   irrelevant.
+
+
+  number was set to 8 but that is wrong and number wont reset after closing
+  dialogue
+
+  HAD A 6 INSTEAD OF A 5 *FACE PALM*
+
+  number is going to 14 but by the laws of math it should be 13
+
+  MISSING 11 FROM ARRAY AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARG AND I DOUBLED 23
+  AAAAAAAAAAAAAAAAAAAAAAAAAAARG
    */
 libs:
   place:
@@ -1053,6 +1064,32 @@ textures:
     source: >-
       C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\UI\ButtonHidden.png
     lastmod: 1627261141970
+  - name: square
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 16
+    imgHeight: 16
+    width: 16
+    height: 16
+    offx: 0
+    offy: 0
+    origname: iecfb589f-85e5-4d55-86ed-db753b75fd3e.png
+    shape: rect
+    left: 0
+    right: 16
+    top: 0
+    bottom: 16
+    uid: ecfb589f-85e5-4d55-86ed-db753b75fd3e
+    padding: 1
+    source: 'C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\UI\square.png'
+    lastmod: 1627956455349
 skeletons: []
 types:
   - name: CharPlaceHold
@@ -1079,7 +1116,8 @@ types:
     onstep: >-
       this.move();
 
-      if(movingArea == false){
+      /*if(movingArea == false){ OLD MOVEMENT STUFF NOW SCRAPPING MIGHT ADD
+      AGAIN LATER
 
       playerXCo = this.x
 
@@ -1127,13 +1165,24 @@ types:
           ct.rooms.switch(ct.room.nextRoomLeft);
           entryDirection = 'right';
           }
-      }
+      }*/
+
+      if(ct.actions.Interact.pressed == true)
+          {
+              if(ct.mouse.x >768){
+                  ct.rooms.switch(ct.room.nextRoomRight);
+                  entryDirection = 'left';
+              } else if(ct.mouse.x <64){
+              ct.rooms.switch(ct.room.nextRoomLeft);
+              entryDirection = 'right';
+              }
+          }
     ondraw: ''
     ondestroy: ''
     texture: c1c16902-4766-48f8-95ce-eef602ec67f3
     extends: {}
     uid: 7bdd0707-657b-4256-a995-c526fadcb05e
-    lastmod: 1627261099367
+    lastmod: 1627958603342
   - name: Brick
     depth: 0
     oncreate: this.speed = 4;
@@ -1167,7 +1216,7 @@ types:
     texture: e1f01365-dfaf-4ef8-b7c5-039e48c1ad5c
     extends: {}
     uid: fb8d1b19-8e2a-48ee-ba64-56230149fe5f
-    lastmod: 1627259077834
+    lastmod: 1627958608639
   - name: Cursor
     depth: 10000
     oncreate: ''
@@ -1455,6 +1504,8 @@ types:
     oncreate: |-
       this.animationSpeed = 0.2;
       characterBlinking = false;
+      characterID = 'fmd';
+      currentCharacter = 'freezeMaster'
     onstep: >-
       this.move();
 
@@ -1498,7 +1549,7 @@ types:
     texture: 3b730152-e00d-4f31-b3b5-d83009244c85
     extends: {}
     uid: f634f2ee-5330-48a6-986c-25d6cfd75305
-    lastmod: 1626670621376
+    lastmod: 1627958762513
   - name: freezeMasterFull
     depth: 2
     oncreate: test =2;
@@ -1589,7 +1640,7 @@ types:
     texture: e5e34148-4bda-43b1-a07c-087153953e19
     extends: {}
     uid: ab4d33f5-396b-4aeb-bce0-e17c35574b1e
-    lastmod: 1627865054152
+    lastmod: 1627958685519
   - name: response1
     depth: -10000
     oncreate: ''
@@ -1620,6 +1671,16 @@ types:
     extends: {}
     uid: 31483b51-8c3b-43ab-9155-0d4ca4bfacd9
     lastmod: 1627864962553
+  - name: square
+    depth: -20
+    oncreate: ''
+    onstep: this.move();
+    ondraw: ''
+    ondestroy: ''
+    texture: ecfb589f-85e5-4d55-86ed-db753b75fd3e
+    extends: {}
+    uid: a6d0439d-4dc7-42f3-9c0a-6e32079970e9
+    lastmod: 1627956538641
 sounds: []
 styles:
   - name: Dialogue
@@ -1727,7 +1788,7 @@ rooms:
 
       //response1 texts
 
-      this.response1 = 'What?'
+      this.response1 = responseID1;
 
       this.response1Text = new PIXI.Text(this.response1,
       ct.styles.get('Response'));
@@ -1743,7 +1804,7 @@ rooms:
 
       //response2 texts
 
-      this.response2 = 'What?'
+      this.response2 = responseID2;
 
       this.response2Text = new PIXI.Text(this.response2,
       ct.styles.get('Response'));
@@ -1826,7 +1887,7 @@ rooms:
     gridY: 16
     backgroundColor: 'rgba(0,0,0,0.51)'
     restrictCamera: false
-    lastmod: 1627864959550
+    lastmod: 1627958652843
   - name: Road001
     oncreate: ''
     onstep: ''
@@ -1896,7 +1957,7 @@ rooms:
         exts: {}
         tx: 2
         ty: 2
-      - x: 320
+      - x: 768
         'y': 384
         uid: bda90d00-a00c-45f7-a174-789a81cc40ea
         exts: {}
@@ -1904,6 +1965,14 @@ rooms:
         'y': 448
         uid: 27d7d87e-c61c-4144-86d9-85cdadb466a7
         exts: {}
+        tx: 1
+        ty: 1
+      - x: 768
+        'y': 0
+        uid: a6d0439d-4dc7-42f3-9c0a-6e32079970e9
+        exts: {}
+        tx: 4
+        ty: 48
     tiles:
       - depth: -10
         tiles: []
@@ -1913,7 +1982,7 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1627601363011
+    lastmod: 1627956487686
   - name: R2_Road1
     oncreate: |-
       this.playerStartY = 384;
@@ -1944,6 +2013,18 @@ rooms:
         exts: {}
         tx: 2
         ty: 2
+      - x: 768
+        'y': 0
+        uid: a6d0439d-4dc7-42f3-9c0a-6e32079970e9
+        exts: {}
+        tx: 4
+        ty: 40
+      - x: -0.0
+        'y': 0
+        uid: a6d0439d-4dc7-42f3-9c0a-6e32079970e9
+        exts: {}
+        tx: 4
+        ty: 40
     tiles:
       - depth: -10
         tiles: []
@@ -1953,7 +2034,7 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1627600998173
+    lastmod: 1627958612393
 actions:
   - name: Interact
     methods:
@@ -2288,24 +2369,33 @@ scripts:
           }else if(response == 2){//dialogue for option two the next dialogue will always be six items ahead in the array
               if(numID == 1){
                   console.log(dialogueNumber + (dialogueNumber + 5));
-                  newDialogue = eval(character + '['+ (dialogueNumber + dialogueNumber+5) + '];'); 
-                  responseID1 = eval(character + '['+ (dialogueNumber + dialogueNumber+6) + '];'); 
-                  responseID2 = eval(character + '['+ (dialogueNumber + dialogueNumber+7) + '];'); 
-                  dialogueNumber = dialogueNumber + (dialogueNumber + 6);
+                  newDialogue = eval(character + '['+ ((dialogueNumber*2)+5) + '];'); 
+                  responseID1 = eval(character + '['+ ((dialogueNumber*2)+6) + '];'); 
+                  responseID2 = eval(character + '['+ ((dialogueNumber*2)+7) + '];'); 
+                  dialogueNumber = dialogueNumber + (dialogueNumber + 5);
               }
-              else{
-                  console.log(dialogueNumber + (dialogueNumber + 5));
-                  newDialogue = eval(character + '['+ (dialogueNumber + dialogueNumber+5) + '];'); 
-                  responseID1 = eval(character + '['+ (dialogueNumber + dialogueNumber+6) + '];'); 
-                  responseID2 = eval(character + '['+ (dialogueNumber + dialogueNumber+7) + '];'); 
-                  dialogueNumber = (dialogueNumber + dialogueNumber + 5);
+              else
+              {
+                  console.log(dialogueNumber, 'here');
+                  console.log((dialogueNumber*2), 'here2');
+                  console.log((dialogueNumber + (dialogueNumber + 5)), 'here3');
+                  newDialogue = eval(character + '['+ (dialogueNumber + (dialogueNumber + 5)) + '];'); 
+                  responseID1 = eval(character + '['+ ((dialogueNumber*2)+6) + '];'); 
+                  responseID2 = eval(character + '['+ ((dialogueNumber*2)+7) + '];'); 
+                  console.log((dialogueNumber + (dialogueNumber + 5)), 'did maths break afterwards');
+                  dialogueNumber = ((dialogueNumber*2) + 5);
               }
-          }else{
+          }
+          else
+          {
               console.log('SOME THING HAS GONE TERRIBLY WRONG');
           }
-          if(newDialogue!='NO DIALOGUE' || newDialogue !=null){
+          if(newDialogue!='NO DIALOGUE' || newDialogue !=null)
+          {
               nextDialogue = true;
-          }else{
+          }
+          else
+          {
               exitDialogue=true;
           }
       }
@@ -2665,15 +2755,17 @@ scripts:
       /*using this for short hand IDs for dialogue*/
 
       let crd =
-      ['0','1','2','3','4','5','6','7','8','9','10','12','13','14','15','16','17','18','19','20','21','22','23','23','24','25','26','27','28','29','30'];
+      ['0','1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30',
+      '31', '32', '33', '34', '35'];
 
       //let crd = ['Test Dialogue', 'Test Dialogue?','huh','Yes I am testing
       dialogue','weird!','what for','I am testing dialogue','weird!','what
       for?','NO DIALOGUE','NO DIALOGUE','NO DIALOGUE','NO DIALOGUE'];//dialogue
       for church recruiter
 
-      let freezeMasterDialogue = ['Hi','beep', 'boop', 'blarboblarp'];//dialogue
-      tree stuff
+      let fmd = ['TRUEBREAK','Ah a newly thawed human', 'Where am I?',
+      'Thawed?','You\'re in the future!', 'next', 'next','You Died in like 2063
+      of heart failure','next','next'];//dialogue tree stuff
 
       let noCharacter = ['NODIALOGUE'];
 
