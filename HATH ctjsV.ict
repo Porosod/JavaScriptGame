@@ -68,6 +68,16 @@ notes: >-
 
 
   dialogueNumber MUST NEVER EQUAL ZERO OR THE WHOLE THING BREAKS
+
+
+  WHOLE BUNCHA STUFF WASNT WORKING THOUGHT MATHS BROKE TURNS OUT I FORGOT A =
+  SIGN AAAAAAAAAAAAAAAAAA
+
+  accidentally added 3 not 5
+
+
+  Side Lining movement to work on scenes and dialogue movement will be mostly
+  irrelevant.
    */
 libs:
   place:
@@ -1534,6 +1544,7 @@ types:
       this.animationSpeed = 0.2;
       characterBlinking = false;
       currentCharacter = 'churchRecruiter';
+      characterID = 'crd';
       nextDialogue = true;
     onstep: >
       this.move();
@@ -1578,7 +1589,7 @@ types:
     texture: e5e34148-4bda-43b1-a07c-087153953e19
     extends: {}
     uid: ab4d33f5-396b-4aeb-bce0-e17c35574b1e
-    lastmod: 1627257749808
+    lastmod: 1627865054152
   - name: response1
     depth: -10000
     oncreate: ''
@@ -1608,7 +1619,7 @@ types:
     texture: 12559a76-89b4-49d2-9926-642054e0ad8e
     extends: {}
     uid: 31483b51-8c3b-43ab-9155-0d4ca4bfacd9
-    lastmod: 1627602153046
+    lastmod: 1627864962553
 sounds: []
 styles:
   - name: Dialogue
@@ -1698,7 +1709,9 @@ rooms:
 
       moveActive = false;
 
-      this.dialogue = 'A'
+      setOpeningDialogue();
+
+      this.dialogue = newDialogue;
 
       this.dialogueText = new PIXI.Text(' ' + this.dialogue,
       ct.styles.get('Dialogue'));
@@ -1754,14 +1767,14 @@ rooms:
       }
       if(nextDialogue == true){
           nextDialogue = false;
-          this.dialogue = newDialogue
+          this.dialogue = newDialogue;
           console.log(responseID2);
           console.log(responseID1);
           this.response1 = responseID1;
           this.response2 = responseID2;
-          console.log(this.response2);
-          console.log(this.response1);
-          console.log(this.dialogue);
+          //console.log(this.response2);
+          //console.log(this.response1);
+          //console.log(this.dialogue);
       }
       if(ct.actions.Interact.pressed){
           moveActive = false;
@@ -1813,7 +1826,7 @@ rooms:
     gridY: 16
     backgroundColor: 'rgba(0,0,0,0.51)'
     restrictCamera: false
-    lastmod: 1627601359972
+    lastmod: 1627864959550
   - name: Road001
     oncreate: ''
     onstep: ''
@@ -2222,17 +2235,23 @@ scripts:
 
       var responseNumber;
 
-      var responseID1;
+      var responseID1;//these are actually strings
 
       var responseID2;
 
-      var characterID;
+      var characterID;// a form of current character for short hand
 
-      var newDialogue = 'oh';
+      var newDialogue// string for the dialogue
 
       var dialogueMultiplier;
 
       var dialogueNumber = 1;
+
+      var setOpeningDialogue = function(){
+          newDialogue = eval(characterID +'['+ 1 + '];');
+          responseID1 = eval(characterID +'['+ 2 + '];');
+          responseID2 = eval(characterID +'['+ 3 + '];');
+      }
 
       var dialogueScript = function (dialogueID, room){//this function is used
       for dialogue popups the var is an ID associated with the selected dialogue
@@ -2249,32 +2268,37 @@ scripts:
       lead to the same thing will need seperate things needs more work
 
       var runDialogue = function(response, character, numID){
-          characterID = character;// UNNESSASARY make sure that nothing is lost
           if(response ==1){//dialogue for option one the next dialogue will always be three items ahead in the array
-              if(numID = 1){
-                  newDialogue = eval(character + '['+ numID + (dialogueNumber+3) + '];'); 
-                  responseID1 = eval(character + '['+ numID + (dialogueNumber+4) + '];'); 
-                  responseID2 = eval(character + '['+ numID + (dialogueNumber+5) + '];'); 
+              if(numID == 1){
+                  console.log((dialogueNumber*2));
+                  newDialogue = eval(character + '['+ (dialogueNumber + dialogueNumber+2) + '];'); 
+                  responseID1 = eval(character + '['+ (dialogueNumber + dialogueNumber+3) + '];'); 
+                  responseID2 = eval(character + '['+ (dialogueNumber + dialogueNumber+4) + '];'); 
+                  dialogueNumber = ((dialogueNumber*2) + 2);
               }
               else{
-                  newDialogue = eval(character + '['+ numID + (dialogueNumber+5) + '];'); 
-                  responseID1 = eval(character + '['+ numID + (dialogueNumber+6) + '];'); 
-                  responseID2 = eval(character + '['+ numID + (dialogueNumber+7) + '];'); 
+                  console.log(dialogueNumber, 'here');
+                  console.log((dialogueNumber*2), 'here2');
+                  console.log((dialogueNumber + (dialogueNumber + 2)), 'here3');
+                  newDialogue = eval(character + '['+ ((dialogueNumber*2)+2) + '];'); 
+                  responseID1 = eval(character + '['+ ((dialogueNumber*2)+3) + '];'); 
+                  responseID2 = eval(character + '['+ ((dialogueNumber*2)+4) + '];');
+                  dialogueNumber = ((dialogueNumber*2) + 2);
               }
-              newDialogue = eval(character + '['+ numID + (dialogueNumber* 3) + '];'); 
-              responseID1 = eval(character + '['+ numID + (dialogueNumber*3+1) + '];'); 
-              responseID2 = eval(character + '['+ numID + (dialogueNumber*3+2) + '];'); 
-              dialogueNumber = dialogueNumber+3;
           }else if(response == 2){//dialogue for option two the next dialogue will always be six items ahead in the array
-              if(numID = 1){
-                  newDialogue = eval(character + '['+ numID + (dialogueNumber+6) + '];'); 
-                  responseID1 = eval(character + '['+ numID + (dialogueNumber+7) + '];'); 
-                  responseID2 = eval(character + '['+ numID + (dialogueNumber+8) + '];'); 
+              if(numID == 1){
+                  console.log(dialogueNumber + (dialogueNumber + 5));
+                  newDialogue = eval(character + '['+ (dialogueNumber + dialogueNumber+5) + '];'); 
+                  responseID1 = eval(character + '['+ (dialogueNumber + dialogueNumber+6) + '];'); 
+                  responseID2 = eval(character + '['+ (dialogueNumber + dialogueNumber+7) + '];'); 
+                  dialogueNumber = dialogueNumber + (dialogueNumber + 6);
               }
               else{
-                  newDialogue = eval(character + '['+ numID + (dialogueNumber+8) + '];'); 
-                  responseID1 = eval(character + '['+ numID + (dialogueNumber+9) + '];'); 
-                  responseID2 = eval(character + '['+ numID + (dialogueNumber+10) + '];'); 
+                  console.log(dialogueNumber + (dialogueNumber + 5));
+                  newDialogue = eval(character + '['+ (dialogueNumber + dialogueNumber+5) + '];'); 
+                  responseID1 = eval(character + '['+ (dialogueNumber + dialogueNumber+6) + '];'); 
+                  responseID2 = eval(character + '['+ (dialogueNumber + dialogueNumber+7) + '];'); 
+                  dialogueNumber = (dialogueNumber + dialogueNumber + 5);
               }
           }else{
               console.log('SOME THING HAS GONE TERRIBLY WRONG');
@@ -2290,14 +2314,6 @@ scripts:
       /* Use scripts to define frequent functions and import small libraries */
       var test = 0;
       var blarp = 0;
-  - name: charScript1
-    code: >
-      /*This script controls dialogue of a specified character
-       when I have characters I will change the names of the scripts to the character names*/
-      var char1Emote = 0; //0=neutral 1=happy 2=sad 3=Angry 
-
-      var char1DialogueStage = 0;//to track what dialogue the character should
-      say
   - name: PinkCharScript
     code: >
       /* Character script for Pink */
@@ -2648,13 +2664,18 @@ scripts:
     code: >-
       /*using this for short hand IDs for dialogue*/
 
-      let crd = ['Test Dialogue', 'Test Dialogue?','huh','Yes I am testing
+      let crd =
+      ['0','1','2','3','4','5','6','7','8','9','10','12','13','14','15','16','17','18','19','20','21','22','23','23','24','25','26','27','28','29','30'];
+
+      //let crd = ['Test Dialogue', 'Test Dialogue?','huh','Yes I am testing
       dialogue','weird!','what for','I am testing dialogue','weird!','what
       for?','NO DIALOGUE','NO DIALOGUE','NO DIALOGUE','NO DIALOGUE'];//dialogue
       for church recruiter
 
       let freezeMasterDialogue = ['Hi','beep', 'boop', 'blarboblarp'];//dialogue
       tree stuff
+
+      let noCharacter = ['NODIALOGUE'];
 
       //---------------------------------//
 starting: 0
