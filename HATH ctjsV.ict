@@ -150,6 +150,9 @@ notes: >
       }
   }
 
+
+  accidentally deleted curly braket causing entire engine to break
+
   */
 libs:
   place:
@@ -1180,6 +1183,56 @@ textures:
     source: >-
       C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\UI\QuestJournal.png
     lastmod: 1628114335613
+  - name: Arrow
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 16
+    imgHeight: 16
+    width: 16
+    height: 16
+    offx: 0
+    offy: 0
+    origname: i1cde0238-fce6-48c6-9ec3-3c90c5bfba1b.png
+    shape: rect
+    left: 0
+    right: 16
+    top: 0
+    bottom: 16
+    uid: 1cde0238-fce6-48c6-9ec3-3c90c5bfba1b
+    padding: 1
+    source: 'C:\Users\moosh\Pictures\Game assets\Hath\Arrow.png'
+  - name: ArrowUp
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 16
+    imgHeight: 16
+    width: 16
+    height: 16
+    offx: 0
+    offy: 0
+    origname: i5cde1a9c-7b0d-4fde-b306-1aa46638e860.png
+    shape: rect
+    left: 0
+    right: 16
+    top: 0
+    bottom: 16
+    uid: 5cde1a9c-7b0d-4fde-b306-1aa46638e860
+    padding: 1
+    source: 'C:\Users\moosh\Pictures\Game assets\Hath\ArrowUp.png'
 skeletons: []
 types:
   - name: CharPlaceHold
@@ -1342,7 +1395,7 @@ types:
     texture: cce25aee-fdfd-42bc-bf33-113247467611
     extends: {}
     uid: 56de7695-90ed-4b79-a522-4812cfaa1445
-    lastmod: 1628117807683
+    lastmod: 1628209695892
   - name: PinkDialogue
     depth: 0
     oncreate: ''
@@ -1657,7 +1710,7 @@ types:
     texture: 4398da89-b242-41c4-9a70-a555523da1f5
     extends: {}
     uid: dfb8bf33-c4a0-4c07-83a4-a9ba95a8724d
-    lastmod: 1628116871379
+    lastmod: 1628210087922
   - name: churchRecruiterDialogue
     depth: 2
     oncreate: |-
@@ -1666,7 +1719,8 @@ types:
       currentCharacter = 'churchRecruiter';
       characterID = 'crd';
       nextDialogue = true;
-    onstep: >
+      characterDialogueSetup();
+    onstep: >-
       this.move();
 
       if ( blarp== 4 && characterBlinking == false){//this uses a copy pasteable
@@ -1709,7 +1763,7 @@ types:
     texture: e5e34148-4bda-43b1-a07c-087153953e19
     extends: {}
     uid: ab4d33f5-396b-4aeb-bce0-e17c35574b1e
-    lastmod: 1627958685519
+    lastmod: 1628210848287
   - name: response1
     depth: -10000
     oncreate: ''
@@ -1724,7 +1778,7 @@ types:
     texture: 12559a76-89b4-49d2-9926-642054e0ad8e
     extends: {}
     uid: 81941614-2447-4846-92a2-6d8747d11e8c
-    lastmod: 1627601302060
+    lastmod: 1628210093056
   - name: response2
     depth: -1000
     oncreate: ''
@@ -1760,6 +1814,26 @@ types:
     extends: {}
     uid: d95e5406-7d35-4158-8e70-825d11f6bbab
     lastmod: 1628116872867
+  - name: Arrow
+    depth: 180
+    oncreate: ''
+    onstep: this.move();
+    ondraw: ''
+    ondestroy: ''
+    texture: 1cde0238-fce6-48c6-9ec3-3c90c5bfba1b
+    extends: {}
+    uid: 7cf2c44d-a81a-47bc-8483-8cbdfc9318f1
+    lastmod: 1628209679827
+  - name: ArrowUp
+    depth: 180
+    oncreate: ''
+    onstep: this.move();
+    ondraw: ''
+    ondestroy: ''
+    texture: 5cde1a9c-7b0d-4fde-b306-1aa46638e860
+    extends: {}
+    uid: b82f8f36-fe91-475c-9606-bf5f2690f261
+    lastmod: 1628209703034
 sounds: []
 styles:
   - name: Dialogue
@@ -1881,6 +1955,18 @@ rooms:
         'y': 96
         uid: 56de7695-90ed-4b79-a522-4812cfaa1445
         exts: {}
+      - x: 768
+        'y': 544
+        uid: 7cf2c44d-a81a-47bc-8483-8cbdfc9318f1
+        exts: {}
+        tx: 2
+        ty: 2
+      - x: 768
+        'y': 128
+        uid: b82f8f36-fe91-475c-9606-bf5f2690f261
+        exts: {}
+        tx: 2
+        ty: 2
     tiles:
       - depth: -10
         tiles: []
@@ -1891,7 +1977,7 @@ rooms:
       isUi: true
     gridX: 32
     gridY: 32
-    lastmod: 1628117786042
+    lastmod: 1628210097418
     backgroundColor: 'rgba(0,0,0,0)'
   - name: Dialogue
     oncreate: >-
@@ -2810,6 +2896,7 @@ scripts:
       var churchRecruiterBlinking;
       var churchRecruiterPrevTalk = false;
       var churchRecruiterDialogueSetup = function(){
+          console.log('check');
           if(churchRecruiterPrevTalk==false){
               dialogueNumber = 1;
               newDialogue = eval(characterID +'['+ 1 + '];');
@@ -2858,7 +2945,8 @@ scripts:
       }
 
       var characterDialogueSetup = function(){
-          eval(currentCharacter + 'DialogueSetup');
+          console.log('checka');
+          eval(currentCharacter + 'DialogueSetup();');
       }
   - name: CharacterDialogueList
     code: >-
@@ -2902,7 +2990,7 @@ settings:
     version:
       - 0
       - 0
-      - 4
+      - 5
     versionPostfix: ''
   rendering:
     usePixiLegacy: true
