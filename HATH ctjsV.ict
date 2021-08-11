@@ -95,6 +95,11 @@ notes: >
   responseID2.includes(); is not a function but it worked before
 
 
+  testing addding quests dialogue changing worked but quest didn't pop up:
+  forgot to set the quest var to read from questlog
+
+  testing addding quests dialogue changing worked quest was added !!!!!!
+
 
 
   OLD COD
@@ -150,9 +155,6 @@ notes: >
       }
   }
 
-
-  accidentally deleted curly braket causing entire engine to break
-
   */
 libs:
   place:
@@ -172,14 +174,13 @@ libs:
   yarn:
     skipEmpty: true
     magic: true
-  sprite:
-    spritedef: ''
   vkeys: {}
   random: {}
   capture: {}
   storage: {}
   transition: {}
   tween: {}
+  cutscene: {}
 textures:
   - name: PlaceChar
     untill: 0
@@ -809,7 +810,7 @@ textures:
     padding: 1
     source: >-
       C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\Chars\UberMench\Miles\Sheets\milesBlinkSheet.png
-    lastmod: 1625698172973
+    lastmod: 1628720117235
   - name: jackBlinkSheet
     untill: 0
     grid:
@@ -836,7 +837,7 @@ textures:
     padding: 1
     source: >-
       C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\Chars\UberMench\Jack\jackBlinkSheet.png
-    lastmod: 1622068483432
+    lastmod: 1628720103623
   - name: jackFullTemp
     untill: 0
     grid:
@@ -1183,7 +1184,7 @@ textures:
     source: >-
       C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\UI\QuestJournal.png
     lastmod: 1628114335613
-  - name: Arrow
+  - name: Inventory
     untill: 0
     grid:
       - 1
@@ -1193,46 +1194,21 @@ textures:
       - 0
     marginx: 0
     marginy: 0
-    imgWidth: 16
-    imgHeight: 16
-    width: 16
-    height: 16
+    imgWidth: 128
+    imgHeight: 128
+    width: 128
+    height: 128
     offx: 0
     offy: 0
-    origname: i1cde0238-fce6-48c6-9ec3-3c90c5bfba1b.png
+    origname: i6f640377-fa92-4617-96b7-f75d876c3e79.png
     shape: rect
     left: 0
-    right: 16
+    right: 128
     top: 0
-    bottom: 16
-    uid: 1cde0238-fce6-48c6-9ec3-3c90c5bfba1b
+    bottom: 128
+    uid: 6f640377-fa92-4617-96b7-f75d876c3e79
     padding: 1
-    source: 'C:\Users\moosh\Pictures\Game assets\Hath\Arrow.png'
-  - name: ArrowUp
-    untill: 0
-    grid:
-      - 1
-      - 1
-    axis:
-      - 0
-      - 0
-    marginx: 0
-    marginy: 0
-    imgWidth: 16
-    imgHeight: 16
-    width: 16
-    height: 16
-    offx: 0
-    offy: 0
-    origname: i5cde1a9c-7b0d-4fde-b306-1aa46638e860.png
-    shape: rect
-    left: 0
-    right: 16
-    top: 0
-    bottom: 16
-    uid: 5cde1a9c-7b0d-4fde-b306-1aa46638e860
-    padding: 1
-    source: 'C:\Users\moosh\Pictures\Game assets\Hath\ArrowUp.png'
+    source: 'C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\UI\Inventory.png'
 skeletons: []
 types:
   - name: CharPlaceHold
@@ -1388,6 +1364,7 @@ types:
       if(ct.actions.Interact.pressed && ct.mouse.hovers(this)){
           exitDialogue = true;
           exitQuest = true;
+          //exitInventory = true;
           currentCharacter = null;
       }
     ondraw: ''
@@ -1395,7 +1372,7 @@ types:
     texture: cce25aee-fdfd-42bc-bf33-113247467611
     extends: {}
     uid: 56de7695-90ed-4b79-a522-4812cfaa1445
-    lastmod: 1628209695892
+    lastmod: 1628117807683
   - name: PinkDialogue
     depth: 0
     oncreate: ''
@@ -1710,7 +1687,7 @@ types:
     texture: 4398da89-b242-41c4-9a70-a555523da1f5
     extends: {}
     uid: dfb8bf33-c4a0-4c07-83a4-a9ba95a8724d
-    lastmod: 1628210087922
+    lastmod: 1628116871379
   - name: churchRecruiterDialogue
     depth: 2
     oncreate: |-
@@ -1719,8 +1696,7 @@ types:
       currentCharacter = 'churchRecruiter';
       characterID = 'crd';
       nextDialogue = true;
-      characterDialogueSetup();
-    onstep: >-
+    onstep: >
       this.move();
 
       if ( blarp== 4 && characterBlinking == false){//this uses a copy pasteable
@@ -1763,7 +1739,7 @@ types:
     texture: e5e34148-4bda-43b1-a07c-087153953e19
     extends: {}
     uid: ab4d33f5-396b-4aeb-bce0-e17c35574b1e
-    lastmod: 1628210848287
+    lastmod: 1627958685519
   - name: response1
     depth: -10000
     oncreate: ''
@@ -1778,7 +1754,7 @@ types:
     texture: 12559a76-89b4-49d2-9926-642054e0ad8e
     extends: {}
     uid: 81941614-2447-4846-92a2-6d8747d11e8c
-    lastmod: 1628210093056
+    lastmod: 1627601302060
   - name: response2
     depth: -1000
     oncreate: ''
@@ -1814,26 +1790,16 @@ types:
     extends: {}
     uid: d95e5406-7d35-4158-8e70-825d11f6bbab
     lastmod: 1628116872867
-  - name: Arrow
-    depth: 180
+  - name: Inventory
+    depth: 0
     oncreate: ''
     onstep: this.move();
     ondraw: ''
     ondestroy: ''
-    texture: 1cde0238-fce6-48c6-9ec3-3c90c5bfba1b
+    texture: 6f640377-fa92-4617-96b7-f75d876c3e79
     extends: {}
-    uid: 7cf2c44d-a81a-47bc-8483-8cbdfc9318f1
-    lastmod: 1628209679827
-  - name: ArrowUp
-    depth: 180
-    oncreate: ''
-    onstep: this.move();
-    ondraw: ''
-    ondestroy: ''
-    texture: 5cde1a9c-7b0d-4fde-b306-1aa46638e860
-    extends: {}
-    uid: b82f8f36-fe91-475c-9606-bf5f2690f261
-    lastmod: 1628209703034
+    uid: dd76c237-5611-47a9-b23f-6e8b8c357d78
+    lastmod: 1628465540809
 sounds: []
 styles:
   - name: Dialogue
@@ -1925,6 +1891,19 @@ rooms:
       questOpen = true;
 
       moveActive = false;
+
+      this.quests = questLog;
+
+      this.questsText = new PIXI.Text(this.quests, ct.styles.get('questText'));
+
+      this.questsText.x = 160;//coordinates
+
+      this.questsText.y = 160;
+
+      this.questsText.depth = 1000;//depth is like the layer for example 1000
+      would be a high up layer while -5 would be a low layer
+
+      this.addChild(this.questsText);
     onstep: |-
       if(exitQuest == true){
           ct.rooms.remove(this);
@@ -1955,18 +1934,6 @@ rooms:
         'y': 96
         uid: 56de7695-90ed-4b79-a522-4812cfaa1445
         exts: {}
-      - x: 768
-        'y': 544
-        uid: 7cf2c44d-a81a-47bc-8483-8cbdfc9318f1
-        exts: {}
-        tx: 2
-        ty: 2
-      - x: 768
-        'y': 128
-        uid: b82f8f36-fe91-475c-9606-bf5f2690f261
-        exts: {}
-        tx: 2
-        ty: 2
     tiles:
       - depth: -10
         tiles: []
@@ -1977,7 +1944,7 @@ rooms:
       isUi: true
     gridX: 32
     gridY: 32
-    lastmod: 1628210097418
+    lastmod: 1628720274593
     backgroundColor: 'rgba(0,0,0,0)'
   - name: Dialogue
     oncreate: >-
@@ -2256,6 +2223,86 @@ rooms:
     gridX: 64
     gridY: 64
     lastmod: 1627958612393
+  - name: InventoryUIRoom
+    oncreate: >-
+      this.questTitle = 'Objectives';
+
+      this.questTitleText = new PIXI.Text(this.questTitle,
+      ct.styles.get('questTitle'));
+
+      this.questTitleText.x = 160;//coordinates
+
+      this.questTitleText.y = 128;
+
+      this.questTitleText.depth = 1000;//depth is like the layer for example
+      1000 would be a high up layer while -5 would be a low layer
+
+      this.addChild(this.questTitleText);
+
+      questOpen = true;
+
+      moveActive = false;
+    onstep: |-
+      if(exitQuest == true){
+          ct.rooms.remove(this);
+      }
+    ondraw: this.questTitleText.text =  this.questTitle;
+    onleave: |-
+      questOpen = false;
+      moveActive = true;
+    width: 832
+    height: 640
+    backgrounds: []
+    copies:
+      - x: 352
+        'y': 288
+        uid: bda90d00-a00c-45f7-a174-789a81cc40ea
+        exts: {}
+      - x: 0
+        'y': 0
+        uid: 8f833c10-651a-49f7-86e5-51df4a70ff52
+        exts: {}
+      - x: 0
+        'y': -32
+        uid: dd76c237-5611-47a9-b23f-6e8b8c357d78
+        exts: {}
+        tx: 5
+        ty: 5
+      - x: 576
+        'y': 96
+        uid: 56de7695-90ed-4b79-a522-4812cfaa1445
+        exts: {}
+    tiles:
+      - depth: -10
+        tiles: []
+        extends: {}
+    uid: 7abec43e-7154-4cbc-8886-b23a0c846ac3
+    thumbnail: b23a0c846ac3
+    extends:
+      isUi: true
+    gridX: 32
+    gridY: 32
+    lastmod: 1628720277233
+    backgroundColor: 'rgba(0,0,0,0)'
+  - name: HomeScreen
+    oncreate: ''
+    onstep: ''
+    ondraw: ''
+    onleave: ''
+    width: 800
+    height: 600
+    backgrounds: []
+    copies: []
+    tiles:
+      - depth: -10
+        tiles: []
+        extends: {}
+    uid: bd56ba0d-ad20-4503-bd5e-63d991363ea9
+    thumbnail: 63d991363ea9
+    extends: {}
+    gridX: 64
+    gridY: 64
+    lastmod: 1628720079930
 actions:
   - name: Interact
     methods:
@@ -2264,6 +2311,7 @@ actions:
   - name: Inventory
     methods:
       - code: mouse.Middle
+      - code: keyboard.KeyI
   - name: InteractType
     methods:
       - code: mouse.Right
@@ -2529,6 +2577,8 @@ scripts:
       var entryDirection;
       var questOpen = false;
       var exitQuest;
+      var exitInventory;
+      var questLog;
   - name: MasterDialogueScript
     code: >-
       //Script for all dialogue variables and functions that are not character
@@ -2636,6 +2686,16 @@ scripts:
           {
               backBreakException = false;
           }
+          try//I have to use this because if responseID2 doesn't include the phrase it will throw an error saying var.includes(); is not a function
+          {
+              if(responseID1.includes('ACCEPTQUEST'))//one should always be accept two should always be reject
+              {
+                  responseID1 = runQuest(responseID1);
+              }
+          }
+          catch
+          {
+          }
           if(isNaN(newDialogue)==true || true)
           {
               nextDialogue = true;
@@ -2646,7 +2706,30 @@ scripts:
           }
       }
   - name: QuestScript
-    code: /* Script for quests */
+    code: |-
+      /* Script for quests */
+      var runQuest = function(inputLine)
+      {
+      var responseLine;
+      try//prevent game crash
+      {
+          if(inputLine.includes(001))
+          {
+              responseLine = 'sure';
+               questLog = 'Join the Church'
+          }
+          else if(inputLine.includes(002))
+          {
+              responseLine = 'sure';
+              questLog = 'Join the Antichurch';
+          }
+      }
+      catch
+      {
+          console.log('ERRORSTATE')
+      }
+      return responseLine;
+      }
   - name: testScript
     code: |-
       /* Use scripts to define frequent functions and import small libraries */
@@ -2896,7 +2979,6 @@ scripts:
       var churchRecruiterBlinking;
       var churchRecruiterPrevTalk = false;
       var churchRecruiterDialogueSetup = function(){
-          console.log('check');
           if(churchRecruiterPrevTalk==false){
               dialogueNumber = 1;
               newDialogue = eval(characterID +'['+ 1 + '];');
@@ -2945,8 +3027,7 @@ scripts:
       }
 
       var characterDialogueSetup = function(){
-          console.log('checka');
-          eval(currentCharacter + 'DialogueSetup();');
+          eval(currentCharacter + 'DialogueSetup');
       }
   - name: CharacterDialogueList
     code: >-
@@ -2961,7 +3042,9 @@ scripts:
       church','next','next
       BACKBREAK',25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,'would
       you like to
-      join?','sure','no',49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204];
+      join?','ACCEPTQUEST-002','no',49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,'Well
+      suit your self
+      then','Goodbye','Goodbye',97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204];
 
       //let crd = ['Test Dialogue', 'Test Dialogue?','huh','Yes I am testing
       dialogue','weird!','what for','I am testing dialogue','weird!','what
@@ -2990,14 +3073,14 @@ settings:
     version:
       - 0
       - 0
-      - 5
+      - 4
     versionPostfix: ''
   rendering:
     usePixiLegacy: true
     maxFPS: 60
     pixelatedrender: true
     highDensity: true
-    desktopMode: maximized
+    desktopMode: fullscreen
     hideCursor: true
   export:
     windows: true
@@ -3009,6 +3092,7 @@ settings:
     icon: -1
     accent: '#446adb'
     invertPreloaderScheme: true
+    hideLoadingLogo: true
   fps: 30
 fonts:
   - typefaceName: pixel_dingbats-7
