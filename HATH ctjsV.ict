@@ -100,6 +100,8 @@ notes: >
 
   testing addding quests dialogue changing worked quest was added !!!!!!
 
+  running the dialogue would just give undefined forgot to add the (); to the
+  eval
 
 
   OLD COD
@@ -1313,7 +1315,7 @@ types:
     texture: e1f01365-dfaf-4ef8-b7c5-039e48c1ad5c
     extends: {}
     uid: fb8d1b19-8e2a-48ee-ba64-56230149fe5f
-    lastmod: 1628117814900
+    lastmod: 1628722140083
   - name: Cursor
     depth: 10000
     oncreate: ''
@@ -1687,7 +1689,7 @@ types:
     texture: 4398da89-b242-41c4-9a70-a555523da1f5
     extends: {}
     uid: dfb8bf33-c4a0-4c07-83a4-a9ba95a8724d
-    lastmod: 1628116871379
+    lastmod: 1628722194729
   - name: churchRecruiterDialogue
     depth: 2
     oncreate: |-
@@ -1739,7 +1741,7 @@ types:
     texture: e5e34148-4bda-43b1-a07c-087153953e19
     extends: {}
     uid: ab4d33f5-396b-4aeb-bce0-e17c35574b1e
-    lastmod: 1627958685519
+    lastmod: 1628722124374
   - name: response1
     depth: -10000
     oncreate: ''
@@ -1944,7 +1946,7 @@ rooms:
       isUi: true
     gridX: 32
     gridY: 32
-    lastmod: 1628720274593
+    lastmod: 1628722330768
     backgroundColor: 'rgba(0,0,0,0)'
   - name: Dialogue
     oncreate: >-
@@ -1958,7 +1960,9 @@ rooms:
 
       moveActive = false;
 
-      setOpeningDialogue();
+      console.log(currentCharacter);
+
+      characterDialogueSetup();
 
       this.dialogue = newDialogue;
 
@@ -2075,7 +2079,7 @@ rooms:
     gridY: 16
     backgroundColor: 'rgba(0,0,0,0.51)'
     restrictCamera: false
-    lastmod: 1628117472528
+    lastmod: 1628722187578
   - name: Road001
     oncreate: ''
     onstep: ''
@@ -2607,12 +2611,6 @@ scripts:
       var backBreakException = false;//This is used to save space in the array
       and so i don;t have to double up dialogue lines
 
-      var setOpeningDialogue = function(){
-          newDialogue = eval(characterID +'['+ 1 + '];');
-          responseID1 = eval(characterID +'['+ 2 + '];');
-          responseID2 = eval(characterID +'['+ 3 + '];');
-      }
-
       /*var dialogueScript = function (dialogueID, room){//this function is used
       for dialogue popups the var is an ID associated with the selected dialogue
 
@@ -2696,7 +2694,7 @@ scripts:
           catch
           {
           }
-          if(isNaN(newDialogue)==true || true)
+          if(isNaN(newDialogue)==true || true)//remove this after testing
           {
               nextDialogue = true;
           }
@@ -3027,7 +3025,7 @@ scripts:
       }
 
       var characterDialogueSetup = function(){
-          eval(currentCharacter + 'DialogueSetup');
+          eval(currentCharacter + 'DialogueSetup();');
       }
   - name: CharacterDialogueList
     code: >-
@@ -3042,9 +3040,9 @@ scripts:
       church','next','next
       BACKBREAK',25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,'would
       you like to
-      join?','ACCEPTQUEST-002','no',49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,'Well
-      suit your self
-      then','Goodbye','Goodbye',97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204];
+      join?','ACCEPTQUEST-001','no',49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,'Fantastic
+      Ill see you there','Goodbye','Goodbye','Well suit your self
+      then','Goodbye','Goodbye',100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204];
 
       //let crd = ['Test Dialogue', 'Test Dialogue?','huh','Yes I am testing
       dialogue','weird!','what for','I am testing dialogue','weird!','what
