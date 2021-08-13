@@ -276,7 +276,7 @@ textures:
     source: >-
       C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\sceneAssets\Backgrounds\FarBacks\Grey.png
     tiled: true
-    lastmod: 1619315820509
+    lastmod: 1628810997531
   - name: UI01
     untill: 0
     grid:
@@ -352,7 +352,7 @@ textures:
     uid: 4011ba97-4a0d-43f4-99f9-aa7689c924e6
     padding: 1
     source: 'C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\UI\Button3.png'
-    lastmod: 1620606407422
+    lastmod: 1628811595988
   - name: Button1
     untill: 0
     grid:
@@ -404,7 +404,7 @@ textures:
     uid: f10463b7-2f27-4515-93b6-ca3abe91a243
     padding: 1
     source: 'C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\UI\Button2.png'
-    lastmod: 1620606405077
+    lastmod: 1628811598962
   - name: PinkPlace
     untill: 0
     grid:
@@ -732,7 +732,7 @@ textures:
     padding: 1
     source: >-
       C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\Chars\Pink\Pink_Blush2.png
-    lastmod: 1620699944411
+    lastmod: 1628811150416
   - name: Pink_Happy
     untill: 0
     grid:
@@ -786,6 +786,7 @@ textures:
     padding: 1
     source: >-
       C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\Chars\UberMench\Miles\MilesFullTemp.png
+    lastmod: 1628811074670
   - name: milesBlinkSheet
     untill: 0
     grid:
@@ -839,7 +840,7 @@ textures:
     padding: 1
     source: >-
       C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\Chars\UberMench\Jack\jackBlinkSheet.png
-    lastmod: 1628720103623
+    lastmod: 1628811149600
   - name: jackFullTemp
     untill: 0
     grid:
@@ -1026,7 +1027,7 @@ textures:
     padding: 1
     source: >-
       C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\Chars\Regs\FreezeMaster\FreezeMasterFull.png
-    lastmod: 1625789363597
+    lastmod: 1628810999501
   - name: freezeMasterBlinkSheet
     untill: 0
     grid:
@@ -1105,7 +1106,7 @@ textures:
     uid: e5e34148-4bda-43b1-a07c-087153953e19
     padding: 1
     source: 'C:\Users\moosh\Pictures\Game assets\Hath\ChurchRecruiterDialogue.png'
-    lastmod: 1627255514943
+    lastmod: 1628811007928
   - name: ButtonHidden
     untill: 0
     grid:
@@ -1211,6 +1212,60 @@ textures:
     uid: 6f640377-fa92-4617-96b7-f75d876c3e79
     padding: 1
     source: 'C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\UI\Inventory.png'
+  - name: Map
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 64
+      - 128
+    marginx: 0
+    marginy: 0
+    imgWidth: 128
+    imgHeight: 128
+    width: 128
+    height: 128
+    offx: 0
+    offy: 0
+    origname: i26dcfbdf-d15b-40c4-bf50-d8c9b1780656.png
+    shape: rect
+    left: 64
+    right: 64
+    top: 128
+    bottom: 0
+    uid: 26dcfbdf-d15b-40c4-bf50-d8c9b1780656
+    padding: 1
+    source: >-
+      C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\UI\MapElements\Map.png
+    lastmod: 1628813294848
+  - name: FreezeWorks
+    untill: 0
+    grid:
+      - 2
+      - 1
+    axis:
+      - 64
+      - 64
+    marginx: 0
+    marginy: 0
+    imgWidth: 256
+    imgHeight: 128
+    width: 128
+    height: 128
+    offx: 0
+    offy: 0
+    origname: idcbeaaf9-01ab-4c66-9fbd-d1fe68839452.png
+    shape: rect
+    left: 64
+    right: 64
+    top: 64
+    bottom: 64
+    uid: dcbeaaf9-01ab-4c66-9fbd-d1fe68839452
+    padding: 1
+    source: >-
+      C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\UI\MapElements\FreezeWorks.png
+    lastmod: 1628813605155
 skeletons: []
 types:
   - name: CharPlaceHold
@@ -1247,9 +1302,12 @@ types:
           this.x = 128;
       }
 
-    onstep: |-
+    onstep: >-
       this.move();
-      if(ct.actions.Interact.pressed == true && moveActive == true)
+
+      if(ct.actions.Interact.pressed == true && dialogueMode == false &&
+      questOpen == false)
+
       {
           if(ct.mouse.x >768)
           {
@@ -1267,8 +1325,11 @@ types:
               });
           }
       }
+
       moveActive = true;
+
       if(ct.actions.OpenQuestJournal.pressed)
+
       {
           if(questOpen == false)
           {
@@ -1276,12 +1337,22 @@ types:
               this.questScreen = ct.rooms.append('QuestJournal', {isUi: true});
           }
       }
+
+      if(ct.actions.openMap.pressed)
+
+      {
+          if(mapOpen == false)
+          {
+              exitMap = false;
+              this.mapScreen = ct.rooms.append('Map', {isUi: true});
+          }
+      }
     ondraw: ''
     ondestroy: ''
     texture: c1c16902-4766-48f8-95ce-eef602ec67f3
     extends: {}
     uid: 7bdd0707-657b-4256-a995-c526fadcb05e
-    lastmod: 1628117798840
+    lastmod: 1628813817710
   - name: Brick
     depth: 0
     oncreate: this.speed = 4;
@@ -1368,13 +1439,15 @@ types:
           exitQuest = true;
           //exitInventory = true;
           currentCharacter = null;
+          questOpen = false;
+          dialogueMode = false;
       }
     ondraw: ''
     ondestroy: ''
     texture: cce25aee-fdfd-42bc-bf33-113247467611
     extends: {}
     uid: 56de7695-90ed-4b79-a522-4812cfaa1445
-    lastmod: 1628117807683
+    lastmod: 1628812298819
   - name: PinkDialogue
     depth: 0
     oncreate: ''
@@ -1553,41 +1626,6 @@ types:
     extends: {}
     uid: d3760502-6697-41df-9fad-b86d91f9ac21
     lastmod: 1624482374804
-  - name: Camera
-    depth: 10000
-    oncreate: |
-      ct.camera.follow = this;
-      this.x = 416
-      this.y = 320
-    onstep: |-
-      if(playerXCo > 768 && moveActive ==true ){
-          this.direction = 0;
-          this.speed = 5;
-          previousCamX = this.x;
-          moveActive = false;
-          currentArea++;
-      }
-      console.log(this.speed);
-      console.log(this.x); 
-      if(this.x > previousCamX + 832 && moveActive == false){
-          console.log("1");
-          this.direction = 180;
-          console.log("2");
-          this.speed = 0;
-          console.log("3");
-          this.x = previousCamX + 832;
-          moveActive = true;
-          previousCamX = this.x;
-      }
-      else if (moveActive == false){
-          this.move();
-      }
-    ondraw: ''
-    ondestroy: ''
-    texture: 258349ea-e8f5-4398-9071-a64738f2ea99
-    extends: {}
-    uid: 9d94aacc-e9eb-4d1d-bb00-e59ad00e6c91
-    lastmod: 1627259843587
   - name: FreezeMachine
     depth: 0
     oncreate: |-
@@ -1650,7 +1688,7 @@ types:
     texture: 3b730152-e00d-4f31-b3b5-d83009244c85
     extends: {}
     uid: f634f2ee-5330-48a6-986c-25d6cfd75305
-    lastmod: 1627958762513
+    lastmod: 1628813665819
   - name: freezeMasterFull
     depth: 2
     oncreate: test =2;
@@ -1771,7 +1809,7 @@ types:
     texture: 12559a76-89b4-49d2-9926-642054e0ad8e
     extends: {}
     uid: 31483b51-8c3b-43ab-9155-0d4ca4bfacd9
-    lastmod: 1627864962553
+    lastmod: 1628813194250
   - name: square
     depth: -20
     oncreate: ''
@@ -1791,7 +1829,7 @@ types:
     texture: 5e6b3f6f-6a44-472a-b0ce-ce1f049c2943
     extends: {}
     uid: d95e5406-7d35-4158-8e70-825d11f6bbab
-    lastmod: 1628116872867
+    lastmod: 1628813219658
   - name: Inventory
     depth: 0
     oncreate: ''
@@ -1802,6 +1840,31 @@ types:
     extends: {}
     uid: dd76c237-5611-47a9-b23f-6e8b8c357d78
     lastmod: 1628465540809
+  - name: Map
+    depth: 150
+    oncreate: ''
+    onstep: this.move();
+    ondraw: ''
+    ondestroy: ''
+    texture: 26dcfbdf-d15b-40c4-bf50-d8c9b1780656
+    extends: {}
+    uid: 5ef3ac0d-b2c1-47de-9de9-c807725e7956
+    lastmod: 1628813724744
+  - name: MapFreezeWorks
+    depth: 154
+    oncreate: ''
+    onstep: |-
+      this.move();
+      if(ct.mouse.hovers){
+          this.animationSpeed = 0.15;
+          this.gotoAndPlay(0);
+      }
+    ondraw: ''
+    ondestroy: ''
+    texture: dcbeaaf9-01ab-4c66-9fbd-d1fe68839452
+    extends: {}
+    uid: 7cdb8cd5-5409-4fad-89d3-bef009aec78d
+    lastmod: 1628813730620
 sounds: []
 styles:
   - name: Dialogue
@@ -2079,7 +2142,7 @@ rooms:
     gridY: 16
     backgroundColor: 'rgba(0,0,0,0.51)'
     restrictCamera: false
-    lastmod: 1628722187578
+    lastmod: 1628813348873
   - name: Road001
     oncreate: ''
     onstep: ''
@@ -2307,6 +2370,47 @@ rooms:
     gridX: 64
     gridY: 64
     lastmod: 1628720079930
+  - name: Map
+    oncreate: ''
+    onstep: ''
+    ondraw: ''
+    onleave: ''
+    width: 832
+    height: 640
+    backgrounds: []
+    copies:
+      - x: 416
+        'y': 640
+        uid: 5ef3ac0d-b2c1-47de-9de9-c807725e7956
+        exts: {}
+        tx: 5
+        ty: 5
+      - x: 608
+        'y': 64
+        uid: 56de7695-90ed-4b79-a522-4812cfaa1445
+        exts: {}
+      - x: 288
+        'y': 160
+        uid: 7cdb8cd5-5409-4fad-89d3-bef009aec78d
+        exts: {}
+      - x: 192
+        'y': 352
+        uid: bda90d00-a00c-45f7-a174-789a81cc40ea
+        exts: {}
+      - x: 0
+        'y': 0
+        uid: 8f833c10-651a-49f7-86e5-51df4a70ff52
+        exts: {}
+    tiles:
+      - depth: -10
+        tiles: []
+        extends: {}
+    uid: f6d2337d-82eb-4240-846c-5dbdf83c5d80
+    thumbnail: 5dbdf83c5d80
+    extends: {}
+    gridX: 32
+    gridY: 32
+    lastmod: 1628813963542
 actions:
   - name: Interact
     methods:
@@ -2328,6 +2432,9 @@ actions:
   - name: OpenQuestJournal
     methods:
       - code: keyboard.KeyJ
+  - name: openMap
+    methods:
+      - code: keyboard.KeyM
 emitterTandems:
   - name: Heart
     origname: pta1893bebf2d2
@@ -2577,12 +2684,14 @@ scripts:
       var previousCamX;
       var currentArea;
       var movingArea = false;
-      var movingDirection; // true is right false is left
+      //var movingDirection; OLD
       var entryDirection;
-      var questOpen = false;
+      var questOpen = false;//is the quest log open
       var exitQuest;
       var exitInventory;
       var questLog;
+      var mapOpen = false;//is the map open
+      var exitMap = true;//should map be exited
   - name: MasterDialogueScript
     code: >-
       //Script for all dialogue variables and functions that are not character
@@ -2590,23 +2699,25 @@ scripts:
 
       //dev note: spawn dialogue at 96, 480
 
-      var dialogueMode = false;
+      var dialogueMode = false;//are we in dialogue mode
 
-      var nextDialogue = true;
+      var nextDialogue = true;//tells game the next dialogue is ready
 
-      var responseNumber;
+      var responseNumber;//tells the game what response has been entered
 
-      var responseID1;//these are actually strings
+      var responseID1;//these are actually strings that hold the two response
+      options for the player
 
-      var responseID2;
+      var responseID2;//^^^
 
       var characterID;// a form of current character for short hand
 
       var newDialogue// string for the dialogue
 
-      var dialogueMultiplier;
+      var dialogueMultiplier;//OLD?
 
-      var dialogueNumber = 1;
+      var dialogueNumber = 1;//int for what postion in the array the dialogue is
+      from
 
       var backBreakException = false;//This is used to save space in the array
       and so i don;t have to double up dialogue lines
