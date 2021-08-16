@@ -1,6 +1,6 @@
 ctjsVersion: 1.7.0
 notes: >
-  /* Bug fix list
+  mmmmmm/* Bug fix list
 
   while loops that rely on an object moving will crash the game if used because
   the frame cannot update so it wont
@@ -104,7 +104,19 @@ notes: >
   eval
 
 
-  OLD COD
+  Map Object is not blinking when hovering 
+
+  Forgot the (this)
+
+  Still wont blink
+
+  should just use a this.play(); not a gotoAndPlay
+
+
+
+
+
+  OLD CODE
 
   /*if(movingArea == false){ OLD MOVEMENT STUFF NOW SCRAPPING MIGHT ADD AGAIN
   LATER
@@ -1306,7 +1318,7 @@ types:
       this.move();
 
       if(ct.actions.Interact.pressed == true && dialogueMode == false &&
-      questOpen == false)
+      questOpen == false && mapOpen == false)
 
       {
           if(ct.mouse.x >768)
@@ -1338,7 +1350,7 @@ types:
           }
       }
 
-      if(ct.actions.openMap.pressed)
+      if(ct.actions.OpenMap.pressed)
 
       {
           if(mapOpen == false)
@@ -1352,7 +1364,7 @@ types:
     texture: c1c16902-4766-48f8-95ce-eef602ec67f3
     extends: {}
     uid: 7bdd0707-657b-4256-a995-c526fadcb05e
-    lastmod: 1628813817710
+    lastmod: 1629075353680
   - name: Brick
     depth: 0
     oncreate: this.speed = 4;
@@ -1437,17 +1449,19 @@ types:
       if(ct.actions.Interact.pressed && ct.mouse.hovers(this)){
           exitDialogue = true;
           exitQuest = true;
+          exitMap = true;
           //exitInventory = true;
           currentCharacter = null;
           questOpen = false;
           dialogueMode = false;
+          mapOpen = false;
       }
     ondraw: ''
     ondestroy: ''
     texture: cce25aee-fdfd-42bc-bf33-113247467611
     extends: {}
     uid: 56de7695-90ed-4b79-a522-4812cfaa1445
-    lastmod: 1628812298819
+    lastmod: 1629074512727
   - name: PinkDialogue
     depth: 0
     oncreate: ''
@@ -1688,7 +1702,7 @@ types:
     texture: 3b730152-e00d-4f31-b3b5-d83009244c85
     extends: {}
     uid: f634f2ee-5330-48a6-986c-25d6cfd75305
-    lastmod: 1628813665819
+    lastmod: 1629074888579
   - name: freezeMasterFull
     depth: 2
     oncreate: test =2;
@@ -1727,7 +1741,7 @@ types:
     texture: 4398da89-b242-41c4-9a70-a555523da1f5
     extends: {}
     uid: dfb8bf33-c4a0-4c07-83a4-a9ba95a8724d
-    lastmod: 1628722194729
+    lastmod: 1629074788841
   - name: churchRecruiterDialogue
     depth: 2
     oncreate: |-
@@ -1829,7 +1843,7 @@ types:
     texture: 5e6b3f6f-6a44-472a-b0ce-ce1f049c2943
     extends: {}
     uid: d95e5406-7d35-4158-8e70-825d11f6bbab
-    lastmod: 1628813219658
+    lastmod: 1629074079271
   - name: Inventory
     depth: 0
     oncreate: ''
@@ -1849,22 +1863,33 @@ types:
     texture: 26dcfbdf-d15b-40c4-bf50-d8c9b1780656
     extends: {}
     uid: 5ef3ac0d-b2c1-47de-9de9-c807725e7956
-    lastmod: 1628813724744
+    lastmod: 1629074504895
   - name: MapFreezeWorks
     depth: 154
-    oncreate: ''
+    oncreate: this.animationSpeed = 0.1;
     onstep: |-
       this.move();
-      if(ct.mouse.hovers){
-          this.animationSpeed = 0.15;
+      if(ct.mouse.hovers(this))
+      {
+          this.play();
+      }
+      else{
+          this.gotoAndStop(0);
+      }
+      if(ct.mouse.hovers(this) && ct.actions.Interact.pressed)
+      {
+          this.animationSpeed = 0.2;
           this.gotoAndPlay(0);
+          ct.transition.scaleOut(500);
+          exitMap = true;
+          mapOpen = false;
       }
     ondraw: ''
     ondestroy: ''
     texture: dcbeaaf9-01ab-4c66-9fbd-d1fe68839452
     extends: {}
     uid: 7cdb8cd5-5409-4fad-89d3-bef009aec78d
-    lastmod: 1628813730620
+    lastmod: 1629075384872
 sounds: []
 styles:
   - name: Dialogue
@@ -2009,7 +2034,7 @@ rooms:
       isUi: true
     gridX: 32
     gridY: 32
-    lastmod: 1628722330768
+    lastmod: 1629074240099
     backgroundColor: 'rgba(0,0,0,0)'
   - name: Dialogue
     oncreate: >-
@@ -2371,8 +2396,11 @@ rooms:
     gridY: 64
     lastmod: 1628720079930
   - name: Map
-    oncreate: ''
-    onstep: ''
+    oncreate: mapOpen = true;
+    onstep: |-
+      if(exitMap == true){
+          ct.rooms.remove(this);
+      }
     ondraw: ''
     onleave: ''
     width: 832
@@ -2410,7 +2438,7 @@ rooms:
     extends: {}
     gridX: 32
     gridY: 32
-    lastmod: 1628813963542
+    lastmod: 1629074388314
 actions:
   - name: Interact
     methods:
@@ -2432,7 +2460,7 @@ actions:
   - name: OpenQuestJournal
     methods:
       - code: keyboard.KeyJ
-  - name: openMap
+  - name: OpenMap
     methods:
       - code: keyboard.KeyM
 emitterTandems:
