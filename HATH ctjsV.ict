@@ -1283,6 +1283,32 @@ textures:
     source: >-
       C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\UI\MapElements\FreezeWorks.png
     lastmod: 1628813605155
+  - name: questMarker
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 16
+      - 16
+    marginx: 0
+    marginy: 0
+    imgWidth: 32
+    imgHeight: 32
+    width: 32
+    height: 32
+    offx: 0
+    offy: 0
+    origname: iae679b84-779c-4980-8d44-f1d9f7944898.png
+    shape: rect
+    left: 16
+    right: 16
+    top: 16
+    bottom: 16
+    uid: ae679b84-779c-4980-8d44-f1d9f7944898
+    padding: 1
+    source: 'C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\UI\questMarker.png'
+    lastmod: 1629168354777
 skeletons: []
 types:
   - name: CharPlaceHold
@@ -1861,7 +1887,7 @@ types:
     texture: 5e6b3f6f-6a44-472a-b0ce-ce1f049c2943
     extends: {}
     uid: d95e5406-7d35-4158-8e70-825d11f6bbab
-    lastmod: 1629074079271
+    lastmod: 1629166115364
   - name: Inventory
     depth: 0
     oncreate: ''
@@ -1924,6 +1950,31 @@ types:
     extends: {}
     uid: 7cdb8cd5-5409-4fad-89d3-bef009aec78d
     lastmod: 1629076456060
+  - name: QuestButton
+    depth: 1000
+    oncreate: ''
+    onstep: |-
+      this.move();
+      if(ct.mouse.hovers(this) && ct.actions.Interact.pressed){
+          responseNumber = 2;
+          runDialogue(2,characterID, dialogueNumber);
+      }
+    ondraw: ''
+    ondestroy: ''
+    texture: 12559a76-89b4-49d2-9926-642054e0ad8e
+    extends: {}
+    uid: 43293d6a-1816-41cd-b25f-6138d0a660f3
+    lastmod: 1629166098577
+  - name: questMarker
+    depth: 190
+    oncreate: ''
+    onstep: this.move();
+    ondraw: ''
+    ondestroy: ''
+    texture: ae679b84-779c-4980-8d44-f1d9f7944898
+    extends: {}
+    uid: 3bc3a199-2d70-402d-935c-e70c705c87ca
+    lastmod: 1629166338040
 sounds: []
 styles:
   - name: Dialogue
@@ -2016,7 +2067,7 @@ rooms:
 
       moveActive = false;
 
-      this.quests = questLog;
+      this.quests = questArray.toString();//Line Breaks are 20 coords apart
 
       this.questsText = new PIXI.Text(this.quests, ct.styles.get('questText'));
 
@@ -2029,8 +2080,28 @@ rooms:
 
       this.addChild(this.questsText);
     onstep: |-
-      if(exitQuest == true){
+      if(exitQuest == true)
+      {
           ct.rooms.remove(this);
+      }
+      if(ct.mouse.pressed)
+      {
+          console.log(ct.mouse.y);
+         if(ct.mouse.y>160)
+          {
+              if(ct.mouse.y<180)//This should work because it will check from the top of this list and ignore all the else ifs when one is true
+              {
+                  console.log('A');
+              }
+              else if(ct.mouse.y<200)
+              {
+                  console.log('B');
+              }
+              else if(ct.mouse.y<220)
+              {
+                  console.log('C');
+              }
+          }
       }
     ondraw: this.questTitleText.text =  this.questTitle;
     onleave: |-
@@ -2473,6 +2544,25 @@ rooms:
     gridX: 32
     gridY: 32
     lastmod: 1629074388314
+  - name: R3
+    oncreate: ''
+    onstep: ''
+    ondraw: ''
+    onleave: ''
+    width: 832
+    height: 640
+    backgrounds: []
+    copies: []
+    tiles:
+      - depth: -10
+        tiles: []
+        extends: {}
+    uid: 63bd9d15-64c7-467d-9527-c4e9ef179f71
+    thumbnail: c4e9ef179f71
+    extends: {}
+    gridX: 64
+    gridY: 64
+    lastmod: 1629165807406
 actions:
   - name: Interact
     methods:
@@ -2879,27 +2969,45 @@ scripts:
   - name: QuestScript
     code: |-
       /* Script for quests */
+      let questArray = [];
       var runQuest = function(inputLine)
       {
-      var responseLine;
-      try//prevent game crash
-      {
-          if(inputLine.includes(001))
+          var responseLine;
+          try//prevent game crash
           {
-              responseLine = 'sure';
-               questLog = 'Join the Church'
+              if(inputLine.includes(001))
+              {
+                  questArray.push('Join the church \n');
+                  responseLine = 'sure';
+              }
+              else if(inputLine.includes(002))
+              {
+                  responseLine = 'sure';
+                  questArray.push('Join the Antichurch \n');
+              }
           }
-          else if(inputLine.includes(002))
+          catch
           {
-              responseLine = 'sure';
-              questLog = 'Join the Antichurch';
+              console.log('ERRORSTATE')
           }
+          questFormatter();
+          return responseLine;
       }
-      catch
-      {
-          console.log('ERRORSTATE')
+      var questCompleted = function()
+      {//used to remove quest from quest array
+          for(i in questArray){
+              a
+          }
+          //questArray.splice()
       }
-      return responseLine;
+      var questFormatter = function()
+      {//format quest array
+          var counter = questArray.length
+          while(counter!=0)
+          {
+              questArray[counter-1] = (counter) + '  ' + questArray[counter-1];
+              counter--;
+          }
       }
   - name: testScript
     code: |-
