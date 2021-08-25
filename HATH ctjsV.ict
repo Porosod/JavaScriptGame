@@ -1123,7 +1123,7 @@ textures:
     uid: e5e34148-4bda-43b1-a07c-087153953e19
     padding: 1
     source: 'C:\Users\moosh\Pictures\Game assets\Hath\ChurchRecruiterDialogue.png'
-    lastmod: 1628811007928
+    lastmod: 1629859634386
   - name: ButtonHidden
     untill: 0
     grid:
@@ -1309,6 +1309,58 @@ textures:
     padding: 1
     source: 'C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\UI\questMarker.png'
     lastmod: 1629168354777
+  - name: AntiChurch
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 64
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 128
+    imgHeight: 128
+    width: 128
+    height: 128
+    offx: 0
+    offy: 0
+    origname: i1fb03db4-17fc-4ea7-943b-b7192725f562.png
+    shape: rect
+    left: 64
+    right: 64
+    top: 0
+    bottom: 128
+    uid: 1fb03db4-17fc-4ea7-943b-b7192725f562
+    padding: 1
+    source: 'C:\Users\moosh\Pictures\Game assets\Hath\AntiChurch.png'
+    lastmod: 1629858598495
+  - name: AntiChurchDialogue
+    untill: 0
+    grid:
+      - 60
+      - 1
+    axis:
+      - 128
+      - 128
+    marginx: 0
+    marginy: 0
+    imgWidth: 15360
+    imgHeight: 256
+    width: 256
+    height: 256
+    offx: 0
+    offy: 0
+    origname: ie9525ee1-738a-44dc-aa3c-51bb78e8d187.png
+    shape: rect
+    left: 128
+    right: 128
+    top: 128
+    bottom: 128
+    uid: e9525ee1-738a-44dc-aa3c-51bb78e8d187
+    padding: 1
+    source: 'C:\Users\moosh\Pictures\Game assets\Hath\AntiChurchDialogue.png'
+    lastmod: 1629859688172
 skeletons: []
 types:
   - name: CharPlaceHold
@@ -1408,7 +1460,7 @@ types:
     texture: c1c16902-4766-48f8-95ce-eef602ec67f3
     extends: {}
     uid: 7bdd0707-657b-4256-a995-c526fadcb05e
-    lastmod: 1629076068769
+    lastmod: 1629859459914
   - name: Brick
     depth: 0
     oncreate: this.speed = 4;
@@ -1499,13 +1551,14 @@ types:
           questOpen = false;
           dialogueMode = false;
           mapOpen = false;
+          backBreakException = false;
       }
     ondraw: ''
     ondestroy: ''
     texture: cce25aee-fdfd-42bc-bf33-113247467611
     extends: {}
     uid: 56de7695-90ed-4b79-a522-4812cfaa1445
-    lastmod: 1629074512727
+    lastmod: 1629860097910
   - name: PinkDialogue
     depth: 0
     oncreate: ''
@@ -1785,7 +1838,7 @@ types:
     texture: 4398da89-b242-41c4-9a70-a555523da1f5
     extends: {}
     uid: dfb8bf33-c4a0-4c07-83a4-a9ba95a8724d
-    lastmod: 1629074788841
+    lastmod: 1629858537542
   - name: churchRecruiterDialogue
     depth: 2
     oncreate: |-
@@ -1794,7 +1847,7 @@ types:
       currentCharacter = 'churchRecruiter';
       characterID = 'crd';
       nextDialogue = true;
-    onstep: >
+    onstep: >-
       this.move();
 
       if ( blarp== 4 && characterBlinking == false){//this uses a copy pasteable
@@ -1837,7 +1890,7 @@ types:
     texture: e5e34148-4bda-43b1-a07c-087153953e19
     extends: {}
     uid: ab4d33f5-396b-4aeb-bce0-e17c35574b1e
-    lastmod: 1628722124374
+    lastmod: 1629859999586
   - name: response1
     depth: -10000
     oncreate: ''
@@ -1975,6 +2028,77 @@ types:
     extends: {}
     uid: 3bc3a199-2d70-402d-935c-e70c705c87ca
     lastmod: 1629166338040
+  - name: AnChRecruiter
+    depth: 0
+    oncreate: test =2;
+    onstep: |-
+      this.move();
+      if(ct.actions.Interact.pressed && ct.mouse.hovers(this) && test ==2){
+          dialogueMode = true;
+          currentCharacter = 'anChRecruiter';
+          characterID = 'ard';
+          this.dialogueScreen = ct.rooms.append('Dialogue', {isUi: true});
+      exitDialogue = false;
+      test =1;
+      }
+    ondraw: ''
+    ondestroy: ''
+    texture: 1fb03db4-17fc-4ea7-943b-b7192725f562
+    extends: {}
+    uid: 52a9fa81-a9df-4aea-9e0c-25547cbf81b6
+    lastmod: 1629860008937
+  - name: anChRecruiterDialogue
+    depth: 2
+    oncreate: |-
+      this.animationSpeed = 0.2;
+      characterBlinking = false;
+      currentCharacter = 'anChRecruiter';
+      characterID = 'ard';
+      nextDialogue = true;
+    onstep: >-
+      this.move();
+
+      if ( blarp== 4 && characterBlinking == false){//this uses a copy pasteable
+      script to make the creation of new characters easier
+          this.tex = characterBlink();
+          this.animationSpeed = 0.2;
+          this.gotoAndPlay(0);
+          characterBlinking = true;
+          blarp = 0;
+          sinceLastBlink = 0;
+      }
+
+      if(ct.actions.Interact.pressed && ct.mouse.hovers(this) &&
+      characterBlinking == false ){
+          this.tex = characterBlink();
+          this.gotoAndPlay(0);   
+          characterBlinking = true;
+          this.scale.x = 1;
+      }
+
+      if (this.currentFrame == 59){
+          this.gotoAndStop(0);
+          characterBlinking = false;
+      }
+
+      frameCounter++;
+
+      if(frameCounter == 200){
+          frameCounter = 0;
+          sinceLastBlink++;
+      }
+
+      else if(frameCounter == 1 && sinceLastBlink > 5){
+
+      blarp = Math.trunc(ct.random.range(1, 5));
+
+      }
+    ondraw: ''
+    ondestroy: ''
+    texture: e9525ee1-738a-44dc-aa3c-51bb78e8d187
+    extends: {}
+    uid: 4e14111c-bd3a-4305-b25e-03bd821b3b63
+    lastmod: 1629860133106
 sounds: []
 styles:
   - name: Dialogue
@@ -2371,7 +2495,7 @@ rooms:
   - name: R2_Road1
     oncreate: |-
       this.playerStartY = 384;
-      this.nextRoomRight = 'none';
+      this.nextRoomRight = 'R3';
       this.nextRoomLeft = 'R1_defrostRoom';
       this.playerAdd = ct.types.copy('CharPlaceHold');
     onstep: ''
@@ -2419,7 +2543,7 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1627958612393
+    lastmod: 1629859101432
   - name: InventoryUIRoom
     oncreate: >-
       this.questTitle = 'Objectives';
@@ -2545,14 +2669,35 @@ rooms:
     gridY: 32
     lastmod: 1629074388314
   - name: R3
-    oncreate: ''
+    oncreate: |-
+      this.playerStartY = 384;
+      this.nextRoomRight = 'none';
+      this.nextRoomLeft = 'R2_Road1';
+      this.playerAdd = ct.types.copy('CharPlaceHold');
     onstep: ''
     ondraw: ''
     onleave: ''
     width: 832
     height: 640
-    backgrounds: []
-    copies: []
+    backgrounds:
+      - depth: -1000
+        texture: 72b4227a-a07a-4049-bf29-ad5ad7ce8e78
+        extends: {}
+    copies:
+      - x: 0
+        'y': 448
+        uid: 3c5d1370-5ab2-49e2-8991-e209b2059b9a
+        exts: {}
+      - x: 320
+        'y': 256
+        uid: 52a9fa81-a9df-4aea-9e0c-25547cbf81b6
+        exts: {}
+        tx: 1.5
+        ty: 1.5
+      - x: 448
+        'y': 256
+        uid: bda90d00-a00c-45f7-a174-789a81cc40ea
+        exts: {}
     tiles:
       - depth: -10
         tiles: []
@@ -2562,7 +2707,25 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1629165807406
+    lastmod: 1629860165650
+  - name: R4
+    oncreate: ''
+    onstep: ''
+    ondraw: ''
+    onleave: ''
+    width: 800
+    height: 600
+    backgrounds: []
+    copies: []
+    tiles:
+      - depth: -10
+        tiles: []
+        extends: {}
+    uid: b08263bf-eb8b-458f-b14c-fd9002f6d051
+    thumbnail: fd9002f6d051
+    extends: {}
+    gridX: 64
+    gridY: 64
 actions:
   - name: Interact
     methods:
@@ -3277,6 +3440,32 @@ scripts:
           var animation = 'churchRecruiterBlinkSheet';
           return animation;
       }
+  - name: AnChRecruiterScript
+    code: |
+      /* Character script for AntiChurchRecruiter */
+      var anChRecruiterStrongPhase;
+      var anChRecruiterBlinking;
+      var anChRecruiterPrevTalk = false;
+      var anChRecruiterDialogueSetup = function(){
+          if(anChRecruiterPrevTalk==false){
+              dialogueNumber = 1;
+              newDialogue = eval(characterID +'['+ 1 + '];');
+              responseID1 = eval(characterID +'['+ 2 + '];');
+              responseID2 = eval(characterID +'['+ 3 + '];');
+          }
+          else
+          {
+              dialogueNumber = 13;
+              newDialogue = eval(characterID +'['+ 13 + '];');
+              responseID1 = eval(characterID +'['+ 14 + '];');
+              responseID2 = eval(characterID +'['+ 15 + '];');
+          }
+      }
+      var anChRecruiterBlink = function(){
+          anChRecruiterBlinking = true;
+          var animation = 'anChRecruiterBlinkSheet';
+          return animation;
+      }
   - name: PlayerScript
     code: |+
       /* Character script for player */
@@ -3338,6 +3527,17 @@ scripts:
       //              0           1                       2              
       3           4                      5        6     7            
       8               9                            10                    11  20
+
+      let ard = ['TRUEBREAK','ah fresh thaw come here.','Fresh thaw?','Who are
+      you?','Yes a fresh thaw you were recently','next','next
+      BACKBREAK',7,8,9,'thawed out I can tell','Who are you?','where am
+      I',13,14,15,16,17,18,19,20,21,'I am an esteemed member of the
+      church','next','next BACKBREAK','You\'re in the future!','Who are
+      you?','',28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,'would you
+      like to
+      join?','ACCEPTQUEST-001','no',49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,'Fantastic
+      Ill see you there','Goodbye','Goodbye','Well suit your self
+      then','Goodbye','Goodbye',100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204];
 
       let noCharacter =
       [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204];
