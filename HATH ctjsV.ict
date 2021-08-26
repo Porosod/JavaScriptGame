@@ -938,7 +938,7 @@ textures:
     padding: 1
     source: >-
       C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\Chars\Regs\Mic\micBlinkSheet.png
-    lastmod: 1622765160847
+    lastmod: 1629942212283
   - name: Road01
     untill: 0
     grid:
@@ -1253,9 +1253,8 @@ textures:
     bottom: 0
     uid: 26dcfbdf-d15b-40c4-bf50-d8c9b1780656
     padding: 1
-    source: >-
-      C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\UI\MapElements\Map.png
-    lastmod: 1628813294848
+    source: 'C:\Users\moosh\Pictures\Game assets\Hath\MapWider.png'
+    lastmod: 1629941592769
   - name: FreezeWorks
     untill: 0
     grid:
@@ -1282,7 +1281,7 @@ textures:
     padding: 1
     source: >-
       C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\UI\MapElements\FreezeWorks.png
-    lastmod: 1628813605155
+    lastmod: 1629941203851
   - name: questMarker
     untill: 0
     grid:
@@ -1361,6 +1360,109 @@ textures:
     padding: 1
     source: 'C:\Users\moosh\Pictures\Game assets\Hath\AntiChurchDialogue.png'
     lastmod: 1629859688172
+  - name: Church
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 512
+      - 1024
+    marginx: 0
+    marginy: 0
+    imgWidth: 1024
+    imgHeight: 1024
+    width: 1024
+    height: 1024
+    offx: 0
+    offy: 0
+    origname: ia4eaa162-289f-4ba3-a685-869582c0c37a.png
+    shape: rect
+    left: 512
+    right: 512
+    top: 1024
+    bottom: 0
+    uid: a4eaa162-289f-4ba3-a685-869582c0c37a
+    padding: 1
+    source: 'C:\Users\moosh\Pictures\Game assets\Hath\Church.png'
+    lastmod: 1629932364662
+  - name: ChruchDoor
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 256
+    imgHeight: 256
+    width: 256
+    height: 256
+    offx: 0
+    offy: 0
+    origname: i6d4ffb6b-c4c5-4966-9a18-d205062c74bb.png
+    shape: rect
+    left: 0
+    right: 256
+    top: 0
+    bottom: 256
+    uid: 6d4ffb6b-c4c5-4966-9a18-d205062c74bb
+    padding: 1
+    source: 'C:\Users\moosh\Pictures\Game assets\Hath\ChruchDoor.png'
+  - name: Road1
+    untill: 0
+    grid:
+      - 2
+      - 1
+    axis:
+      - 64
+      - 64
+    marginx: 0
+    marginy: 0
+    imgWidth: 256
+    imgHeight: 128
+    width: 128
+    height: 128
+    offx: 0
+    offy: 0
+    origname: icefc684d-e924-4755-a006-592bce4427a4.png
+    shape: rect
+    left: 64
+    right: 64
+    top: 64
+    bottom: 64
+    uid: cefc684d-e924-4755-a006-592bce4427a4
+    padding: 1
+    source: 'C:\Users\moosh\Pictures\Game assets\Hath\MapParts\Road1.png'
+    lastmod: 1629941217027
+  - name: Mic
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 128
+      - 128
+    marginx: 0
+    marginy: 0
+    imgWidth: 256
+    imgHeight: 256
+    width: 256
+    height: 256
+    offx: 0
+    offy: 0
+    origname: id66566c8-f016-45b5-a23f-45d180ddf839.png
+    shape: rect
+    left: 128
+    right: 128
+    top: 128
+    bottom: 128
+    uid: d66566c8-f016-45b5-a23f-45d180ddf839
+    padding: 1
+    source: 'C:\Users\moosh\Pictures\Game assets\Hath\MicFull.png'
+    lastmod: 1629942244491
 skeletons: []
 types:
   - name: CharPlaceHold
@@ -1460,7 +1562,7 @@ types:
     texture: c1c16902-4766-48f8-95ce-eef602ec67f3
     extends: {}
     uid: 7bdd0707-657b-4256-a995-c526fadcb05e
-    lastmod: 1629859459914
+    lastmod: 1629932823792
   - name: Brick
     depth: 0
     oncreate: this.speed = 4;
@@ -2002,7 +2104,7 @@ types:
     texture: dcbeaaf9-01ab-4c66-9fbd-d1fe68839452
     extends: {}
     uid: 7cdb8cd5-5409-4fad-89d3-bef009aec78d
-    lastmod: 1629076456060
+    lastmod: 1629941288946
   - name: QuestButton
     depth: 1000
     oncreate: ''
@@ -2027,7 +2129,7 @@ types:
     texture: ae679b84-779c-4980-8d44-f1d9f7944898
     extends: {}
     uid: 3bc3a199-2d70-402d-935c-e70c705c87ca
-    lastmod: 1629166338040
+    lastmod: 1629940760130
   - name: AnChRecruiter
     depth: 0
     oncreate: test =2;
@@ -2098,7 +2200,138 @@ types:
     texture: e9525ee1-738a-44dc-aa3c-51bb78e8d187
     extends: {}
     uid: 4e14111c-bd3a-4305-b25e-03bd821b3b63
-    lastmod: 1629860133106
+    lastmod: 1629942473596
+  - name: ChruchDoor
+    depth: 0
+    oncreate: ''
+    onstep: |-
+      this.move();
+      if(ct.mouse.hovers(this) && ct.mouse.pressed){
+          ct.transition.slideOut(200,'right')
+              .then(() => {
+              ct.rooms.switch('R5');
+              entryDirection = 'left';
+          });
+      }
+    ondraw: ''
+    ondestroy: ''
+    texture: 6d4ffb6b-c4c5-4966-9a18-d205062c74bb
+    extends: {}
+    uid: cba8cc82-51c9-4d5c-a73d-9dc871622b38
+    lastmod: 1629942575109
+  - name: Church
+    depth: -3
+    oncreate: ''
+    onstep: this.move();
+    ondraw: ''
+    ondestroy: ''
+    texture: a4eaa162-289f-4ba3-a685-869582c0c37a
+    extends: {}
+    uid: eeac87dc-3c0d-4536-8250-a2a5250ae706
+    lastmod: 1629932376071
+  - name: Road1
+    depth: 154
+    oncreate: this.animationSpeed = 0.1;
+    onstep: |-
+      this.move();
+      if(ct.mouse.hovers(this))
+      {
+          this.play();
+      }
+      else{
+          this.gotoAndStop(0);
+      }
+      if(ct.room.name != 'R2_Road1'){
+          if(ct.mouse.hovers(this) && ct.actions.Interact.pressed)
+          {
+              this.animationSpeed = 0.2;
+              this.play();
+              ct.transition.scaleOut(500)
+              .then(() => {
+                      ct.rooms.switch('R2_Road1');
+                      entryDirection = 'map';
+                  });
+              exitMap = true;
+              mapOpen = false;
+          
+          }
+      }
+      else
+      {
+          if(ct.mouse.hovers(this) && ct.actions.Interact.pressed)
+          {
+          exitMap = true;
+          mapOpen = false;
+          }
+      }
+    ondraw: ''
+    ondestroy: ''
+    texture: cefc684d-e924-4755-a006-592bce4427a4
+    extends: {}
+    uid: 0971315a-0587-44fc-a8ee-3a000cf3845b
+    lastmod: 1629941679051
+  - name: Mic
+    depth: 0
+    oncreate: ''
+    onstep: this.move();
+    ondraw: ''
+    ondestroy: ''
+    texture: d66566c8-f016-45b5-a23f-45d180ddf839
+    extends: {}
+    uid: 17fc45ad-3a29-4790-b6a0-364b558fa096
+    lastmod: 1629942477196
+  - name: micBlinkSheet
+    depth: 0
+    oncreate: |-
+      this.animationSpeed = 0.2;
+      characterBlinking = false;
+      currentCharacter = 'mic';
+      characterID = 'mic';
+      nextDialogue = true;
+    onstep: >-
+      this.move();
+
+      if ( blarp== 4 && characterBlinking == false){//this uses a copy pasteable
+      script for blinking to make the creation of new characters easier
+          this.tex = characterBlink();
+          this.animationSpeed = 0.2;
+          this.gotoAndPlay(0);
+          characterBlinking = true;
+          blarp = 0;
+          sinceLastBlink = 0;
+      }
+
+      if(ct.actions.Interact.pressed && ct.mouse.hovers(this) &&
+      characterBlinking == false ){
+          this.tex = characterBlink();
+          this.gotoAndPlay(0);   
+          characterBlinking = true;
+          this.scale.x = 1;
+      }
+
+      if (this.currentFrame == 59){
+          this.gotoAndStop(0);
+          characterBlinking = false;
+      }
+
+      frameCounter++;
+
+      if(frameCounter == 200){
+          frameCounter = 0;
+          sinceLastBlink++;
+      }
+
+      else if(frameCounter == 1 && sinceLastBlink > 5){
+
+      blarp = Math.trunc(ct.random.range(1, 5));
+
+      }
+    ondraw: ''
+    ondestroy: ''
+    texture: 2898755f-c1c7-44e3-8e8e-ab117427fb7e
+    extends: {}
+    uid: a1d11b1c-c98d-425e-95c9-b6438af37371
+    lastmod: 1629942502054
 sounds: []
 styles:
   - name: Dialogue
@@ -2442,7 +2675,7 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1627256148795
+    lastmod: 1629942551100
   - name: R1_defrostRoom
     oncreate: |-
       this.nextRoomRight = 'R2_Road1'
@@ -2642,11 +2875,7 @@ rooms:
         exts: {}
         tx: 5
         ty: 5
-      - x: 608
-        'y': 64
-        uid: 56de7695-90ed-4b79-a522-4812cfaa1445
-        exts: {}
-      - x: 288
+      - x: 272
         'y': 160
         uid: 7cdb8cd5-5409-4fad-89d3-bef009aec78d
         exts: {}
@@ -2658,6 +2887,14 @@ rooms:
         'y': 0
         uid: 8f833c10-651a-49f7-86e5-51df4a70ff52
         exts: {}
+      - x: 416
+        'y': 160
+        uid: 0971315a-0587-44fc-a8ee-3a000cf3845b
+        exts: {}
+      - x: 672
+        'y': 64
+        uid: 56de7695-90ed-4b79-a522-4812cfaa1445
+        exts: {}
     tiles:
       - depth: -10
         tiles: []
@@ -2667,11 +2904,11 @@ rooms:
     extends: {}
     gridX: 32
     gridY: 32
-    lastmod: 1629074388314
+    lastmod: 1629941831843
   - name: R3
     oncreate: |-
       this.playerStartY = 384;
-      this.nextRoomRight = 'none';
+      this.nextRoomRight = 'R4';
       this.nextRoomLeft = 'R2_Road1';
       this.playerAdd = ct.types.copy('CharPlaceHold');
     onstep: ''
@@ -2707,16 +2944,40 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1629860165650
+    lastmod: 1629932949927
   - name: R4
-    oncreate: ''
+    oncreate: |-
+      this.playerStartY = 384;
+      this.nextRoomRight = 'none';
+      this.nextRoomLeft = 'R3';
+      this.playerAdd = ct.types.copy('CharPlaceHold');
     onstep: ''
     ondraw: ''
     onleave: ''
-    width: 800
-    height: 600
+    width: 832
+    height: 640
     backgrounds: []
-    copies: []
+    copies:
+      - x: 0
+        'y': 448
+        uid: 3c5d1370-5ab2-49e2-8991-e209b2059b9a
+        exts: {}
+      - x: 256
+        'y': 192
+        uid: cba8cc82-51c9-4d5c-a73d-9dc871622b38
+        exts: {}
+        tx: 1
+        ty: 1
+      - x: 384
+        'y': 448
+        uid: eeac87dc-3c0d-4536-8250-a2a5250ae706
+        exts: {}
+        tx: 1.5
+        ty: 1.5
+      - x: 64
+        'y': 320
+        uid: bda90d00-a00c-45f7-a174-789a81cc40ea
+        exts: {}
     tiles:
       - depth: -10
         tiles: []
@@ -2726,6 +2987,33 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
+    lastmod: 1629941210011
+  - name: R5
+    oncreate: ''
+    onstep: ''
+    ondraw: ''
+    onleave: ''
+    width: 832
+    height: 640
+    backgrounds:
+      - depth: -1000
+        texture: 72b4227a-a07a-4049-bf29-ad5ad7ce8e78
+        extends: {}
+    copies:
+      - x: 448
+        'y': 384
+        uid: 17fc45ad-3a29-4790-b6a0-364b558fa096
+        exts: {}
+    tiles:
+      - depth: -10
+        tiles: []
+        extends: {}
+    uid: d7d01067-6438-4fbe-8ea2-22a9eb278bb5
+    thumbnail: 22a9eb278bb5
+    extends: {}
+    gridX: 64
+    gridY: 64
+    lastmod: 1629942562044
 actions:
   - name: Interact
     methods:
