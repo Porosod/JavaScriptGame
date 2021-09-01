@@ -4296,7 +4296,7 @@ settings:
     version:
       - 0
       - 0
-      - 4
+      - 5
     versionPostfix: ''
   rendering:
     usePixiLegacy: true
