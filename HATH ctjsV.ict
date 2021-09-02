@@ -1,6 +1,6 @@
 ctjsVersion: 1.7.0
 notes: >
-  /* Bug fix list
+  new/* Bug fix list
 
   while loops that rely on an object moving will crash the game if used because
   the frame cannot update so it wont
@@ -138,6 +138,19 @@ notes: >
 
   Tested invnetory it worked
 
+  Testing JUMPTO command in dialogue keept getting 11 and 12 instead of the
+  dialogue options forgot to add ()s around the MATHS so it was reading the
+  numbers as strings
+
+  response 2 will show up with 'BACKBREAK' instead of hiding it when using
+  JUMPTO reorder the includes
+
+  EXIT COMMAND WOULDN'T WORK forgot to change ResponseID1 to newDialogue when
+  copy pasting
+
+  testing how well I can run code straight from my array so I can change
+  variables during points in dialogue worked flawlessly
+
 
   OLD CODE could need later
 
@@ -216,45 +229,6 @@ libs:
   tween: {}
   cutscene: {}
 textures:
-  - name: PlaceChar
-    untill: 0
-    grid:
-      - 1
-      - 1
-    axis:
-      - 2
-      - 9
-    marginx: 0
-    marginy: 0
-    imgWidth: 160
-    imgHeight: 160
-    width: 160
-    height: 160
-    offx: 0
-    offy: 0
-    origname: icb6db1e7-af62-4eb6-a12f-43c4f4cf4588.png
-    shape: rect
-    left: -28
-    right: 128
-    top: -10
-    bottom: 151
-    uid: cb6db1e7-af62-4eb6-a12f-43c4f4cf4588
-    padding: 1
-    source: 'C:\Users\Alexd\OneDrive\Pictures\GameAssets\Place.png'
-    r: 80
-    stripPoints:
-      - x: 0
-        'y': -80
-      - x: 76
-        'y': -25
-      - x: 47
-        'y': 65
-      - x: -47
-        'y': 65
-      - x: -76
-        'y': -25
-    closedStrip: true
-    lastmod: 1619396613197
   - name: Brick
     untill: 0
     grid:
@@ -359,161 +333,6 @@ textures:
     uid: e3b7166f-c686-4a11-a990-41f8752515e2
     padding: 1
     source: 'C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\UI\Cursor.png'
-  - name: Button3
-    untill: 0
-    grid:
-      - 1
-      - 1
-    axis:
-      - 12
-      - 12
-    marginx: 0
-    marginy: 0
-    imgWidth: 24
-    imgHeight: 24
-    width: 24
-    height: 24
-    offx: 0
-    offy: 0
-    origname: i4011ba97-4a0d-43f4-99f9-aa7689c924e6.png
-    shape: rect
-    left: 12
-    right: 12
-    top: 12
-    bottom: 12
-    uid: 4011ba97-4a0d-43f4-99f9-aa7689c924e6
-    padding: 1
-    source: 'C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\UI\Button3.png'
-    lastmod: 1628811595988
-  - name: Button1
-    untill: 0
-    grid:
-      - 1
-      - 1
-    axis:
-      - 12
-      - 12
-    marginx: 0
-    marginy: 0
-    imgWidth: 24
-    imgHeight: 24
-    width: 24
-    height: 24
-    offx: 0
-    offy: 0
-    origname: i258349ea-e8f5-4398-9071-a64738f2ea99.png
-    shape: rect
-    left: 120
-    right: 120
-    top: 120
-    bottom: 120
-    uid: 258349ea-e8f5-4398-9071-a64738f2ea99
-    padding: 1
-    source: 'C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\UI\Button1.png'
-    lastmod: 1623630879229
-  - name: Button2
-    untill: 0
-    grid:
-      - 1
-      - 1
-    axis:
-      - 12
-      - 12
-    marginx: 0
-    marginy: 0
-    imgWidth: 24
-    imgHeight: 24
-    width: 24
-    height: 24
-    offx: 0
-    offy: 0
-    origname: if10463b7-2f27-4515-93b6-ca3abe91a243.png
-    shape: rect
-    left: 12
-    right: 12
-    top: 12
-    bottom: 12
-    uid: f10463b7-2f27-4515-93b6-ca3abe91a243
-    padding: 1
-    source: 'C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\UI\Button2.png'
-    lastmod: 1628811598962
-  - name: PinkPlace
-    untill: 0
-    grid:
-      - 1
-      - 1
-    axis:
-      - 80
-      - 80
-    marginx: 0
-    marginy: 0
-    imgWidth: 160
-    imgHeight: 160
-    width: 160
-    height: 160
-    offx: 0
-    offy: 0
-    origname: ic1c16902-4766-48f8-95ce-eef602ec67f3.png
-    shape: rect
-    left: 80
-    right: 80
-    top: 80
-    bottom: 80
-    uid: c1c16902-4766-48f8-95ce-eef602ec67f3
-    padding: 1
-    source: 'C:\Users\Alexd\OneDrive\Pictures\GameAssets\PinkPlace.png'
-    lastmod: 1622671120839
-  - name: PinkPlace-export
-    untill: 0
-    grid:
-      - 1
-      - 1
-    axis:
-      - 0
-      - 0
-    marginx: 0
-    marginy: 0
-    imgWidth: 800
-    imgHeight: 800
-    width: 800
-    height: 800
-    offx: 0
-    offy: 0
-    origname: idb48df6b-b5a7-4ac5-974f-b3a7da4cbd7b.png
-    shape: rect
-    left: 0
-    right: 800
-    top: 0
-    bottom: 800
-    uid: db48df6b-b5a7-4ac5-974f-b3a7da4cbd7b
-    padding: 1
-    source: 'C:\Users\Alexd\OneDrive\Pictures\GameAssets\PinkPlace-export.png'
-    lastmod: 1620603628289
-  - name: OriginPoint
-    untill: 0
-    grid:
-      - 1
-      - 1
-    axis:
-      - 32
-      - 32
-    marginx: 0
-    marginy: 0
-    imgWidth: 64
-    imgHeight: 64
-    width: 64
-    height: 64
-    offx: 0
-    offy: 0
-    origname: i7a79c7d7-5802-43eb-b262-abd8cd2b60cb.png
-    shape: rect
-    left: 32
-    right: 32
-    top: 32
-    bottom: 32
-    uid: 7a79c7d7-5802-43eb-b262-abd8cd2b60cb
-    padding: 1
-    source: 'C:\Users\Alexd\OneDrive\Pictures\GameAssets\OriginPoint.png'
   - name: Exit
     untill: 0
     grid:
@@ -566,45 +385,6 @@ textures:
     padding: 1
     source: >-
       C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\EmmiterTextures\Heart.png
-  - name: PinkPlace-sheet
-    untill: 5
-    grid:
-      - 5
-      - 1
-    axis:
-      - 80
-      - 80
-    marginx: 0
-    marginy: 0
-    imgWidth: 800
-    imgHeight: 160
-    width: 160
-    height: 160
-    offx: 0
-    offy: 0
-    origname: id916d02e-a9ea-4fec-ac70-ccf2f4f749da.png
-    shape: rect
-    left: 80
-    right: 80
-    top: 80
-    bottom: 80
-    uid: d916d02e-a9ea-4fec-ac70-ccf2f4f749da
-    padding: 1
-    source: 'C:\Users\Alexd\OneDrive\Pictures\GameAssets\PinkPlace-sheet.png'
-    r: 80
-    stripPoints:
-      - x: 0
-        'y': -80
-      - x: 76
-        'y': -25
-      - x: 47
-        'y': 65
-      - x: -47
-        'y': 65
-      - x: -76
-        'y': -25
-    closedStrip: true
-    lastmod: 1620699800370
   - name: Sweat
     untill: 0
     grid:
@@ -657,168 +437,6 @@ textures:
     padding: 1
     source: >-
       C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\EmmiterTextures\Down.png
-  - name: Pink_Confused
-    untill: 0
-    grid:
-      - 1
-      - 1
-    axis:
-      - 80
-      - 80
-    marginx: 0
-    marginy: 0
-    imgWidth: 160
-    imgHeight: 160
-    width: 160
-    height: 160
-    offx: 0
-    offy: 0
-    origname: ic4f72bf0-c2ba-49ab-8476-f2849e8e7eb3.png
-    shape: rect
-    left: 80
-    right: 80
-    top: 80
-    bottom: 80
-    uid: c4f72bf0-c2ba-49ab-8476-f2849e8e7eb3
-    padding: 1
-    source: >-
-      C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\Chars\Pink\Pink_Confused.png
-    lastmod: 1620699907063
-  - name: Pink_Sad
-    untill: 0
-    grid:
-      - 1
-      - 1
-    axis:
-      - 80
-      - 80
-    marginx: 0
-    marginy: 0
-    imgWidth: 160
-    imgHeight: 160
-    width: 160
-    height: 160
-    offx: 0
-    offy: 0
-    origname: ie9a71aca-e0bb-4559-945c-cd128b287812.png
-    shape: rect
-    left: 80
-    right: 80
-    top: 80
-    bottom: 80
-    uid: e9a71aca-e0bb-4559-945c-cd128b287812
-    padding: 1
-    source: >-
-      C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\Chars\Pink\Pink_Sad.png
-    lastmod: 1620699910598
-  - name: Pink_Blush1
-    untill: 0
-    grid:
-      - 1
-      - 1
-    axis:
-      - 80
-      - 80
-    marginx: 0
-    marginy: 0
-    imgWidth: 160
-    imgHeight: 160
-    width: 160
-    height: 160
-    offx: 0
-    offy: 0
-    origname: i92e9846f-352f-4236-b5c6-278ad9e0e725.png
-    shape: rect
-    left: 80
-    right: 80
-    top: 80
-    bottom: 80
-    uid: 92e9846f-352f-4236-b5c6-278ad9e0e725
-    padding: 1
-    source: >-
-      C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\Chars\Pink\Pink_Blush1.png
-    lastmod: 1620699946964
-  - name: Pink_Blush2
-    untill: 0
-    grid:
-      - 1
-      - 1
-    axis:
-      - 80
-      - 80
-    marginx: 0
-    marginy: 0
-    imgWidth: 160
-    imgHeight: 160
-    width: 160
-    height: 160
-    offx: 0
-    offy: 0
-    origname: ide9ed51e-5eda-47db-aa8a-9f10e4616d6e.png
-    shape: rect
-    left: 80
-    right: 80
-    top: 80
-    bottom: 80
-    uid: de9ed51e-5eda-47db-aa8a-9f10e4616d6e
-    padding: 1
-    source: >-
-      C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\Chars\Pink\Pink_Blush2.png
-    lastmod: 1628811150416
-  - name: Pink_Happy
-    untill: 0
-    grid:
-      - 1
-      - 1
-    axis:
-      - 80
-      - 80
-    marginx: 0
-    marginy: 0
-    imgWidth: 160
-    imgHeight: 160
-    width: 160
-    height: 160
-    offx: 0
-    offy: 0
-    origname: i547551c5-4479-4f3b-90a9-dea1bfb3ca5e.png
-    shape: rect
-    left: 80
-    right: 80
-    top: 80
-    bottom: 80
-    uid: 547551c5-4479-4f3b-90a9-dea1bfb3ca5e
-    padding: 1
-    source: >-
-      C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\Chars\Pink\Pink_Happy.png
-    lastmod: 1620699903526
-  - name: MilesFullTemp
-    untill: 0
-    grid:
-      - 1
-      - 1
-    axis:
-      - 0
-      - 0
-    marginx: 0
-    marginy: 0
-    imgWidth: 160
-    imgHeight: 160
-    width: 160
-    height: 160
-    offx: 0
-    offy: 0
-    origname: i9bc49199-e006-4590-85cd-f3c26883cbb9.png
-    shape: rect
-    left: 0
-    right: 160
-    top: 0
-    bottom: 160
-    uid: 9bc49199-e006-4590-85cd-f3c26883cbb9
-    padding: 1
-    source: >-
-      C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\Chars\UberMench\Miles\MilesFullTemp.png
-    lastmod: 1628811074670
   - name: milesBlinkSheet
     untill: 0
     grid:
@@ -846,60 +464,6 @@ textures:
     source: >-
       C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\Chars\UberMench\Miles\Sheets\milesBlinkSheet.png
     lastmod: 1628720117235
-  - name: jackBlinkSheet
-    untill: 0
-    grid:
-      - 60
-      - 1
-    axis:
-      - 128
-      - 128
-    marginx: 0
-    marginy: 0
-    imgWidth: 15360
-    imgHeight: 256
-    width: 256
-    height: 256
-    offx: 0
-    offy: 0
-    origname: i6f7afb0d-f4ab-4f68-b773-4dd4e99e319c.png
-    shape: rect
-    left: 128
-    right: 128
-    top: 128
-    bottom: 128
-    uid: 6f7afb0d-f4ab-4f68-b773-4dd4e99e319c
-    padding: 1
-    source: >-
-      C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\Chars\UberMench\Jack\jackBlinkSheet.png
-    lastmod: 1628811149600
-  - name: jackFullTemp
-    untill: 0
-    grid:
-      - 1
-      - 1
-    axis:
-      - 80
-      - 80
-    marginx: 0
-    marginy: 0
-    imgWidth: 160
-    imgHeight: 160
-    width: 160
-    height: 160
-    offx: 0
-    offy: 0
-    origname: i021e216d-d500-4f93-b26e-2b2acecd28b4.png
-    shape: rect
-    left: 80
-    right: 80
-    top: 80
-    bottom: 80
-    uid: 021e216d-d500-4f93-b26e-2b2acecd28b4
-    padding: 1
-    source: >-
-      C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\Chars\UberMench\Jack\jackFullTemp.png
-    lastmod: 1622068894409
   - name: DialogueBack
     untill: 0
     grid:
@@ -927,58 +491,6 @@ textures:
     source: >-
       C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\UI\DialogueBack.png
     tiled: false
-  - name: micBlinkSheet
-    untill: 0
-    grid:
-      - 60
-      - 1
-    axis:
-      - 128
-      - 128
-    marginx: 0
-    marginy: 0
-    imgWidth: 15360
-    imgHeight: 256
-    width: 256
-    height: 256
-    offx: 0
-    offy: 0
-    origname: i2898755f-c1c7-44e3-8e8e-ab117427fb7e.png
-    shape: rect
-    left: 128
-    right: 128
-    top: 128
-    bottom: 128
-    uid: 2898755f-c1c7-44e3-8e8e-ab117427fb7e
-    padding: 1
-    source: >-
-      C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\Chars\Regs\Mic\micBlinkSheet.png
-    lastmod: 1630449411594
-  - name: Road01
-    untill: 0
-    grid:
-      - 1
-      - 1
-    axis:
-      - 0
-      - 0
-    marginx: 0
-    marginy: 0
-    imgWidth: 1664
-    imgHeight: 256
-    width: 1664
-    height: 256
-    offx: 0
-    offy: 0
-    origname: i17c127c0-08f6-41bf-991f-5d872a36aa34.png
-    shape: rect
-    left: 0
-    right: 1664
-    top: 0
-    bottom: 256
-    uid: 17c127c0-08f6-41bf-991f-5d872a36aa34
-    padding: 1
-    source: 'C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\Env\Road01.png'
   - name: Spring
     untill: 0
     grid:
@@ -1006,139 +518,6 @@ textures:
     source: >-
       C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\EmmiterTextures\Spring-export.png
     lastmod: 1625696339096
-  - name: FreezeMachine
-    untill: 12
-    grid:
-      - 12
-      - 1
-    axis:
-      - 128
-      - 128
-    marginx: 0
-    marginy: 0
-    imgWidth: 3072
-    imgHeight: 256
-    width: 256
-    height: 256
-    offx: 0
-    offy: 0
-    origname: if74f7087-6a7d-460f-9ee6-1dda3d5e0f0a.png
-    shape: rect
-    left: 128
-    right: 128
-    top: 128
-    bottom: 128
-    uid: f74f7087-6a7d-460f-9ee6-1dda3d5e0f0a
-    padding: 1
-    source: >-
-      C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\Env\FreezeMachine.png
-    lastmod: 1625698246300
-  - name: FreezeMasterFull
-    untill: 0
-    grid:
-      - 1
-      - 1
-    axis:
-      - 128
-      - 128
-    marginx: 0
-    marginy: 0
-    imgWidth: 256
-    imgHeight: 256
-    width: 256
-    height: 256
-    offx: 0
-    offy: 0
-    origname: id4342cc5-1e0c-4fd9-839c-6ef2e0e9f406.png
-    shape: rect
-    left: 128
-    right: 128
-    top: 128
-    bottom: 128
-    uid: d4342cc5-1e0c-4fd9-839c-6ef2e0e9f406
-    padding: 1
-    source: >-
-      C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\Chars\Regs\FreezeMaster\FreezeMasterFull.png
-    lastmod: 1628810999501
-  - name: freezeMasterBlinkSheet
-    untill: 0
-    grid:
-      - 60
-      - 1
-    axis:
-      - 128
-      - 128
-    marginx: 0
-    marginy: 0
-    imgWidth: 15360
-    imgHeight: 256
-    width: 256
-    height: 256
-    offx: 0
-    offy: 0
-    origname: i3b730152-e00d-4f31-b3b5-d83009244c85.png
-    shape: rect
-    left: 128
-    right: 128
-    top: 128
-    bottom: 128
-    uid: 3b730152-e00d-4f31-b3b5-d83009244c85
-    padding: 1
-    source: >-
-      C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\Chars\Regs\FreezeMaster\FreezeMasterBlink.png
-    lastmod: 1625789875574
-  - name: churchRecruiter
-    untill: 0
-    grid:
-      - 1
-      - 1
-    axis:
-      - 0
-      - 0
-    marginx: 0
-    marginy: 0
-    imgWidth: 128
-    imgHeight: 128
-    width: 128
-    height: 128
-    offx: 0
-    offy: 0
-    origname: i4398da89-b242-41c4-9a70-a555523da1f5.png
-    shape: rect
-    left: 0
-    right: 128
-    top: 0
-    bottom: 128
-    uid: 4398da89-b242-41c4-9a70-a555523da1f5
-    padding: 1
-    source: 'C:\Users\moosh\Pictures\Game assets\Hath\ChurchRecruiter.png'
-    lastmod: 1627255472080
-  - name: churchRecruiterBlinkSheet
-    untill: 0
-    grid:
-      - 60
-      - 1
-    axis:
-      - 128
-      - 128
-    marginx: 0
-    marginy: 0
-    imgWidth: 15360
-    imgHeight: 256
-    width: 256
-    height: 256
-    offx: 0
-    offy: 0
-    origname: ie5e34148-4bda-43b1-a07c-087153953e19.png
-    shape: rect
-    left: 128
-    right: 128
-    top: 128
-    bottom: 128
-    uid: e5e34148-4bda-43b1-a07c-087153953e19
-    padding: 1
-    source: 'C:\Users\moosh\Pictures\Game assets\Hath\ChurchRecruiterDialogue.png'
-    lastmod: 1629859634386
   - name: ButtonHidden
     untill: 0
     grid:
@@ -1166,422 +545,6 @@ textures:
     source: >-
       C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\UI\ButtonHidden.png
     lastmod: 1627261141970
-  - name: square
-    untill: 0
-    grid:
-      - 1
-      - 1
-    axis:
-      - 0
-      - 0
-    marginx: 0
-    marginy: 0
-    imgWidth: 16
-    imgHeight: 16
-    width: 16
-    height: 16
-    offx: 0
-    offy: 0
-    origname: iecfb589f-85e5-4d55-86ed-db753b75fd3e.png
-    shape: rect
-    left: 0
-    right: 16
-    top: 0
-    bottom: 16
-    uid: ecfb589f-85e5-4d55-86ed-db753b75fd3e
-    padding: 1
-    source: 'C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\UI\square.png'
-    lastmod: 1627956455349
-  - name: QuestJournal
-    untill: 0
-    grid:
-      - 1
-      - 1
-    axis:
-      - 128
-      - 22
-    marginx: 0
-    marginy: 0
-    imgWidth: 128
-    imgHeight: 128
-    width: 128
-    height: 128
-    offx: 0
-    offy: 0
-    origname: i5e6b3f6f-6a44-472a-b0ce-ce1f049c2943.png
-    shape: rect
-    left: 121
-    right: 0
-    top: 0
-    bottom: 92
-    uid: 5e6b3f6f-6a44-472a-b0ce-ce1f049c2943
-    padding: 1
-    source: >-
-      C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\UI\QuestJournal.png
-    lastmod: 1628114335613
-  - name: Inventory
-    untill: 0
-    grid:
-      - 1
-      - 1
-    axis:
-      - 0
-      - 0
-    marginx: 0
-    marginy: 0
-    imgWidth: 128
-    imgHeight: 128
-    width: 128
-    height: 128
-    offx: 0
-    offy: 0
-    origname: i6f640377-fa92-4617-96b7-f75d876c3e79.png
-    shape: rect
-    left: 0
-    right: 128
-    top: 0
-    bottom: 128
-    uid: 6f640377-fa92-4617-96b7-f75d876c3e79
-    padding: 1
-    source: 'C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\UI\Inventory.png'
-  - name: Map
-    untill: 0
-    grid:
-      - 1
-      - 1
-    axis:
-      - 64
-      - 128
-    marginx: 0
-    marginy: 0
-    imgWidth: 128
-    imgHeight: 128
-    width: 128
-    height: 128
-    offx: 0
-    offy: 0
-    origname: i26dcfbdf-d15b-40c4-bf50-d8c9b1780656.png
-    shape: rect
-    left: 64
-    right: 64
-    top: 128
-    bottom: 0
-    uid: 26dcfbdf-d15b-40c4-bf50-d8c9b1780656
-    padding: 1
-    source: 'C:\Users\moosh\Pictures\Game assets\Hath\MapWider.png'
-    lastmod: 1629941592769
-  - name: FreezeWorks
-    untill: 0
-    grid:
-      - 2
-      - 1
-    axis:
-      - 0
-      - 0
-    marginx: 0
-    marginy: 0
-    imgWidth: 256
-    imgHeight: 128
-    width: 128
-    height: 128
-    offx: 0
-    offy: 0
-    origname: idcbeaaf9-01ab-4c66-9fbd-d1fe68839452.png
-    shape: rect
-    left: 0
-    right: 128
-    top: 0
-    bottom: 128
-    uid: dcbeaaf9-01ab-4c66-9fbd-d1fe68839452
-    padding: 1
-    source: >-
-      C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\UI\MapElements\FreezeWorks.png
-    lastmod: 1630280214412
-  - name: questMarker
-    untill: 0
-    grid:
-      - 1
-      - 1
-    axis:
-      - 16
-      - 16
-    marginx: 0
-    marginy: 0
-    imgWidth: 32
-    imgHeight: 32
-    width: 32
-    height: 32
-    offx: 0
-    offy: 0
-    origname: iae679b84-779c-4980-8d44-f1d9f7944898.png
-    shape: rect
-    left: 16
-    right: 16
-    top: 16
-    bottom: 16
-    uid: ae679b84-779c-4980-8d44-f1d9f7944898
-    padding: 1
-    source: 'C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\UI\questMarker.png'
-    lastmod: 1629168354777
-  - name: AntiChurch
-    untill: 0
-    grid:
-      - 1
-      - 1
-    axis:
-      - 64
-      - 0
-    marginx: 0
-    marginy: 0
-    imgWidth: 128
-    imgHeight: 128
-    width: 128
-    height: 128
-    offx: 0
-    offy: 0
-    origname: i1fb03db4-17fc-4ea7-943b-b7192725f562.png
-    shape: rect
-    left: 64
-    right: 64
-    top: 0
-    bottom: 128
-    uid: 1fb03db4-17fc-4ea7-943b-b7192725f562
-    padding: 1
-    source: 'C:\Users\moosh\Pictures\Game assets\Hath\AntiChurch.png'
-    lastmod: 1629858598495
-  - name: AnChRecruiterBlinkSheet
-    untill: 0
-    grid:
-      - 60
-      - 1
-    axis:
-      - 128
-      - 128
-    marginx: 0
-    marginy: 0
-    imgWidth: 15360
-    imgHeight: 256
-    width: 256
-    height: 256
-    offx: 0
-    offy: 0
-    origname: ie9525ee1-738a-44dc-aa3c-51bb78e8d187.png
-    shape: rect
-    left: 128
-    right: 128
-    top: 128
-    bottom: 128
-    uid: e9525ee1-738a-44dc-aa3c-51bb78e8d187
-    padding: 1
-    source: 'C:\Users\moosh\Pictures\Game assets\Hath\AntiChurchDialogue.png'
-    lastmod: 1630449367234
-  - name: Church
-    untill: 0
-    grid:
-      - 1
-      - 1
-    axis:
-      - 512
-      - 1024
-    marginx: 0
-    marginy: 0
-    imgWidth: 1024
-    imgHeight: 1024
-    width: 1024
-    height: 1024
-    offx: 0
-    offy: 0
-    origname: ia4eaa162-289f-4ba3-a685-869582c0c37a.png
-    shape: rect
-    left: 512
-    right: 512
-    top: 1024
-    bottom: 0
-    uid: a4eaa162-289f-4ba3-a685-869582c0c37a
-    padding: 1
-    source: 'C:\Users\moosh\Pictures\Game assets\Hath\Church.png'
-    lastmod: 1629932364662
-  - name: ChruchDoor
-    untill: 0
-    grid:
-      - 1
-      - 1
-    axis:
-      - 0
-      - 0
-    marginx: 0
-    marginy: 0
-    imgWidth: 256
-    imgHeight: 256
-    width: 256
-    height: 256
-    offx: 0
-    offy: 0
-    origname: i6d4ffb6b-c4c5-4966-9a18-d205062c74bb.png
-    shape: rect
-    left: 0
-    right: 256
-    top: 0
-    bottom: 256
-    uid: 6d4ffb6b-c4c5-4966-9a18-d205062c74bb
-    padding: 1
-    source: 'C:\Users\moosh\Pictures\Game assets\Hath\ChruchDoor.png'
-  - name: Road1
-    untill: 0
-    grid:
-      - 2
-      - 1
-    axis:
-      - 64
-      - 64
-    marginx: 0
-    marginy: 0
-    imgWidth: 256
-    imgHeight: 128
-    width: 128
-    height: 128
-    offx: 0
-    offy: 0
-    origname: icefc684d-e924-4755-a006-592bce4427a4.png
-    shape: rect
-    left: 64
-    right: 64
-    top: 64
-    bottom: 64
-    uid: cefc684d-e924-4755-a006-592bce4427a4
-    padding: 1
-    source: 'C:\Users\moosh\Pictures\Game assets\Hath\MapParts\Road1.png'
-    lastmod: 1629944811294
-  - name: Mic
-    untill: 0
-    grid:
-      - 1
-      - 1
-    axis:
-      - 128
-      - 128
-    marginx: 0
-    marginy: 0
-    imgWidth: 256
-    imgHeight: 256
-    width: 256
-    height: 256
-    offx: 0
-    offy: 0
-    origname: id66566c8-f016-45b5-a23f-45d180ddf839.png
-    shape: rect
-    left: 128
-    right: 128
-    top: 128
-    bottom: 128
-    uid: d66566c8-f016-45b5-a23f-45d180ddf839
-    padding: 1
-    source: 'C:\Users\moosh\Pictures\Game assets\Hath\MicFull.png'
-    lastmod: 1629942244491
-  - name: ExitArrow
-    untill: 0
-    grid:
-      - 1
-      - 1
-    axis:
-      - 128
-      - 256
-    marginx: 0
-    marginy: 0
-    imgWidth: 256
-    imgHeight: 256
-    width: 256
-    height: 256
-    offx: 0
-    offy: 0
-    origname: i24a6ca4f-71d2-47af-96f3-d8be52d08a06.png
-    shape: rect
-    left: 128
-    right: 128
-    top: 83
-    bottom: 0
-    uid: 24a6ca4f-71d2-47af-96f3-d8be52d08a06
-    padding: 1
-    source: 'C:\Users\moosh\Pictures\Game assets\Hath\ExitArrow.png'
-    lastmod: 1629943579024
-  - name: ChurchMapPart
-    untill: 0
-    grid:
-      - 2
-      - 1
-    axis:
-      - 0
-      - 0
-    marginx: 0
-    marginy: 0
-    imgWidth: 128
-    imgHeight: 64
-    width: 64
-    height: 64
-    offx: 0
-    offy: 0
-    origname: i97b18a8e-a527-4c84-82c3-1e7289e8a206.png
-    shape: rect
-    left: 0
-    right: 64
-    top: 0
-    bottom: 64
-    uid: 97b18a8e-a527-4c84-82c3-1e7289e8a206
-    padding: 1
-    source: 'C:\Users\moosh\Pictures\Game assets\Hath\MapParts\Church.png'
-    lastmod: 1630280203836
-  - name: Road2
-    untill: 0
-    grid:
-      - 2
-      - 1
-    axis:
-      - 64
-      - 64
-    marginx: 0
-    marginy: 0
-    imgWidth: 256
-    imgHeight: 128
-    width: 128
-    height: 128
-    offx: 0
-    offy: 0
-    origname: ifbb44f1f-000b-406f-9ca5-5acc0be85282.png
-    shape: rect
-    left: 64
-    right: 64
-    top: 64
-    bottom: 64
-    uid: fbb44f1f-000b-406f-9ca5-5acc0be85282
-    padding: 1
-    source: 'C:\Users\moosh\Pictures\Game assets\Hath\MapParts\Road2.png'
-    lastmod: 1629945003328
-  - name: RedArrow
-    untill: 0
-    grid:
-      - 1
-      - 1
-    axis:
-      - 32
-      - 32
-    marginx: 0
-    marginy: 0
-    imgWidth: 64
-    imgHeight: 64
-    width: 64
-    height: 64
-    offx: 0
-    offy: 0
-    origname: i2ada205f-9ef8-4fe8-a66e-117b8e63cc3d.png
-    shape: rect
-    left: 32
-    right: 32
-    top: 32
-    bottom: 32
-    uid: 2ada205f-9ef8-4fe8-a66e-117b8e63cc3d
-    padding: 1
-    source: 'C:\Users\moosh\Pictures\Game assets\Hath\RedArrow.png'
-    lastmod: 1630279849555
   - name: demonGuy
     untill: 0
     grid:
@@ -1608,116 +571,33 @@ textures:
     padding: 1
     source: 'C:\Users\moosh\Pictures\Game assets\Hath\WhatAreYou\demonGuy.png'
     lastmod: 1630549177919
+  - name: LightSwitch
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 64
+      - 64
+    marginx: 0
+    marginy: 0
+    imgWidth: 128
+    imgHeight: 128
+    width: 128
+    height: 128
+    offx: 0
+    offy: 0
+    origname: i34248f16-fd8d-4b1e-8905-e9f01cf64340.png
+    shape: rect
+    left: 64
+    right: 64
+    top: 64
+    bottom: 64
+    uid: 34248f16-fd8d-4b1e-8905-e9f01cf64340
+    padding: 1
+    source: 'C:\Users\moosh\Pictures\Game assets\Hath\WhatAreYou\LightSwitch.png'
 skeletons: []
 types:
-  - name: CharPlaceHold
-    depth: 0
-    oncreate: >+
-      //this.speed = 5;
-
-      goToXCo = this.x;//stops player from continuing forward after a room
-      change
-
-      playerXCo = this.x;
-
-      movingArea = false;
-
-      this.y= ct.room.playerStartY;
-
-      if(entryDirection == 'left')
-
-      {
-          this.x = 64;
-          ct.transition.slideIn(200,'right');
-      }
-
-      else if(entryDirection == 'right')
-
-      {
-          this.x = 768;
-          ct.transition.slideIn(200,'left');
-      }
-
-      else if(entryDirection=='map')
-
-      {
-          console.log(entryDirection);
-          this.x = 768;
-          ct.transition.scaleIn(500);
-      }
-
-      else
-
-      {
-          this.x = 128;
-      }
-
-    onstep: >-
-      this.move();
-
-      if(ct.actions.Interact.pressed == true && dialogueMode == false &&
-      questOpen == false && mapOpen == false)
-
-      {
-          if(ct.mouse.x >768)
-          {   
-              if(ct.room.nextRoomRight !='none'){
-              ct.transition.slideOut(200,'right')
-              .then(() => {
-                  ct.rooms.switch(ct.room.nextRoomRight);
-                  entryDirection = 'left';
-              });
-              }
-          } 
-          else if(ct.mouse.x <64)
-          {
-              if(ct.room.nextRoomLeft !='none'){
-              ct.transition.slideOut(200,'left')
-              .then(() => {
-                  ct.rooms.switch(ct.room.nextRoomLeft);
-                  entryDirection = 'right';
-              });
-              }
-          }
-      }
-
-      moveActive = true;
-
-      if(ct.actions.OpenQuestJournal.pressed)
-
-      {
-          if(questOpen == false)
-          {
-              exitQuest = false;
-              this.questScreen = ct.rooms.append('QuestJournal', {isUi: true});
-          }
-      }
-
-      if(ct.actions.OpenMap.pressed)
-
-      {
-          if(mapOpen == false)
-          {
-              exitMap = false;
-              this.mapScreen = ct.rooms.append('Map', {isUi: true});
-          }
-      }
-
-      if(ct.actions.Inventory.pressed)//if the I key is pressed
-
-      {
-          if(mapOpen == false)
-          {
-              exitQuest = false;
-              this.inventoryScreen = ct.rooms.append('InventoryUIRoom', {isUi: true});
-          }
-      }
-    ondraw: ''
-    ondestroy: ''
-    texture: c1c16902-4766-48f8-95ce-eef602ec67f3
-    extends: {}
-    uid: 7bdd0707-657b-4256-a995-c526fadcb05e
-    lastmod: 1630018832856
   - name: Brick
     depth: 0
     oncreate: test =2;
@@ -1736,7 +616,7 @@ types:
     texture: a1e3bb1f-92c3-4cb5-9b78-5e436dcb7e83
     extends: {}
     uid: 8a66b824-7245-4e60-b09f-4581e1fc9938
-    lastmod: 1630549043694
+    lastmod: 1630550342376
   - name: Grey
     depth: 0
     oncreate: ''
@@ -1771,36 +651,6 @@ types:
     extends: {}
     uid: bda90d00-a00c-45f7-a174-789a81cc40ea
     lastmod: 1627261293475
-  - name: PinkPlace-export
-    depth: 0
-    oncreate: ''
-    onstep: this.move();
-    ondraw: ''
-    ondestroy: ''
-    texture: db48df6b-b5a7-4ac5-974f-b3a7da4cbd7b
-    extends: {}
-    uid: dedef1f1-3f39-4dfe-8d17-6dbfee9756e2
-    lastmod: 1627260848300
-  - name: OriginPoint
-    depth: -5
-    oncreate: ''
-    onstep: this.move();
-    ondraw: ''
-    ondestroy: ''
-    texture: 7a79c7d7-5802-43eb-b262-abd8cd2b60cb
-    extends: {}
-    uid: e11df848-0712-4e8c-a6e9-dc1d085e4a44
-    lastmod: 1620603746768
-  - name: OriginPlayer
-    depth: 0
-    oncreate: ''
-    onstep: this.move();
-    ondraw: ''
-    ondestroy: ''
-    texture: 7a79c7d7-5802-43eb-b262-abd8cd2b60cb
-    extends: {}
-    uid: 778ce8e9-d45a-43e5-839a-eb9f34fe0607
-    lastmod: 1620604948411
   - name: ExitButton
     depth: 180
     oncreate: ''
@@ -1823,36 +673,6 @@ types:
     extends: {}
     uid: 56de7695-90ed-4b79-a522-4812cfaa1445
     lastmod: 1629860097910
-  - name: PinkDialogue
-    depth: 0
-    oncreate: ''
-    onstep: |-
-      this.move();
-      this.tex = pinkEmotes[pinkEmotePhase];
-    ondraw: ''
-    ondestroy: ''
-    texture: 547551c5-4479-4f3b-90a9-dea1bfb3ca5e
-    extends: {}
-    uid: 3c13a2f8-916d-4745-9afd-c87e94ab6ec5
-    lastmod: 1621936630862
-  - name: MilesFull
-    depth: 0
-    oncreate: test =2;
-    onstep: |-
-      this.move();
-      if(ct.actions.Interact.pressed && ct.mouse.hovers(this) && test ==2){
-          dialogueMode = true;
-          currentCharacter = 'miles';
-          this.dialogueScreen = ct.rooms.append('Dialogue', {isUi: true});
-      exitDialogue = false;
-      test =1;
-      }
-    ondraw: ''
-    ondestroy: ''
-    texture: 9bc49199-e006-4590-85cd-f3c26883cbb9
-    extends: {}
-    uid: 0f1ac469-0ab7-4113-b96c-50771c99a3e2
-    lastmod: 1625091882627
   - name: milesDialogue
     depth: 2
     oncreate: |-
@@ -1901,75 +721,7 @@ types:
     texture: ea92ed63-9d82-4f4e-a07e-cf0489de3289
     extends: {}
     uid: aa86abb7-99f9-4120-a521-9b5af76b1a31
-    lastmod: 1626603093389
-  - name: jackDialogue
-    depth: 2
-    oncreate: |-
-      this.animationSpeed = 0.2;
-      characterBlinking = false;
-      currentCharacter = 'jack';
-    onstep: >-
-      this.move();
-
-      if ( blarp== 4 && characterBlinking == false){//this uses a copy pasteable
-      script because I am lazy
-          this.tex = characterBlink();
-          this.animationSpeed = 0.2;
-          this.gotoAndPlay(0);
-          characterBlinking = true;
-          blarp = 0;
-          sinceLastBlink = 0;
-      }
-
-      if(ct.actions.Interact.pressed && ct.mouse.hovers(this) &&
-      characterBlinking == false ){
-          this.tex = characterBlink();
-          this.gotoAndPlay(0);   
-          characterBlinking = true;
-          this.scale.x = 1;
-      }
-
-      if (this.currentFrame == 59){
-          this.gotoAndStop(0);
-          characterBlinking = false;
-      }
-
-      frameCounter++;
-
-      if(frameCounter == 200){
-          frameCounter = 0;
-          sinceLastBlink++;
-      }
-
-      else if(frameCounter == 1 && sinceLastBlink > 5){
-
-      blarp = Math.trunc(ct.random.range(1, 5));
-
-      }
-    ondraw: ''
-    ondestroy: ''
-    texture: 6f7afb0d-f4ab-4f68-b773-4dd4e99e319c
-    extends: {}
-    uid: 936d3820-f7eb-46d4-8d73-a2e5e05e8cd5
-    lastmod: 1627257451598
-  - name: JackFull
-    depth: 0
-    oncreate: test =2;
-    onstep: |-
-      this.move();
-      if(ct.actions.Interact.pressed && ct.mouse.hovers(this) && test ==2){
-          dialogueMode = true;
-          currentCharacter = 'jack';
-          this.dialogueScreen = ct.rooms.append('Dialogue', {isUi: true});
-      exitDialogue = false;
-      test =1;
-      }
-    ondraw: ''
-    ondestroy: ''
-    texture: 021e216d-d500-4f93-b26e-2b2acecd28b4
-    extends: {}
-    uid: 492d56e7-5d3e-464e-83bf-411fb9c638c5
-    lastmod: 1625789671714
+    lastmod: 1630550004152
   - name: dialogueBack
     depth: 0
     oncreate: ''
@@ -1980,16 +732,6 @@ types:
     extends: {}
     uid: 8f833c10-651a-49f7-86e5-51df4a70ff52
     lastmod: 1622069270687
-  - name: Road01
-    depth: 0
-    oncreate: ''
-    onstep: this.move();
-    ondraw: ''
-    ondestroy: ''
-    texture: 17c127c0-08f6-41bf-991f-5d872a36aa34
-    extends: {}
-    uid: 3c5d1370-5ab2-49e2-8991-e209b2059b9a
-    lastmod: 1622609171680
   - name: WorldBack
     depth: -20
     oncreate: //ct.camera.follow = this;
@@ -2001,160 +743,6 @@ types:
     extends: {}
     uid: d3760502-6697-41df-9fad-b86d91f9ac21
     lastmod: 1624482374804
-  - name: FreezeMachine
-    depth: 0
-    oncreate: |-
-      this.animationSpeed = 0.2;
-      this.gotoAndPlay(0);
-    onstep: this.move();
-    ondraw: ''
-    ondestroy: ''
-    texture: f74f7087-6a7d-460f-9ee6-1dda3d5e0f0a
-    extends: {}
-    uid: 24d390cc-341a-4d99-a62f-dcbd964043c0
-    lastmod: 1625698727605
-  - name: freezeMasterDialogue
-    depth: 2
-    oncreate: |-
-      this.animationSpeed = 0.2;
-      characterBlinking = false;
-      characterID = 'fmd';
-      currentCharacter = 'freezeMaster'
-    onstep: >-
-      this.move();
-
-      if ( blarp== 4 && characterBlinking == false){//this uses a copy pasteable
-      script to make the creation of new characters easier
-          this.tex = characterBlink();
-          this.animationSpeed = 0.2;
-          this.gotoAndPlay(0);
-          characterBlinking = true;
-          blarp = 0;
-          sinceLastBlink = 0;
-      }
-
-      if(ct.actions.Interact.pressed && ct.mouse.hovers(this) &&
-      characterBlinking == false ){
-          this.tex = characterBlink();
-          this.gotoAndPlay(0);   
-          characterBlinking = true;
-          this.scale.x = 1;
-      }
-
-      if (this.currentFrame == 59){
-          this.gotoAndStop(0);
-          characterBlinking = false;
-      }
-
-      frameCounter++;
-
-      if(frameCounter == 200){
-          frameCounter = 0;
-          sinceLastBlink++;
-      }
-
-      else if(frameCounter == 1 && sinceLastBlink > 5){
-
-      blarp = Math.trunc(ct.random.range(1, 5));
-
-      }
-    ondraw: ''
-    ondestroy: ''
-    texture: 3b730152-e00d-4f31-b3b5-d83009244c85
-    extends: {}
-    uid: f634f2ee-5330-48a6-986c-25d6cfd75305
-    lastmod: 1629074888579
-  - name: freezeMasterFull
-    depth: 2
-    oncreate: test =2;
-    onstep: |-
-      this.move();
-      if(ct.actions.Interact.pressed && ct.mouse.hovers(this) && test ==2){
-          dialogueMode = true;
-          currentCharacter = 'freezeMaster';
-          this.dialogueScreen = ct.rooms.append('Dialogue', {isUi: true});
-      exitDialogue = false;
-      test =1;
-      }
-    ondraw: ''
-    ondestroy: ''
-    texture: d4342cc5-1e0c-4fd9-839c-6ef2e0e9f406
-    extends:
-      visible: true
-    uid: 27d7d87e-c61c-4144-86d9-85cdadb466a7
-    lastmod: 1627256960152
-  - name: ChurchRecruiter
-    depth: 0
-    oncreate: |
-      test =2;
-    onstep: |-
-      this.move();
-      if(ct.actions.Interact.pressed && ct.mouse.hovers(this) && test ==2){
-          dialogueMode = true;
-          currentCharacter = 'churchRecruiter';
-          characterID = 'crd';
-          this.dialogueScreen = ct.rooms.append('Dialogue', {isUi: true});
-      exitDialogue = false;
-      test =1;
-      }
-    ondraw: ''
-    ondestroy: ''
-    texture: 4398da89-b242-41c4-9a70-a555523da1f5
-    extends: {}
-    uid: dfb8bf33-c4a0-4c07-83a4-a9ba95a8724d
-    lastmod: 1629858537542
-  - name: churchRecruiterDialogue
-    depth: 2
-    oncreate: |-
-      this.animationSpeed = 0.2;
-      characterBlinking = false;
-      currentCharacter = 'churchRecruiter';
-      characterID = 'crd';
-      nextDialogue = true;
-    onstep: >-
-      this.move();
-
-      if ( blarp== 4 && characterBlinking == false){//this uses a copy pasteable
-      script to make the creation of new characters easier
-          this.tex = characterBlink();
-          this.animationSpeed = 0.2;
-          this.gotoAndPlay(0);
-          characterBlinking = true;
-          blarp = 0;
-          sinceLastBlink = 0;
-      }
-
-      if(ct.actions.Interact.pressed && ct.mouse.hovers(this) &&
-      characterBlinking == false ){
-          this.tex = characterBlink();
-          this.gotoAndPlay(0);   
-          characterBlinking = true;
-          this.scale.x = 1;
-      }
-
-      if (this.currentFrame == 59){
-          this.gotoAndStop(0);
-          characterBlinking = false;
-      }
-
-      frameCounter++;
-
-      if(frameCounter == 200){
-          frameCounter = 0;
-          sinceLastBlink++;
-      }
-
-      else if(frameCounter == 1 && sinceLastBlink > 5){
-
-      blarp = Math.trunc(ct.random.range(1, 5));
-
-      }
-    ondraw: ''
-    ondestroy: ''
-    texture: e5e34148-4bda-43b1-a07c-087153953e19
-    extends: {}
-    uid: ab4d33f5-396b-4aeb-bce0-e17c35574b1e
-    lastmod: 1629943788764
   - name: response1
     depth: -10000
     oncreate: ''
@@ -2185,456 +773,6 @@ types:
     extends: {}
     uid: 31483b51-8c3b-43ab-9155-0d4ca4bfacd9
     lastmod: 1628813194250
-  - name: square
-    depth: -20
-    oncreate: ''
-    onstep: this.move();
-    ondraw: ''
-    ondestroy: ''
-    texture: ecfb589f-85e5-4d55-86ed-db753b75fd3e
-    extends: {}
-    uid: a6d0439d-4dc7-42f3-9c0a-6e32079970e9
-    lastmod: 1627956538641
-  - name: QuestJournal
-    depth: 150
-    oncreate: ''
-    onstep: this.move();
-    ondraw: ''
-    ondestroy: ''
-    texture: 5e6b3f6f-6a44-472a-b0ce-ce1f049c2943
-    extends: {}
-    uid: d95e5406-7d35-4158-8e70-825d11f6bbab
-    lastmod: 1629166115364
-  - name: Inventory
-    depth: 0
-    oncreate: ''
-    onstep: this.move();
-    ondraw: ''
-    ondestroy: ''
-    texture: 6f640377-fa92-4617-96b7-f75d876c3e79
-    extends: {}
-    uid: dd76c237-5611-47a9-b23f-6e8b8c357d78
-    lastmod: 1628465540809
-  - name: Map
-    depth: 150
-    oncreate: ''
-    onstep: this.move();
-    ondraw: ''
-    ondestroy: ''
-    texture: 26dcfbdf-d15b-40c4-bf50-d8c9b1780656
-    extends: {}
-    uid: 5ef3ac0d-b2c1-47de-9de9-c807725e7956
-    lastmod: 1629074504895
-  - name: MapFreezeWorks
-    depth: 154
-    oncreate: |
-      this.animationSpeed = 0.1;
-    onstep: |-
-      this.move();
-      if(ct.mouse.hovers(this))
-      {
-          this.play();
-      }
-      else{
-          this.gotoAndStop(0);
-      }
-      if(ct.room.name != 'R1_defrostRoom'){
-          if(ct.mouse.hovers(this) && ct.actions.Interact.pressed)
-          {
-              this.animationSpeed = 0.2;
-              this.play();
-              ct.transition.scaleOut(500)
-              .then(() => {
-                      ct.rooms.switch('R1_defrostRoom');
-                      entryDirection = 'map';
-                  });
-              exitMap = true;
-              mapOpen = false;
-          
-          }
-      }
-      else
-      {
-          if(ct.mouse.hovers(this) && ct.actions.Interact.pressed)
-          {
-          exitMap = true;
-          mapOpen = false;
-          }
-      }
-      if(mapPage == 1){
-          this.x = 208;
-          this.y = 111;
-      }
-      else{
-          this.x=1000
-          this.y = 111;
-      }
-    ondraw: ''
-    ondestroy: ''
-    texture: dcbeaaf9-01ab-4c66-9fbd-d1fe68839452
-    extends: {}
-    uid: 7cdb8cd5-5409-4fad-89d3-bef009aec78d
-    lastmod: 1630280171077
-  - name: QuestButton
-    depth: 1000
-    oncreate: ''
-    onstep: |-
-      this.move();
-      if(ct.mouse.hovers(this) && ct.actions.Interact.pressed){
-          responseNumber = 2;
-          RunDialogue(2,characterID, dialogueNumber);
-      }
-    ondraw: ''
-    ondestroy: ''
-    texture: 12559a76-89b4-49d2-9926-642054e0ad8e
-    extends: {}
-    uid: 43293d6a-1816-41cd-b25f-6138d0a660f3
-    lastmod: 1629166098577
-  - name: questMarker
-    depth: 190
-    oncreate: ''
-    onstep: this.move();
-    ondraw: ''
-    ondestroy: ''
-    texture: ae679b84-779c-4980-8d44-f1d9f7944898
-    extends: {}
-    uid: 3bc3a199-2d70-402d-935c-e70c705c87ca
-    lastmod: 1629940760130
-  - name: AnChRecruiter
-    depth: 0
-    oncreate: test =2;
-    onstep: |-
-      this.move();
-      if(ct.actions.Interact.pressed && ct.mouse.hovers(this) && test ==2){
-          dialogueMode = true;
-          currentCharacter = 'AnChRecruiter';
-          characterID = 'ard';
-          this.dialogueScreen = ct.rooms.append('Dialogue', {isUi: true});
-      exitDialogue = false;
-      test =1;
-      }
-    ondraw: ''
-    ondestroy: ''
-    texture: 1fb03db4-17fc-4ea7-943b-b7192725f562
-    extends: {}
-    uid: 52a9fa81-a9df-4aea-9e0c-25547cbf81b6
-    lastmod: 1630548989127
-  - name: AnChRecruiterDialogue
-    depth: 2
-    oncreate: |-
-      this.animationSpeed = 0.2;
-      characterBlinking = false;
-      currentCharacter = 'AnChRecruiter';
-      characterID = 'ard';
-      nextDialogue = true;
-    onstep: >-
-      this.move();
-
-      if ( blarp== 4 && characterBlinking == false){//this uses a copy pasteable
-      script to make the creation of new characters easier
-          this.tex = characterBlink();
-          this.animationSpeed = 0.2;
-          this.gotoAndPlay(0);
-          characterBlinking = true;
-          blarp = 0;
-          sinceLastBlink = 0;
-      }
-
-      if(ct.actions.Interact.pressed && ct.mouse.hovers(this) &&
-      characterBlinking == false ){
-          this.tex = characterBlink();
-          this.gotoAndPlay(0);   
-          characterBlinking = true;
-          this.scale.x = 1;
-      }
-
-      if (this.currentFrame == 59){
-          this.gotoAndStop(0);
-          characterBlinking = false;
-      }
-
-      frameCounter++;
-
-      if(frameCounter == 200){
-          frameCounter = 0;
-          sinceLastBlink++;
-      }
-
-      else if(frameCounter == 1 && sinceLastBlink > 5){
-
-      blarp = Math.trunc(ct.random.range(1, 5));
-
-      }
-    ondraw: ''
-    ondestroy: ''
-    texture: e9525ee1-738a-44dc-aa3c-51bb78e8d187
-    extends: {}
-    uid: 4e14111c-bd3a-4305-b25e-03bd821b3b63
-    lastmod: 1630549188159
-  - name: ChruchDoor
-    depth: 0
-    oncreate: ''
-    onstep: |-
-      this.move();
-      if(ct.mouse.hovers(this) && ct.mouse.pressed){
-          ct.transition.slideOut(200,'right')
-              .then(() => {
-              ct.rooms.switch('R5');
-              entryDirection = 'left';
-          });
-      }
-    ondraw: ''
-    ondestroy: ''
-    texture: 6d4ffb6b-c4c5-4966-9a18-d205062c74bb
-    extends: {}
-    uid: cba8cc82-51c9-4d5c-a73d-9dc871622b38
-    lastmod: 1629943524014
-  - name: Church
-    depth: -3
-    oncreate: ''
-    onstep: this.move();
-    ondraw: ''
-    ondestroy: ''
-    texture: a4eaa162-289f-4ba3-a685-869582c0c37a
-    extends: {}
-    uid: eeac87dc-3c0d-4536-8250-a2a5250ae706
-    lastmod: 1629932376071
-  - name: Road1
-    depth: 154
-    oncreate: this.animationSpeed = 0.1;
-    onstep: |-
-      this.move();
-      if(ct.mouse.hovers(this))
-      {
-          this.play();
-      }
-      else{
-          this.gotoAndStop(0);
-      }
-      if(ct.room.name != 'R2_Road1'){
-          if(ct.mouse.hovers(this) && ct.actions.Interact.pressed)
-          {
-              this.animationSpeed = 0.2;
-              this.play();
-              ct.transition.scaleOut(500)
-              .then(() => {
-                      ct.rooms.switch('R2_Road1');
-                      entryDirection = 'map';
-                  });
-              exitMap = true;
-              mapOpen = false;
-          
-          }
-      }
-      else
-      {
-          if(ct.mouse.hovers(this) && ct.actions.Interact.pressed)
-          {
-          exitMap = true;
-          mapOpen = false;
-          }
-      }
-    ondraw: ''
-    ondestroy: ''
-    texture: cefc684d-e924-4755-a006-592bce4427a4
-    extends: {}
-    uid: 0971315a-0587-44fc-a8ee-3a000cf3845b
-    lastmod: 1630446396062
-  - name: Mic
-    depth: 0
-    oncreate: test = 2;
-    onstep: |-
-      this.move();
-      if(ct.actions.Interact.pressed && ct.mouse.hovers(this) && test ==2){
-          dialogueMode = true;
-          currentCharacter = 'mic';
-          characterID = 'mcc';
-          this.dialogueScreen = ct.rooms.append('Dialogue', {isUi: true});
-      exitDialogue = false;
-      test =1;
-      }
-    ondraw: ''
-    ondestroy: ''
-    texture: d66566c8-f016-45b5-a23f-45d180ddf839
-    extends: {}
-    uid: 17fc45ad-3a29-4790-b6a0-364b558fa096
-    lastmod: 1629943724485
-  - name: micDialogue
-    depth: 2
-    oncreate: |-
-      this.animationSpeed = 0.2;
-      characterBlinking = false;
-      currentCharacter = 'mic';
-      characterID = 'mcc';
-      nextDialogue = true;
-    onstep: >-
-      this.move();
-
-      if ( blarp== 4 && characterBlinking == false){//this uses a copy pasteable
-      script for blinking to make the creation of new characters easier
-          this.tex = characterBlink();
-          this.animationSpeed = 0.2;
-          this.gotoAndPlay(0);
-          characterBlinking = true;
-          blarp = 0;
-          sinceLastBlink = 0;
-      }
-
-      if(ct.actions.Interact.pressed && ct.mouse.hovers(this) &&
-      characterBlinking == false ){
-          this.tex = characterBlink();
-          this.gotoAndPlay(0);   
-          characterBlinking = true;
-          this.scale.x = 1;
-      }
-
-      if (this.currentFrame == 59){
-          this.gotoAndStop(0);
-          characterBlinking = false;
-      }
-
-      frameCounter++;
-
-      if(frameCounter == 200){
-          frameCounter = 0;
-          sinceLastBlink++;
-      }
-
-      else if(frameCounter == 1 && sinceLastBlink > 5){
-
-      blarp = Math.trunc(ct.random.range(1, 5));
-
-      }
-    ondraw: ''
-    ondestroy: ''
-    texture: 2898755f-c1c7-44e3-8e8e-ab117427fb7e
-    extends: {}
-    uid: a1d11b1c-c98d-425e-95c9-b6438af37371
-    lastmod: 1630018352416
-  - name: ExitArrow
-    depth: 0
-    oncreate: ''
-    onstep: >-
-      this.move();
-
-      if(ct.mouse.hovers(this) && ct.mouse.pressed && dialogueMode == false &&
-      questOpen == false && mapOpen == false){
-          ct.transition.slideOut(200,'right')
-              .then(() => {
-              ct.rooms.switch('R4');
-              entryDirection = 'left';
-          });
-      }this.move();
-    ondraw: ''
-    ondestroy: ''
-    texture: 24a6ca4f-71d2-47af-96f3-d8be52d08a06
-    extends: {}
-    uid: c133fde3-2243-41ef-8964-f5c48ef87e7e
-    lastmod: 1630018793193
-  - name: ChurchMapPart
-    depth: 154
-    oncreate: this.animationSpeed = 0.1;
-    onstep: |-
-      this.move();
-      if(ct.mouse.hovers(this))
-      {
-          this.play();
-      }
-      else{
-          this.gotoAndStop(0);
-      }
-      if(ct.room.name != 'R4'){
-          if(ct.mouse.hovers(this) && ct.actions.Interact.pressed)
-          {
-              this.animationSpeed = 0.2;
-              this.play();
-              ct.transition.scaleOut(500)
-              .then(() => {
-                      ct.rooms.switch('R4');
-                      entryDirection = 'map';
-                  });
-              exitMap = true;
-              mapOpen = false;
-          
-          }
-      }
-      else
-      {
-          if(ct.mouse.hovers(this) && ct.actions.Interact.pressed)
-          {
-          exitMap = true;
-          mapOpen = false;
-          }
-      }
-      if(mapPage == 1){
-          this.x = 208;
-          this.y = 256;
-      }
-      else{
-          this.x=1000
-          this.y = 256;
-      }
-    ondraw: ''
-    ondestroy: ''
-    texture: 97b18a8e-a527-4c84-82c3-1e7289e8a206
-    extends: {}
-    uid: f346c6ae-2593-4666-b633-c548a3279fc9
-    lastmod: 1630280455965
-  - name: Road2
-    depth: 154
-    oncreate: this.animationSpeed = 0.1;
-    onstep: |-
-      this.move();
-      if(ct.mouse.hovers(this))
-      {
-          this.play();
-      }
-      else{
-          this.gotoAndStop(0);
-      }
-      if(ct.room.name != 'R3'){
-          if(ct.mouse.hovers(this) && ct.actions.Interact.pressed)
-          {
-              this.animationSpeed = 0.2;
-              this.play();
-              ct.transition.scaleOut(500)
-              .then(() => {
-                      ct.rooms.switch('R3');
-                      entryDirection = 'map';
-                  });
-              exitMap = true;
-              mapOpen = false;
-          
-          }
-      }
-      else
-      {
-          if(ct.mouse.hovers(this) && ct.actions.Interact.pressed)
-          {
-          exitMap = true;
-          mapOpen = false;
-          }
-      }
-    ondraw: ''
-    ondestroy: ''
-    texture: fbb44f1f-000b-406f-9ca5-5acc0be85282
-    extends: {}
-    uid: b8270535-8b44-4779-a408-633c0306e725
-    lastmod: 1630280179573
-  - name: RightMapArrow
-    depth: 159
-    oncreate: ''
-    onstep: |-
-      this.move();
-      if(ct.mouse.hovers(this) && ct.mouse.pressed){
-          mapPage++;
-      }
-    ondraw: ''
-    ondestroy: ''
-    texture: 2ada205f-9ef8-4fe8-a66e-117b8e63cc3d
-    extends: {}
-    uid: 1aadc71e-d290-44d0-9532-5d35571d621e
-    lastmod: 1630280359604
   - name: DemonGuyDialogue
     depth: 2
     oncreate: |-
@@ -2650,7 +788,21 @@ types:
     texture: 6ef82d26-3cef-464f-aa4a-be62e96cda16
     extends: {}
     uid: 7a85b669-67b6-41fe-bfcb-044bfed03337
-    lastmod: 1630549185999
+    lastmod: 1630552107978
+  - name: LightSwitch
+    depth: 0
+    oncreate: ''
+    onstep: |-
+      this.move();
+      if(ct.mouse.pressed && ct.mouse.hovers(this)){
+          lightSwitched = true;
+      }
+    ondraw: ''
+    ondestroy: ''
+    texture: 34248f16-fd8d-4b1e-8905-e9f01cf64340
+    extends: {}
+    uid: 5954f47e-a155-4d9f-aa7c-862a31042c7d
+    lastmod: 1630552124562
 sounds: []
 styles:
   - name: Dialogue
@@ -2658,7 +810,7 @@ styles:
     origname: sf5fae5166244
     font:
       family: '"CTPROJFONTkongtext", "kongtext", sans-serif'
-      size: 14
+      size: 12
       weight: '100'
       italic: false
       halign: left
@@ -2815,12 +967,6 @@ rooms:
         'y': 288
         uid: bda90d00-a00c-45f7-a174-789a81cc40ea
         exts: {}
-      - x: 832
-        'y': 64
-        uid: d95e5406-7d35-4158-8e70-825d11f6bbab
-        exts: {}
-        tx: 6
-        ty: 6
       - x: -0.0
         'y': -0.0
         uid: 8f833c10-651a-49f7-86e5-51df4a70ff52
@@ -2842,7 +988,7 @@ rooms:
     lastmod: 1630017909999
     backgroundColor: 'rgba(0,0,0,0)'
   - name: Dialogue
-    oncreate: >-
+    oncreate: >
       //384 320
 
       this.roomCharacter = ct.types.copy(currentCharacter + 'Dialogue',384,320);
@@ -2904,18 +1050,6 @@ rooms:
       this.addChild(this.response2Text);
 
       this.responseNumberCheck
-
-      //added quests/invnetory items
-
-      this.added = '';
-
-      this.addedText = new PIXI.Text(this.added, ct.styles.get('Response'));
-
-      this.addedText.x = 96;
-
-      this.addedText.y = 432;
-
-      this.count =1;
     onstep: |-
       if(exitDialogue == true){
           ct.rooms.remove(this);
@@ -2937,14 +1071,10 @@ rooms:
       if(ct.actions.Interact.pressed){
           moveActive = false;
       }
-    ondraw: |-
+    ondraw: |
       this.dialogueText.text =  this.dialogue;
       this.response1Text.text = this.response1;
       this.response2Text.text = this.response2;
-      if(addedItemOrQuest != 'none' && this.count<150){
-          this.added = addedItemOrQuest
-          this.addedText.y - this.count;
-      }
     onleave: |-
       test = 2;
       moveActive = false;
@@ -2988,7 +1118,7 @@ rooms:
     gridY: 16
     backgroundColor: 'rgba(0,0,0,0.51)'
     restrictCamera: false
-    lastmod: 1630022398812
+    lastmod: 1630552127970
   - name: Road001
     oncreate: ''
     onstep: ''
@@ -3001,25 +1131,9 @@ rooms:
         texture: 72b4227a-a07a-4049-bf29-ad5ad7ce8e78
         extends: {}
     copies:
-      - x: 0
-        'y': 384
-        uid: 3c5d1370-5ab2-49e2-8991-e209b2059b9a
-        exts: {}
       - x: 384
         'y': 128
         uid: bda90d00-a00c-45f7-a174-789a81cc40ea
-        exts: {}
-      - x: 128
-        'y': 320
-        uid: 7bdd0707-657b-4256-a995-c526fadcb05e
-        exts: {}
-      - x: 576
-        'y': 320
-        uid: 492d56e7-5d3e-464e-83bf-411fb9c638c5
-        exts: {}
-      - x: 256
-        'y': 256
-        uid: 0f1ac469-0ab7-4113-b96c-50771c99a3e2
         exts: {}
       - x: 0
         'y': 0
@@ -3052,28 +1166,10 @@ rooms:
         texture: 72b4227a-a07a-4049-bf29-ad5ad7ce8e78
         extends: {}
     copies:
-      - x: 128
-        'y': 64
-        uid: 24d390cc-341a-4d99-a62f-dcbd964043c0
-        exts: {}
-        tx: 2
-        ty: 2
       - x: 768
         'y': 384
         uid: bda90d00-a00c-45f7-a174-789a81cc40ea
         exts: {}
-      - x: 576
-        'y': 448
-        uid: 27d7d87e-c61c-4144-86d9-85cdadb466a7
-        exts: {}
-        tx: 1
-        ty: 1
-      - x: 768
-        'y': 0
-        uid: a6d0439d-4dc7-42f3-9c0a-6e32079970e9
-        exts: {}
-        tx: 4
-        ty: 48
     tiles:
       - depth: -10
         tiles: []
@@ -3104,28 +1200,6 @@ rooms:
         'y': 64
         uid: bda90d00-a00c-45f7-a174-789a81cc40ea
         exts: {}
-      - x: -0.0
-        'y': 448
-        uid: 3c5d1370-5ab2-49e2-8991-e209b2059b9a
-        exts: {}
-      - x: 384
-        'y': 256
-        uid: dfb8bf33-c4a0-4c07-83a4-a9ba95a8724d
-        exts: {}
-        tx: 2
-        ty: 2
-      - x: 768
-        'y': 0
-        uid: a6d0439d-4dc7-42f3-9c0a-6e32079970e9
-        exts: {}
-        tx: 4
-        ty: 40
-      - x: -0.0
-        'y': 0
-        uid: a6d0439d-4dc7-42f3-9c0a-6e32079970e9
-        exts: {}
-        tx: 4
-        ty: 40
     tiles:
       - depth: -10
         tiles: []
@@ -3190,12 +1264,6 @@ rooms:
         'y': 0
         uid: 8f833c10-651a-49f7-86e5-51df4a70ff52
         exts: {}
-      - x: 0
-        'y': -32
-        uid: dd76c237-5611-47a9-b23f-6e8b8c357d78
-        exts: {}
-        tx: 5
-        ty: 5
       - x: 576
         'y': 96
         uid: 56de7695-90ed-4b79-a522-4812cfaa1445
@@ -3245,16 +1313,6 @@ rooms:
     height: 640
     backgrounds: []
     copies:
-      - x: 416
-        'y': 640
-        uid: 5ef3ac0d-b2c1-47de-9de9-c807725e7956
-        exts: {}
-        tx: 5
-        ty: 5
-      - x: 208
-        'y': 111
-        uid: 7cdb8cd5-5409-4fad-89d3-bef009aec78d
-        exts: {}
       - x: 192
         'y': 352
         uid: bda90d00-a00c-45f7-a174-789a81cc40ea
@@ -3263,27 +1321,9 @@ rooms:
         'y': 0
         uid: 8f833c10-651a-49f7-86e5-51df4a70ff52
         exts: {}
-      - x: 416
-        'y': 160
-        uid: 0971315a-0587-44fc-a8ee-3a000cf3845b
-        exts: {}
       - x: 672
         'y': 64
         uid: 56de7695-90ed-4b79-a522-4812cfaa1445
-        exts: {}
-      - x: 208
-        'y': 256
-        uid: f346c6ae-2593-4666-b633-c548a3279fc9
-        exts: {}
-        tx: 1.5
-        ty: 1.5
-      - x: 576
-        'y': 160
-        uid: b8270535-8b44-4779-a408-633c0306e725
-        exts: {}
-      - x: 640
-        'y': 576
-        uid: 1aadc71e-d290-44d0-9532-5d35571d621e
         exts: {}
     tiles:
       - depth: -10
@@ -3311,16 +1351,6 @@ rooms:
         texture: 72b4227a-a07a-4049-bf29-ad5ad7ce8e78
         extends: {}
     copies:
-      - x: 0
-        'y': 448
-        uid: 3c5d1370-5ab2-49e2-8991-e209b2059b9a
-        exts: {}
-      - x: 320
-        'y': 256
-        uid: 52a9fa81-a9df-4aea-9e0c-25547cbf81b6
-        exts: {}
-        tx: 1.5
-        ty: 1.5
       - x: 448
         'y': 256
         uid: bda90d00-a00c-45f7-a174-789a81cc40ea
@@ -3348,22 +1378,6 @@ rooms:
     height: 640
     backgrounds: []
     copies:
-      - x: 0
-        'y': 448
-        uid: 3c5d1370-5ab2-49e2-8991-e209b2059b9a
-        exts: {}
-      - x: 256
-        'y': 192
-        uid: cba8cc82-51c9-4d5c-a73d-9dc871622b38
-        exts: {}
-        tx: 1
-        ty: 1
-      - x: 384
-        'y': 448
-        uid: eeac87dc-3c0d-4536-8250-a2a5250ae706
-        exts: {}
-        tx: 1.5
-        ty: 1.5
       - x: 64
         'y': 320
         uid: bda90d00-a00c-45f7-a174-789a81cc40ea
@@ -3394,17 +1408,9 @@ rooms:
         texture: 72b4227a-a07a-4049-bf29-ad5ad7ce8e78
         extends: {}
     copies:
-      - x: 448
-        'y': 384
-        uid: 17fc45ad-3a29-4790-b6a0-364b558fa096
-        exts: {}
       - x: 128
         'y': 192
         uid: bda90d00-a00c-45f7-a174-789a81cc40ea
-        exts: {}
-      - x: 416
-        'y': 640
-        uid: c133fde3-2243-41ef-8964-f5c48ef87e7e
         exts: {}
     tiles:
       - depth: -10
@@ -3433,6 +1439,10 @@ rooms:
         'y': 256
         uid: bda90d00-a00c-45f7-a174-789a81cc40ea
         exts: {}
+      - x: 704
+        'y': 256
+        uid: 5954f47e-a155-4d9f-aa7c-862a31042c7d
+        exts: {}
     tiles:
       - depth: -10
         tiles: []
@@ -3442,7 +1452,7 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1630549109984
+    lastmod: 1630553084109
 actions:
   - name: Interact
     methods:
@@ -3753,6 +1763,10 @@ scripts:
       var exitMap = true;//should map be exited
 
       var mapPage;
+
+      var activateLightSwitch = false;
+
+      var lightSwitched = false;
   - name: MasterDialogueScript
     code: >-
       //Script for all dialogue variables and functions that are not character
@@ -3842,9 +1856,31 @@ scripts:
           }
           try//I have to use this because if responseID2 doesn't include the phrase it will throw an error saying var.includes(); is not a function
           {
+              if(newDialogue.includes('JUMPTO'))//one should always be accept two should always be reject
+              {
+                  try
+                  {
+                      if(newDialogue.includes('13'))
+                      {
+                      dialogueNumber = 13;
+                      newDialogue = eval(characterID + '['+ dialogueNumber + '];'); 
+                      responseID1 = eval(characterID + '['+ (dialogueNumber + 1) + '];'); 
+                      responseID2 = eval(characterID + '['+ (dialogueNumber + 2) + '];'); 
+                      }
+                  }
+                  catch
+                  {
+                  }
+              }
+          }
+          catch//prevent game crash
+          {
+          }
+          try//I have to use this because if responseID2 doesn't include the phrase it will throw an error saying var.includes(); is not a function
+          {
               if(responseID2.includes('BACKBREAK'))
               {
-                  responseID2 = responseID1;
+                  responseID2 = '';
                   backBreakException = true;
               }
               else
@@ -3856,36 +1892,6 @@ scripts:
           {
               backBreakException = false;
           }
-          try//I have to use this because if responseID2 doesn't include the phrase it will throw an error saying var.includes(); is not a function
-          {
-              if(responseID1.includes('ACCEPTQUEST'))//one should always be accept two should always be reject
-              {
-                  responseID1 = runQuest(responseID1);
-              }
-          }
-          catch//prevent game crash
-          {
-          }
-          try//I have to use this because if the string doesn't include the phrase it will throw an error saying var.includes(); is not a function
-          {
-              if(newDialogue.includes('GETINV'))
-              {
-                  newDialogue = runInventory(newDialogue);
-              }
-          }
-          catch
-          {
-          }
-          try//I have to use this because if responseID2 doesn't include the phrase it will throw an error saying var.includes(); is not a function
-          {
-              if(responseID1.includes('COMPLETEQUEST'))//
-              {
-                  responseID1 = runQuest(responseID1);
-              }
-          }
-          catch
-          {
-          }
           if(isNaN(newDialogue)==true || true)//remove the || true after testing
           {
               nextDialogue = true;
@@ -3894,87 +1900,21 @@ scripts:
           {
               exitDialogue=true;
           }
-      }
-  - name: QuestScript
-    code: |-
-      /* Script for quests */
-      let questArray = [];
-      var runQuest = function(inputLine)
-      {
-          var responseLine;
-          try//prevent game crash
+          try//bug
           {
-              if(inputLine.includes(001))
+              if(newDialogue.includes('EXIT'))
               {
-                  questArray.push('Join the church \n');
-                  responseLine = 'sure';
+                  eval(newDialogue);
+                  exitDialogue = true
               }
-              else if(inputLine.includes(002))
+              else
               {
-                  responseLine = 'sure';
-                  questArray.push('Join the Antichurch \n');
+                  nextDialogue = true;
               }
           }
           catch
           {
-              console.log('ERRORSTATE')
-          }
-          questFormatter();
-          return responseLine;
-      }
-      var questCompleted = function()
-      {//used to remove quest from quest array
-          for(i in questArray){
-              a
-          }
-          //questArray.splice()
-      }
-      var questFormatter = function()
-      {//format quest array
-          var counter = questArray.length
-          while(counter!=0)
-          {
-              questArray[counter-1] = (counter) + '  ' + questArray[counter-1];
-              counter--;
-          }
-      }
-  - name: InventoryScript
-    code: |-
-      /* Script for inventorys */
-      var addedItemOrQuest;
-      let inventoryArray = [];
-      var runInventory = function(inputLine)
-      {
-          var responseLine;
-          try//prevent game crash
-          {
-              if(inputLine.includes('001'))
-              {
-                  inventoryArray.push('Church Cloak\n');
-                  responseLine = 'Here take this cloak as a symbol';
-                  addedItemOrQuest = 'Church Cloak'
-              }
-              else if(inputLine.includes('002'))
-              {
-                  responseLine = 'sure';
-                  inventoryArray.push('Church Handgun\n');
-                  addedItemOrQuest = 'Church Handgun'
-              }
-          }
-          catch
-          {
-              console.log('ERRORSTATE')
-          }
-          inventoryFormatter();
-          return responseLine;
-      }
-      var inventoryFormatter = function()
-      {//format inventory array
-          var counter = inventoryArray.length
-          while(counter!=0)
-          {
-              inventoryArray[counter-1] = (counter) + '  ' + inventoryArray[counter-1];
-              counter--;
+              console.log('UH Oh');
           }
       }
   - name: testScript
@@ -4395,8 +2335,11 @@ scripts:
 
       let dng = ['TRUEBREAK','Well here we are again','we\'ve been here
       before?','who are you?','Yes many times, many many times before','I don\'t
-      remember it','why am I here','Thats a good question, who am
-      I?',8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204];
+      remember it','why am I here','Thats a good question, who am I?','I\'m
+      asking you','BACKBREAK','JUMPTO 13',11,12,'I have an Idea, flick that
+      lightswtich on the wall.','Okay','BACKBREAK','JUMPTO
+      13',17,18,19,20,21,22,23,24,25,26,27,'\/\*EXIT\*\/
+      console.log(\'test\');',29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204];
 
       let dngPose=[];
 
