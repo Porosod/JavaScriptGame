@@ -1582,6 +1582,32 @@ textures:
     padding: 1
     source: 'C:\Users\moosh\Pictures\Game assets\Hath\RedArrow.png'
     lastmod: 1630279849555
+  - name: demonGuy
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 64
+      - 64
+    marginx: 0
+    marginy: 0
+    imgWidth: 128
+    imgHeight: 128
+    width: 128
+    height: 128
+    offx: 0
+    offy: 0
+    origname: i6ef82d26-3cef-464f-aa4a-be62e96cda16.png
+    shape: rect
+    left: 64
+    right: 64
+    top: 64
+    bottom: 64
+    uid: 6ef82d26-3cef-464f-aa4a-be62e96cda16
+    padding: 1
+    source: 'C:\Users\moosh\Pictures\Game assets\Hath\WhatAreYou\demonGuy.png'
+    lastmod: 1630548461320
 skeletons: []
 types:
   - name: CharPlaceHold
@@ -2337,7 +2363,7 @@ types:
     texture: e9525ee1-738a-44dc-aa3c-51bb78e8d187
     extends: {}
     uid: 4e14111c-bd3a-4305-b25e-03bd821b3b63
-    lastmod: 1630449286666
+    lastmod: 1630548501814
   - name: ChruchDoor
     depth: 0
     oncreate: ''
@@ -2602,6 +2628,22 @@ types:
     extends: {}
     uid: 1aadc71e-d290-44d0-9532-5d35571d621e
     lastmod: 1630280359604
+  - name: demonGuyDialogue
+    depth: 0
+    oncreate: |-
+      this.animationSpeed = 0.2;
+      characterBlinking = false;
+      currentCharacter = 'DeGuy';
+      characterID = 'dng';
+      nextDialogue = true;
+    onstep: |
+      this.move();
+    ondraw: ''
+    ondestroy: ''
+    texture: 6ef82d26-3cef-464f-aa4a-be62e96cda16
+    extends: {}
+    uid: 7a85b669-67b6-41fe-bfcb-044bfed03337
+    lastmod: 1630548571382
 sounds: []
 styles:
   - name: Dialogue
@@ -3168,8 +3210,8 @@ rooms:
     onstep: ''
     ondraw: ''
     onleave: ''
-    width: 800
-    height: 600
+    width: 832
+    height: 640
     backgrounds: []
     copies: []
     tiles:
@@ -3181,7 +3223,7 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1628720079930
+    lastmod: 1630539380204
   - name: Map
     oncreate: |-
       mapOpen = true;
@@ -3367,6 +3409,25 @@ rooms:
     gridX: 32
     gridY: 32
     lastmod: 1629943784685
+  - name: E1M1
+    oncreate: ''
+    onstep: ''
+    ondraw: ''
+    onleave: ''
+    width: 832
+    height: 640
+    backgrounds: []
+    copies: []
+    tiles:
+      - depth: -10
+        tiles: []
+        extends: {}
+    uid: e5cae540-7635-4e9f-bb96-3af900cd4808
+    thumbnail: 3af900cd4808
+    extends: {}
+    gridX: 64
+    gridY: 64
+    lastmod: 1630548565958
 actions:
   - name: Interact
     methods:
@@ -4287,6 +4348,46 @@ scripts:
       [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204];
 
       //---------------------------------//
+  - name: New Script
+    code: |
+      /* Character script for demonGuy */
+      var dngPrevTalk = false;
+      var DeGuyDialogueSetup = function(){
+          if(micPrevTalk==false){
+              dialogueNumber = 1;
+              newDialogue = eval(characterID +'['+ 1 + '];');
+              responseID1 = eval(characterID +'['+ 2 + '];');
+              responseID2 = eval(characterID +'['+ 3 + '];');
+          }
+          else
+          {
+              dialogueNumber = 13;
+              newDialogue = eval(characterID +'['+ 13 + '];');
+              responseID1 = eval(characterID +'['+ 14 + '];');
+              responseID2 = eval(characterID +'['+ 15 + '];');
+          }
+          try//I have to use this because if responseID2 doesn't include the phrase it will throw an error saying var.includes(); is not a function
+          {
+              if(responseID2.includes('BACKBREAK'))
+              {
+                  responseID2 = 'next';
+                  backBreakException = true;
+              }
+              else
+              {
+                  backBreakException =false;//make sure there are no false positives
+              }
+          }
+          catch
+          {
+              backBreakException = false;
+          }
+      }
+      var DeGuyBlink = function(){
+          micBlinking = true;
+          var animation = 'micBlinkSheet';
+          return animation;
+      }
 starting: 0
 settings:
   authoring:
