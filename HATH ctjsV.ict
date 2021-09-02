@@ -570,7 +570,7 @@ textures:
     uid: 6ef82d26-3cef-464f-aa4a-be62e96cda16
     padding: 1
     source: 'C:\Users\moosh\Pictures\Game assets\Hath\WhatAreYou\demonGuy.png'
-    lastmod: 1630549177919
+    lastmod: 1630556261509
   - name: LightSwitch
     untill: 0
     grid:
@@ -596,6 +596,407 @@ textures:
     uid: 34248f16-fd8d-4b1e-8905-e9f01cf64340
     padding: 1
     source: 'C:\Users\moosh\Pictures\Game assets\Hath\WhatAreYou\LightSwitch.png'
+    lastmod: 1630554857457
+  - name: WHAT1
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 128
+    imgHeight: 128
+    width: 128
+    height: 128
+    offx: 0
+    offy: 0
+    origname: id18f9aa5-5568-4a04-a93d-a977fd6ed19b.png
+    shape: rect
+    left: 0
+    right: 128
+    top: 0
+    bottom: 128
+    uid: d18f9aa5-5568-4a04-a93d-a977fd6ed19b
+    padding: 1
+    source: 'C:\Users\moosh\Pictures\Game assets\Hath\WhatAreYou\words\WHAT1.png'
+  - name: WHAT2
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 128
+    imgHeight: 128
+    width: 128
+    height: 128
+    offx: 0
+    offy: 0
+    origname: i2f739c54-fbe7-4760-9453-b8af35ddcbaf.png
+    shape: rect
+    left: 0
+    right: 128
+    top: 0
+    bottom: 128
+    uid: 2f739c54-fbe7-4760-9453-b8af35ddcbaf
+    padding: 1
+    source: 'C:\Users\moosh\Pictures\Game assets\Hath\WhatAreYou\words\WHAT2.png'
+  - name: WHAT3
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 128
+    imgHeight: 128
+    width: 128
+    height: 128
+    offx: 0
+    offy: 0
+    origname: i110588f1-9927-4257-a46c-9ea5d2632c10.png
+    shape: rect
+    left: 0
+    right: 128
+    top: 0
+    bottom: 128
+    uid: 110588f1-9927-4257-a46c-9ea5d2632c10
+    padding: 1
+    source: 'C:\Users\moosh\Pictures\Game assets\Hath\WhatAreYou\words\WHAT3.png'
+  - name: ARE1
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 128
+    imgHeight: 128
+    width: 128
+    height: 128
+    offx: 0
+    offy: 0
+    origname: i0a08bbbe-89a5-4efe-bad6-02134fee00e6.png
+    shape: rect
+    left: 0
+    right: 128
+    top: 0
+    bottom: 128
+    uid: 0a08bbbe-89a5-4efe-bad6-02134fee00e6
+    padding: 1
+    source: 'C:\Users\moosh\Pictures\Game assets\Hath\WhatAreYou\words\ARE1.png'
+  - name: ARE2
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 128
+    imgHeight: 128
+    width: 128
+    height: 128
+    offx: 0
+    offy: 0
+    origname: ice04ccbf-f990-4456-ae87-6ac005132dad.png
+    shape: rect
+    left: 0
+    right: 128
+    top: 0
+    bottom: 128
+    uid: ce04ccbf-f990-4456-ae87-6ac005132dad
+    padding: 1
+    source: 'C:\Users\moosh\Pictures\Game assets\Hath\WhatAreYou\words\ARE2.png'
+  - name: ARE3
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 128
+    imgHeight: 128
+    width: 128
+    height: 128
+    offx: 0
+    offy: 0
+    origname: if1ffc1c9-240e-4949-834c-e0851c343a9d.png
+    shape: rect
+    left: 0
+    right: 128
+    top: 0
+    bottom: 128
+    uid: f1ffc1c9-240e-4949-834c-e0851c343a9d
+    padding: 1
+    source: 'C:\Users\moosh\Pictures\Game assets\Hath\WhatAreYou\words\ARE3.png'
+  - name: YOU2
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 128
+    imgHeight: 128
+    width: 128
+    height: 128
+    offx: 0
+    offy: 0
+    origname: i43bf1f50-bcf7-42b5-a2e0-75d68c06e608.png
+    shape: rect
+    left: 0
+    right: 128
+    top: 0
+    bottom: 128
+    uid: 43bf1f50-bcf7-42b5-a2e0-75d68c06e608
+    padding: 1
+    source: 'C:\Users\moosh\Pictures\Game assets\Hath\WhatAreYou\words\YOU2.png'
+  - name: YOU1
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 128
+    imgHeight: 128
+    width: 128
+    height: 128
+    offx: 0
+    offy: 0
+    origname: i0f372d07-fe41-4d53-aa6c-4e0a25b33cf5.png
+    shape: rect
+    left: 0
+    right: 128
+    top: 0
+    bottom: 128
+    uid: 0f372d07-fe41-4d53-aa6c-4e0a25b33cf5
+    padding: 1
+    source: 'C:\Users\moosh\Pictures\Game assets\Hath\WhatAreYou\words\YOU1.png'
+  - name: YOU3
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 128
+    imgHeight: 128
+    width: 128
+    height: 128
+    offx: 0
+    offy: 0
+    origname: ie0cd0b76-3ce5-4efa-9b8b-32aecf58dac0.png
+    shape: rect
+    left: 0
+    right: 128
+    top: 0
+    bottom: 128
+    uid: e0cd0b76-3ce5-4efa-9b8b-32aecf58dac0
+    padding: 1
+    source: 'C:\Users\moosh\Pictures\Game assets\Hath\WhatAreYou\words\YOU3.png'
+  - name: Question1
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 128
+    imgHeight: 128
+    width: 128
+    height: 128
+    offx: 0
+    offy: 0
+    origname: i58440f31-6350-4a08-ba95-b485ef99e1b1.png
+    shape: rect
+    left: 0
+    right: 128
+    top: 0
+    bottom: 128
+    uid: 58440f31-6350-4a08-ba95-b485ef99e1b1
+    padding: 1
+    source: 'C:\Users\moosh\Pictures\Game assets\Hath\WhatAreYou\words\Question1.png'
+  - name: Question3
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 128
+    imgHeight: 128
+    width: 128
+    height: 128
+    offx: 0
+    offy: 0
+    origname: ia545bd5e-0b95-4c15-9e36-554b5b766d9d.png
+    shape: rect
+    left: 0
+    right: 128
+    top: 0
+    bottom: 128
+    uid: a545bd5e-0b95-4c15-9e36-554b5b766d9d
+    padding: 1
+    source: 'C:\Users\moosh\Pictures\Game assets\Hath\WhatAreYou\words\Question3.png'
+  - name: Question2
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 128
+    imgHeight: 128
+    width: 128
+    height: 128
+    offx: 0
+    offy: 0
+    origname: i92a5c787-fa01-42c7-9c7e-d9756a66f9dc.png
+    shape: rect
+    left: 0
+    right: 128
+    top: 0
+    bottom: 128
+    uid: 92a5c787-fa01-42c7-9c7e-d9756a66f9dc
+    padding: 1
+    source: 'C:\Users\moosh\Pictures\Game assets\Hath\WhatAreYou\words\Question2.png'
+  - name: Question4
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 128
+    imgHeight: 128
+    width: 128
+    height: 128
+    offx: 0
+    offy: 0
+    origname: i96bf0b81-f10c-42cf-98ef-094007ef44ac.png
+    shape: rect
+    left: 0
+    right: 128
+    top: 0
+    bottom: 128
+    uid: 96bf0b81-f10c-42cf-98ef-094007ef44ac
+    padding: 1
+    source: 'C:\Users\moosh\Pictures\Game assets\Hath\WhatAreYou\words\Question4.png'
+  - name: ARE4
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 128
+    imgHeight: 128
+    width: 128
+    height: 128
+    offx: 0
+    offy: 0
+    origname: ic52b5d60-6f13-4d2d-8c94-73ca6e77ec37.png
+    shape: rect
+    left: 0
+    right: 128
+    top: 0
+    bottom: 128
+    uid: c52b5d60-6f13-4d2d-8c94-73ca6e77ec37
+    padding: 1
+    source: 'C:\Users\moosh\Pictures\Game assets\Hath\WhatAreYou\words\ARE4.png'
+  - name: WHAT4
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 128
+    imgHeight: 128
+    width: 128
+    height: 128
+    offx: 0
+    offy: 0
+    origname: iac00c19d-33a8-4bae-9f94-134774952942.png
+    shape: rect
+    left: 0
+    right: 128
+    top: 0
+    bottom: 128
+    uid: ac00c19d-33a8-4bae-9f94-134774952942
+    padding: 1
+    source: 'C:\Users\moosh\Pictures\Game assets\Hath\WhatAreYou\words\WHAT4.png'
+  - name: YOU4
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 128
+    imgHeight: 128
+    width: 128
+    height: 128
+    offx: 0
+    offy: 0
+    origname: ia0b06e97-1bf9-4324-a277-7b94cebc718a.png
+    shape: rect
+    left: 0
+    right: 128
+    top: 0
+    bottom: 128
+    uid: a0b06e97-1bf9-4324-a277-7b94cebc718a
+    padding: 1
+    source: 'C:\Users\moosh\Pictures\Game assets\Hath\WhatAreYou\words\YOU4.png'
 skeletons: []
 types:
   - name: Brick
@@ -788,7 +1189,7 @@ types:
     texture: 6ef82d26-3cef-464f-aa4a-be62e96cda16
     extends: {}
     uid: 7a85b669-67b6-41fe-bfcb-044bfed03337
-    lastmod: 1630552107978
+    lastmod: 1630556141983
   - name: LightSwitch
     depth: 0
     oncreate: ''
@@ -802,7 +1203,187 @@ types:
     texture: 34248f16-fd8d-4b1e-8905-e9f01cf64340
     extends: {}
     uid: 5954f47e-a155-4d9f-aa7c-862a31042c7d
-    lastmod: 1630552124562
+    lastmod: 1630554825918
+  - name: ARE1
+    depth: 0
+    oncreate: '//64,64'
+    onstep: |-
+      this.move();
+      /*if(lightSwitched == true)
+      {
+          this.x = 64;
+          this.y = 64;
+      }*/
+    ondraw: ''
+    ondestroy: ''
+    texture: 0a08bbbe-89a5-4efe-bad6-02134fee00e6
+    extends: {}
+    uid: 63b7b109-d4f7-4b68-a2d5-58b3e6094256
+    lastmod: 1630556811712
+  - name: ARE2
+    depth: 0
+    oncreate: ''
+    onstep: this.move();
+    ondraw: ''
+    ondestroy: ''
+    texture: ce04ccbf-f990-4456-ae87-6ac005132dad
+    extends: {}
+    uid: a4ae3cf4-7774-43f5-b875-e080c5fb51c6
+    lastmod: 1630555522214
+  - name: ARE3
+    depth: 0
+    oncreate: ''
+    onstep: this.move();
+    ondraw: ''
+    ondestroy: ''
+    texture: f1ffc1c9-240e-4949-834c-e0851c343a9d
+    extends: {}
+    uid: ac99a37c-6f0a-4e44-8e39-3d7a0de7d6f0
+  - name: WHAT1
+    depth: 0
+    oncreate: |
+      //0,128
+    onstep: |-
+      this.move();
+      /*if(lightSwitched == true)
+      {
+          this.x = 0;
+          this.y = 128;
+      }*/
+    ondraw: ''
+    ondestroy: ''
+    texture: d18f9aa5-5568-4a04-a93d-a977fd6ed19b
+    extends: {}
+    uid: d404fe7a-a106-4523-87c3-64756e2cff9d
+    lastmod: 1630556845935
+  - name: WHAT2
+    depth: 0
+    oncreate: ''
+    onstep: this.move();
+    ondraw: ''
+    ondestroy: ''
+    texture: 2f739c54-fbe7-4760-9453-b8af35ddcbaf
+    extends: {}
+    uid: 35eea957-33a4-4e19-ba1b-a559ad9b1ce5
+  - name: WHAT3
+    depth: 0
+    oncreate: ''
+    onstep: this.move();
+    ondraw: ''
+    ondestroy: ''
+    texture: 110588f1-9927-4257-a46c-9ea5d2632c10
+    extends: {}
+    uid: b6bf480a-127d-4d12-bef2-27cf216d62f0
+  - name: YOU1
+    depth: 0
+    oncreate: |
+      //128,128
+    onstep: |-
+      this.move();
+      /*if(lightSwitched == true)
+      {
+          this.x = 128;
+          this.y = 128;
+      }*/
+    ondraw: ''
+    ondestroy: ''
+    texture: 0f372d07-fe41-4d53-aa6c-4e0a25b33cf5
+    extends: {}
+    uid: eed94a2a-5df5-471a-9221-17a758273b58
+    lastmod: 1630557270829
+  - name: YOU2
+    depth: 0
+    oncreate: ''
+    onstep: this.move();
+    ondraw: ''
+    ondestroy: ''
+    texture: 43bf1f50-bcf7-42b5-a2e0-75d68c06e608
+    extends: {}
+    uid: edad712f-2fb9-45bc-bfb8-05cce80b8b69
+  - name: YOU3
+    depth: 0
+    oncreate: ''
+    onstep: this.move();
+    ondraw: ''
+    ondestroy: ''
+    texture: e0cd0b76-3ce5-4efa-9b8b-32aecf58dac0
+    extends: {}
+    uid: 1e2199c1-0cad-449c-bb1c-e12bc3e7e98e
+  - name: Question2
+    depth: 0
+    oncreate: ''
+    onstep: this.move();
+    ondraw: ''
+    ondestroy: ''
+    texture: 92a5c787-fa01-42c7-9c7e-d9756a66f9dc
+    extends: {}
+    uid: 371b507b-e353-43e5-b959-ba9106f0787c
+    lastmod: 1630555186797
+  - name: Question3
+    depth: 0
+    oncreate: ''
+    onstep: this.move();
+    ondraw: ''
+    ondestroy: ''
+    texture: a545bd5e-0b95-4c15-9e36-554b5b766d9d
+    extends: {}
+    uid: 08b11bff-202a-414b-ae1c-98fb4dc61cdf
+    lastmod: 1630555198400
+  - name: Question1
+    depth: 0
+    oncreate: |
+      //192,64
+    onstep: |-
+      this.move();
+      /*if(lightSwitched == true)
+      {
+          this.x = 192;
+          this.y = 64;
+      }*/
+    ondraw: ''
+    ondestroy: ''
+    texture: 58440f31-6350-4a08-ba95-b485ef99e1b1
+    extends: {}
+    uid: ca880001-515b-4449-a900-e19763565aaf
+    lastmod: 1630556433936
+  - name: WHAT4
+    depth: 0
+    oncreate: ''
+    onstep: this.move();
+    ondraw: ''
+    ondestroy: ''
+    texture: ac00c19d-33a8-4bae-9f94-134774952942
+    extends: {}
+    uid: 5147ec7f-4317-428f-86d1-cb2f2bd905e3
+    lastmod: 1630555965015
+  - name: YOU4
+    depth: 0
+    oncreate: ''
+    onstep: this.move();
+    ondraw: ''
+    ondestroy: ''
+    texture: a0b06e97-1bf9-4324-a277-7b94cebc718a
+    extends: {}
+    uid: a79db618-7986-479d-9fee-3f9d7cf5ae0a
+    lastmod: 1630556001967
+  - name: Question4
+    depth: 0
+    oncreate: ''
+    onstep: this.move();
+    ondraw: ''
+    ondestroy: ''
+    texture: 96bf0b81-f10c-42cf-98ef-094007ef44ac
+    extends: {}
+    uid: 3e961538-6826-4f3b-ade3-3f1bc6479f60
+  - name: ARE4
+    depth: 0
+    oncreate: ''
+    onstep: this.move();
+    ondraw: ''
+    ondestroy: ''
+    texture: c52b5d60-6f13-4d2d-8c94-73ca6e77ec37
+    extends: {}
+    uid: 098a07d4-156e-4e22-8110-5a3e541510e3
 sounds: []
 styles:
   - name: Dialogue
@@ -899,94 +1480,6 @@ styles:
       color: 'rgba(135,205,255,0.87)'
     lastmod: 1630022464125
 rooms:
-  - name: QuestJournal
-    oncreate: >-
-      this.questTitle = 'Objectives';
-
-      this.questTitleText = new PIXI.Text(this.questTitle,
-      ct.styles.get('questTitle'));
-
-      this.questTitleText.x = 160;//coordinates
-
-      this.questTitleText.y = 128;
-
-      this.questTitleText.depth = 1000;//depth is like the layer for example
-      1000 would be a high up layer while -5 would be a low layer
-
-      this.addChild(this.questTitleText);
-
-      questOpen = true;
-
-      moveActive = false;
-
-      this.quests = questArray.toString();//Line Breaks are 20 coords apart
-
-      this.questsText = new PIXI.Text(this.quests, ct.styles.get('questText'));
-
-      this.questsText.x = 160;//coordinates
-
-      this.questsText.y = 160;
-
-      this.questsText.depth = 1000;//depth is like the layer for example 1000
-      would be a high up layer while -5 would be a low layer
-
-      this.addChild(this.questsText);
-    onstep: |-
-      if(exitQuest == true)
-      {
-          ct.rooms.remove(this);
-      }
-      if(ct.mouse.pressed)
-      {
-          console.log(ct.mouse.y);
-         if(ct.mouse.y>160)
-          {
-              if(ct.mouse.y<180)//This should work because it will check from the top of this list and ignore all the else ifs when one is true
-              {
-                  console.log('A');
-              }
-              else if(ct.mouse.y<200)
-              {
-                  console.log('B');
-              }
-              else if(ct.mouse.y<220)
-              {
-                  console.log('C');
-              }
-          }
-      }
-    ondraw: this.questTitleText.text =  this.questTitle;
-    onleave: |-
-      questOpen = false;
-      moveActive = true;
-    width: 832
-    height: 640
-    backgrounds: []
-    copies:
-      - x: 352
-        'y': 288
-        uid: bda90d00-a00c-45f7-a174-789a81cc40ea
-        exts: {}
-      - x: -0.0
-        'y': -0.0
-        uid: 8f833c10-651a-49f7-86e5-51df4a70ff52
-        exts: {}
-      - x: 800
-        'y': 96
-        uid: 56de7695-90ed-4b79-a522-4812cfaa1445
-        exts: {}
-    tiles:
-      - depth: -10
-        tiles: []
-        extends: {}
-    uid: c8911d20-a84a-469f-a96f-454a5c6b7081
-    thumbnail: 454a5c6b7081
-    extends:
-      isUi: true
-    gridX: 32
-    gridY: 32
-    lastmod: 1630017909999
-    backgroundColor: 'rgba(0,0,0,0)'
   - name: Dialogue
     oncreate: >
       //384 320
@@ -1119,167 +1612,6 @@ rooms:
     backgroundColor: 'rgba(0,0,0,0.51)'
     restrictCamera: false
     lastmod: 1630552127970
-  - name: Road001
-    oncreate: ''
-    onstep: ''
-    ondraw: ''
-    onleave: ''
-    width: 832
-    height: 640
-    backgrounds:
-      - depth: -1000
-        texture: 72b4227a-a07a-4049-bf29-ad5ad7ce8e78
-        extends: {}
-    copies:
-      - x: 384
-        'y': 128
-        uid: bda90d00-a00c-45f7-a174-789a81cc40ea
-        exts: {}
-      - x: 0
-        'y': 0
-        uid: d3760502-6697-41df-9fad-b86d91f9ac21
-        exts: {}
-    tiles:
-      - depth: -10
-        tiles: []
-        extends: {}
-    uid: b0e1ef14-9c28-43ad-a165-b779c9d76a3f
-    thumbnail: b779c9d76a3f
-    extends: {}
-    gridX: 64
-    gridY: 64
-    lastmod: 1629942551100
-  - name: R1_defrostRoom
-    oncreate: |-
-      this.nextRoomRight = 'R2_Road1'
-      this.nextRoomLeft = 'none';
-      this.playerStartY = 448;
-      console.log('Room Set Up complete');
-      this.playerAdd = ct.types.copy('CharPlaceHold');
-    onstep: ''
-    ondraw: ''
-    onleave: ''
-    width: 832
-    height: 640
-    backgrounds:
-      - depth: -10000
-        texture: 72b4227a-a07a-4049-bf29-ad5ad7ce8e78
-        extends: {}
-    copies:
-      - x: 768
-        'y': 384
-        uid: bda90d00-a00c-45f7-a174-789a81cc40ea
-        exts: {}
-    tiles:
-      - depth: -10
-        tiles: []
-        extends: {}
-    uid: 72c0af8d-7e6c-4b40-bbc3-984d4cb6e0d2
-    thumbnail: 984d4cb6e0d2
-    extends: {}
-    gridX: 64
-    gridY: 64
-    lastmod: 1628115047684
-  - name: R2_Road1
-    oncreate: |-
-      this.playerStartY = 384;
-      this.nextRoomRight = 'R3';
-      this.nextRoomLeft = 'R1_defrostRoom';
-      this.playerAdd = ct.types.copy('CharPlaceHold');
-    onstep: ''
-    ondraw: ''
-    onleave: ''
-    width: 832
-    height: 640
-    backgrounds:
-      - depth: -1000
-        texture: 72b4227a-a07a-4049-bf29-ad5ad7ce8e78
-        extends: {}
-    copies:
-      - x: 128
-        'y': 64
-        uid: bda90d00-a00c-45f7-a174-789a81cc40ea
-        exts: {}
-    tiles:
-      - depth: -10
-        tiles: []
-        extends: {}
-    uid: 097f2b57-59cd-4c3d-9282-3aaeabac012c
-    thumbnail: 3aaeabac012c
-    extends: {}
-    gridX: 64
-    gridY: 64
-    lastmod: 1629859101432
-  - name: InventoryUIRoom
-    oncreate: >-
-      this.inventoryTitle = 'Inventory';
-
-      this.inventoryTitleText = new PIXI.Text(this.inventoryTitle,
-      ct.styles.get('inventoryTitle'));
-
-      this.inventoryTitleText.x = 32;//coordinates
-
-      this.inventoryTitleText.y = 128;
-
-      this.inventoryTitleText.depth = 1000;//depth is like the layer for example
-      1000 would be a high up layer while -5 would be a low layer
-
-      this.addChild(this.inventoryTitleText);
-
-      questOpen = true;
-
-      moveActive = false;
-
-      this.inventorys = inventoryArray.toString();//Line Breaks are 20 coords
-      apart
-
-      this.inventorysText = new PIXI.Text(this.inventorys,
-      ct.styles.get('inventoryText'));
-
-      this.inventorysText.x = 32;//coordinates
-
-      this.inventorysText.y = 160;
-
-      this.inventorysText.depth = 1000;//depth is like the layer for example
-      1000 would be a high up layer while -5 would be a low layer
-
-      this.addChild(this.inventorysText);
-    onstep: |-
-      if(exitQuest == true){
-          ct.rooms.remove(this);
-      }
-    ondraw: this.inventoryTitleText.text =  this.inventoryTitle;
-    onleave: |-
-      questOpen = false;
-      moveActive = true;
-    width: 832
-    height: 640
-    backgrounds: []
-    copies:
-      - x: 352
-        'y': 288
-        uid: bda90d00-a00c-45f7-a174-789a81cc40ea
-        exts: {}
-      - x: 0
-        'y': 0
-        uid: 8f833c10-651a-49f7-86e5-51df4a70ff52
-        exts: {}
-      - x: 576
-        'y': 96
-        uid: 56de7695-90ed-4b79-a522-4812cfaa1445
-        exts: {}
-    tiles:
-      - depth: -10
-        tiles: []
-        extends: {}
-    uid: 7abec43e-7154-4cbc-8886-b23a0c846ac3
-    thumbnail: b23a0c846ac3
-    extends:
-      isUi: true
-    gridX: 32
-    gridY: 32
-    lastmod: 1630022663678
-    backgroundColor: 'rgba(0,0,0,0)'
   - name: HomeScreen
     oncreate: ''
     onstep: ''
@@ -1299,132 +1631,37 @@ rooms:
     gridX: 64
     gridY: 64
     lastmod: 1630548899623
-  - name: Map
-    oncreate: |-
-      mapOpen = true;
-      mapPage = 1;
-    onstep: |-
-      if(exitMap == true){
-          ct.rooms.remove(this);
-      }
-    ondraw: ''
-    onleave: ''
-    width: 10000
-    height: 640
-    backgrounds: []
-    copies:
-      - x: 192
-        'y': 352
-        uid: bda90d00-a00c-45f7-a174-789a81cc40ea
-        exts: {}
-      - x: 0
-        'y': 0
-        uid: 8f833c10-651a-49f7-86e5-51df4a70ff52
-        exts: {}
-      - x: 672
-        'y': 64
-        uid: 56de7695-90ed-4b79-a522-4812cfaa1445
-        exts: {}
-    tiles:
-      - depth: -10
-        tiles: []
-        extends: {}
-    uid: f6d2337d-82eb-4240-846c-5dbdf83c5d80
-    thumbnail: 5dbdf83c5d80
-    extends: {}
-    gridX: 16
-    gridY: 16
-    lastmod: 1630280059003
-  - name: R3
-    oncreate: |-
-      this.playerStartY = 384;
-      this.nextRoomRight = 'R4';
-      this.nextRoomLeft = 'R2_Road1';
-      this.playerAdd = ct.types.copy('CharPlaceHold');
-    onstep: ''
-    ondraw: ''
-    onleave: ''
-    width: 832
-    height: 640
-    backgrounds:
-      - depth: -1000
-        texture: 72b4227a-a07a-4049-bf29-ad5ad7ce8e78
-        extends: {}
-    copies:
-      - x: 448
-        'y': 256
-        uid: bda90d00-a00c-45f7-a174-789a81cc40ea
-        exts: {}
-    tiles:
-      - depth: -10
-        tiles: []
-        extends: {}
-    uid: 63bd9d15-64c7-467d-9527-c4e9ef179f71
-    thumbnail: c4e9ef179f71
-    extends: {}
-    gridX: 64
-    gridY: 64
-    lastmod: 1629932949927
-  - name: R4
-    oncreate: |-
-      this.playerStartY = 384;
-      this.nextRoomRight = 'none';
-      this.nextRoomLeft = 'R3';
-      this.playerAdd = ct.types.copy('CharPlaceHold');
-    onstep: ''
-    ondraw: ''
-    onleave: ''
-    width: 832
-    height: 640
-    backgrounds: []
-    copies:
-      - x: 64
-        'y': 320
-        uid: bda90d00-a00c-45f7-a174-789a81cc40ea
-        exts: {}
-    tiles:
-      - depth: -10
-        tiles: []
-        extends: {}
-    uid: b08263bf-eb8b-458f-b14c-fd9002f6d051
-    thumbnail: fd9002f6d051
-    extends: {}
-    gridX: 64
-    gridY: 64
-    lastmod: 1630022390588
-  - name: R5
-    oncreate: |-
-      this.playerStartY = 384;
-      this.nextRoomRight = 'none';
-      this.nextRoomLeft = 'R3';
-      this.playerAdd = ct.types.copy('CharPlaceHold');
-    onstep: ''
-    ondraw: ''
-    onleave: ''
-    width: 832
-    height: 640
-    backgrounds:
-      - depth: -1000
-        texture: 72b4227a-a07a-4049-bf29-ad5ad7ce8e78
-        extends: {}
-    copies:
-      - x: 128
-        'y': 192
-        uid: bda90d00-a00c-45f7-a174-789a81cc40ea
-        exts: {}
-    tiles:
-      - depth: -10
-        tiles: []
-        extends: {}
-    uid: d7d01067-6438-4fbe-8ea2-22a9eb278bb5
-    thumbnail: 22a9eb278bb5
-    extends: {}
-    gridX: 32
-    gridY: 32
-    lastmod: 1629943784685
   - name: E1M1
     oncreate: ''
-    onstep: ''
+    onstep: |-
+      if(lightSwitched==true)
+      {
+          ct.types.copy('ARE1',464,264);
+          ct.types.copy('WHAT1',400,328);
+          ct.types.copy('YOU1',528,328)
+          ct.types.copy('Question1',592,264);
+          //
+          ct.types.copy('ARE1',64,64);
+          ct.types.copy('WHAT1',0,128);
+          ct.types.copy('YOU1',128,128)
+          ct.types.copy('Question1',192,64);
+          //
+          ct.types.copy('WHAT2',0,384);
+          ct.types.copy('ARE2',128,448);
+          ct.types.copy('YOU2',0,512);
+          ct.types.copy('Question2',128,512);
+          //
+          ct.types.copy('WHAT2',300,84);
+          ct.types.copy('ARE2',428,98);
+          ct.types.copy('YOU2',300,200);
+          ct.types.copy('Question2',428,162);
+          //
+          ct.types.copy('WHAT3',576,384);
+          ct.types.copy('ARE3',640,448);
+          ct.types.copy('YOU3',576,448);
+          ct.types.copy('Question3',576,512);
+          lightSwitched = false;
+      }
     ondraw: ''
     onleave: ''
     width: 832
@@ -1435,13 +1672,29 @@ rooms:
         'y': 448
         uid: 8a66b824-7245-4e60-b09f-4581e1fc9938
         exts: {}
-      - x: 64
-        'y': 256
-        uid: bda90d00-a00c-45f7-a174-789a81cc40ea
-        exts: {}
       - x: 704
         'y': 256
         uid: 5954f47e-a155-4d9f-aa7c-862a31042c7d
+        exts: {}
+      - x: 192
+        'y': 320
+        uid: bda90d00-a00c-45f7-a174-789a81cc40ea
+        exts: {}
+      - x: 576
+        'y': 384
+        uid: b6bf480a-127d-4d12-bef2-27cf216d62f0
+        exts: {}
+      - x: 640
+        'y': 448
+        uid: ac99a37c-6f0a-4e44-8e39-3d7a0de7d6f0
+        exts: {}
+      - x: 576
+        'y': 448
+        uid: 1e2199c1-0cad-449c-bb1c-e12bc3e7e98e
+        exts: {}
+      - x: 576
+        'y': 512
+        uid: 08b11bff-202a-414b-ae1c-98fb4dc61cdf
         exts: {}
     tiles:
       - depth: -10
@@ -1452,7 +1705,7 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1630553084109
+    lastmod: 1630557172472
 actions:
   - name: Interact
     methods:
@@ -2352,7 +2605,7 @@ settings:
   authoring:
     author: Oatiztudios
     site: ''
-    title: HATH
+    title: What Are You
     version:
       - 0
       - 0
