@@ -138,6 +138,7 @@ notes: >
 
   Tested invnetory it worked
 
+
   Testing JUMPTO command in dialogue keept getting 11 and 12 instead of the
   dialogue options forgot to add ()s around the MATHS so it was reading the
   numbers as strings
@@ -163,6 +164,11 @@ notes: >
 
   wrote 162 instead of 166
 
+
+
+
+
+  _______________________________________________________________________________________________________________
 
   OLD CODE could need later
 
