@@ -1017,7 +1017,7 @@ textures:
     source: 'C:\Users\moosh\Pictures\Game assets\Hath\WhatAreYou\words\YOU4.png'
 skeletons: []
 types:
-  - name: Brick
+  - name: temporary
     depth: 0
     oncreate: test =2;
     onstep: |-
@@ -1032,7 +1032,7 @@ types:
       }
     ondraw: ''
     ondestroy: ''
-    texture: a1e3bb1f-92c3-4cb5-9b78-5e436dcb7e83
+    texture: 6ef82d26-3cef-464f-aa4a-be62e96cda16
     extends: {}
     uid: 8a66b824-7245-4e60-b09f-4581e1fc9938
     lastmod: 1630575907495
