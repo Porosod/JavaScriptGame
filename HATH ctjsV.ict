@@ -1,6 +1,6 @@
 ctjsVersion: 1.7.0
 notes: >
-  new/* Bug fix list
+  /* Bug fix list
 
   while loops that rely on an object moving will crash the game if used because
   the frame cannot update so it wont
@@ -403,6 +403,7 @@ textures:
     padding: 1
     source: >-
       C:\Users\Alexd\OneDrive\Pictures\GameAssets\HATH\Assets\EmmiterTextures\Heart.png
+    lastmod: 1632127009338
   - name: Sweat
     untill: 0
     grid:
@@ -1012,7 +1013,7 @@ types:
     texture: 6ef82d26-3cef-464f-aa4a-be62e96cda16
     extends: {}
     uid: 8a66b824-7245-4e60-b09f-4581e1fc9938
-    lastmod: 1632120334203
+    lastmod: 1632127523469
   - name: Grey
     depth: 0
     oncreate: ''
@@ -1026,15 +1027,13 @@ types:
   - name: UIBox
     depth: 100
     oncreate: ''
-    onstep: |
-      this.move();
-    ondraw: |+
-
+    onstep: this.move();
+    ondraw: ''
     ondestroy: ''
     texture: e1f01365-dfaf-4ef8-b7c5-039e48c1ad5c
     extends: {}
     uid: fb8d1b19-8e2a-48ee-ba64-56230149fe5f
-    lastmod: 1628722140083
+    lastmod: 1632127672821
   - name: Cursor
     depth: 10000
     oncreate: ''
@@ -1052,7 +1051,8 @@ types:
     oncreate: ''
     onstep: |-
       this.move();
-      if(ct.actions.Interact.pressed && ct.mouse.hovers(this)){
+      if(ct.actions.Interact.pressed && ct.mouse.hovers(this))
+      {
           exitDialogue = true;
           exitMap = true;
           //exitInventory = true;
@@ -1067,7 +1067,7 @@ types:
     texture: cce25aee-fdfd-42bc-bf33-113247467611
     extends: {}
     uid: 56de7695-90ed-4b79-a522-4812cfaa1445
-    lastmod: 1632118643576
+    lastmod: 1632127471614
   - name: dialogueBack
     depth: 0
     oncreate: ''
@@ -1080,21 +1080,21 @@ types:
     lastmod: 1622069270687
   - name: WorldBack
     depth: -20
-    oncreate: //ct.camera.follow = this;
-    onstep: |
-      this.move();
+    oncreate: ''
+    onstep: this.move();
     ondraw: ''
     ondestroy: ''
     texture: fa082efa-4f26-48dd-9273-29d6aa0b859d
     extends: {}
     uid: d3760502-6697-41df-9fad-b86d91f9ac21
-    lastmod: 1624482374804
+    lastmod: 1632127689668
   - name: response1
     depth: -10000
     oncreate: ''
     onstep: |-
       this.move();
-      if(ct.mouse.hovers(this) && ct.actions.Interact.pressed){
+      if(ct.mouse.hovers(this) && ct.actions.Interact.pressed)
+      {
           responseNumber = 1;
           RunDialogue(1, characterID, dialogueNumber );
       }
@@ -1103,13 +1103,14 @@ types:
     texture: 12559a76-89b4-49d2-9926-642054e0ad8e
     extends: {}
     uid: 81941614-2447-4846-92a2-6d8747d11e8c
-    lastmod: 1632113368622
+    lastmod: 1632127459686
   - name: response2
     depth: -1000
     oncreate: ''
     onstep: |-
       this.move();
-      if(ct.mouse.hovers(this) && ct.actions.Interact.pressed){
+      if(ct.mouse.hovers(this) && ct.actions.Interact.pressed)
+      {
           responseNumber = 2;
           RunDialogue(2,characterID, dialogueNumber);
       }
@@ -1118,12 +1119,11 @@ types:
     texture: 12559a76-89b4-49d2-9926-642054e0ad8e
     extends: {}
     uid: 31483b51-8c3b-43ab-9155-0d4ca4bfacd9
-    lastmod: 1628813194250
+    lastmod: 1632127705940
   - name: DemonGuyDialogue
     depth: 2
     oncreate: |-
       this.animationSpeed = 0.2;//old sets framerate of animation to 12 fps
-      characterBlinking = false;//old for animation
       currentCharacter = 'DemonGuy';//set current character
       characterID = 'dng';//short hand for character
       nextDialogue = true;//allow a new set of dialogue for the
@@ -1134,7 +1134,7 @@ types:
     texture: 6ef82d26-3cef-464f-aa4a-be62e96cda16
     extends: {}
     uid: 7a85b669-67b6-41fe-bfcb-044bfed03337
-    lastmod: 1632125564582
+    lastmod: 1632127533653
   - name: LightSwitch
     depth: 0
     oncreate: ''
@@ -1142,8 +1142,10 @@ types:
       this.move();
 
       if(ct.mouse.pressed && ct.mouse.hovers(this) && activateLightSwitch ==
-      true){//when this is clicked and it can be clicked and hasn't been clicked
+      true)//when this is clicked and it can be clicked and hasn't been clicked
       before
+
+      {
           lightSwitched = true;//see e1m1 onstep line 1
       }
     ondraw: ''
@@ -1151,7 +1153,7 @@ types:
     texture: 34248f16-fd8d-4b1e-8905-e9f01cf64340
     extends: {}
     uid: 5954f47e-a155-4d9f-aa7c-862a31042c7d
-    lastmod: 1632126125764
+    lastmod: 1632127700220
   - name: ARE1
     depth: 0
     oncreate: '//64,64'
@@ -1364,7 +1366,7 @@ styles:
       color1: '#420001'
       color2: '#FF0000'
       gradtype: '1'
-    lastmod: 1630022492725
+    lastmod: 1632127398661
     stroke:
       color: '#B50000'
       weight: 7
@@ -1499,19 +1501,22 @@ rooms:
 
       this.responseNumberCheck
     onstep: |-
-      if(exitDialogue == true){//when told to exit
+      if(exitDialogue == true)//when told to exit
+      {
           ct.rooms.remove(this);//deletes this room
           this.roomCharacter.kill = true;//deletes the character
           this.backgroundType.kill = true;//deletes the background
           exitDialogue =false;//prevents the dialogue from instantly closing next time it is opened
       }
-      if(nextDialogue == true){//if there is another lone of dialogue to display
+      if(nextDialogue == true)//if there is another lone of dialogue to display
+      {
           nextDialogue = false;//stops running twice
           this.dialogue = newDialogue;//sets the displayed variable to the one set in the RunDialogue function
           this.response1 = responseID1;//and such
           this.response2 = responseID2;
       }
-      if(ct.actions.Interact.pressed){//prevents movement
+      if(ct.actions.Interact.pressed)//prevents movement
+      {
           moveActive = false;
       }
     ondraw: |
@@ -1561,7 +1566,7 @@ rooms:
     gridY: 16
     backgroundColor: 'rgba(0,0,0,0.51)'
     restrictCamera: false
-    lastmod: 1632125300295
+    lastmod: 1632127627612
   - name: HomeScreen
     oncreate: ''
     onstep: ''
@@ -1580,7 +1585,7 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1632125305214
+    lastmod: 1632127621260
   - name: E1M1
     oncreate: |-
       this.counter =0//used to time how long before dialogue opens again 
@@ -1626,13 +1631,17 @@ rooms:
           lightSwitched = false;
       }
 
-      if(this.counter<=500 && activateLightSwitch == true){//keeps the counter
+      if(this.counter<=500 && activateLightSwitch == true)//keeps the counter
       going up
+
+      {
           this.counter++;
       }
 
-      if(this.counter >= 500 && this.runOnce == true){//after 500 frames the
+      if(this.counter >= 500 && this.runOnce == true)//after 500 frames the
       dialogue menu opens again 
+
+      {
           this.runOnce = false;//keeps the light switch from being pressed more than once
           openDialogue = 19;//sets where to start the dialogue
           lightSwitched = false;// stops the light switch code from creating 14000 types which severly affects frame rate
@@ -1670,7 +1679,7 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1632119137070
+    lastmod: 1632127653300
 actions:
   - name: Interact
     methods:
@@ -1702,6 +1711,7 @@ emitterTandems:
       - texture: c2a80328-845f-43dc-85b6-3dcdd9c08fd3
         openedTabs:
           - texture
+          - scaling
         settings:
           alpha:
             list:
@@ -1718,7 +1728,7 @@ emitterTandems:
             list:
               - value: 2
                 time: 0
-              - value: 0.99
+              - value: 0.67
                 time: 1
             isStepped: false
           color:
@@ -1986,20 +1996,6 @@ scripts:
       var backBreakException = false;//This is used to save space in the array
       and so i don;t have to double up dialogue lines
 
-      /*var dialogueScript = function (dialogueID, room){//this function is used
-      for dialogue popups the var is an ID associated with the selected dialogue
-
-      //let dialogueOptions =
-      ['test1aaaaaaaaa','test2bbbbbbbbbbbb','test3ccccccccccc','test4ddddddddd','test5eeeeeee'];//OLD
-
-      room.dialogue = dialogueOptions[dialogueID]
-
-      }*/
-
-      //!!!this dialogue system will force the dialogue to be very linear with
-      little room for versatility also wasting storage dialogue options that
-      lead to the same thing will need seperate things needs more work
-
       var RunDialogue = function(response, character, numID)//Function to find
       what dialogue option should be next
 
@@ -2104,10 +2100,8 @@ scripts:
 
       var test = 0;//this varible actually prevents the dialogue menu from being
       opend multiple times
-
-      //var blarp = 0; OLD
   - name: DemonGuyScript
-    code: |
+    code: |-
       /* Character script for demonGuy */
       var dngPrevTalk = false;//last used dialogue 
       var openDialogue = 1;//what dialogue to open with
@@ -2133,105 +2127,18 @@ scripts:
           {
           }
       }
-          /*if(micPrevTalk==false){
-              dialogueNumber = 1;
-              newDialogue = eval(characterID +'['+ 1 + '];');
-              responseID1 = eval(characterID +'['+ 2 + '];');
-              responseID2 = eval(characterID +'['+ 3 + '];');
-          }
-          else
-          {
-              dialogueNumber = 13;
-              newDialogue = eval(characterID +'['+ 13 + '];');
-              responseID1 = eval(characterID +'['+ 14 + '];');
-              responseID2 = eval(characterID +'['+ 15 + '];');
-          }
-          try//I have to use this because if responseID2 doesn't include the phrase it will throw an error saying var.includes(); is not a function
-          {
-              if(responseID2.includes('BACKBREAK'))
-              {
-                  responseID2 = 'next';
-                  backBreakException = true;
-              }
-              else
-              {
-                  backBreakException =false;//make sure there are no false positives
-              }
-          }
-          catch
-          {
-              backBreakException = false;
-          }
-      }*/
   - name: ComposScript
-    code: >-
-      /*This script creates new code for the Rooms to run based on character
-      presnce 
-
-      This should allow me to create new scripts for unique characters without
-      needing to do 
-
-      tons of programming in the room events scripts*/
-
-      // = currentCharacter + 'Dialogue';
-
-      var characterBlinking = true;
-
-      var characterPrevTalk = function(truf){
+    code: |-
+      var characterPrevTalk = function(truf)
+      {
          eval(currentCharacter + 'PrevTalk' + '=' + truf); 
       }
-
-      var characterBlink = function(){
-          var tempVar = currentCharacter + 'Blink();';
-          tempVar = eval(tempVar);
-          return tempVar;
-      }
-
-      var CharacterDialogueSetup = function(){
+      var CharacterDialogueSetup = function()
+      {
           eval(currentCharacter + 'DialogueSetup();');
       }
   - name: CharacterDialogueList
     code: >-
-      /*using this for short hand IDs for dialogue*/
-
-      //204 current limit
-
-      /*let crd = ['TRUEBREAK','Huh a new fresh thaw','Fresh thaw?','Who are
-      you?','Yes a fresh thaw you were recently','next','next
-      BACKBREAK',7,8,9,'thawed out I can tell','Who are you?','where am
-      I',13,14,15,16,17,18,19,20,21,'I am an esteemed member of the
-      church','next','next BACKBREAK','You\'re in the future!','Who are
-      you?','',28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,'would you
-      like to
-      join?','ACCEPTQUEST-001','no',49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,'Fantastic
-      Ill see you there','Goodbye','Goodbye','Well suit your self
-      then','Goodbye','Goodbye',100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204];
-
-      let fmd = ['TRUEBREAK','Ah a newly thawed human', 'Where am I?',
-      'Thawed?','You\'re in the future!', 'next', 'next','Yes thawed. You were
-      frozen','NODIALOGUE','NODIALOGUE','You Died in like 2063 of heart
-      failure','next','next'];//dialogue tree stuff
-
-      let ard = ['TRUEBREAK','ah fresh thaw come here.','Fresh thaw?','Who are
-      you?','Yes a fresh thaw you were recently','next','next
-      BACKBREAK',7,8,9,'thawed out I can tell','Who are you?','where am
-      I',13,14,15,16,17,18,19,20,21,'I am an esteemed member of the
-      church','next','next BACKBREAK','You\'re in the future!','Who are
-      you?','',28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,'would you
-      like to
-      join?','ACCEPTQUEST-001','no',49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,'Fantastic
-      Ill see you there','Goodbye','Goodbye','Well suit your self
-      then','Goodbye','Goodbye',100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204];
-
-      let mcc = ['TRUEBREAK','Welcome fresh thaw,','next','next
-      BACKBREAK','would you like to join the church?','Sure','What kind of
-      church is it?',7,8,9,'GETINV
-      001','next','BACKBREAK',13,14,15,16,17,18,19,20,21,'of your
-      membership','What
-      now?','BACKBREAK',25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204] 
-
-      */
-
       let dng = ['TRUEBREAK','Well here we are again','we\'ve been here
       before?','who are you?','Yes many times, many many times before','When was
       that?','why am I here?','Thats a good question, who am I?','I\'m asking
@@ -2264,8 +2171,6 @@ scripts:
       let noCharacter =
       [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204];//using
       this for a refrence
-
-      //---------------------------------//
 starting: 0
 settings:
   authoring:
