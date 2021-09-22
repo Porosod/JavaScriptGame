@@ -2082,7 +2082,7 @@ scripts:
           {
               if(newDialogue.includes('EXIT'))//command exits the dialogue
               {
-                  eval(newDialogue);
+                  eval(newDialogue);//this is in an eval because I can insert code into the array string to run
                   exitDialogue = true
               }
               else
@@ -2191,8 +2191,8 @@ settings:
     hideCursor: true
   export:
     windows: true
-    linux: true
-    mac: true
+    linux: false
+    mac: false
     functionWrap: false
     codeModifier: none
   branding:
