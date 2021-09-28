@@ -1023,7 +1023,7 @@ types:
     texture: 72b4227a-a07a-4049-bf29-ad5ad7ce8e78
     extends: {}
     uid: 391efc90-ffeb-49bd-9f22-a88dc43bf17a
-    lastmod: 1619315685213
+    lastmod: 1632698743370
   - name: UIBox
     depth: 100
     oncreate: ''
@@ -1045,13 +1045,16 @@ types:
     texture: e3b7166f-c686-4a11-a990-41f8752515e2
     extends: {}
     uid: bda90d00-a00c-45f7-a174-789a81cc40ea
-    lastmod: 1632126150315
+    lastmod: 1632700449554
   - name: ExitButton
     depth: 180
     oncreate: ''
-    onstep: |-
+    onstep: >-
       this.move();
-      if(ct.actions.Interact.pressed && ct.mouse.hovers(this))
+
+      if(ct.actions.Interact.pressed && ct.mouse.hovers(this))//the this is
+      clicked
+
       {
           exitDialogue = true;
           exitMap = true;
@@ -1067,7 +1070,7 @@ types:
     texture: cce25aee-fdfd-42bc-bf33-113247467611
     extends: {}
     uid: 56de7695-90ed-4b79-a522-4812cfaa1445
-    lastmod: 1632127471614
+    lastmod: 1632700062364
   - name: dialogueBack
     depth: 0
     oncreate: ''
@@ -1189,6 +1192,7 @@ types:
     texture: f1ffc1c9-240e-4949-834c-e0851c343a9d
     extends: {}
     uid: ac99a37c-6f0a-4e44-8e39-3d7a0de7d6f0
+    lastmod: 1632699714585
   - name: WHAT1
     depth: 0
     oncreate: |
@@ -1455,7 +1459,7 @@ rooms:
       this.dialogueText = new PIXI.Text(' ' + this.dialogue,
       ct.styles.get('Dialogue'));//sets up the dialogue text's visual part
 
-      this.dialogueText.x = 96;//coordinates
+      this.dialogueText.x = 96;//coordinates to write the text at
 
       this.dialogueText.y = 480;
 
@@ -1477,8 +1481,7 @@ rooms:
 
       this.response1Text.y = 528;
 
-      this.response1Text.depth = 1000;//depth is like the layer for example 1000
-      would be a high up layer while -5 would be a low layer
+      this.response1Text.depth = 1000;//
 
       this.addChild(this.response1Text);
 
@@ -1494,8 +1497,7 @@ rooms:
 
       this.response2Text.y = 560;
 
-      this.response2Text.depth = 1000;//depth is like the layer for example 1000
-      would be a high up layer while -5 would be a low layer
+      this.response2Text.depth = 1000;//
 
       this.addChild(this.response2Text);
 
@@ -1566,7 +1568,7 @@ rooms:
     gridY: 16
     backgroundColor: 'rgba(0,0,0,0.51)'
     restrictCamera: false
-    lastmod: 1632127627612
+    lastmod: 1632699530807
   - name: HomeScreen
     oncreate: ''
     onstep: ''
@@ -1679,7 +1681,7 @@ rooms:
     extends: {}
     gridX: 64
     gridY: 64
-    lastmod: 1632127653300
+    lastmod: 1632699987623
 actions:
   - name: Interact
     methods:
@@ -2025,7 +2027,7 @@ scripts:
               {
                   try
                   {
-                      if(newDialogue.includes(' 13'))
+                      if(newDialogue.includes(' 13'))// a number in it points to another item in an array like 'JUMPTO 13' would set the dialogue to the 13th item in the array
                       {
                       dialogueNumber = 13;
                       }
@@ -2128,12 +2130,18 @@ scripts:
           }
       }
   - name: ComposScript
-    code: |-
-      var characterPrevTalk = function(truf)
+    code: >-
+      /*This script is used to make having multiple characters easier to setup*/
+
+      var characterPrevTalk = function(truf)//
+
       {
          eval(currentCharacter + 'PrevTalk' + '=' + truf); 
       }
-      var CharacterDialogueSetup = function()
+
+      var CharacterDialogueSetup = function()//this function allows me to call
+      the setup dialogue for any character
+
       {
           eval(currentCharacter + 'DialogueSetup();');
       }
