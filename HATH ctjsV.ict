@@ -2270,7 +2270,7 @@ types:
   - name: AnChRecruiter
     depth: 0
     oncreate: test =2;
-    onstep: |-
+    onstep: |
       this.move();
       if(ct.actions.Interact.pressed && ct.mouse.hovers(this) && test ==2){
           dialogueMode = true;
